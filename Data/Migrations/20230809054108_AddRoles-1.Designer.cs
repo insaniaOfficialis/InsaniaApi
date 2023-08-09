@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20230808070748_Init_1")]
-    partial class Init_1
+    [Migration("20230809054108_AddRoles-1")]
+    partial class AddRoles1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace Data.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Domain.Entities.Users.User", b =>
+            modelBuilder.Entity("Domain.Entities.Identification.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
