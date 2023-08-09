@@ -21,3 +21,7 @@
   - Раскомментируем все DbSet
   - Делаем миграцию *add-migration Init-2 -context ApplicationContext*
   - Обновляем базу *update-database -context ApplicationContext*
+
+## Полезное
+- SeriLog - логгирование
+  - AppCenter - логирование вовне
