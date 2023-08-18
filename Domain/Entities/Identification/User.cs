@@ -14,21 +14,18 @@ public class User : IdentityUser<int>
     /// <summary>
     /// Фамилия
     /// </summary>
-    [Column("last_name")]
     [Comment("Фамилия")]
     public string? LastName { get; private set; }
 
     /// <summary>
     /// Имя
     /// </summary>
-    [Column("first_name")]
     [Comment("Имя")]
     public string? FirstName { get; private set; }
 
     /// <summary>
     /// Отчество
     /// </summary>
-    [Column("patronymic")]
     [Comment("Отчество")]
     public string? Patronymic { get; private set; }
 
@@ -53,6 +50,11 @@ public class User : IdentityUser<int>
             (!String.IsNullOrEmpty(Patronymic) ? (Patronymic[0] + ". ") : String.Empty) + 
             LastName; 
     }
+
+    /// <summary>
+    /// Навигационное свойство связи пользователя с ролями
+    /// </summary>
+    public List<UserRole> UserRoles { get; set; } = new();
 
     /// <summary>
     /// Конструктор с пустыми данными

@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Data.Migrations
 {
     /// <inheritdoc />
-    public partial class AddUsers1 : Migration
+    public partial class Add_User_1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,9 +18,9 @@ namespace Data.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    last_name = table.Column<string>(type: "text", nullable: true, comment: "Фамилия"),
-                    first_name = table.Column<string>(type: "text", nullable: true, comment: "Имя"),
-                    patronymic = table.Column<string>(type: "text", nullable: true, comment: "Отчество"),
+                    LastName = table.Column<string>(type: "text", nullable: true, comment: "Фамилия"),
+                    FirstName = table.Column<string>(type: "text", nullable: true, comment: "Имя"),
+                    Patronymic = table.Column<string>(type: "text", nullable: true, comment: "Отчество"),
                     UserName = table.Column<string>(type: "text", nullable: true),
                     NormalizedUserName = table.Column<string>(type: "text", nullable: true),
                     Email = table.Column<string>(type: "text", nullable: true),

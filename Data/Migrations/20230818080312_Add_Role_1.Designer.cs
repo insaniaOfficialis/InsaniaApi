@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20230809054108_AddRoles-1")]
-    partial class AddRoles1
+    [Migration("20230818080312_Add_Role_1")]
+    partial class Add_Role_1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,31 @@ namespace Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("Domain.Entities.Identification.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<string>("NormalizedName")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("r_roles", t =>
+                        {
+                            t.HasComment("Роли");
+                        });
+                });
 
             modelBuilder.Entity("Domain.Entities.Identification.User", b =>
                 {
@@ -47,12 +72,10 @@ namespace Data.Migrations
 
                     b.Property<string>("FirstName")
                         .HasColumnType("text")
-                        .HasColumnName("first_name")
                         .HasComment("Имя");
 
                     b.Property<string>("LastName")
                         .HasColumnType("text")
-                        .HasColumnName("last_name")
                         .HasComment("Фамилия");
 
                     b.Property<bool>("LockoutEnabled")
@@ -72,7 +95,6 @@ namespace Data.Migrations
 
                     b.Property<string>("Patronymic")
                         .HasColumnType("text")
-                        .HasColumnName("patronymic")
                         .HasComment("Отчество");
 
                     b.Property<string>("PhoneNumber")

@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20230809054524_AddRoles-2")]
-    partial class AddRoles2
+    [Migration("20230818080327_Add_UserRole_1")]
+    partial class Add_UserRole_1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -72,12 +72,10 @@ namespace Data.Migrations
 
                     b.Property<string>("FirstName")
                         .HasColumnType("text")
-                        .HasColumnName("first_name")
                         .HasComment("Имя");
 
                     b.Property<string>("LastName")
                         .HasColumnType("text")
-                        .HasColumnName("last_name")
                         .HasComment("Фамилия");
 
                     b.Property<bool>("LockoutEnabled")
@@ -97,7 +95,6 @@ namespace Data.Migrations
 
                     b.Property<string>("Patronymic")
                         .HasColumnType("text")
-                        .HasColumnName("patronymic")
                         .HasComment("Отчество");
 
                     b.Property<string>("PhoneNumber")
@@ -120,6 +117,29 @@ namespace Data.Migrations
                     b.ToTable("r_users", t =>
                         {
                             t.HasComment("Пользователи");
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Entities.Identification.UserRole", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasComment("Первичный ключ таблицы");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("un_users_roles", t =>
+                        {
+                            t.HasComment("Связь пользователей с ролями");
                         });
                 });
 #pragma warning restore 612, 618
