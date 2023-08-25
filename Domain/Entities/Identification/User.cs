@@ -65,18 +65,28 @@ public class User : IdentityUser<int>
     }
 
     /// <summary>
-    /// Конструктор со стандартными данными
+    /// Конструктор со стандартными данными без id
+    /// </summary>
+    /// <param name="login"></param>
+    /// <param name="email"></param>
+    /// <param name="phone"></param>
+    public User(string? login, string? email, string? phone) : this()
+    {
+        UserName = login;
+        Email = email;
+        PhoneNumber = phone;
+    }
+
+    /// <summary>
+    /// Конструктор со стандартными данными c id
     /// </summary>
     /// <param name="id"></param>
     /// <param name="login"></param>
     /// <param name="email"></param>
     /// <param name="phone"></param>
-    public User(int id, string? login, string? email, string? phone): this()
+    public User(int id, string? login, string? email, string? phone): this(login, email, phone)
     {
         Id = id;
-        UserName = login;
-        Email = email;
-        PhoneNumber = phone;
     }
 
     /// <summary>
@@ -90,6 +100,22 @@ public class User : IdentityUser<int>
     /// <param name="firatName"></param>
     /// <param name="patronymic"></param>
     public User(int id, string? login, string? email, string? phone, string? lastName, string? firatName, string? patronymic) : this(id, login, email, phone)
+    {
+        LastName = lastName;
+        FirstName = firatName;
+        Patronymic = patronymic;
+    }
+
+    /// <summary>
+    /// Конструктор с ФИО без id
+    /// </summary>
+    /// <param name="login"></param>
+    /// <param name="email"></param>
+    /// <param name="phone"></param>
+    /// <param name="lastName"></param>
+    /// <param name="firatName"></param>
+    /// <param name="patronymic"></param>
+    public User(string? login, string? email, string? phone, string? lastName, string? firatName, string? patronymic) : this(login, email, phone)
     {
         LastName = lastName;
         FirstName = firatName;

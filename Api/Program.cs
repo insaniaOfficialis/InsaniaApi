@@ -1,9 +1,12 @@
 using Data;
+using Domain;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
 var services = builder.Services;
 var config = builder.Configuration;
+
 services.AddDbContext<ApplicationContext>(options =>
 {
     options.UseNpgsql(config.GetConnectionString("DefaultPostgresConnectionString"));
