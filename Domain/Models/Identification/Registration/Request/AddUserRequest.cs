@@ -28,15 +28,15 @@ public class AddUserRequest
     /// <summary>
     /// Фамилия
     /// </summary>
-    public string? LastName { get; private set; }
+    public string? LastName { get; set; }
 
     /// <summary>
     /// Имя
     /// </summary>
-    public string? FirstName { get; private set; }
+    public string? FirstName { get; set; }
 
     /// <summary>
     /// Отчество
     /// </summary>
-    public string? Patronymic { get; private set; }
+    public string? Patronymic { get; set; }
 }

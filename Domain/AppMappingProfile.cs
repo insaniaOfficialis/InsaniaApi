@@ -8,6 +8,6 @@ public class AppMappingProfile: Profile
 {
     public AppMappingProfile()
     {
-        CreateMap<User, AddUserRequest>();
+        CreateMap<AddUserRequest, User>();
     }
 }
