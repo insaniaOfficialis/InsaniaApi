@@ -4,6 +4,7 @@ using Domain.Entities.Identification;
 using Microsoft.AspNetCore.Http.Json;
 using Microsoft.EntityFrameworkCore;
 using Services.Identification.Registration;
+using Services.Identification.Roles;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +27,7 @@ builder.Services.Configure<JsonOptions>(options =>
     options.SerializerOptions.WriteIndented = true;
 });
 builder.Services.AddScoped<IRegistration, Registration>();
+builder.Services.AddScoped<IRoles, Roles>();
 
 var app = builder.Build();
 

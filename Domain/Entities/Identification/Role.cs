@@ -17,11 +17,6 @@ namespace Domain.Entities.Identification;
 public class Role: IdentityRole<int>
 {
     /// <summary>
-    /// Навигационное свойство связи роли с пользователями
-    /// </summary>
-    public List<UserRole> RoleUsers { get; set; } = new();
-
-    /// <summary>
     /// Пустой конструктор
     /// </summary>
     public Role()

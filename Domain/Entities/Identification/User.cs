@@ -52,11 +52,6 @@ public class User : IdentityUser<int>
     }
 
     /// <summary>
-    /// Навигационное свойство связи пользователя с ролями
-    /// </summary>
-    public List<UserRole> UserRoles { get; set; } = new();
-
-    /// <summary>
     /// Конструктор с пустыми данными
     /// </summary>
     public User()

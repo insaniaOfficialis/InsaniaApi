@@ -39,4 +39,9 @@ public class AddUserRequest
     /// Отчество
     /// </summary>
     public string? Patronymic { get; set; }
+
+    /// <summary>
+    /// Массив ролей
+    /// </summary>
+    public List<string>? Roles { get; set; }
 }

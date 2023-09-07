@@ -3,6 +3,9 @@ using Domain.Models.Identification.Registration.Request;
 
 namespace Services.Identification.Registration;
 
+/// <summary>
+/// Интерфейс регистрации
+/// </summary>
 public interface IRegistration
 {
     /// <summary>

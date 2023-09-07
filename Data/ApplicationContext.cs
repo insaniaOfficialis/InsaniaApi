@@ -1,17 +1,21 @@
 ﻿using Domain.Entities.Identification;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Data;
 
-public class ApplicationContext : DbContext
+public class ApplicationContext : IdentityDbContext<User, Role, int, IdentityUserClaim<int>, IdentityUserRole<int>, IdentityUserLogin<int>, IdentityRoleClaim<int>, IdentityUserToken<int>>
 {
-    public virtual DbSet<User> Users { get; set; }
-    public virtual DbSet<Role> Roles { get; set; }
-    public virtual DbSet<UserRole> UsersRoles { get; set; }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<IdentityUserRole<int>>().ToTable("un_users_roles").HasKey(x => new { x.RoleId, x.UserId });
+        modelBuilder.Entity<IdentityUser<int>>().ToTable("r_users");
+        modelBuilder.Entity<IdentityRole<int>>().ToTable("r_roles");
+        modelBuilder.Entity<IdentityUserClaim<int>>().HasNoKey().Metadata.SetIsTableExcludedFromMigrations(true);
+        modelBuilder.Entity<IdentityUserLogin<int>>().HasNoKey().Metadata.SetIsTableExcludedFromMigrations(true);
+        modelBuilder.Entity<IdentityRoleClaim<int>>().HasNoKey().Metadata.SetIsTableExcludedFromMigrations(true);
+        modelBuilder.Entity<IdentityUserToken<int>>().HasNoKey().Metadata.SetIsTableExcludedFromMigrations(true);
     }
 
     /// <summary>
