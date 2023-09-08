@@ -61,7 +61,7 @@ public class RegistrationController: Controller
                 else
                 {
                     _logger.LogError("AddUser. Непредвиденная ошибка");
-                    BaseResponse response = new(false, new(500, "Непредвиденная ошибка"));
+                    BaseResponse response = new(false, new BaseError(500, "Непредвиденная ошибка"));
                     return StatusCode(500, response);
                 }
             }

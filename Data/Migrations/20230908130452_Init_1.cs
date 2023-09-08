@@ -13,10 +13,10 @@ namespace Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "r_roles",
+                name: "sys_roles",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: true),
                     NormalizedName = table.Column<string>(type: "text", nullable: true),
@@ -25,15 +25,15 @@ namespace Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_r_roles", x => x.Id);
+                    table.PrimaryKey("PK_sys_roles", x => x.Id);
                 },
                 comment: "Роли");
 
             migrationBuilder.CreateTable(
-                name: "r_users",
+                name: "sys_users",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     UserName = table.Column<string>(type: "text", nullable: true),
                     NormalizedUserName = table.Column<string>(type: "text", nullable: true),
@@ -56,20 +56,20 @@ namespace Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_r_users", x => x.Id);
+                    table.PrimaryKey("PK_sys_users", x => x.Id);
                 },
                 comment: "Пользователи");
 
             migrationBuilder.CreateTable(
-                name: "un_users_roles",
+                name: "sys_users_roles",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(type: "integer", nullable: false),
-                    RoleId = table.Column<int>(type: "integer", nullable: false)
+                    UserId = table.Column<long>(type: "bigint", nullable: false),
+                    RoleId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_un_users_roles", x => new { x.RoleId, x.UserId });
+                    table.PrimaryKey("PK_sys_users_roles", x => new { x.RoleId, x.UserId });
                 });
         }
 
@@ -77,13 +77,13 @@ namespace Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "r_roles");
+                name: "sys_roles");
 
             migrationBuilder.DropTable(
-                name: "r_users");
+                name: "sys_users");
 
             migrationBuilder.DropTable(
-                name: "un_users_roles");
+                name: "sys_users_roles");
         }
     }
 }

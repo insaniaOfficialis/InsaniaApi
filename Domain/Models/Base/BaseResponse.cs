@@ -23,6 +23,16 @@ public class BaseResponse
     }
 
     /// <summary>
+    /// Конструктор с id
+    /// </summary>
+    /// <param name="success"></param>
+    /// <param name="id"></param>
+    public BaseResponse(bool success, long id): this(success)
+    {
+        Id = id;
+    }
+
+    /// <summary>
     /// Конструктор с ошибкой
     /// </summary>
     /// <param name="success"></param>
@@ -36,6 +46,11 @@ public class BaseResponse
     /// Признак успешности ответа
     /// </summary>
     public bool Success { get; set; }
+
+    /// <summary>
+    /// Id записи
+    /// </summary>
+    public long? Id { get; set; }
 
     /// <summary>
     /// Ошибка

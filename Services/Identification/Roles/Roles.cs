@@ -50,7 +50,7 @@ public class Roles: IRoles
 
             /*Если успешно, выводим результат*/
             if (result.Succeeded)
-                return new BaseResponse(true);
+                return new BaseResponse(true, role.Id);
             /*Иначе выбиваем ошибку*/
             else
                 throw new InnerException(result?.Errors?.FirstOrDefault()?.Description ?? "Неопознанная ошибка");

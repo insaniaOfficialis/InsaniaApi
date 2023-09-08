@@ -12,9 +12,8 @@ namespace Domain.Entities.Identification;
 /// <summary>
 /// Сущность ролей
 /// </summary>
-[Table("r_roles")]
 [Comment("Роли")]
-public class Role: IdentityRole<int>
+public class Role: IdentityRole<long>
 {
     /// <summary>
     /// Пустой конструктор
@@ -38,7 +37,7 @@ public class Role: IdentityRole<int>
     /// </summary>
     /// <param name="id"></param>
     /// <param name="name"></param>
-    public Role(int id, string name): this(name)
+    public Role(long id, string name): this(name)
     {
         Id = id;
     }

@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20230907130159_Init_1")]
+    [Migration("20230908130452_Init_1")]
     partial class Init_1
     {
         /// <inheritdoc />
@@ -25,13 +25,13 @@ namespace Data.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<int>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<long>", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<string>("ConcurrencyStamp")
                         .HasColumnType("text");
@@ -48,14 +48,14 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("r_roles", (string)null);
+                    b.ToTable("sys_roles", (string)null);
 
-                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityRole<int>");
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityRole<long>");
 
                     b.UseTphMappingStrategy();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<long>", b =>
                 {
                     b.Property<string>("ClaimType")
                         .HasColumnType("text");
@@ -66,8 +66,8 @@ namespace Data.Migrations
                     b.Property<int>("Id")
                         .HasColumnType("integer");
 
-                    b.Property<int>("RoleId")
-                        .HasColumnType("integer");
+                    b.Property<long>("RoleId")
+                        .HasColumnType("bigint");
 
                     b.ToTable("RoleClaims", t =>
                         {
@@ -75,13 +75,13 @@ namespace Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser<int>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser<long>", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("integer");
@@ -131,14 +131,14 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("r_users", (string)null);
+                    b.ToTable("sys_users", (string)null);
 
-                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser<int>");
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser<long>");
 
                     b.UseTphMappingStrategy();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<long>", b =>
                 {
                     b.Property<string>("ClaimType")
                         .HasColumnType("text");
@@ -149,8 +149,8 @@ namespace Data.Migrations
                     b.Property<int>("Id")
                         .HasColumnType("integer");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.ToTable("UserClaims", t =>
                         {
@@ -158,7 +158,7 @@ namespace Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<long>", b =>
                 {
                     b.Property<string>("LoginProvider")
                         .IsRequired()
@@ -171,8 +171,8 @@ namespace Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.ToTable("UserLogins", t =>
                         {
@@ -180,20 +180,20 @@ namespace Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<long>", b =>
                 {
-                    b.Property<int>("RoleId")
-                        .HasColumnType("integer");
+                    b.Property<long>("RoleId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("RoleId", "UserId");
 
-                    b.ToTable("un_users_roles", (string)null);
+                    b.ToTable("sys_users_roles", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<long>", b =>
                 {
                     b.Property<string>("LoginProvider")
                         .IsRequired()
@@ -203,8 +203,8 @@ namespace Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Value")
                         .HasColumnType("text");
@@ -217,9 +217,9 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Domain.Entities.Identification.Role", b =>
                 {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityRole<int>");
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityRole<long>");
 
-                    b.ToTable("r_roles", t =>
+                    b.ToTable(t =>
                         {
                             t.HasComment("Роли");
                         });
@@ -229,7 +229,7 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Domain.Entities.Identification.User", b =>
                 {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser<int>");
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser<long>");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("text")
@@ -243,7 +243,7 @@ namespace Data.Migrations
                         .HasColumnType("text")
                         .HasComment("Отчество");
 
-                    b.ToTable("r_users", t =>
+                    b.ToTable(t =>
                         {
                             t.HasComment("Пользователи");
                         });

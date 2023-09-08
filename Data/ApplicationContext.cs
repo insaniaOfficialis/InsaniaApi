@@ -1,21 +1,27 @@
-﻿using Domain.Entities.Identification;
+﻿using Domain.Entities.General.File;
+using Domain.Entities.Identification;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using File = Domain.Entities.General.File.File;
 
 namespace Data;
 
-public class ApplicationContext : IdentityDbContext<User, Role, int, IdentityUserClaim<int>, IdentityUserRole<int>, IdentityUserLogin<int>, IdentityRoleClaim<int>, IdentityUserToken<int>>
+public class ApplicationContext : IdentityDbContext<User, Role, long, IdentityUserClaim<long>, IdentityUserRole<long>, IdentityUserLogin<long>, IdentityRoleClaim<long>, IdentityUserToken<long>>
 {
+    public DbSet<FileType> FileTypes { get; set; } //типы файлов
+    public DbSet<File> Files { get; set; } //файлы
+    public DbSet<FileUser> FilesUsers { get; set; } //связь файлов с пользователями
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<IdentityUserRole<int>>().ToTable("un_users_roles").HasKey(x => new { x.RoleId, x.UserId });
-        modelBuilder.Entity<IdentityUser<int>>().ToTable("r_users");
-        modelBuilder.Entity<IdentityRole<int>>().ToTable("r_roles");
-        modelBuilder.Entity<IdentityUserClaim<int>>().HasNoKey().Metadata.SetIsTableExcludedFromMigrations(true);
-        modelBuilder.Entity<IdentityUserLogin<int>>().HasNoKey().Metadata.SetIsTableExcludedFromMigrations(true);
-        modelBuilder.Entity<IdentityRoleClaim<int>>().HasNoKey().Metadata.SetIsTableExcludedFromMigrations(true);
-        modelBuilder.Entity<IdentityUserToken<int>>().HasNoKey().Metadata.SetIsTableExcludedFromMigrations(true);
+        modelBuilder.Entity<IdentityUserRole<long>>().ToTable("sys_users_roles").HasKey(x => new { x.RoleId, x.UserId });
+        modelBuilder.Entity<IdentityUser<long>>().ToTable("sys_users");
+        modelBuilder.Entity<IdentityRole<long>>().ToTable("sys_roles");
+        modelBuilder.Entity<IdentityUserClaim<long>>().HasNoKey().Metadata.SetIsTableExcludedFromMigrations(true);
+        modelBuilder.Entity<IdentityUserLogin<long>>().HasNoKey().Metadata.SetIsTableExcludedFromMigrations(true);
+        modelBuilder.Entity<IdentityRoleClaim<long>>().HasNoKey().Metadata.SetIsTableExcludedFromMigrations(true);
+        modelBuilder.Entity<IdentityUserToken<long>>().HasNoKey().Metadata.SetIsTableExcludedFromMigrations(true);
     }
 
     /// <summary>

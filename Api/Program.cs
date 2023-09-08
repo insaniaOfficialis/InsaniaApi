@@ -3,8 +3,10 @@ using Domain;
 using Domain.Entities.Identification;
 using Microsoft.AspNetCore.Http.Json;
 using Microsoft.EntityFrameworkCore;
+using Services.Files;
 using Services.Identification.Registration;
 using Services.Identification.Roles;
+using Files = Services.Files.Files;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +30,7 @@ builder.Services.Configure<JsonOptions>(options =>
 });
 builder.Services.AddScoped<IRegistration, Registration>();
 builder.Services.AddScoped<IRoles, Roles>();
+builder.Services.AddScoped<IFiles, Files>();
 
 var app = builder.Build();
 

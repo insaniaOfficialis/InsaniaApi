@@ -18,7 +18,7 @@ public class RolesController : Controller
     private readonly IRoles _roles; //сервис ролей
 
     /// <summary>
-    /// Конструктор контроллера ролейф
+    /// Конструктор контроллера ролей
     /// </summary>
     /// <param name="logger"></param>
     /// <param name="roles"></param>
@@ -64,7 +64,7 @@ public class RolesController : Controller
                 else
                 {
                     _logger.LogError("AddRole. Непредвиденная ошибка");
-                    BaseResponse response = new(false, new(500, "Непредвиденная ошибка"));
+                    BaseResponse response = new(false, new BaseError(500, "Непредвиденная ошибка"));
                     return StatusCode(500, response);
                 }
             }

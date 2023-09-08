@@ -7,9 +7,8 @@ namespace Domain.Entities.Identification;
 /// <summary>
 /// Сущность пользователей
 /// </summary>
-[Table("r_users")]
 [Comment("Пользователи")]
-public class User : IdentityUser<int>
+public class User : IdentityUser<long>
 {
     /// <summary>
     /// Фамилия
@@ -79,7 +78,7 @@ public class User : IdentityUser<int>
     /// <param name="login"></param>
     /// <param name="email"></param>
     /// <param name="phone"></param>
-    public User(int id, string? login, string? email, string? phone): this(login, email, phone)
+    public User(long id, string? login, string? email, string? phone): this(login, email, phone)
     {
         Id = id;
     }
@@ -94,7 +93,7 @@ public class User : IdentityUser<int>
     /// <param name="lastName"></param>
     /// <param name="firatName"></param>
     /// <param name="patronymic"></param>
-    public User(int id, string? login, string? email, string? phone, string? lastName, string? firatName, string? patronymic) : this(id, login, email, phone)
+    public User(long id, string? login, string? email, string? phone, string? lastName, string? firatName, string? patronymic) : this(id, login, email, phone)
     {
         LastName = lastName;
         FirstName = firatName;
