@@ -75,4 +75,51 @@ public class RolesController : Controller
             return StatusCode(500, ex.Message);
         }
     }
+
+    /// <summary>
+    /// Метод получения списка ролей
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet]
+    [Route("list")]
+    public async Task<IActionResult> GetRoles()
+    {
+        try
+        {
+            var result = await _roles.GetRoles();
+
+            if (result.Success)
+            {
+                _logger.LogInformation("GetRoles. Успешно");
+                return Ok(result);
+            }
+            else
+            {
+                if (result != null && result.Error != null)
+                {
+                    if (result.Error.Code != 500)
+                    {
+                        _logger.LogError("GetRoles. Обработанная ошибка: " + result.Error);
+                        return StatusCode(result.Error.Code ?? 400, result.Error);
+                    }
+                    else
+                    {
+                        _logger.LogError("GetRoles. Необработанная ошибка: " + result.Error);
+                        return StatusCode(result.Error.Code ?? 500, result.Error);
+                    }
+                }
+                else
+                {
+                    _logger.LogError("GetRoles. Непредвиденная ошибка");
+                    BaseResponse response = new(false, new BaseError(500, "Непредвиденная ошибка"));
+                    return StatusCode(500, response);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("GetRoles. Необработанная ошибка: " + ex.Message);
+            return StatusCode(500, ex.Message);
+        }
+    }
 }

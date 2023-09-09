@@ -1,4 +1,6 @@
-﻿namespace Domain.Models.Base;
+﻿using System.Text.Json.Serialization;
+
+namespace Domain.Models.Base;
 
 /// <summary>
 /// Стандартная модель ответа
@@ -37,7 +39,7 @@ public class BaseResponse
     /// </summary>
     /// <param name="success"></param>
     /// <param name="error"></param>
-    public BaseResponse(bool success, BaseError error): this(success)
+    public BaseResponse(bool success, BaseError? error): this(success)
     {
         Error = error;
     }
@@ -50,10 +52,12 @@ public class BaseResponse
     /// <summary>
     /// Id записи
     /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public long? Id { get; set; }
 
     /// <summary>
     /// Ошибка
     /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public BaseError? Error { get; set; }
 }

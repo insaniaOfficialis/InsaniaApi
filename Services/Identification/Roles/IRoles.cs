@@ -14,4 +14,10 @@ public interface IRoles
     /// <param name="request"></param>
     /// <returns></returns>
     Task<BaseResponse> AddRole(AddRoleRequest? request);
+
+    /// <summary>
+    /// Метод получения списка ролей
+    /// </summary>
+    /// <returns></returns>
+    Task<BaseResponseList> GetRoles();
 }
