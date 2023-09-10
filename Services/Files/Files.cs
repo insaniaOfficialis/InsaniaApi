@@ -88,7 +88,7 @@ public class Files: IFiles
                 /*Проверяем наличие такого файла*/
                 var pathFile = Path.Combine(path, request.Name);
 
-                if (Directory.Exists(path))
+                if (Directory.Exists(pathFile))
                     throw new InnerException("Файл с таким наименованием, типом и сущностью уже существует");
 
                 /*Записываем файл*/
