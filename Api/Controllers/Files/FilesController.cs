@@ -54,12 +54,12 @@ public class FilesController : Controller
                     if (result.Error.Code != 500)
                     {
                         _logger.LogError("AddFile. Обработанная ошибка: " + result.Error);
-                        return StatusCode(result.Error.Code ?? 400, result.Error);
+                        return StatusCode(result.Error.Code ?? 400, result);
                     }
                     else
                     {
                         _logger.LogError("AddFile. Необработанная ошибка: " + result.Error);
-                        return StatusCode(result.Error.Code ?? 500, result.Error);
+                        return StatusCode(result.Error.Code ?? 500, result);
                     }
                 }
                 else
@@ -73,7 +73,7 @@ public class FilesController : Controller
         catch (Exception ex)
         {
             _logger.LogError("AddFile. Необработанная ошибка: " + ex.Message);
-            return StatusCode(500, ex.Message);
+            return StatusCode(500, new BaseResponse(false, new BaseError(500, ex.Message)));
         }
     }
 }

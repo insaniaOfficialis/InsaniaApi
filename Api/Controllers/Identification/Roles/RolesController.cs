@@ -53,12 +53,12 @@ public class RolesController : Controller
                     if (result.Error.Code != 500)
                     {
                         _logger.LogError("AddRole. Обработанная ошибка: " + result.Error);
-                        return StatusCode(result.Error.Code ?? 400, result.Error);
+                        return StatusCode(result.Error.Code ?? 400, result);
                     }
                     else
                     {
                         _logger.LogError("AddRole. Необработанная ошибка: " + result.Error);
-                        return StatusCode(result.Error.Code ?? 500, result.Error);
+                        return StatusCode(result.Error.Code ?? 500, result);
                     }
                 }
                 else
@@ -72,7 +72,7 @@ public class RolesController : Controller
         catch (Exception ex)
         {
             _logger.LogError("AddRole. Необработанная ошибка: " + ex.Message);
-            return StatusCode(500, ex.Message);
+            return StatusCode(500, new BaseResponse(false, new BaseError(500, ex.Message)));
         }
     }
 
@@ -100,12 +100,12 @@ public class RolesController : Controller
                     if (result.Error.Code != 500)
                     {
                         _logger.LogError("GetRoles. Обработанная ошибка: " + result.Error);
-                        return StatusCode(result.Error.Code ?? 400, result.Error);
+                        return StatusCode(result.Error.Code ?? 400, result);
                     }
                     else
                     {
                         _logger.LogError("GetRoles. Необработанная ошибка: " + result.Error);
-                        return StatusCode(result.Error.Code ?? 500, result.Error);
+                        return StatusCode(result.Error.Code ?? 500, result);
                     }
                 }
                 else
@@ -119,7 +119,8 @@ public class RolesController : Controller
         catch (Exception ex)
         {
             _logger.LogError("GetRoles. Необработанная ошибка: " + ex.Message);
-            return StatusCode(500, ex.Message);
+            return StatusCode(500, new BaseResponse(false, new BaseError(500, ex.Message)));
+
         }
     }
 }

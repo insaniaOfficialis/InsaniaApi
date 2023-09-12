@@ -50,12 +50,12 @@ public class RegistrationController: Controller
                     if (result.Error.Code != 500)
                     {
                         _logger.LogError("AddUser. Обработанная ошибка: " + result.Error);
-                        return StatusCode(result.Error.Code ?? 400, result.Error);
+                        return StatusCode(result.Error.Code ?? 400, result);
                     }
                     else
                     {
                         _logger.LogError("AddUser. Необработанная ошибка: " + result.Error);
-                        return StatusCode(result.Error.Code ?? 500, result.Error);
+                        return StatusCode(result.Error.Code ?? 500, result);
                     }
                 }
                 else
@@ -69,7 +69,7 @@ public class RegistrationController: Controller
         catch (Exception ex)
         {
             _logger.LogError("AddUser. Необработанная ошибка: " + ex.Message);
-            return StatusCode(500, ex.Message);
+            return StatusCode(500, new BaseResponse(false, new BaseError(500, ex.Message)));
         }
     }
 }

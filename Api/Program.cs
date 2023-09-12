@@ -2,6 +2,7 @@ using Data;
 using Domain;
 using Domain.Entities.Identification;
 using Microsoft.AspNetCore.Http.Json;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Services.Files;
 using Services.Identification.Registration;
@@ -27,6 +28,14 @@ builder.Services.Configure<JsonOptions>(options =>
     options.SerializerOptions.PropertyNameCaseInsensitive = false;
     options.SerializerOptions.PropertyNamingPolicy = null;
     options.SerializerOptions.WriteIndented = true;
+});
+services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireDigit = false;
+    options.Password.RequiredLength = 1;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
 });
 builder.Services.AddScoped<IRegistration, Registration>();
 builder.Services.AddScoped<IRoles, Roles>();
