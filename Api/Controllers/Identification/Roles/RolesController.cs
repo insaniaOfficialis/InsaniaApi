@@ -1,9 +1,7 @@
-﻿using Api.Controllers.Identification.Registration;
-using Domain.Models.Base;
-using Domain.Models.Identification.Registration.Request;
+﻿using Domain.Models.Base;
 using Domain.Models.Identification.Roles.Request;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Services.Identification.Registration;
 using Services.Identification.Roles;
 
 namespace Api.Controllers.Identification.Roles;
@@ -11,6 +9,7 @@ namespace Api.Controllers.Identification.Roles;
 /// <summary>
 /// Контроллер ролей
 /// </summary>
+[Authorize]
 [Route("api/v1/roles")]
 public class RolesController : Controller
 {

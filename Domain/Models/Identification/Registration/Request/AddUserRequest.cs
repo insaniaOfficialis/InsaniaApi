@@ -39,6 +39,11 @@ public class AddUserRequest
     /// Отчество
     /// </summary>
     public string? Patronymic { get; set; }
+    
+    /// <summary>
+    /// Признак записи блокировки
+    /// </summary>
+    public bool? IsBlocked { get; set; }
 
     /// <summary>
     /// Массив ролей

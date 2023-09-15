@@ -1,5 +1,6 @@
 ﻿using Domain.Models.Base;
 using Domain.Models.Files.Request;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Files;
 
@@ -8,6 +9,7 @@ namespace Api.Controllers.Files;
 /// <summary>
 /// Контроллер файлов
 /// </summary>
+[Authorize]
 [Route("api/v1/files")]
 public class FilesController : Controller
 {

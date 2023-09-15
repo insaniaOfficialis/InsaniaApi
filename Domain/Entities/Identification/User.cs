@@ -29,6 +29,12 @@ public class User : IdentityUser<long>
     public string? Patronymic { get; private set; }
 
     /// <summary>
+    /// Признак заблокированного пользователя
+    /// </summary>
+    [Comment("Признак заблокированного пользователя")]
+    public bool IsBlocked { get; private set; }
+
+    /// <summary>
     /// Полное имя
     /// </summary>
     [NotMapped]
@@ -64,11 +70,13 @@ public class User : IdentityUser<long>
     /// <param name="login"></param>
     /// <param name="email"></param>
     /// <param name="phone"></param>
-    public User(string? login, string? email, string? phone) : this()
+    /// <param name="isBlocked"></param>
+    public User(string? login, string? email, string? phone, bool isBlocked) : this()
     {
         UserName = login;
         Email = email;
         PhoneNumber = phone;
+        IsBlocked = isBlocked;
     }
 
     /// <summary>
@@ -78,7 +86,8 @@ public class User : IdentityUser<long>
     /// <param name="login"></param>
     /// <param name="email"></param>
     /// <param name="phone"></param>
-    public User(long id, string? login, string? email, string? phone): this(login, email, phone)
+    /// <param name="isBlocked"></param>
+    public User(long id, string? login, string? email, string? phone, bool isBlocked) : this(login, email, phone, isBlocked)
     {
         Id = id;
     }
@@ -91,12 +100,14 @@ public class User : IdentityUser<long>
     /// <param name="email"></param>
     /// <param name="phone"></param>
     /// <param name="lastName"></param>
-    /// <param name="firatName"></param>
+    /// <param name="firstName"></param>
     /// <param name="patronymic"></param>
-    public User(long id, string? login, string? email, string? phone, string? lastName, string? firatName, string? patronymic) : this(id, login, email, phone)
+    /// <param name="isBlocked"></param>
+    public User(long id, string? login, string? email, string? phone, bool isBlocked, string? lastName, string? firstName, string? patronymic)
+        : this(id, login, email, phone, isBlocked)
     {
         LastName = lastName;
-        FirstName = firatName;
+        FirstName = firstName;
         Patronymic = patronymic;
     }
 
@@ -107,12 +118,14 @@ public class User : IdentityUser<long>
     /// <param name="email"></param>
     /// <param name="phone"></param>
     /// <param name="lastName"></param>
-    /// <param name="firatName"></param>
+    /// <param name="firstName"></param>
     /// <param name="patronymic"></param>
-    public User(string? login, string? email, string? phone, string? lastName, string? firatName, string? patronymic) : this(login, email, phone)
+    /// <param name="isBlocked"></param>
+    public User(string? login, string? email, string? phone, bool isBlocked, string? lastName, string? firstName, string? patronymic)
+        : this(login, email, phone, isBlocked)
     {
         LastName = lastName;
-        FirstName = firatName;
+        FirstName = firstName;
         Patronymic = patronymic;
     }
 
@@ -159,5 +172,14 @@ public class User : IdentityUser<long>
     public void SetPatronymic(string? patronymic)
     {
         Patronymic = patronymic;
+    }
+
+    /// <summary>
+    /// Метод записи признака блокировки
+    /// </summary>
+    /// <param name="isBlocked"></param>
+    public void SetIsBlocked(bool isBlocked)
+    {
+        IsBlocked = isBlocked;
     }
 }

@@ -57,6 +57,9 @@ public class Registration: IRegistration
             if (request.Roles?.Any() != true)
                 throw new InnerException("Не указаны роли");
 
+            /*Обрабатываем пустоту в признаке блокировки*/
+            request.IsBlocked ??= false;
+
             /*Преобразуем модель запроса в модель пользователя*/
             var user = _mapper.Map<User>(request) ?? throw new InnerException("Не удалось преобразовать модель запроса в модель пользователя");
 

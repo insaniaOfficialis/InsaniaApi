@@ -1,5 +1,6 @@
 ﻿using Domain.Models.Base;
 using Domain.Models.Identification.Registration.Request;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Identification.Registration;
 
@@ -8,6 +9,7 @@ namespace Api.Controllers.Identification.Registration;
 /// <summary>
 /// Контроллер регистрации
 /// </summary>
+[Authorize]
 [Route("api/v1/registration")]
 public class RegistrationController: Controller
 {
