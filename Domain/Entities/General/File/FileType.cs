@@ -28,6 +28,19 @@ public class FileType : Directory
     }
 
     /// <summary>
+    /// Конструктор сущности типов файлов без id
+    /// </summary>
+    /// <param name="user"></param>
+    /// <param name="name"></param>
+    /// <param name="alias"></param>
+    /// <param name="path"></param>
+    public FileType(string user, string name, string alias, string path) :
+        base(user, name, alias)
+    {
+        Path = path;
+    }
+
+    /// <summary>
     /// Конструктор сущности типов файлов
     /// </summary>
     /// <param name="id"></param>

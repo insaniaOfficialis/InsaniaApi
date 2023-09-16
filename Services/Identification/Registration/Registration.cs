@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Data;
 using Domain.Entities.Identification;
 using Domain.Models.Base;
 using Domain.Models.Exclusion;
@@ -14,16 +15,18 @@ public class Registration: IRegistration
 {
     private readonly IMapper _mapper; //маппер моделей
     private readonly UserManager<User> _userManager; //менеджер пользователей
+    private readonly ApplicationContext _repository; //репозиторий сущности
 
     /// <summary>
     /// Конструктор класса регистрации
     /// </summary>
     /// <param name="mapper"></param>
     /// <param name="userManager"></param>
-    public Registration(IMapper mapper, UserManager<User> userManager)
+    public Registration(IMapper mapper, UserManager<User> userManager, ApplicationContext repository)
     {
         _mapper = mapper;
         _userManager = userManager;
+        _repository = repository;
     }
 
     /// <summary>
@@ -38,24 +41,20 @@ public class Registration: IRegistration
             /*Проверяем корректность данных*/
             if (request == null)
                 throw new InnerException("Пустой запрос");
-
             if (String.IsNullOrEmpty(request.UserName))
                 throw new InnerException("Не указан логин");
-
             if (String.IsNullOrEmpty(request.Email))
                 throw new InnerException("Не указана почта");
-
             if (String.IsNullOrEmpty(request.PhoneNumber))
                 throw new InnerException("Не указан номер телефона");
-
             if (String.IsNullOrEmpty(request.Password))
                 throw new InnerException("Не указан пароль");
-
             if (String.IsNullOrEmpty(request.LastName) || String.IsNullOrEmpty(request.FirstName) || String.IsNullOrEmpty(request.Patronymic))
                 throw new InnerException("Не указана фамилия, имя или отчество");
-
             if (request.Roles?.Any() != true)
                 throw new InnerException("Не указаны роли");
+            if (request.Roles.Any(x => !_repository.Roles.Any(y => y.Name == x)))
+                throw new InnerException("Указаны недействительные роли");
 
             /*Обрабатываем пустоту в признаке блокировки*/
             request.IsBlocked ??= false;

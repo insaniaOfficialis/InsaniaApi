@@ -32,6 +32,19 @@ public abstract class Directory : Base
     }
 
     /// <summary>
+    /// Конструктор модели сущности справочника без id
+    /// </summary>
+    /// <param name="user"></param>
+    /// <param name="name"></param>
+    /// <param name="alias"></param>
+    public Directory(string user, string name, string alias) :
+        base(user)
+    {
+        Name = name;
+        Alias = alias;
+    }
+
+    /// <summary>
     /// Конструктор модели сущности справочника
     /// </summary>
     /// <param name="id"></param>

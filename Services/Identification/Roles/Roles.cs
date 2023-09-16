@@ -14,7 +14,7 @@ namespace Services.Identification.Roles;
 public class Roles: IRoles
 {
     private readonly IMapper _mapper; //маппер моделей
-    private readonly RoleManager<Role> _roleManager; //менеджер пользователей
+    private readonly RoleManager<Role> _roleManager; //менеджер ролей
     private readonly ApplicationContext _repository; //репозиторий сущности
 
     /// <summary>
@@ -41,7 +41,6 @@ public class Roles: IRoles
             /*Проверяем корректность данных*/
             if (request == null)
                 throw new InnerException("Пустой запрос");
-
             if (String.IsNullOrEmpty(request.Name))
                 throw new InnerException("Не указано наименование");
 
@@ -69,7 +68,6 @@ public class Roles: IRoles
             return new BaseResponse(false, new BaseError(500, ex.Message));
         }
     }
-
 
     /// <summary>
     /// Метод получения списка ролей
