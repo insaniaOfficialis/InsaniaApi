@@ -36,12 +36,12 @@ public abstract class Directory : Base
     /// </summary>
     /// <param name="user"></param>
     /// <param name="name"></param>
-    /// <param name="alias"></param>
-    public Directory(string user, string name, string alias) :
+    public Directory(string user, string name) :
         base(user)
     {
         Name = name;
-        Alias = alias;
+        Transliteration transliteration = new();
+        Alias = transliteration.Translit(name);
     }
 
     /// <summary>
@@ -50,12 +50,12 @@ public abstract class Directory : Base
     /// <param name="id"></param>
     /// <param name="user"></param>
     /// <param name="name"></param>
-    /// <param name="alias"></param>
-    public Directory(long id, string user, string name, string alias):
+    public Directory(long id, string user, string name):
         base(id, user)
     {
         Name = name;
-        Alias = alias;
+        Transliteration transliteration = new();
+        Alias = transliteration.Translit(name);
     }
 
     /// <summary>

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Services.Files;
+using Services.Geography.Countries;
 using Services.Identification.Authorization;
 using Services.Identification.Registration;
 using Services.Identification.Roles;
@@ -100,6 +101,7 @@ builder.Services.AddScoped<IFiles, Files>();
 builder.Services.AddScoped<IToken, Token>();
 builder.Services.AddScoped<IAuthorization, Authorization>();
 builder.Services.AddScoped<IInitialization, Initialization>();
+builder.Services.AddScoped<ICountries, Countries>();
 
 var app = builder.Build();
 

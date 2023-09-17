@@ -1,4 +1,6 @@
 ﻿using Domain.Entities.General.File;
+using Domain.Entities.General.System;
+using Domain.Entities.Geography;
 using Domain.Entities.Identification;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -12,6 +14,8 @@ public class ApplicationContext : IdentityDbContext<User, Role, long, IdentityUs
     public DbSet<FileType> FileTypes { get; set; } //типы файлов
     public DbSet<File> Files { get; set; } //файлы
     public DbSet<FileUser> FilesUsers { get; set; } //связь файлов с пользователями
+    public DbSet<Parametr> Parametrs { get; set; } //параметры
+    public DbSet<Country> Countries { get; set; } //страны
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

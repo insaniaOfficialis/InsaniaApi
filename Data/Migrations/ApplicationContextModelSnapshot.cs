@@ -212,6 +212,142 @@ namespace Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Domain.Entities.General.System.Parametr", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id")
+                        .HasComment("Первичный ключ таблицы");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Alias")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("alias")
+                        .HasComment("Английское наименование");
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_create")
+                        .HasComment("Дата создания");
+
+                    b.Property<DateTime?>("DateDeleted")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_deleted")
+                        .HasComment("Дата удаления");
+
+                    b.Property<DateTime>("DateUpdate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_update")
+                        .HasComment("Дата обновления");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("name")
+                        .HasComment("Наименование");
+
+                    b.Property<string>("UserCreate")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("user_create")
+                        .HasComment("Пользователь, создавший");
+
+                    b.Property<string>("UserUpdate")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("user_update")
+                        .HasComment("Пользователь, обновивший");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("value")
+                        .HasComment("Значение");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("dir_parameters", t =>
+                        {
+                            t.HasComment("Параметры");
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Entities.Geography.Country", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id")
+                        .HasComment("Первичный ключ таблицы");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Alias")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("alias")
+                        .HasComment("Английское наименование");
+
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("color")
+                        .HasComment("Цвет на карте");
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_create")
+                        .HasComment("Дата создания");
+
+                    b.Property<DateTime?>("DateDeleted")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_deleted")
+                        .HasComment("Дата удаления");
+
+                    b.Property<DateTime>("DateUpdate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_update")
+                        .HasComment("Дата обновления");
+
+                    b.Property<string>("LanguageForNames")
+                        .HasColumnType("text")
+                        .HasColumnName("language_for_names")
+                        .HasComment("Язык для названий");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("name")
+                        .HasComment("Наименование");
+
+                    b.Property<int>("Number")
+                        .HasColumnType("integer")
+                        .HasColumnName("number")
+                        .HasComment("Номер на карте");
+
+                    b.Property<string>("UserCreate")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("user_create")
+                        .HasComment("Пользователь, создавший");
+
+                    b.Property<string>("UserUpdate")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("user_update")
+                        .HasComment("Пользователь, обновивший");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("dir_countries", t =>
+                        {
+                            t.HasComment("Страны");
+                        });
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<long>", b =>
                 {
                     b.Property<long>("Id")

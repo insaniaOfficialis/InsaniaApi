@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Domain.Entities.Geography;
 using Domain.Entities.Identification;
 using Domain.Models.Base;
 using Domain.Models.Identification.Registration.Request;
@@ -13,5 +14,6 @@ public class AppMappingProfile: Profile
         CreateMap<AddUserRequest, User>();
         CreateMap<AddRoleRequest, Role>();
         CreateMap<Role, BaseResponseListItem>();
+        CreateMap<Country, BaseResponseListItem>();
     }
 }

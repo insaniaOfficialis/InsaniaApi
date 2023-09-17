@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Files;
 
-namespace Api.Controllers.Files;
+namespace Api.Controllers.General.Files;
 
 /// <summary>
 /// Контроллер файлов

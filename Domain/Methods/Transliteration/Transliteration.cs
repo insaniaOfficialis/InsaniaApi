@@ -38,6 +38,9 @@ public class Transliteration
             str = str.Replace(RusLow[i], LatLow[i]);
         }
 
+        /*Меняем пробелы на нижние подчёркивания*/
+        str = str.Replace(" ", "_");
+
         /*Возвращаем результат*/
         return str;
     }
