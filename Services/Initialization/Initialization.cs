@@ -116,6 +116,15 @@ public class Initialization: IInitialization
                     await _repository.SaveChangesAsync();
                 }
 
+                /*Проверяем наличие параметра размера чисел областей на карте*/
+                if (!_repository.Parametrs.Any(x => x.Name == "Размер чисел областей на карте"))
+                {
+                    /*Создаём параметр для размера чисел областей на карте*/
+                    Parametr parametr = new("system", "Размер чисел областей на карте", "10");
+                    _repository.Parametrs.Add(parametr);
+                    await _repository.SaveChangesAsync();
+                }
+
                 /*ТИПЫ ФАЙЛОВ*/
 
                 /*Проверяем наличие типа файла для пользователей*/

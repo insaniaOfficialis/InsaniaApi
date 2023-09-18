@@ -30,7 +30,7 @@ public class AddFileRequest
     /// </summary>
     /// <param name="id"></param>
     /// <param name="name"></param>
-    /// <param name="typeId"></param>
+    /// <param name="type"></param>
     /// <param name="stream"></param>
     public AddFileRequest(long? id, string? name, string? type, Stream? stream)
     {

@@ -2,6 +2,7 @@
 using Domain.Entities.Geography;
 using Domain.Entities.Identification;
 using Domain.Models.Base;
+using Domain.Models.Geography.Countries.Response;
 using Domain.Models.Identification.Registration.Request;
 using Domain.Models.Identification.Roles.Request;
 
@@ -15,5 +16,6 @@ public class AppMappingProfile: Profile
         CreateMap<AddRoleRequest, Role>();
         CreateMap<Role, BaseResponseListItem>();
         CreateMap<Country, BaseResponseListItem>();
+        CreateMap<Country, CountriesResponseListItem>();
     }
 }

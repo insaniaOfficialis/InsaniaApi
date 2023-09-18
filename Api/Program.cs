@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http.Json;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Serilog;
 using Services.Files;
 using Services.Geography.Countries;
 using Services.Identification.Authorization;
@@ -93,6 +94,15 @@ builder.Services.AddAuthentication(options => {
             ValidateIssuerSigningKey = true,
         };
     });
+
+/*Добавляем параметры логирования*/
+Log.Logger = new LoggerConfiguration()
+               .MinimumLevel.Verbose()
+               .WriteTo.File(path: config["LoggingOptions:FilePath"]!, rollingInterval: RollingInterval.Day)
+               .WriteTo.Debug()
+               .CreateLogger();
+services.AddLogging(loggingBuilder =>
+  loggingBuilder.AddSerilog(Log.Logger, dispose: true));
 
 /*Внедряем зависимости для сервисов*/
 builder.Services.AddScoped<IRegistration, Registration>();
