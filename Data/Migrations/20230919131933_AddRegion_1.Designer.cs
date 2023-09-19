@@ -3,6 +3,7 @@ using System;
 using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20230919131933_AddRegion_1")]
+    partial class AddRegion_1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -370,11 +373,6 @@ namespace Data.Migrations
                         .HasColumnName("color")
                         .HasComment("Цвет на карте");
 
-                    b.Property<long>("CountryId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("country_id")
-                        .HasComment("Ссылка на страну");
-
                     b.Property<DateTime>("DateCreate")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("date_create")
@@ -420,8 +418,6 @@ namespace Data.Migrations
                         .HasComment("Пользователь, обновивший");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CountryId");
 
                     b.ToTable("dir_regions", t =>
                         {
@@ -687,17 +683,6 @@ namespace Data.Migrations
                     b.Navigation("File");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Geography.Region", b =>
-                {
-                    b.HasOne("Domain.Entities.Geography.Country", "Country")
-                        .WithMany()
-                        .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Country");
                 });
 #pragma warning restore 612, 618
         }

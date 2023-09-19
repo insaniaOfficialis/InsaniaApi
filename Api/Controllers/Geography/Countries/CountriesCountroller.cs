@@ -174,4 +174,55 @@ public class CountriesCountroller : Controller
 
         }
     }
+
+    /// <summary>
+    /// Метод добавления страны
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    [HttpPut]
+    [Route("update/{id}")]
+    public async Task<IActionResult> UpdateCountry([FromBody] AddCountryRequest? request, [FromRoute] long id)
+    {
+        try
+        {
+            string? user = User?.Identity?.Name;
+
+            var result = await _countries.UpdateCountry(request, user, id);
+
+            if (result.Success)
+            {
+                _logger.LogInformation("UpdateCountry. Успешно");
+                return Ok(result);
+            }
+            else
+            {
+                if (result != null && result.Error != null)
+                {
+                    if (result.Error.Code != 500)
+                    {
+                        _logger.LogError("UpdateCountry. Обработанная ошибка: " + result.Error);
+                        return StatusCode(result.Error.Code ?? 400, result);
+                    }
+                    else
+                    {
+                        _logger.LogError("UpdateCountry. Необработанная ошибка: " + result.Error);
+                        return StatusCode(result.Error.Code ?? 500, result);
+                    }
+                }
+                else
+                {
+                    _logger.LogError("UpdateCountry. Непредвиденная ошибка");
+                    BaseResponse response = new(false, new BaseError(500, "Непредвиденная ошибка"));
+                    return StatusCode(500, response);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("UpdateCountry. Необработанная ошибка: " + ex.Message);
+            return StatusCode(500, new BaseResponse(false, new BaseError(500, ex.Message)));
+
+        }
+    }
 }

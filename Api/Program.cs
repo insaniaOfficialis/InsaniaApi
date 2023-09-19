@@ -105,12 +105,12 @@ services.AddLogging(loggingBuilder =>
   loggingBuilder.AddSerilog(Log.Logger, dispose: true));
 
 /*Внедряем зависимости для сервисов*/
+builder.Services.AddScoped<IInitialization, Initialization>();
 builder.Services.AddScoped<IRegistration, Registration>();
 builder.Services.AddScoped<IRoles, Roles>();
+builder.Services.AddScoped<IAuthorization, Authorization>();
 builder.Services.AddScoped<IFiles, Files>();
 builder.Services.AddScoped<IToken, Token>();
-builder.Services.AddScoped<IAuthorization, Authorization>();
-builder.Services.AddScoped<IInitialization, Initialization>();
 builder.Services.AddScoped<ICountries, Countries>();
 
 var app = builder.Build();

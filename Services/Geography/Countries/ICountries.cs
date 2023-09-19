@@ -28,4 +28,13 @@ public interface ICountries
     /// <param name="user"></param>
     /// <returns></returns>
     Task<BaseResponse> AddCountry(AddCountryRequest? request, string? user);
+
+    /// <summary>
+    /// Метод обновления страны
+    /// </summary>
+    /// <param name="request"></param>
+    /// <param name="user"></param>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    Task<BaseResponse> UpdateCountry(AddCountryRequest? request, string? user, long? id);
 }

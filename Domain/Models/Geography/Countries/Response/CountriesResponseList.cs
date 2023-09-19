@@ -3,7 +3,7 @@
 namespace Domain.Models.Geography.Countries.Response;
 
 /// <summary>
-/// Модель стандартного ответа для списка
+/// Модель ответа для списка стран
 /// </summary>
 public class CountriesResponseList: BaseResponseList
 {
@@ -17,6 +17,12 @@ public class CountriesResponseList: BaseResponseList
         
     }
 
+    /// <summary>
+    /// Конструктор модели ответа для списка стран со списком
+    /// </summary>
+    /// <param name="success"></param>
+    /// <param name="error"></param>
+    /// <param name="items"></param>
     public CountriesResponseList(bool success, BaseError? error, List<CountriesResponseListItem?>? items): base(success, error)
     {
         Items = items;
