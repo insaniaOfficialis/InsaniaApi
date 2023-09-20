@@ -91,16 +91,8 @@ public class Countries: ICountries
             if (isDeleted)
                 countriesQuery = countriesQuery.Where(x => x.DateDeleted != null);
 
-            //Если передали сколько строк пропустить
-            if (skip != null)
-                countriesQuery = countriesQuery.Skip(skip ?? 0);
-
-            //Если передали сколько строк выводить
-            if (take != null)
-                countriesQuery = countriesQuery.Take(take ?? 10);
-
             //Если передали поле сортировки
-            if(sort?.Any() == true)
+            if (sort?.Any() == true)
             {
                 //Сортируем по первому элементу сортировки
                 IOrderedQueryable<Country> countriesOrderQuery = (sort.FirstOrDefault()!.SortKey, sort.FirstOrDefault()!.IsAscending) switch
@@ -115,10 +107,10 @@ public class Countries: ICountries
                 };
 
                 //Если есть ещё поля для сортировки
-                if(sort.Count > 1)
+                if (sort.Count > 1)
                 {
                     //Проходим по всем элементам сортировки кроме первой
-                    foreach(var sortElement in sort.Skip(1))
+                    foreach (var sortElement in sort.Skip(1))
                     {
                         //Сортируем по каждому элементу
                         countriesOrderQuery = (sortElement!.SortKey, sortElement!.IsAscending) switch
@@ -137,6 +129,14 @@ public class Countries: ICountries
                 //Приводим в список отсортированный список
                 countriesQuery = countriesOrderQuery;
             }
+
+            //Если передали сколько строк пропустить
+            if (skip != null)
+                countriesQuery = countriesQuery.Skip(skip ?? 0);
+
+            //Если передали сколько строк выводить
+            if (take != null)
+                countriesQuery = countriesQuery.Take(take ?? 10);
 
             //Получаем страны с базы
             var countriesDb = await countriesQuery.ToListAsync();
