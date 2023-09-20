@@ -33,18 +33,6 @@ public class Region : Directory
     public string UniqueNumber { get; private set; }
 
     /// <summary>
-    /// Ссылка на страну
-    /// </summary>
-    [Column("country_id")]
-    [Comment("Ссылка на страну")]
-    public long CountryId { get; private set; }
-
-    /// <summary>
-    /// Навигационное свойство страны
-    /// </summary>
-    public Country Country { get; private set; }
-
-    /// <summary>
     /// Пустой конструктор сущности регионов
     /// </summary>
     public Region() : base()
@@ -61,14 +49,11 @@ public class Region : Directory
     /// <param name="number"></param>
     /// <param name="color"></param>
     /// <param name="uniqueNumber"></param>
-    /// <param name="country"></param>
-    public Region(long id, string user, string name, int number, string color, string uniqueNumber, Country country) : base(id, user, name)
+    public Region(long id, string user, string name, int number, string color, string uniqueNumber) : base(id, user, name)
     {
         Number = number;
         Color = color;
         UniqueNumber = uniqueNumber;
-        CountryId = country.Id;
-        Country = country;
     }
 
     /// <summary>
@@ -79,14 +64,11 @@ public class Region : Directory
     /// <param name="number"></param>
     /// <param name="color"></param>
     /// <param name="uniqueNumber"></param>
-    /// <param name="country"></param>
-    public Region(string user, string name, int number, string color, string uniqueNumber, Country country) : base(user, name)
+    public Region(string user, string name, int number, string color, string uniqueNumber) : base(user, name)
     {
         Number = number;
         Color = color;
         UniqueNumber = uniqueNumber;
-        CountryId = country.Id;
-        Country = country;
     }
 
     /// <summary>
@@ -114,15 +96,5 @@ public class Region : Directory
     public void SetUniqueNumber(string uniqueNumber)
     {
         UniqueNumber = uniqueNumber;
-    }
-
-    /// <summary>
-    /// Метод установки страны
-    /// </summary>
-    /// <param name="country"></param>
-    public void SetCountry(Country country)
-    {
-        CountryId = country.Id;
-        Country = country;
     }
 }

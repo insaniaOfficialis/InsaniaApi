@@ -18,8 +18,14 @@ public interface ICountries
     /// <summary>
     /// Метод получения списка стран с полной информацией
     /// </summary>
+    /// <param name="search"></param>
+    /// <param name="skip"></param>
+    /// <param name="take"></param>
+    /// <param name="sort"></param>
+    /// <param name="isDeleted"></param>
     /// <returns></returns>
-    Task<CountriesResponseList> GetCountriesFullInformation(string? search, int? skip, int? take, List<BaseSortRequest?>? sort);
+    Task<CountriesResponseList> GetCountriesFullInformation(string? search, int? skip, int? take, List<BaseSortRequest?>? sort,
+        bool isDeleted);
 
     /// <summary>
     /// Метод добавления страны

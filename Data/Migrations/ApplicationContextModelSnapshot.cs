@@ -370,11 +370,6 @@ namespace Data.Migrations
                         .HasColumnName("color")
                         .HasComment("Цвет на карте");
 
-                    b.Property<long>("CountryId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("country_id")
-                        .HasComment("Ссылка на страну");
-
                     b.Property<DateTime>("DateCreate")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("date_create")
@@ -420,8 +415,6 @@ namespace Data.Migrations
                         .HasComment("Пользователь, обновивший");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CountryId");
 
                     b.ToTable("dir_regions", t =>
                         {
@@ -687,17 +680,6 @@ namespace Data.Migrations
                     b.Navigation("File");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Geography.Region", b =>
-                {
-                    b.HasOne("Domain.Entities.Geography.Country", "Country")
-                        .WithMany()
-                        .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Country");
                 });
 #pragma warning restore 612, 618
         }

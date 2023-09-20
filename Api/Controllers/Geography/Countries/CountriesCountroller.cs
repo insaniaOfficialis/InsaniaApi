@@ -82,11 +82,11 @@ public class CountriesCountroller : Controller
     [HttpGet]
     [Route("listFull")]
     public async Task<IActionResult> GetCountriesFullInformation([FromQuery] string? search, [FromQuery] int? skip, [FromQuery] int? take,
-        [FromQuery] List<BaseSortRequest?>? sort)
+        [FromQuery] List<BaseSortRequest?>? sort, [FromQuery] bool isDeleted)
     {
         try
         {
-            var result = await _countries.GetCountriesFullInformation(search, skip, take, sort);
+            var result = await _countries.GetCountriesFullInformation(search, skip, take, sort, isDeleted);
 
             if (result.Success)
             {

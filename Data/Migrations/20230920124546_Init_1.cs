@@ -78,6 +78,29 @@ namespace Data.Migrations
                 comment: "Параметры");
 
             migrationBuilder.CreateTable(
+                name: "dir_regions",
+                columns: table => new
+                {
+                    id = table.Column<long>(type: "bigint", nullable: false, comment: "Первичный ключ таблицы")
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    number = table.Column<int>(type: "integer", nullable: false, comment: "Номер на карте"),
+                    color = table.Column<string>(type: "text", nullable: false, comment: "Цвет на карте"),
+                    unique_number = table.Column<string>(type: "text", nullable: false, comment: "Уникальный номер"),
+                    date_create = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, comment: "Дата создания"),
+                    user_create = table.Column<string>(type: "text", nullable: false, comment: "Пользователь, создавший"),
+                    date_update = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, comment: "Дата обновления"),
+                    user_update = table.Column<string>(type: "text", nullable: false, comment: "Пользователь, обновивший"),
+                    date_deleted = table.Column<DateTime>(type: "timestamp with time zone", nullable: true, comment: "Дата удаления"),
+                    name = table.Column<string>(type: "text", nullable: false, comment: "Наименование"),
+                    alias = table.Column<string>(type: "text", nullable: false, comment: "Английское наименование")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_dir_regions", x => x.id);
+                },
+                comment: "Регионы");
+
+            migrationBuilder.CreateTable(
                 name: "sys_roles",
                 columns: table => new
                 {
@@ -222,6 +245,9 @@ namespace Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "dir_parameters");
+
+            migrationBuilder.DropTable(
+                name: "dir_regions");
 
             migrationBuilder.DropTable(
                 name: "sys_roles");
