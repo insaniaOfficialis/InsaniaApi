@@ -99,6 +99,15 @@ public class Initialization: IInitialization
                     await _repository.SaveChangesAsync();
                 }
 
+                //Проверяем наличие параметра шрифт чисел на карте
+                if (!_repository.Parametrs.Any(x => x.Name == "Шрифт чисел на карте"))
+                {
+                    //Создаём параметр для шрифта чисел на карте
+                    Parametr parametr = new("system", "Шрифт чисел на карте", "Times New Roman");
+                    _repository.Parametrs.Add(parametr);
+                    await _repository.SaveChangesAsync();
+                }
+
                 //Проверяем наличие параметра размера чисел стран на карте
                 if (!_repository.Parametrs.Any(x => x.Name == "Размер чисел стран на карте"))
                 {
@@ -108,11 +117,11 @@ public class Initialization: IInitialization
                     await _repository.SaveChangesAsync();
                 }
 
-                //Проверяем наличие параметра шрифт чисел стран на карте
-                if (!_repository.Parametrs.Any(x => x.Name == "Шрифт чисел стран на карте"))
+                //Проверяем наличие параметра размера чисел регионов на карте
+                if (!_repository.Parametrs.Any(x => x.Name == "Размер чисел регионов на карте"))
                 {
-                    //Создаём параметр для шрифта чисел стран на карте
-                    Parametr parametr = new("system", "Шрифт чисел стран на карте", "Times New Roman");
+                    //Создаём параметр для размера чисел регионов на карте
+                    Parametr parametr = new("system", "Размер чисел регионов на карте", "20");
                     _repository.Parametrs.Add(parametr);
                     await _repository.SaveChangesAsync();
                 }
@@ -122,6 +131,15 @@ public class Initialization: IInitialization
                 {
                     //Создаём параметр для размера чисел областей на карте
                     Parametr parametr = new("system", "Размер чисел областей на карте", "10");
+                    _repository.Parametrs.Add(parametr);
+                    await _repository.SaveChangesAsync();
+                }
+
+                //Проверяем наличие параметра цвета границ областей на карте
+                if (!_repository.Parametrs.Any(x => x.Name == "Цвет границ областей на карте"))
+                {
+                    //Создаём параметр для цвета границ областей на карте
+                    Parametr parametr = new("system", "Цвет границ областей на карте", "#5C5C5C");
                     _repository.Parametrs.Add(parametr);
                     await _repository.SaveChangesAsync();
                 }

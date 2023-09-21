@@ -225,4 +225,104 @@ public class CountriesCountroller : Controller
 
         }
     }
+
+    /// <summary>
+    /// Метод удаления страны
+    /// </summary>
+    /// <returns></returns>
+    [HttpDelete]
+    [Route("delete/{id}")]
+    public async Task<IActionResult> DeleteCountry([FromRoute] long id)
+    {
+        try
+        {
+            string? user = User?.Identity?.Name;
+
+            var result = await _countries.UpdateCountry(true, id, user);
+
+            if (result.Success)
+            {
+                _logger.LogInformation("DeleteCountry. Успешно");
+                return Ok(result);
+            }
+            else
+            {
+                if (result != null && result.Error != null)
+                {
+                    if (result.Error.Code != 500)
+                    {
+                        _logger.LogError("DeleteCountry. Обработанная ошибка: " + result.Error);
+                        return StatusCode(result.Error.Code ?? 400, result);
+                    }
+                    else
+                    {
+                        _logger.LogError("DeleteCountry. Необработанная ошибка: " + result.Error);
+                        return StatusCode(result.Error.Code ?? 500, result);
+                    }
+                }
+                else
+                {
+                    _logger.LogError("DeleteCountry. Непредвиденная ошибка");
+                    BaseResponse response = new(false, new BaseError(500, "Непредвиденная ошибка"));
+                    return StatusCode(500, response);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("DeleteCountry. Необработанная ошибка: " + ex.Message);
+            return StatusCode(500, new BaseResponse(false, new BaseError(500, ex.Message)));
+
+        }
+    }
+
+    /// <summary>
+    /// Метод восстановления страны
+    /// </summary>
+    /// <returns></returns>
+    [HttpDelete]
+    [Route("restore/{id}")]
+    public async Task<IActionResult> RestoreCountry([FromRoute] long id)
+    {
+        try
+        {
+            string? user = User?.Identity?.Name;
+
+            var result = await _countries.UpdateCountry(false, id, user);
+
+            if (result.Success)
+            {
+                _logger.LogInformation("RestoreCountry. Успешно");
+                return Ok(result);
+            }
+            else
+            {
+                if (result != null && result.Error != null)
+                {
+                    if (result.Error.Code != 500)
+                    {
+                        _logger.LogError("RestoreCountry. Обработанная ошибка: " + result.Error);
+                        return StatusCode(result.Error.Code ?? 400, result);
+                    }
+                    else
+                    {
+                        _logger.LogError("RestoreCountry. Необработанная ошибка: " + result.Error);
+                        return StatusCode(result.Error.Code ?? 500, result);
+                    }
+                }
+                else
+                {
+                    _logger.LogError("RestoreCountry. Непредвиденная ошибка");
+                    BaseResponse response = new(false, new BaseError(500, "Непредвиденная ошибка"));
+                    return StatusCode(500, response);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("RestoreCountry. Необработанная ошибка: " + ex.Message);
+            return StatusCode(500, new BaseResponse(false, new BaseError(500, ex.Message)));
+
+        }
+    }
 }

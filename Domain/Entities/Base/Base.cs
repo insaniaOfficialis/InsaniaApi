@@ -103,11 +103,18 @@ public abstract class Base
     }
 
     /// <summary>
-    /// Метод записи даты удаления
+    /// Метод удаления
     /// </summary>
-    /// <param name="dateDeleted"></param>
-    public void SetDateDeleted()
+    public void SetDeleted()
     {
         DateDeleted = DateTime.UtcNow;
+    }
+
+    /// <summary>
+    /// Метод восстновления
+    /// </summary>
+    public void SetRestored()
+    {
+        DateDeleted = null;
     }
 }

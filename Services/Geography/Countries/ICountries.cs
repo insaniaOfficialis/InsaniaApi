@@ -43,4 +43,13 @@ public interface ICountries
     /// <param name="id"></param>
     /// <returns></returns>
     Task<BaseResponse> UpdateCountry(AddCountryRequest? request, string? user, long? id);
+
+    /// <summary>
+    /// Метод обновления удалённости данных
+    /// </summary>
+    /// <param name="delete"></param>
+    /// <param name="id"></param>
+    /// <param name="user"></param>
+    /// <returns></returns>
+    Task<BaseResponse> UpdateCountry(bool? delete, long? id, string? user);
 }

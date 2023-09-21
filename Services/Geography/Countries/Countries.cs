@@ -243,12 +243,14 @@ public class Countries: ICountries
             //Проверяем корректность данных
             if (request == null)
                 throw new InnerException("Пустой запрос");
-            if (_repository.Countries.Any(x => x.Color == request.Color && x.Id != id))
-                throw new InnerException("Данный цвет уже используется");
-            if (_repository.Countries.Any(x => x.Number == request.Number && x.Id != id))
-                throw new InnerException("Данный номер уже используется");
+            if (id == null)
+                throw new InnerException("Не указан id записи");
             if (String.IsNullOrEmpty(user))
                 throw new InnerException("Пользователь не зарегистрирован");
+            if (!String.IsNullOrEmpty(request.Color) && _repository.Countries.Any(x => x.Color == request.Color && x.Id != id))
+                throw new InnerException("Данный цвет уже используется");
+            if (request.Number != null && _repository.Countries.Any(x => x.Number == request.Number && x.Id != id))
+                throw new InnerException("Данный номер уже используется");
 
             //Начинаем транзакцию
             using var transaction = _repository.Database.BeginTransaction();
@@ -278,6 +280,75 @@ public class Countries: ICountries
                 if (request.LanguageForNames != null && request.LanguageForNames != country.LanguageForNames)
                     //Устанавливаем язык для наименований
                     country.SetLanguageForNames(request.LanguageForNames);
+
+                //Устанавливаем дату обновления
+                country.SetUpdate(user);
+
+                //Обновляем данные в базе
+                _repository.Countries.Update(country);
+                await _repository.SaveChangesAsync();
+
+                //Фиксируем транзакцию
+                transaction.Commit();
+            }
+            //Обрабатываем системные исключения
+            catch (Exception ex)
+            {
+                //Откатываем транзакцию
+                transaction.Rollback();
+
+                //Вызываем исключение
+                throw new Exception(ex.Message, ex);
+            }
+
+            //Возвращаем результат
+            return new BaseResponse(true);
+        }
+        //Обрабатываем внутренние исключения
+        catch (InnerException ex)
+        {
+            return new BaseResponseList(false, new BaseError(400, ex.Message));
+        }
+        //Обрабатываем системные исключения
+        catch (Exception ex)
+        {
+            return new BaseResponseList(false, new BaseError(500, ex.Message));
+        }
+    }
+
+    /// <summary>
+    /// Метод обновления удалённости данных
+    /// </summary>
+    /// <param name="delete"></param>
+    /// <param name="id"></param>
+    /// <param name="user"></param>
+    /// <returns></returns>
+    public async Task<BaseResponse> UpdateCountry(bool? delete, long? id, string? user)
+    {
+        try
+        {
+            //Проверяем корректность данных
+            if (delete == null)
+                throw new InnerException("Не указан признак удаления/восстановления данных");
+            if (id == null)
+                throw new InnerException("Не указан id записи");
+            if (String.IsNullOrEmpty(user))
+                throw new InnerException("Пользователь не зарегистрирован");
+
+            //Начинаем транзакцию
+            using var transaction = _repository.Database.BeginTransaction();
+
+            try
+            {
+                //Находим страну в базе
+                Country country = _repository.Countries.FirstOrDefault(x => x.Id == id)
+                    ?? throw new InnerException("Страна не найдена в базе");
+
+                //Проверяем удаляем или восстановливаем запись
+                if (delete == true)
+                    country.SetDeleted();
+                else
+                    country.SetRestored();
 
                 //Устанавливаем дату обновления
                 country.SetUpdate(user);
