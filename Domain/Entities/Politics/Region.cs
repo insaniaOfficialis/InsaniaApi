@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Directory = Domain.Entities.Base.Directory;
 
-namespace Domain.Entities.Geography;
+namespace Domain.Entities.Politics;
 
 /// <summary>
 /// Сущность регионов
@@ -26,13 +26,6 @@ public class Region : Directory
     public string Color { get; private set; }
 
     /// <summary>
-    /// Уникальный номер
-    /// </summary>
-    [Column("unique_number")]
-    [Comment("Уникальный номер")]
-    public string UniqueNumber { get; private set; }
-
-    /// <summary>
     /// Пустой конструктор сущности регионов
     /// </summary>
     public Region() : base()
@@ -48,12 +41,10 @@ public class Region : Directory
     /// <param name="name"></param>
     /// <param name="number"></param>
     /// <param name="color"></param>
-    /// <param name="uniqueNumber"></param>
-    public Region(long id, string user, string name, int number, string color, string uniqueNumber) : base(id, user, name)
+    public Region(long id, string user, string name, int number, string color) : base(id, user, name)
     {
         Number = number;
         Color = color;
-        UniqueNumber = uniqueNumber;
     }
 
     /// <summary>
@@ -63,12 +54,10 @@ public class Region : Directory
     /// <param name="name"></param>
     /// <param name="number"></param>
     /// <param name="color"></param>
-    /// <param name="uniqueNumber"></param>
-    public Region(string user, string name, int number, string color, string uniqueNumber) : base(user, name)
+    public Region(string user, string name, int number, string color) : base(user, name)
     {
         Number = number;
         Color = color;
-        UniqueNumber = uniqueNumber;
     }
 
     /// <summary>
@@ -87,14 +76,5 @@ public class Region : Directory
     public void SetColor(string color)
     {
         Color = color;
-    }
-
-    /// <summary>
-    /// Метод записи уникального номера
-    /// </summary>
-    /// <param name="uniqueNumber"></param>
-    public void SetUniqueNumber(string uniqueNumber)
-    {
-        UniqueNumber = uniqueNumber;
     }
 }

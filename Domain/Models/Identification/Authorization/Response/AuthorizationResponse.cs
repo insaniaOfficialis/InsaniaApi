@@ -1,5 +1,4 @@
 ﻿using Domain.Models.Base;
-using Domain.Models.Geography.Countries.Response;
 
 namespace Domain.Models.Identification.Authorization.Response;
 

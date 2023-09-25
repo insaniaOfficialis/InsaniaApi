@@ -1,11 +1,12 @@
 ﻿using Domain.Entities.General.File;
 using Domain.Entities.General.System;
-using Domain.Entities.Geography;
+using Domain.Entities.Politics;
 using Domain.Entities.Identification;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using File = Domain.Entities.General.File.File;
+using Domain.Entities.Sociology;
 
 namespace Data;
 
@@ -17,6 +18,12 @@ public class ApplicationContext : IdentityDbContext<User, Role, long, IdentityUs
     public DbSet<Parametr> Parametrs { get; set; } //параметры
     public DbSet<Country> Countries { get; set; } //страны
     public DbSet<Region> Regions { get; set; } //регионы
+    public DbSet<Race> Races { get; set; } //расы
+    public DbSet<Nation> Nations { get; set; } //нации
+    public DbSet<PersonalName> PersonalNames { get; set; } //имена
+    public DbSet<NationPersonalName> NationsPersonalNames { get; set; } //связь наций с именами
+    public DbSet<Fraction> Fractions { get; set; } //фракции
+    public DbSet<Area> Areas { get; set; } //области
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

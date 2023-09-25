@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
 using Data;
-using Domain.Entities.Geography;
+using Domain.Entities.Politics;
 using Domain.Models.Base;
 using Domain.Models.Exclusion;
-using Domain.Models.Geography.Countries.Request;
-using Domain.Models.Geography.Countries.Response;
+using Domain.Models.Politics.Countries.Request;
+using Domain.Models.Politics.Countries.Response;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace Services.Geography.Countries;
+namespace Services.Politics.Countries;
 
 /// <summary>
 /// Сервис стран

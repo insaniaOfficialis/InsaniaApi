@@ -1,12 +1,11 @@
 ﻿using Data;
 using Domain.Entities.General.File;
 using Domain.Entities.General.System;
-using Domain.Entities.Geography;
+using Domain.Entities.Politics;
 using Domain.Entities.Identification;
 using Domain.Models.Exclusion;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
-using System.Diagnostics.Metrics;
 
 namespace Services.Initialization;
 
@@ -364,7 +363,7 @@ public class Initialization: IInitialization
                 if (!_repository.Regions.Any(x => x.Name == "Восточный Зимний архипелаг"))
                 {
                     //Добавляем регион
-                    Region region = new("system", "Восточный Зимний архипелаг", 1, "#0004FF", "EWA_1");
+                    Region region = new("system", "Восточный Зимний архипелаг", 1, "#0004FF");
                     _repository.Regions.Add(region);
                     await _repository.SaveChangesAsync();
                 }
@@ -373,7 +372,7 @@ public class Initialization: IInitialization
                 if (!_repository.Regions.Any(x => x.Name == "Южный Зимний архипелаг"))
                 {
                     //Добавляем регион
-                    Region region = new("system", "Южный  Зимний архипелаг", 2, "#00FFFF", "SWA_1");
+                    Region region = new("system", "Южный  Зимний архипелаг", 2, "#00FFFF");
                     _repository.Regions.Add(region);
                     await _repository.SaveChangesAsync();
                 }
@@ -382,7 +381,7 @@ public class Initialization: IInitialization
                 if (!_repository.Regions.Any(x => x.Name == "Западный Зимний архипелаг"))
                 {
                     //Добавляем регион
-                    Region region = new("system", "Западный Зимний архипелаг", 3, "#26FF00", "WWA_1");
+                    Region region = new("system", "Западный Зимний архипелаг", 3, "#26FF00");
                     _repository.Regions.Add(region);
                     await _repository.SaveChangesAsync();
                 }
@@ -391,7 +390,7 @@ public class Initialization: IInitialization
                 if (!_repository.Regions.Any(x => x.Name == "Северный Зимний архипелаг"))
                 {
                     //Добавляем регион
-                    Region region = new("system", "Северный Зимний архипелаг", 4, "#FF0AB9", "NWA_1");
+                    Region region = new("system", "Северный Зимний архипелаг", 4, "#FF0AB9");
                     _repository.Regions.Add(region);
                     await _repository.SaveChangesAsync();
                 }
@@ -400,7 +399,7 @@ public class Initialization: IInitialization
                 if (!_repository.Regions.Any(x => x.Name == "Земли клана Дамхан"))
                 {
                     //Добавляем регион
-                    Region region = new("system", "Земли клана Дамхан", 1, "#8C0275", "LDC_1");
+                    Region region = new("system", "Земли клана Дамхан", 1, "#8C0275");
                     _repository.Regions.Add(region);
                     await _repository.SaveChangesAsync();
                 }
@@ -409,7 +408,7 @@ public class Initialization: IInitialization
                 if (!_repository.Regions.Any(x => x.Name == "Земли клана Анлион"))
                 {
                     //Добавляем регион
-                    Region region = new("system", "Земли клана Анлион", 2, "#100089", "LAC_1");
+                    Region region = new("system", "Земли клана Анлион", 2, "#100089");
                     _repository.Regions.Add(region);
                     await _repository.SaveChangesAsync();
                 }
@@ -418,7 +417,7 @@ public class Initialization: IInitialization
                 if (!_repository.Regions.Any(x => x.Name == "Земли клана Маиран"))
                 {
                     //Добавляем регион
-                    Region region = new("system", "Земли клана Маиран", 3, "#068700", "LMC_1");
+                    Region region = new("system", "Земли клана Маиран", 3, "#068700");
                     _repository.Regions.Add(region);
                     await _repository.SaveChangesAsync();
                 }
@@ -427,7 +426,7 @@ public class Initialization: IInitialization
                 if (!_repository.Regions.Any(x => x.Name == "Земли клана Алаид"))
                 {
                     //Добавляем регион
-                    Region region = new("system", "Земли клана Алаид", 4, "#005684", "LAC_2");
+                    Region region = new("system", "Земли клана Алаид", 4, "#005684");
                     _repository.Regions.Add(region);
                     await _repository.SaveChangesAsync();
                 }
@@ -436,7 +435,7 @@ public class Initialization: IInitialization
                 if (!_repository.Regions.Any(x => x.Name == "Земли клана Сеолт"))
                 {
                     //Добавляем регион
-                    Region region = new("system", "Земли клана Сеолт", 5, "#658200", "LSC_1");
+                    Region region = new("system", "Земли клана Сеолт", 5, "#658200");
                     _repository.Regions.Add(region);
                     await _repository.SaveChangesAsync();
                 }
@@ -445,7 +444,7 @@ public class Initialization: IInitialization
                 if (!_repository.Regions.Any(x => x.Name == "Земли клана Гхоул"))
                 {
                     //Добавляем регион
-                    Region region = new("system", "Земли клана Гхоул", 6, "#007F37", "LGC_1");
+                    Region region = new("system", "Земли клана Гхоул", 6, "#007F37");
                     _repository.Regions.Add(region);
                     await _repository.SaveChangesAsync();
                 }
@@ -454,7 +453,7 @@ public class Initialization: IInitialization
                 if (!_repository.Regions.Any(x => x.Name == "Земли клана Фуил"))
                 {
                     //Добавляем регион
-                    Region region = new("system", "Земли клана Фуил", 7, "#7C002F", "LFC_1");
+                    Region region = new("system", "Земли клана Фуил", 7, "#7C002F");
                     _repository.Regions.Add(region);
                     await _repository.SaveChangesAsync();
                 }
@@ -463,7 +462,7 @@ public class Initialization: IInitialization
                 if (!_repository.Regions.Any(x => x.Name == "Земли клана Ятаг"))
                 {
                     //Добавляем регион
-                    Region region = new("system", "Земли клана Ятаг", 8, "#7A2400", "LYAC_1");
+                    Region region = new("system", "Земли клана Ятаг", 8, "#7A2400");
                     _repository.Regions.Add(region);
                     await _repository.SaveChangesAsync();
                 }
@@ -472,7 +471,7 @@ public class Initialization: IInitialization
                 if (!_repository.Regions.Any(x => x.Name == "Земли клана Сеар"))
                 {
                     //Добавляем регион
-                    Region region = new("system", "Земли клана Сеар", 9, "#BC0000", "LSC_2");
+                    Region region = new("system", "Земли клана Сеар", 9, "#BC0000");
                     _repository.Regions.Add(region);
                     await _repository.SaveChangesAsync();
                 }
@@ -481,7 +480,7 @@ public class Initialization: IInitialization
                 if (!_repository.Regions.Any(x => x.Name == "Западный зубец"))
                 {
                     //Добавляем регион
-                    Region region = new("system", "Западный зубец", 1, "#F2DE00", "WP_1");
+                    Region region = new("system", "Западный зубец", 1, "#F2DE00");
                     _repository.Regions.Add(region);
                     await _repository.SaveChangesAsync();
                 }
@@ -490,7 +489,7 @@ public class Initialization: IInitialization
                 if (!_repository.Regions.Any(x => x.Name == "Светлый берег"))
                 {
                     //Добавляем регион
-                    Region region = new("system", "Светлый берег", 2, "#28E5EF", "LC_1");
+                    Region region = new("system", "Светлый берег", 2, "#28E5EF");
                     _repository.Regions.Add(region);
                     await _repository.SaveChangesAsync();
                 }
@@ -499,7 +498,7 @@ public class Initialization: IInitialization
                 if (!_repository.Regions.Any(x => x.Name == "Центральный зубец"))
                 {
                     //Добавляем регион
-                    Region region = new("system", "Центральный зубец", 3, "#6568ED", "CP_1");
+                    Region region = new("system", "Центральный зубец", 3, "#6568ED");
                     _repository.Regions.Add(region);
                     await _repository.SaveChangesAsync();
                 }

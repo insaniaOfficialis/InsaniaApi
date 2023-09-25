@@ -3,6 +3,7 @@ using System;
 using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20230925122341_Init_2")]
+    partial class Init_2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -796,16 +799,6 @@ namespace Data.Migrations
                         .HasColumnName("date_update")
                         .HasComment("Дата обновления");
 
-                    b.Property<long>("NationId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("nation_id")
-                        .HasComment("Ссылка на нацию");
-
-                    b.Property<long>("PersonalNameId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("personal_name_id")
-                        .HasComment("Ссылка на нацию");
-
                     b.Property<double>("Probability")
                         .HasColumnType("double precision")
                         .HasColumnName("probability")
@@ -824,10 +817,6 @@ namespace Data.Migrations
                         .HasComment("Пользователь, обновивший");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("NationId");
-
-                    b.HasIndex("PersonalNameId");
 
                     b.ToTable("un_nations_personal_names", t =>
                         {
@@ -1270,25 +1259,6 @@ namespace Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Race");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Sociology.NationPersonalName", b =>
-                {
-                    b.HasOne("Domain.Entities.Sociology.Nation", "Nation")
-                        .WithMany()
-                        .HasForeignKey("NationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Entities.Sociology.PersonalName", "PersonalName")
-                        .WithMany()
-                        .HasForeignKey("PersonalNameId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Nation");
-
-                    b.Navigation("PersonalName");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,10 +1,10 @@
 ﻿using Domain.Models.Base;
-using Domain.Models.Geography.Countries.Request;
+using Domain.Models.Politics.Countries.Request;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Services.Geography.Countries;
+using Services.Politics.Countries;
 
-namespace Api.Controllers.Geography.Countries;
+namespace Api.Controllers.Politics.Countries;
 
 /// <summary>
 /// Контроллер стран

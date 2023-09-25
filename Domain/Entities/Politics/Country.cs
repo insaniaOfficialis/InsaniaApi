@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Directory = Domain.Entities.Base.Directory;
 
-namespace Domain.Entities.Geography;
+namespace Domain.Entities.Politics;
 
 /// <summary>
 /// Сущность стран
@@ -59,7 +59,6 @@ public class Country: Directory
     /// <summary>
     /// Конструктор сущности стран без id
     /// </summary>
-    /// <param name="id"></param>
     /// <param name="user"></param>
     /// <param name="name"></param>
     /// <param name="number"></param>

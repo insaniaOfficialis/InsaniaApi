@@ -1,4 +1,4 @@
-﻿namespace Domain.Models.Geography.Countries.Request;
+﻿namespace Domain.Models.Politics.Countries.Request;
 
 /// <summary>
 /// Модель запроса на добавление страны

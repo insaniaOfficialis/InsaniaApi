@@ -1,6 +1,6 @@
 ﻿using Domain.Models.Base;
 
-namespace Domain.Models.Geography.Countries.Response;
+namespace Domain.Models.Politics.Countries.Response;
 
 /// <summary>
 /// Модель ответа для списка стран

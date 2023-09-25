@@ -1,8 +1,8 @@
 ﻿using Domain.Models.Base;
-using Domain.Models.Geography.Countries.Request;
-using Domain.Models.Geography.Countries.Response;
+using Domain.Models.Politics.Countries.Request;
+using Domain.Models.Politics.Countries.Response;
 
-namespace Services.Geography.Countries;
+namespace Services.Politics.Countries;
 
 /// <summary>
 /// Интерфейс стран
