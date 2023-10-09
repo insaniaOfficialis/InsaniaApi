@@ -171,7 +171,7 @@ public class Initialization: IInitialization
                 if (!_repository.Countries.Any(x => x.Name == "Княжество Саорса"))
                 {
                     //Создаём страну "Княжество Саорса"
-                    Country country = new("system", "Княжество Саорса", 2, "#808080", "Шотландский");
+                    Country country = new("system", "Княжество Саорса", 2, "#808080", "Шведский");
                     _repository.Countries.Add(country);
                     await _repository.SaveChangesAsync();
                 }
@@ -180,7 +180,7 @@ public class Initialization: IInitialization
                 if (!_repository.Countries.Any(x => x.Name == "Королевство Берген"))
                 {
                     //Создаём страну "Королевство Берген"
-                    Country country = new("system", "Королевство Берген", 3, "#00687C", null);
+                    Country country = new("system", "Королевство Берген", 3, "#00687C", "Финский");
                     _repository.Countries.Add(country);
                     await _repository.SaveChangesAsync();
                 }
@@ -189,7 +189,7 @@ public class Initialization: IInitialization
                 if (!_repository.Countries.Any(x => x.Name == "Фесгарское княжество"))
                 {
                     //Создаём страну "Фесгарское княжество"
-                    Country country = new("system", "Фесгарское княжество", 4, "#B200FF", null);
+                    Country country = new("system", "Фесгарское княжество", 4, "#B200FF", "Шотландский");
                     _repository.Countries.Add(country);
                     await _repository.SaveChangesAsync();
                 }
@@ -198,7 +198,7 @@ public class Initialization: IInitialization
                 if (!_repository.Countries.Any(x => x.Name == "Сверденский каганат"))
                 {
                     //Создаём страну "Сверденский каганат"
-                    Country country = new("system", "Сверденский каганат", 5, "#7F3B00", null);
+                    Country country = new("system", "Сверденский каганат", 5, "#7F3B00", "Немецкий");
                     _repository.Countries.Add(country);
                     await _repository.SaveChangesAsync();
                 }
@@ -207,7 +207,7 @@ public class Initialization: IInitialization
                 if (!_repository.Countries.Any(x => x.Name == "Ханство Тавалин"))
                 {
                     //Создаём страну "Ханство Тавалин"
-                    Country country = new("system", "Ханство Тавалин", 6, "#7F006D", null);
+                    Country country = new("system", "Ханство Тавалин", 6, "#7F006D", "Венгерский");
                     _repository.Countries.Add(country);
                     await _repository.SaveChangesAsync();
                 }
@@ -216,7 +216,7 @@ public class Initialization: IInitialization
                 if (!_repository.Countries.Any(x => x.Name == "Княжество Саргиб"))
                 {
                     //Создаём страну "Княжество Саргиб"
-                    Country country = new("system", "Княжество Саргиб", 7, "#007F0E", null);
+                    Country country = new("system", "Княжество Саргиб", 7, "#007F0E", "Австрийский");
                     _repository.Countries.Add(country);
                     await _repository.SaveChangesAsync();
                 }
@@ -234,7 +234,7 @@ public class Initialization: IInitialization
                 if (!_repository.Countries.Any(x => x.Name == "Королевство Нордер"))
                 {
                     //Создаём страну "Королевство Нордер"
-                    Country country = new("system", "Королевство Нордер", 9, "#D82929", null);
+                    Country country = new("system", "Королевство Нордер", 9, "#D82929", "Датский");
                     _repository.Countries.Add(country);
                     await _repository.SaveChangesAsync();
                 }
@@ -243,7 +243,7 @@ public class Initialization: IInitialization
                 if (!_repository.Countries.Any(x => x.Name == "Альтерское княжество"))
                 {
                     //Создаём страну "Альтерское княжество"
-                    Country country = new("system", "Альтерское княжество", 10, "#4ACC39", null);
+                    Country country = new("system", "Альтерское княжество", 10, "#4ACC39", "Французский");
                     _repository.Countries.Add(country);
                     await _repository.SaveChangesAsync();
                 }
@@ -252,7 +252,7 @@ public class Initialization: IInitialization
                 if (!_repository.Countries.Any(x => x.Name == "Орлиадарская конведерация"))
                 {
                     //Создаём страну "Орлиадарская конведерация"
-                    Country country = new("system", "Орлиадарская конведерация", 11, "#AF9200", null);
+                    Country country = new("system", "Орлиадарская конведерация", 11, "#AF9200", "Французский");
                     _repository.Countries.Add(country);
                     await _repository.SaveChangesAsync();
                 }
@@ -261,7 +261,7 @@ public class Initialization: IInitialization
                 if (!_repository.Countries.Any(x => x.Name == "Королевство Удстир"))
                 {
                     //Создаём страну "Королевство Удстир"
-                    Country country = new("system", "Королевство Удстир", 12, "#8CAF00", null);
+                    Country country = new("system", "Королевство Удстир", 12, "#8CAF00", "Испанский");
                     _repository.Countries.Add(country);
                     await _repository.SaveChangesAsync();
                 }
@@ -270,7 +270,7 @@ public class Initialization: IInitialization
                 if (!_repository.Countries.Any(x => x.Name == "Королевство Вервирунг"))
                 {
                     //Создаём страну "Королевство Вервирунг"
-                    Country country = new("system", "Королевство Вервирунг", 13, "#7F1700", null);
+                    Country country = new("system", "Королевство Вервирунг", 13, "#7F1700", "Португальский");
                     _repository.Countries.Add(country);
                     await _repository.SaveChangesAsync();
                 }
@@ -279,7 +279,7 @@ public class Initialization: IInitialization
                 if (!_repository.Countries.Any(x => x.Name == "Дестинский орден"))
                 {
                     //Создаём страну "Дестинский орден"
-                    Country country = new("system", "Дестинский орден", 14, "#2B7C55", null);
+                    Country country = new("system", "Дестинский орден", 14, "#2B7C55", "Испанский");
                     _repository.Countries.Add(country);
                     await _repository.SaveChangesAsync();
                 }
@@ -288,7 +288,7 @@ public class Initialization: IInitialization
                 if (!_repository.Countries.Any(x => x.Name == "Вольный город Лийсет"))
                 {
                     //Создаём страну "Вольный город Лийсет"
-                    Country country = new("system", "Вольный город Лийсет", 15, "#7B7F00", null);
+                    Country country = new("system", "Вольный город Лийсет", 15, "#7B7F00", "Испанский");
                     _repository.Countries.Add(country);
                     await _repository.SaveChangesAsync();
                 }
@@ -297,7 +297,7 @@ public class Initialization: IInitialization
                 if (!_repository.Countries.Any(x => x.Name == "Лисцийская империя"))
                 {
                     //Создаём страну "Лисцийская империя"
-                    Country country = new("system", "Лисцийская империя", 16, "#7F002E", null);
+                    Country country = new("system", "Лисцийская империя", 16, "#7F002E", "Испанский");
                     _repository.Countries.Add(country);
                     await _repository.SaveChangesAsync();
                 }
@@ -306,7 +306,7 @@ public class Initialization: IInitialization
                 if (!_repository.Countries.Any(x => x.Name == "Королевство Вальтир"))
                 {
                     //Создаём страну "Королевство Вальтир"
-                    Country country = new("system", "Королевство Вальтир", 17, "#B05BFF", null);
+                    Country country = new("system", "Королевство Вальтир", 17, "#B05BFF", "Швейарский");
                     _repository.Countries.Add(country);
                     await _repository.SaveChangesAsync();
                 }
@@ -315,7 +315,7 @@ public class Initialization: IInitialization
                 if (!_repository.Countries.Any(x => x.Name == "Вассальное княжество Гратис"))
                 {
                     //Создаём страну "Вассальное княжество Гратис"
-                    Country country = new("system", "Вассальное княжество Гратис", 18, "#005DFF", null);
+                    Country country = new("system", "Вассальное княжество Гратис", 18, "#005DFF", "Испанский");
                     _repository.Countries.Add(country);
                     await _repository.SaveChangesAsync();
                 }
@@ -324,7 +324,7 @@ public class Initialization: IInitialization
                 if (!_repository.Countries.Any(x => x.Name == "Княжество Ректа"))
                 {
                     //Создаём страну "Княжество Ректа"
-                    Country country = new("system", "Княжество Ректа", 19, "#487F00", null);
+                    Country country = new("system", "Княжество Ректа", 19, "#487F00", "Македонский");
                     _repository.Countries.Add(country);
                     await _repository.SaveChangesAsync();
                 }
@@ -333,7 +333,7 @@ public class Initialization: IInitialization
                 if (!_repository.Countries.Any(x => x.Name == "Волар"))
                 {
                     //Создаём страну "Волар"
-                    Country country = new("system", "Волар", 20, "#32217A", null);
+                    Country country = new("system", "Волар", 20, "#32217A", "Греческий");
                     _repository.Countries.Add(country);
                     await _repository.SaveChangesAsync();
                 }
@@ -342,7 +342,7 @@ public class Initialization: IInitialization
                 if (!_repository.Countries.Any(x => x.Name == "Союз Иль-Ладро"))
                 {
                     //Создаём страну "Союз Иль-Ладро"
-                    Country country = new("system", "Союз Иль-Ладро", 21, "#35513B", null);
+                    Country country = new("system", "Союз Иль-Ладро", 21, "#35513B", "Итальянский");
                     _repository.Countries.Add(country);
                     await _repository.SaveChangesAsync();
                 }
@@ -351,7 +351,7 @@ public class Initialization: IInitialization
                 if (!_repository.Countries.Any(x => x.Name == "Уния Ангуи"))
                 {
                     //Создаём страну "Уния Ангуи"
-                    Country country = new("system", "Уния Ангуи", 22, "#BC3CB4", null);
+                    Country country = new("system", "Уния Ангуи", 22, "#BC3CB4", "Латынь");
                     _repository.Countries.Add(country);
                     await _repository.SaveChangesAsync();
                 }

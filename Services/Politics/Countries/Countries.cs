@@ -100,9 +100,11 @@ public class Countries: ICountries
                     ("name", true) => countriesQuery.OrderBy(x => x.Name),
                     ("number", true) => countriesQuery.OrderBy(x => x.Number),
                     ("color", true) => countriesQuery.OrderBy(x => x.Color),
+                    ("languagefornames", true) => countriesQuery.OrderBy(x => x.LanguageForNames),
                     ("name", false) => countriesQuery.OrderByDescending(x => x.Name),
                     ("number", false) => countriesQuery.OrderByDescending(x => x.Number),
                     ("color", false) => countriesQuery.OrderByDescending(x => x.Color),
+                    ("languagefornames", false) => countriesQuery.OrderByDescending(x => x.LanguageForNames),
                     _ => countriesQuery.OrderBy(x => x.Number),
                 };
 
@@ -118,9 +120,11 @@ public class Countries: ICountries
                             ("name", true) => countriesOrderQuery.ThenBy(x => x.Name),
                             ("number", true) => countriesOrderQuery.ThenBy(x => x.Number),
                             ("color", true) => countriesOrderQuery.ThenBy(x => x.Color),
+                            ("languagefornames", true) => countriesOrderQuery.ThenBy(x => x.LanguageForNames),
                             ("name", false) => countriesOrderQuery.ThenByDescending(x => x.Name),
                             ("number", false) => countriesOrderQuery.ThenByDescending(x => x.Number),
                             ("color", false) => countriesOrderQuery.ThenByDescending(x => x.Color),
+                            ("languagefornames", false) => countriesOrderQuery.ThenByDescending(x => x.LanguageForNames),
                             _ => countriesOrderQuery.ThenBy(x => x.Number),
                         };
                     }
