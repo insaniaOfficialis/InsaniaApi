@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20230925122341_Init_2")]
-    partial class Init_2
+    [Migration("20231009082317_Init_1")]
+    partial class Init_1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -278,6 +278,127 @@ namespace Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Domain.Entities.Geography.Climate", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id")
+                        .HasComment("Первичный ключ таблицы");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Alias")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("alias")
+                        .HasComment("Английское наименование");
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_create")
+                        .HasComment("Дата создания");
+
+                    b.Property<DateTime?>("DateDeleted")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_deleted")
+                        .HasComment("Дата удаления");
+
+                    b.Property<DateTime>("DateUpdate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_update")
+                        .HasComment("Дата обновления");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("name")
+                        .HasComment("Наименование");
+
+                    b.Property<string>("UserCreate")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("user_create")
+                        .HasComment("Пользователь, создавший");
+
+                    b.Property<string>("UserUpdate")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("user_update")
+                        .HasComment("Пользователь, обновивший");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("dir_climate", t =>
+                        {
+                            t.HasComment("Климат");
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Entities.Geography.ClimateArea", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id")
+                        .HasComment("Первичный ключ таблицы");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("AreaId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("area_id")
+                        .HasComment("Ссылка на область");
+
+                    b.Property<long>("ClimateId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("climate_id")
+                        .HasComment("Ссылка на климат");
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_create")
+                        .HasComment("Дата создания");
+
+                    b.Property<DateTime?>("DateDeleted")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_deleted")
+                        .HasComment("Дата удаления");
+
+                    b.Property<DateTime>("DateUpdate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_update")
+                        .HasComment("Дата обновления");
+
+                    b.Property<int>("SizeInPixels")
+                        .HasColumnType("integer")
+                        .HasColumnName("size_in_pixels")
+                        .HasComment("Размер в пикселях");
+
+                    b.Property<string>("UserCreate")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("user_create")
+                        .HasComment("Пользователь, создавший");
+
+                    b.Property<string>("UserUpdate")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("user_update")
+                        .HasComment("Пользователь, обновивший");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AreaId");
+
+                    b.HasIndex("ClimateId");
+
+                    b.ToTable("un_climates_areas", t =>
+                        {
+                            t.HasComment("Связь климата с областями");
+                        });
+                });
+
             modelBuilder.Entity("Domain.Entities.Geography.GeographicalObject", b =>
                 {
                     b.Property<long>("Id")
@@ -346,6 +467,127 @@ namespace Data.Migrations
                     b.ToTable("dir_geographical_objects", t =>
                         {
                             t.HasComment("Географические объекты");
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Entities.Geography.Terrain", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id")
+                        .HasComment("Первичный ключ таблицы");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Alias")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("alias")
+                        .HasComment("Английское наименование");
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_create")
+                        .HasComment("Дата создания");
+
+                    b.Property<DateTime?>("DateDeleted")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_deleted")
+                        .HasComment("Дата удаления");
+
+                    b.Property<DateTime>("DateUpdate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_update")
+                        .HasComment("Дата обновления");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("name")
+                        .HasComment("Наименование");
+
+                    b.Property<string>("UserCreate")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("user_create")
+                        .HasComment("Пользователь, создавший");
+
+                    b.Property<string>("UserUpdate")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("user_update")
+                        .HasComment("Пользователь, обновивший");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("dir_terrain", t =>
+                        {
+                            t.HasComment("Рельеф");
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Entities.Geography.TerrainArea", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id")
+                        .HasComment("Первичный ключ таблицы");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("AreaId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("area_id")
+                        .HasComment("Ссылка на область");
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_create")
+                        .HasComment("Дата создания");
+
+                    b.Property<DateTime?>("DateDeleted")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_deleted")
+                        .HasComment("Дата удаления");
+
+                    b.Property<DateTime>("DateUpdate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_update")
+                        .HasComment("Дата обновления");
+
+                    b.Property<int>("SizeInPixels")
+                        .HasColumnType("integer")
+                        .HasColumnName("size_in_pixels")
+                        .HasComment("Размер в пикселях");
+
+                    b.Property<long>("TerrainId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("terrain_id")
+                        .HasComment("Ссылка на рельеф");
+
+                    b.Property<string>("UserCreate")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("user_create")
+                        .HasComment("Пользователь, создавший");
+
+                    b.Property<string>("UserUpdate")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("user_update")
+                        .HasComment("Пользователь, обновивший");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AreaId");
+
+                    b.HasIndex("TerrainId");
+
+                    b.ToTable("un_terrains_areas", t =>
+                        {
+                            t.HasComment("Связь рельефа с областями");
                         });
                 });
 
@@ -580,6 +822,154 @@ namespace Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Domain.Entities.Politics.PopulationArea", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id")
+                        .HasComment("Первичный ключ таблицы");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("AreaId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("area_id")
+                        .HasComment("Ссылка на область");
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_create")
+                        .HasComment("Дата создания");
+
+                    b.Property<DateTime?>("DateDeleted")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_deleted")
+                        .HasComment("Дата удаления");
+
+                    b.Property<DateTime>("DateUpdate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_update")
+                        .HasComment("Дата обновления");
+
+                    b.Property<bool>("Gender")
+                        .HasColumnType("boolean")
+                        .HasColumnName("gender")
+                        .HasComment("Пол (истина - мужской/ложь - женский)");
+
+                    b.Property<bool>("IsSystem")
+                        .HasColumnType("boolean")
+                        .HasColumnName("is_system")
+                        .HasComment("Признак системной записи");
+
+                    b.Property<long>("NationId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("nation_id")
+                        .HasComment("Ссылка на область");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer")
+                        .HasColumnName("quantity")
+                        .HasComment("Количество разумных");
+
+                    b.Property<string>("UserCreate")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("user_create")
+                        .HasComment("Пользователь, создавший");
+
+                    b.Property<string>("UserUpdate")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("user_update")
+                        .HasComment("Пользователь, обновивший");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AreaId");
+
+                    b.HasIndex("NationId");
+
+                    b.ToTable("re_population_areas", t =>
+                        {
+                            t.HasComment("Население областей");
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Entities.Politics.PopulationSettlement", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id")
+                        .HasComment("Первичный ключ таблицы");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_create")
+                        .HasComment("Дата создания");
+
+                    b.Property<DateTime?>("DateDeleted")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_deleted")
+                        .HasComment("Дата удаления");
+
+                    b.Property<DateTime>("DateUpdate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_update")
+                        .HasComment("Дата обновления");
+
+                    b.Property<bool>("Gender")
+                        .HasColumnType("boolean")
+                        .HasColumnName("gender")
+                        .HasComment("Пол (истина - мужской/ложь - женский)");
+
+                    b.Property<bool>("IsSystem")
+                        .HasColumnType("boolean")
+                        .HasColumnName("is_system")
+                        .HasComment("Признак системной записи");
+
+                    b.Property<long>("NationId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("nation_id")
+                        .HasComment("Ссылка на область");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer")
+                        .HasColumnName("quantity")
+                        .HasComment("Количество разумных");
+
+                    b.Property<long>("SettlementId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("settlement_id")
+                        .HasComment("Ссылка на населённый пуцнкт");
+
+                    b.Property<string>("UserCreate")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("user_create")
+                        .HasComment("Пользователь, создавший");
+
+                    b.Property<string>("UserUpdate")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("user_update")
+                        .HasComment("Пользователь, обновивший");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NationId");
+
+                    b.HasIndex("SettlementId");
+
+                    b.ToTable("re_population_settlements", t =>
+                        {
+                            t.HasComment("Население населённых пунктов");
+                        });
+                });
+
             modelBuilder.Entity("Domain.Entities.Politics.Region", b =>
                 {
                     b.Property<long>("Id")
@@ -645,6 +1035,149 @@ namespace Data.Migrations
                     b.ToTable("dir_regions", t =>
                         {
                             t.HasComment("Регионы");
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Entities.Politics.Settlement", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id")
+                        .HasComment("Первичный ключ таблицы");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Alias")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("alias")
+                        .HasComment("Английское наименование");
+
+                    b.Property<long>("AreaId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("area_id")
+                        .HasComment("Ссылка на географический объект");
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_create")
+                        .HasComment("Дата создания");
+
+                    b.Property<DateTime?>("DateDeleted")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_deleted")
+                        .HasComment("Дата удаления");
+
+                    b.Property<DateTime>("DateUpdate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_update")
+                        .HasComment("Дата обновления");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("name")
+                        .HasComment("Наименование");
+
+                    b.Property<int>("SizeInPixels")
+                        .HasColumnType("integer")
+                        .HasColumnName("size_in_pixels")
+                        .HasComment("Размер в пикселях");
+
+                    b.Property<long>("TypeId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("type_id")
+                        .HasComment("Ссылка на тип населённого пункта");
+
+                    b.Property<string>("UserCreate")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("user_create")
+                        .HasComment("Пользователь, создавший");
+
+                    b.Property<string>("UserUpdate")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("user_update")
+                        .HasComment("Пользователь, обновивший");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AreaId");
+
+                    b.HasIndex("TypeId");
+
+                    b.ToTable("dir_settlements", t =>
+                        {
+                            t.HasComment("Населённые пункты");
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Entities.Politics.TypeSettlement", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id")
+                        .HasComment("Первичный ключ таблицы");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Alias")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("alias")
+                        .HasComment("Английское наименование");
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_create")
+                        .HasComment("Дата создания");
+
+                    b.Property<DateTime?>("DateDeleted")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_deleted")
+                        .HasComment("Дата удаления");
+
+                    b.Property<DateTime>("DateUpdate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_update")
+                        .HasComment("Дата обновления");
+
+                    b.Property<int>("MaximumSizeInPixels")
+                        .HasColumnType("integer")
+                        .HasColumnName("maximum_size_in_pixels")
+                        .HasComment("Максимальный размер в пикселях");
+
+                    b.Property<int>("MinimumSizeInPixels")
+                        .HasColumnType("integer")
+                        .HasColumnName("minimum_size_in_pixels")
+                        .HasComment("Минимальный размер в пикселях");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("name")
+                        .HasComment("Наименование");
+
+                    b.Property<string>("UserCreate")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("user_create")
+                        .HasComment("Пользователь, создавший");
+
+                    b.Property<string>("UserUpdate")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("user_update")
+                        .HasComment("Пользователь, обновивший");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("dir_types_settlements", t =>
+                        {
+                            t.HasComment("Типы населённых пунктов");
                         });
                 });
 
@@ -799,6 +1332,16 @@ namespace Data.Migrations
                         .HasColumnName("date_update")
                         .HasComment("Дата обновления");
 
+                    b.Property<long>("NationId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("nation_id")
+                        .HasComment("Ссылка на нацию");
+
+                    b.Property<long>("PersonalNameId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("personal_name_id")
+                        .HasComment("Ссылка на нацию");
+
                     b.Property<double>("Probability")
                         .HasColumnType("double precision")
                         .HasColumnName("probability")
@@ -817,6 +1360,10 @@ namespace Data.Migrations
                         .HasComment("Пользователь, обновивший");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("NationId");
+
+                    b.HasIndex("PersonalNameId");
 
                     b.ToTable("un_nations_personal_names", t =>
                         {
@@ -1198,6 +1745,25 @@ namespace Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Geography.ClimateArea", b =>
+                {
+                    b.HasOne("Domain.Entities.Politics.Area", "Area")
+                        .WithMany()
+                        .HasForeignKey("AreaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Geography.Climate", "Climate")
+                        .WithMany()
+                        .HasForeignKey("ClimateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Area");
+
+                    b.Navigation("Climate");
+                });
+
             modelBuilder.Entity("Domain.Entities.Geography.GeographicalObject", b =>
                 {
                     b.HasOne("Domain.Entities.Geography.GeographicalObject", "Parent")
@@ -1213,6 +1779,25 @@ namespace Data.Migrations
                     b.Navigation("Parent");
 
                     b.Navigation("Type");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Geography.TerrainArea", b =>
+                {
+                    b.HasOne("Domain.Entities.Politics.Area", "Area")
+                        .WithMany()
+                        .HasForeignKey("AreaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Geography.Terrain", "Terrain")
+                        .WithMany()
+                        .HasForeignKey("TerrainId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Area");
+
+                    b.Navigation("Terrain");
                 });
 
             modelBuilder.Entity("Domain.Entities.Politics.Area", b =>
@@ -1250,6 +1835,63 @@ namespace Data.Migrations
                     b.Navigation("Region");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Politics.PopulationArea", b =>
+                {
+                    b.HasOne("Domain.Entities.Politics.Area", "Area")
+                        .WithMany()
+                        .HasForeignKey("AreaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Sociology.Nation", "Nation")
+                        .WithMany()
+                        .HasForeignKey("NationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Area");
+
+                    b.Navigation("Nation");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Politics.PopulationSettlement", b =>
+                {
+                    b.HasOne("Domain.Entities.Sociology.Nation", "Nation")
+                        .WithMany()
+                        .HasForeignKey("NationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Politics.Settlement", "Settlement")
+                        .WithMany()
+                        .HasForeignKey("SettlementId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Nation");
+
+                    b.Navigation("Settlement");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Politics.Settlement", b =>
+                {
+                    b.HasOne("Domain.Entities.Politics.Area", "Area")
+                        .WithMany()
+                        .HasForeignKey("AreaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Politics.TypeSettlement", "TypeSettlement")
+                        .WithMany()
+                        .HasForeignKey("TypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Area");
+
+                    b.Navigation("TypeSettlement");
+                });
+
             modelBuilder.Entity("Domain.Entities.Sociology.Nation", b =>
                 {
                     b.HasOne("Domain.Entities.Sociology.Race", "Race")
@@ -1259,6 +1901,25 @@ namespace Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Race");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Sociology.NationPersonalName", b =>
+                {
+                    b.HasOne("Domain.Entities.Sociology.Nation", "Nation")
+                        .WithMany()
+                        .HasForeignKey("NationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Sociology.PersonalName", "PersonalName")
+                        .WithMany()
+                        .HasForeignKey("PersonalNameId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Nation");
+
+                    b.Navigation("PersonalName");
                 });
 #pragma warning restore 612, 618
         }

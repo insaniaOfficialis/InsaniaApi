@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using File = Domain.Entities.General.File.File;
 using Domain.Entities.Sociology;
+using Domain.Entities.Geography;
 
 namespace Data;
 
@@ -24,6 +25,14 @@ public class ApplicationContext : IdentityDbContext<User, Role, long, IdentityUs
     public DbSet<NationPersonalName> NationsPersonalNames { get; set; } //связь наций с именами
     public DbSet<Fraction> Fractions { get; set; } //фракции
     public DbSet<Area> Areas { get; set; } //области
+    public DbSet<TypeSettlement> TypesSettlements { get; set; } //типы населённых пунктов
+    public DbSet<Settlement> Settlements { get; set; } //населённые пункты
+    public DbSet<PopulationArea> PopulationAreas { get; set; } //население областей
+    public DbSet<PopulationSettlement> PopulationSettlements { get; set; } //население населённых пунктов
+    public DbSet<Climate> Climates { get; set; } //климаты
+    public DbSet<Terrain> Terrains { get; set; } //рельефы
+    public DbSet<ClimateArea> ClimatesAreas { get; set; } //климаты областей
+    public DbSet<TerrainArea> TerrainsAreas { get; set; } //рельефы областей
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

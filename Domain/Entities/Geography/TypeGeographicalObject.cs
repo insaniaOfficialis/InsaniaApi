@@ -12,14 +12,14 @@ namespace Domain.Entities.Geography;
 public class TypeGeographicalObject : Directory
 {
     /// <summary>
-    /// Пустой конструктор сущности географических объектов
+    /// Пустой конструктор сущности типов географических объектов
     /// </summary>
     public TypeGeographicalObject() : base()
     {
     }
 
     /// <summary>
-    /// Конструктор сущности географических объектов
+    /// Конструктор сущности типов географических объектов
     /// </summary>
     /// <param name="id"></param>
     /// <param name="user"></param>
@@ -29,7 +29,7 @@ public class TypeGeographicalObject : Directory
     }
 
     /// <summary>
-    /// Конструктор сущности географических объектов без id
+    /// Конструктор сущности типов географических объектов без id
     /// </summary>
     /// <param name="user"></param>
     /// <param name="name"></param>

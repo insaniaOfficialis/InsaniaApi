@@ -23,26 +23,26 @@ var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 var config = builder.Configuration;
 
-/*Вводим переменные для токена*/
+//Вводим переменные для токена
 var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(config["TokenOptions:Key"]!));
 var issuer = config["TokenOptions:Issuer"];
 var audience = config["TokenOptions:Audience"];
 
-/*Добавляем параметры для контекста базы жанных*/
+//Добавляем параметры для контекста базы жанных
 services.AddDbContext<ApplicationContext>(options =>
 {
     options.UseNpgsql(config.GetConnectionString("DefaultPostgresConnectionString"));
     options.EnableSensitiveDataLogging();
 });
 
-/*Добавляем параметры маппера моделей*/
+//Добавляем параметры маппера моделей
 builder.Services.AddAutoMapper(typeof(AppMappingProfile));
 
-/*Добавляем параметры идентификации*/
+//Добавляем параметры идентификации
 builder.Services.AddIdentity<User, Role>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationContext>();
 builder.Services.AddControllersWithViews();
 
-/*Добавляем параметры авторизации*/
+//Добавляем параметры авторизации
 builder.Services.AddAuthorization(auth =>
 {
     auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
@@ -50,7 +50,7 @@ builder.Services.AddAuthorization(auth =>
         .RequireAuthenticatedUser().Build());
 });
 
-/*Добавляем параметры сериализации и десериализации json*/
+//Добавляем параметры сериализации и десериализации json
 builder.Services.Configure<JsonOptions>(options =>
 {
     options.SerializerOptions.PropertyNameCaseInsensitive = false;
@@ -58,7 +58,7 @@ builder.Services.Configure<JsonOptions>(options =>
     options.SerializerOptions.WriteIndented = true;
 });
 
-/*Добавляем параметры политики паролей*/
+//Добавляем параметры политики паролей
 services.Configure<IdentityOptions>(options =>
 {
     options.Password.RequireDigit = false;
@@ -68,7 +68,7 @@ services.Configure<IdentityOptions>(options =>
     options.Password.RequireUppercase = false;
 });
 
-/*Добавляем параметры аутентификации*/
+//Добавляем параметры аутентификации
 builder.Services.AddAuthentication(options => {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -95,16 +95,15 @@ builder.Services.AddAuthentication(options => {
         };
     });
 
-/*Добавляем параметры логирования*/
+//Добавляем параметры логирования
 Log.Logger = new LoggerConfiguration()
                .MinimumLevel.Verbose()
                .WriteTo.File(path: config["LoggingOptions:FilePath"]!, rollingInterval: RollingInterval.Day)
                .WriteTo.Debug()
                .CreateLogger();
-services.AddLogging(loggingBuilder =>
-  loggingBuilder.AddSerilog(Log.Logger, dispose: true));
+services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog(Log.Logger, dispose: true));
 
-/*Внедряем зависимости для сервисов*/
+//Внедряем зависимости для сервисов
 builder.Services.AddScoped<IInitialization, Initialization>();
 builder.Services.AddScoped<IRegistration, Registration>();
 builder.Services.AddScoped<IRoles, Roles>();
@@ -124,7 +123,7 @@ app.MapControllerRoute(
 
 app.MapGet("/", () => "Hello World!");
 
-/*Проводим первоначальную инициализацию*/
+//Проводим первоначальную инициализацию
 using var scope = app.Services.CreateScope();
 var initialize = scope.ServiceProvider.GetService<IInitialization>();
 var success = await initialize!.InitializeDatabase();

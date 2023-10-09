@@ -1,5 +1,4 @@
-﻿using Domain.Entities.Geography;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 using BaseEntity = Domain.Entities.Base.Base;
 
