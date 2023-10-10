@@ -90,6 +90,9 @@ public class Countries: ICountries
             //Если передали признак удалённых записей
             if (isDeleted)
                 countriesQuery = countriesQuery.Where(x => x.DateDeleted != null);
+            else
+                countriesQuery = countriesQuery.Where(x => x.DateDeleted == null);
+
 
             //Если передали поле сортировки
             if (sort?.Any() == true)
@@ -190,7 +193,7 @@ public class Countries: ICountries
             if (_repository.Countries.Any(x => x.Number == request.Number))
                 throw new InnerException("Данный номер уже используется");
             if (String.IsNullOrEmpty(user))
-                throw new InnerException("Пользователь незарегистрирован");
+                throw new InnerException("Пользователь не зарегистрирован");
 
             //Начинаем транзакцию
             using var transaction = _repository.Database.BeginTransaction();
@@ -306,7 +309,7 @@ public class Countries: ICountries
             }
 
             //Возвращаем результат
-            return new BaseResponse(true);
+            return new BaseResponse(true, id ?? 0);
         }
         //Обрабатываем внутренние исключения
         catch (InnerException ex)

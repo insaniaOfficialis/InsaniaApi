@@ -271,6 +271,117 @@ public class Initialization: IInitialization
                 }
 
 
+                //ТИПЫ НАСЕЛЁННЫХ ПУНКТОВ
+
+                //Проверяем наличие типа "Укрепление"
+                if (!_repository.TypesSettlements.Any(x => x.Name == "Укрепление"))
+                {
+                    //Создаём тип "Укрепление"
+                    TypeSettlement typeSettlement = new("system", "Укрепление", 3, 4);
+                    _repository.TypesSettlements.Add(typeSettlement);
+                    await _repository.SaveChangesAsync();
+                }
+
+                //Проверяем наличие типа "Маленький посёлок"
+                if (!_repository.TypesSettlements.Any(x => x.Name == "Маленький посёлок"))
+                {
+                    //Создаём тип "Маленький посёлок"
+                    TypeSettlement typeSettlement = new("system", "Маленький посёлок", 5, 7);
+                    _repository.TypesSettlements.Add(typeSettlement);
+                    await _repository.SaveChangesAsync();
+                }
+
+                //Проверяем наличие типа "Посёлок"
+                if (!_repository.TypesSettlements.Any(x => x.Name == "Посёлок"))
+                {
+                    //Создаём тип "Посёлок"
+                    TypeSettlement typeSettlement = new("system", "Посёлок", 8, 9);
+                    _repository.TypesSettlements.Add(typeSettlement);
+                    await _repository.SaveChangesAsync();
+                }
+
+                //Проверяем наличие типа "Замок"
+                if (!_repository.TypesSettlements.Any(x => x.Name == "Замок"))
+                {
+                    //Создаём тип "Замок"
+                    TypeSettlement typeSettlement = new("system", "Замок", 10, 11);
+                    _repository.TypesSettlements.Add(typeSettlement);
+                    await _repository.SaveChangesAsync();
+                }
+
+                //Проверяем наличие типа "Большой посёлок"
+                if (!_repository.TypesSettlements.Any(x => x.Name == "Большой посёлок"))
+                {
+                    //Создаём тип "Большой посёлок"
+                    TypeSettlement typeSettlement = new("system", "Большой посёлок", 12, 13);
+                    _repository.TypesSettlements.Add(typeSettlement);
+                    await _repository.SaveChangesAsync();
+                }
+
+                //Проверяем наличие типа "Маленький город"
+                if (!_repository.TypesSettlements.Any(x => x.Name == "Маленький город"))
+                {
+                    //Создаём тип "Маленький город"
+                    TypeSettlement typeSettlement = new("system", "Маленький город", 14, 16);
+                    _repository.TypesSettlements.Add(typeSettlement);
+                    await _repository.SaveChangesAsync();
+                }
+
+                //Проверяем наличие типа "Крепость"
+                if (!_repository.TypesSettlements.Any(x => x.Name == "Крепость"))
+                {
+                    //Создаём тип "Крепость"
+                    TypeSettlement typeSettlement = new("system", "Крепость", 17, 18);
+                    _repository.TypesSettlements.Add(typeSettlement);
+                    await _repository.SaveChangesAsync();
+                }
+
+                //Проверяем наличие типа "Город"
+                if (!_repository.TypesSettlements.Any(x => x.Name == "Город"))
+                {
+                    //Создаём тип "Город"
+                    TypeSettlement typeSettlement = new("system", "Город", 19, 20);
+                    _repository.TypesSettlements.Add(typeSettlement);
+                    await _repository.SaveChangesAsync();
+                }
+
+                //Проверяем наличие типа "Большой город"
+                if (!_repository.TypesSettlements.Any(x => x.Name == "Большой город"))
+                {
+                    //Создаём тип "Большой город"
+                    TypeSettlement typeSettlement = new("system", "Большой город", 21, 23);
+                    _repository.TypesSettlements.Add(typeSettlement);
+                    await _repository.SaveChangesAsync();
+                }
+
+                //Проверяем наличие типа "Цитадель"
+                if (!_repository.TypesSettlements.Any(x => x.Name == "Цитадель"))
+                {
+                    //Создаём тип "Цитадель"
+                    TypeSettlement typeSettlement = new("system", "Цитадель", 24, 25);
+                    _repository.TypesSettlements.Add(typeSettlement);
+                    await _repository.SaveChangesAsync();
+                }
+
+                //Проверяем наличие типа "Огромный город"
+                if (!_repository.TypesSettlements.Any(x => x.Name == "Огромный город"))
+                {
+                    //Создаём тип "Огромный город"
+                    TypeSettlement typeSettlement = new("system", "Огромный город", 26, 27);
+                    _repository.TypesSettlements.Add(typeSettlement);
+                    await _repository.SaveChangesAsync();
+                }
+
+                //Проверяем наличие типа "Столица"
+                if (!_repository.TypesSettlements.Any(x => x.Name == "Столица"))
+                {
+                    //Создаём тип "Столица"
+                    TypeSettlement typeSettlement = new("system", "Столица", 28, 30);
+                    _repository.TypesSettlements.Add(typeSettlement);
+                    await _repository.SaveChangesAsync();
+                }
+
+
                 //СТРАНЫ
 
                 //Проверяем наличие страны "Альвраатская империя"
