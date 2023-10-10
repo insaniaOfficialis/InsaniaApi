@@ -13,7 +13,7 @@ namespace Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "dir_climate",
+                name: "dir_climates",
                 columns: table => new
                 {
                     id = table.Column<long>(type: "bigint", nullable: false, comment: "Первичный ключ таблицы")
@@ -28,7 +28,7 @@ namespace Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_dir_climate", x => x.id);
+                    table.PrimaryKey("PK_dir_climates", x => x.id);
                 },
                 comment: "Климат");
 
@@ -180,7 +180,7 @@ namespace Data.Migrations
                 comment: "Регионы");
 
             migrationBuilder.CreateTable(
-                name: "dir_terrain",
+                name: "dir_terrains",
                 columns: table => new
                 {
                     id = table.Column<long>(type: "bigint", nullable: false, comment: "Первичный ключ таблицы")
@@ -195,7 +195,7 @@ namespace Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_dir_terrain", x => x.id);
+                    table.PrimaryKey("PK_dir_terrains", x => x.id);
                 },
                 comment: "Рельеф");
 
@@ -586,6 +586,7 @@ namespace Data.Migrations
                     climate_id = table.Column<long>(type: "bigint", nullable: false, comment: "Ссылка на климат"),
                     area_id = table.Column<long>(type: "bigint", nullable: false, comment: "Ссылка на область"),
                     size_in_pixels = table.Column<int>(type: "integer", nullable: false, comment: "Размер в пикселях"),
+                    is_marine = table.Column<bool>(type: "boolean", nullable: false, comment: "Признак морского климата"),
                     date_create = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, comment: "Дата создания"),
                     user_create = table.Column<string>(type: "text", nullable: false, comment: "Пользователь, создавший"),
                     date_update = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, comment: "Дата обновления"),
@@ -602,9 +603,9 @@ namespace Data.Migrations
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_un_climates_areas_dir_climate_climate_id",
+                        name: "FK_un_climates_areas_dir_climates_climate_id",
                         column: x => x.climate_id,
-                        principalTable: "dir_climate",
+                        principalTable: "dir_climates",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 },
@@ -635,9 +636,9 @@ namespace Data.Migrations
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_un_terrains_areas_dir_terrain_terrain_id",
+                        name: "FK_un_terrains_areas_dir_terrains_terrain_id",
                         column: x => x.terrain_id,
-                        principalTable: "dir_terrain",
+                        principalTable: "dir_terrains",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 },
@@ -823,7 +824,7 @@ namespace Data.Migrations
                 name: "dir_settlements");
 
             migrationBuilder.DropTable(
-                name: "dir_climate");
+                name: "dir_climates");
 
             migrationBuilder.DropTable(
                 name: "dir_nations");
@@ -832,7 +833,7 @@ namespace Data.Migrations
                 name: "dir_personal_names");
 
             migrationBuilder.DropTable(
-                name: "dir_terrain");
+                name: "dir_terrains");
 
             migrationBuilder.DropTable(
                 name: "re_files");

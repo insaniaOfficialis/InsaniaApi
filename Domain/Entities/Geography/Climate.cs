@@ -7,7 +7,7 @@ namespace Domain.Entities.Geography;
 /// <summary>
 /// Сущность климата
 /// </summary>
-[Table("dir_climate")]
+[Table("dir_climates")]
 [Comment("Климат")]
 public class Climate : Directory
 {

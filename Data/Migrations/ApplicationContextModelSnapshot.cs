@@ -326,7 +326,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("dir_climate", t =>
+                    b.ToTable("dir_climates", t =>
                         {
                             t.HasComment("Климат");
                         });
@@ -523,7 +523,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("dir_terrain", t =>
+                    b.ToTable("dir_terrains", t =>
                         {
                             t.HasComment("Рельеф");
                         });

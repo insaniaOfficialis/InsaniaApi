@@ -7,7 +7,7 @@ namespace Domain.Entities.Geography;
 /// <summary>
 /// Сущность рельефа
 /// </summary>
-[Table("dir_terrain")]
+[Table("dir_terrains")]
 [Comment("Рельеф")]
 public class Terrain : Directory
 {

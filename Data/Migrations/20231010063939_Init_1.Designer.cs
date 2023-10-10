@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20231009083512_UpdCliamteArea_1")]
-    partial class UpdCliamteArea_1
+    [Migration("20231010063939_Init_1")]
+    partial class Init_1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -329,7 +329,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("dir_climate", t =>
+                    b.ToTable("dir_climates", t =>
                         {
                             t.HasComment("Климат");
                         });
@@ -526,7 +526,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("dir_terrain", t =>
+                    b.ToTable("dir_terrains", t =>
                         {
                             t.HasComment("Рельеф");
                         });

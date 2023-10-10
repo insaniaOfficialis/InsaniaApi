@@ -6,6 +6,7 @@ using Domain.Entities.Identification;
 using Domain.Models.Exclusion;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
+using Domain.Entities.Geography;
 
 namespace Services.Initialization;
 
@@ -143,6 +144,15 @@ public class Initialization: IInitialization
                     await _repository.SaveChangesAsync();
                 }
 
+                //Проверяем наличие параметра размера пикселей в квадратных километрах
+                if (!_repository.Parametrs.Any(x => x.Name == "Размер пикселей в квадратных километрах"))
+                {
+                    //Создаём параметр для размера пикселей в квадратных километрах
+                    Parametr parametr = new("system", "Размер пикселей в квадратных километрах", "1.69");
+                    _repository.Parametrs.Add(parametr);
+                    await _repository.SaveChangesAsync();
+                }
+
 
                 //ТИПЫ ФАЙЛОВ
 
@@ -152,6 +162,111 @@ public class Initialization: IInitialization
                     //Создаём тип файла для пользователей
                     FileType fileType = new("system", "Пользователь", "I:\\Insania\\ПО\\Files");
                     _repository.FileTypes.Add(fileType);
+                    await _repository.SaveChangesAsync();
+                }
+
+
+                //КЛИМАТЫ
+
+                //Проверяем наличие климата "Полярный"
+                if (!_repository.Climates.Any(x => x.Name == "Полярный"))
+                {
+                    //Создаём климат "Полярный"
+                    Climate climate = new("system", "Полярный");
+                    _repository.Climates.Add(climate);
+                    await _repository.SaveChangesAsync();
+                }
+
+                //Проверяем наличие климата "Субполярный"
+                if (!_repository.Climates.Any(x => x.Name == "Субполярный"))
+                {
+                    //Создаём климат "Субполярный"
+                    Climate climate = new("system", "Субполярный");
+                    _repository.Climates.Add(climate);
+                    await _repository.SaveChangesAsync();
+                }
+
+                //Проверяем наличие климата "Умеренный"
+                if (!_repository.Climates.Any(x => x.Name == "Умеренный"))
+                {
+                    //Создаём климат "Умеренный"
+                    Climate climate = new("system", "Умеренный");
+                    _repository.Climates.Add(climate);
+                    await _repository.SaveChangesAsync();
+                }
+
+                //Проверяем наличие климата "Субтропический"
+                if (!_repository.Climates.Any(x => x.Name == "Субтропический"))
+                {
+                    //Создаём климат "Субтропический"
+                    Climate climate = new("system", "Субтропический");
+                    _repository.Climates.Add(climate);
+                    await _repository.SaveChangesAsync();
+                }
+
+                //Проверяем наличие климата "Тропический"
+                if (!_repository.Climates.Any(x => x.Name == "Тропический"))
+                {
+                    //Создаём климат "Тропический"
+                    Climate climate = new("system", "Тропический");
+                    _repository.Climates.Add(climate);
+                    await _repository.SaveChangesAsync();
+                }
+
+                //Проверяем наличие климата "Субэкваториальный"
+                if (!_repository.Climates.Any(x => x.Name == "Субэкваториальный"))
+                {
+                    //Создаём климат "Субэкваториальный"
+                    Climate climate = new("system", "Субэкваториальный");
+                    _repository.Climates.Add(climate);
+                    await _repository.SaveChangesAsync();
+                }
+
+                //Проверяем наличие климата "Экваториальный"
+                if (!_repository.Climates.Any(x => x.Name == "Экваториальный"))
+                {
+                    //Создаём климат "Экваториальный"
+                    Climate climate = new("system", "Экваториальный");
+                    _repository.Climates.Add(climate);
+                    await _repository.SaveChangesAsync();
+                }
+
+
+                //РЕЛЬЕФЫ
+
+                //Проверяем наличие рельефа "Горный"
+                if (!_repository.Terrains.Any(x => x.Name == "Горный"))
+                {
+                    //Создаём рельеф "Горный"
+                    Terrain terrain = new("system", "Горный");
+                    _repository.Terrains.Add(terrain);
+                    await _repository.SaveChangesAsync();
+                }
+
+                //Проверяем наличие рельефа "Холмистый"
+                if (!_repository.Terrains.Any(x => x.Name == "Холмистый"))
+                {
+                    //Создаём рельеф "Холмистый"
+                    Terrain terrain = new("system", "Холмистый");
+                    _repository.Terrains.Add(terrain);
+                    await _repository.SaveChangesAsync();
+                }
+
+                //Проверяем наличие рельефа "Лесистый"
+                if (!_repository.Terrains.Any(x => x.Name == "Лесистый"))
+                {
+                    //Создаём рельеф "Лесистый"
+                    Terrain terrain = new("system", "Лесистый");
+                    _repository.Terrains.Add(terrain);
+                    await _repository.SaveChangesAsync();
+                }
+
+                //Проверяем наличие рельефа "Равнинный"
+                if (!_repository.Terrains.Any(x => x.Name == "Равнинный"))
+                {
+                    //Создаём рельеф "Равнинный"
+                    Terrain terrain = new("system", "Равнинный");
+                    _repository.Terrains.Add(terrain);
                     await _repository.SaveChangesAsync();
                 }
 
