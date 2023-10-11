@@ -5,11 +5,11 @@ using BaseEntity = Domain.Entities.Base.Base;
 namespace Domain.Entities.Sociology;
 
 /// <summary>
-/// Сущность связи нации с именами
+/// Сущность связи нации с фамилиями
 /// </summary>
-[Table("un_nations_personal_names")]
-[Comment("Связь наций с именами")]
-public class NationPersonalName : BaseEntity
+[Table("un_nations_last_names")]
+[Comment("Связь наций с фамилиями")]
+public class NationLastName : BaseEntity
 {
     /// <summary>
     /// Вероятность выпадения
@@ -31,59 +31,59 @@ public class NationPersonalName : BaseEntity
     public Nation Nation { get; private set; }
 
     /// <summary>
-    /// Ссылка на имя
+    /// Ссылка на фамилию
     /// </summary>
-    [Column("personal_name_id")]
-    [Comment("Ссылка на имя")]
-    public long PersonalNameId { get; private set; }
+    [Column("last_name_id")]
+    [Comment("Ссылка на фамилию")]
+    public long LastNameId { get; private set; }
 
     /// <summary>
-    /// Навигационное свойство имени
+    /// Навигационное свойство фамилии
     /// </summary>
-    public PersonalName PersonalName { get; private set; }
+    public LastName LastName { get; private set; }
 
     /// <summary>
-    /// Пустой конструктор сущности связи нации с именами
+    /// Пустой конструктор сущности связи нации с фамилиями
     /// </summary>
-    public NationPersonalName() : base()
-    { 
+    public NationLastName() : base()
+    {
     }
 
     /// <summary>
-    /// Конструктор сущности связи нации с именами
+    /// Конструктор сущности связи нации с фамилиями
     /// </summary>
     /// <param name="id"></param>
     /// <param name="user"></param>
     /// <param name="probability"></param>
     /// <param name="nation"></param>
-    /// <param name="personalName"></param>
-    public NationPersonalName(long id, string user, double probability, Nation nation, PersonalName personalName) : base(id, user)
+    /// <param name="lastName"></param>
+    public NationLastName(long id, string user, double probability, Nation nation, LastName lastName) : base(id, user)
     {
         Probability = probability;
         Nation = nation;
         NationId = nation.Id;
-        PersonalName = personalName;
-        PersonalNameId = personalName.Id;
+        LastName = lastName;
+        LastNameId = lastName.Id;
     }
 
     /// <summary>
-    /// Конструктор сущности связи нации с именами без id
+    /// Конструктор сущности связи нации с фамилиями без id
     /// </summary>
     /// <param name="user"></param>
     /// <param name="probability"></param>
     /// <param name="nation"></param>
-    /// <param name="personalName"></param>
-    public NationPersonalName(string user, double probability, Nation nation, PersonalName personalName) : base(user)
+    /// <param name="lastName"></param>
+    public NationLastName(string user, double probability, Nation nation, LastName lastName) : base(user)
     {
         Probability = probability;
         Nation = nation;
         NationId = nation.Id;
-        PersonalName = personalName;
-        PersonalNameId = personalName.Id;
+        LastName = lastName;
+        LastNameId = lastName.Id;
     }
 
     /// <summary>
-    /// Метод записи вероятности выпадения имени
+    /// Метод записи вероятности выпадения фамилии
     /// </summary>
     /// <param name="probability"></param>
     public void SetProbability(double probability)
@@ -102,12 +102,12 @@ public class NationPersonalName : BaseEntity
     }
 
     /// <summary>
-    /// Метод записи имени
+    /// Метод записи фамилии
     /// </summary>
-    /// <param name="personalName"></param>
-    public void SetPersonalName(PersonalName personalName)
+    /// <param name="lastName"></param>
+    public void SetLastName(LastName lastName)
     {
-        PersonalName = personalName;
-        PersonalNameId = personalName.Id;
+        LastName = lastName;
+        LastNameId = lastName.Id;
     }
 }

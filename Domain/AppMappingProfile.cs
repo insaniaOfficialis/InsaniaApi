@@ -5,6 +5,7 @@ using Domain.Models.Base;
 using Domain.Models.Politics.Countries.Response;
 using Domain.Models.Identification.Registration.Request;
 using Domain.Models.Identification.Roles.Request;
+using Domain.Entities.Sociology;
 
 namespace Domain;
 
@@ -17,5 +18,6 @@ public class AppMappingProfile: Profile
         CreateMap<Role, BaseResponseListItem>();
         CreateMap<Country, BaseResponseListItem>();
         CreateMap<Country, CountriesResponseListItem>();
+        CreateMap<Race, BaseResponseListItem>();
     }
 }

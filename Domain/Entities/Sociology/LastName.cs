@@ -5,11 +5,11 @@ using Directory = Domain.Entities.Base.Directory;
 namespace Domain.Entities.Sociology;
 
 /// <summary>
-/// Сущность имён
+/// Сущность фамилий
 /// </summary>
-[Table("dir_personal_names")]
-[Comment("Имена")]
-public class PersonalName : Directory
+[Table("dir_last_names")]
+[Comment("Фамилии")]
+public class LastName : Directory
 {
     /// <summary>
     /// Пол (истина - мужской/ложь - женский)
@@ -19,31 +19,31 @@ public class PersonalName : Directory
     public bool Gender { get; private set; }
 
     /// <summary>
-    /// Пустой конструктор сущности имён
+    /// Пустой конструктор сущности фамилий
     /// </summary>
-    public PersonalName() : base()
+    public LastName() : base()
     {
     }
 
     /// <summary>
-    /// Конструктор сущности имён
+    /// Конструктор сущности фамилий
     /// </summary>
     /// <param name="id"></param>
     /// <param name="user"></param>
     /// <param name="name"></param>
     /// <param name="gender"></param>
-    public PersonalName(long id, string user, string name, bool gender) : base(id, user, name)
+    public LastName(long id, string user, string name, bool gender) : base(id, user, name)
     {
         Gender = gender;
     }
 
     /// <summary>
-    /// Конструктор сущности имён без id
+    /// Конструктор сущности фамилий без id
     /// </summary>
     /// <param name="user"></param>
     /// <param name="name"></param>
     /// <param name="gender"></param>
-    public PersonalName(string user, string name, bool gender) : base(user, name)
+    public LastName(string user, string name, bool gender) : base(user, name)
     {
         Gender = gender;
     }

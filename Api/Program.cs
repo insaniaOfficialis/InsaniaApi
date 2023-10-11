@@ -17,6 +17,7 @@ using Services.Identification.Token;
 using Services.Initialization;
 using System.Text;
 using Files = Services.Files.Files;
+using Services.Sociology.Races;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -111,6 +112,7 @@ builder.Services.AddScoped<IAuthorization, Authorization>();
 builder.Services.AddScoped<IFiles, Files>();
 builder.Services.AddScoped<IToken, Token>();
 builder.Services.AddScoped<ICountries, Countries>();
+builder.Services.AddScoped<IRaces, Races>();
 
 var app = builder.Build();
 
