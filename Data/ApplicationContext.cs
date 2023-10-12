@@ -25,8 +25,8 @@ public class ApplicationContext : IdentityDbContext<User, Role, long, IdentityUs
     public DbSet<LastName> LastNames { get; set; } //фамилии
     public DbSet<PrefixName> PrefixNames { get; set; } //префиксы имён
     public DbSet<NationPersonalName> NationsPersonalNames { get; set; } //связь наций с именами
-    public DbSet<NationLastName> NationLastNames { get; set; } //связь наций с фамилиями
-    public DbSet<NationPersonalName> NationPersonalNames { get; set; } //связь наций с префиксами имён
+    public DbSet<NationLastName> NationsLastNames { get; set; } //связь наций с фамилиями
+    public DbSet<NationPrefixName> NationsPrefixNames { get; set; } //связь наций с префиксами имён
     public DbSet<Fraction> Fractions { get; set; } //фракции
     public DbSet<Area> Areas { get; set; } //области
     public DbSet<TypeSettlement> TypesSettlements { get; set; } //типы населённых пунктов

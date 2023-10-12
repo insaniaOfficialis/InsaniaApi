@@ -18,6 +18,8 @@ using Services.Initialization;
 using System.Text;
 using Files = Services.Files.Files;
 using Services.Sociology.Races;
+using Services.Sociology.Nations;
+using Services.Sociology.PersonalNames;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -113,6 +115,8 @@ builder.Services.AddScoped<IFiles, Files>();
 builder.Services.AddScoped<IToken, Token>();
 builder.Services.AddScoped<ICountries, Countries>();
 builder.Services.AddScoped<IRaces, Races>();
+builder.Services.AddScoped<INations, Nations>();
+builder.Services.AddScoped<IPersonalNames, PersonalNames>();
 
 var app = builder.Build();
 

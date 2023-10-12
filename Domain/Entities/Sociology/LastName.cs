@@ -12,13 +12,6 @@ namespace Domain.Entities.Sociology;
 public class LastName : Directory
 {
     /// <summary>
-    /// Пол (истина - мужской/ложь - женский)
-    /// </summary>
-    [Column("gender")]
-    [Comment("Пол (истина - мужской/ложь - женский)")]
-    public bool Gender { get; private set; }
-
-    /// <summary>
     /// Пустой конструктор сущности фамилий
     /// </summary>
     public LastName() : base()
@@ -31,10 +24,8 @@ public class LastName : Directory
     /// <param name="id"></param>
     /// <param name="user"></param>
     /// <param name="name"></param>
-    /// <param name="gender"></param>
-    public LastName(long id, string user, string name, bool gender) : base(id, user, name)
+    public LastName(long id, string user, string name) : base(id, user, name)
     {
-        Gender = gender;
     }
 
     /// <summary>
@@ -42,18 +33,7 @@ public class LastName : Directory
     /// </summary>
     /// <param name="user"></param>
     /// <param name="name"></param>
-    /// <param name="gender"></param>
-    public LastName(string user, string name, bool gender) : base(user, name)
+    public LastName(string user, string name) : base(user, name)
     {
-        Gender = gender;
-    }
-
-    /// <summary>
-    /// Метод записи пола
-    /// </summary>
-    /// <param name="gender"></param>
-    public void SetGender(bool gender)
-    {
-        Gender = gender;
     }
 }

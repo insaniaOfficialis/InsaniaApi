@@ -1,4 +1,6 @@
 ﻿using Api.Controllers.Base;
+using Domain.Entities.Sociology;
+using Domain.Models.Base;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Sociology.Races;
@@ -27,10 +29,14 @@ public class RacesController : BaseController
     }
 
     /// <summary>
-    /// Метод получения списка стран
+    /// Метод получения списка рас
     /// </summary>
     /// <returns></returns>
     [HttpGet]
     [Route("list")]
-    public async Task<IActionResult> GetCountries() => await GetAnswerAsync(_races.GetRacesList);
+    public async Task<IActionResult> GetRacesList()
+        => await GetAnswerAsync(async () =>
+        {
+            return await _races.GetRacesList();
+        });
 }

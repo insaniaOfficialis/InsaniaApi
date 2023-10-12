@@ -30,7 +30,7 @@ public class Races : IRaces
     }
 
     /// <summary>
-    /// Получение списка рас
+    /// Метод получения списка рас
     /// </summary>
     /// <returns></returns>
     public async Task<BaseResponseList> GetRacesList()

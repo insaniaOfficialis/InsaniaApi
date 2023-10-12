@@ -3,6 +3,7 @@ using System;
 using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20231012081536_Init_2")]
+    partial class Init_2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1270,6 +1273,11 @@ namespace Data.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("date_update")
                         .HasComment("Дата обновления");
+
+                    b.Property<bool>("Gender")
+                        .HasColumnType("boolean")
+                        .HasColumnName("gender")
+                        .HasComment("Пол (истина - мужской/ложь - женский)");
 
                     b.Property<string>("Name")
                         .IsRequired()

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
 
 namespace Domain.Models.Base;
 
@@ -44,12 +40,30 @@ public class BaseResponseList : BaseResponse
 public class BaseResponseListItem
 {
     /// <summary>
+    /// Пустой конструктор модели элемента списка
+    /// </summary>
+    public BaseResponseListItem()
+    {
+    }
+
+    /// <summary>
+    /// Конструктор модели элемента списка
+    /// </summary>
+    /// <param name="name"></param>
+    public BaseResponseListItem(string? name)
+    {
+        Name = name;
+    }
+
+    /// <summary>
     /// Первичный ключ
     /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public long? Id { get; set; }
 
     /// <summary>
     /// Наименование
     /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? Name { get; set; }
 }

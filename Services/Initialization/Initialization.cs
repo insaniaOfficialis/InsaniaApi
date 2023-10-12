@@ -139,10 +139,34 @@ public class Initialization : IInitialization
                     await InitializePersonalNames();
                 }
 
+                //ФАМИЛИИ
+                if (Convert.ToBoolean(_configuration["InitializeOptions:InitializeLastNames"]))
+                {
+                    await InitializeLastNames();
+                }
+
+                //ПРЕФИКСЫ ИМЁН
+                if (Convert.ToBoolean(_configuration["InitializeOptions:InitializePrefixNames"]))
+                {
+                    await InitializePrefixNames();
+                }
+
                 //СВЯЗЬ ИМЁН С НАЦИЯМИ
                 if (Convert.ToBoolean(_configuration["InitializeOptions:InitializeNationsPersonalNames"]))
                 {
                     await InitializeNationsPersonalNames();
+                }
+
+                //СВЯЗЬ ФАМИЛИЙ С НАЦИЯМИ
+                if (Convert.ToBoolean(_configuration["InitializeOptions:InitializeNationsLastNames"]))
+                {
+                    await InitializeNationsLastNames();
+                }
+
+                //СВЯЗЬ ПРЕФИКСОВ С НАЦИЯМИ
+                if (Convert.ToBoolean(_configuration["InitializeOptions:InitializeNationsPrefixNames"]))
+                {
+                    await InitializeNationsPrefixNames();
                 }
 
                 //СТРАНЫ
@@ -664,507 +688,6 @@ public class Initialization : IInitialization
         catch (Exception ex)
         {
             throw new Exception("Initialization. InitializeNations. Ошибка: {0}", ex);
-        }
-    }
-
-    /// <summary>
-    /// Метод инициализации стран
-    /// </summary>
-    /// <returns></returns>
-    /// <exception cref="Exception"></exception>
-    public async Task<bool> InitializeCountries()
-    {
-        try
-        {
-            //Проверяем наличие страны "Альвраатская империя"
-            if (!_repository.Countries.Any(x => x.Name == "Альвраатская империя"))
-            {
-                //Создаём страну "Альвраатская империя"
-                Country country = new("system", "Альвраатская империя", 1, "#20D1DB", "Исландский");
-                _repository.Countries.Add(country);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие страны "Княжество Саорса"
-            if (!_repository.Countries.Any(x => x.Name == "Княжество Саорса"))
-            {
-                //Создаём страну "Княжество Саорса"
-                Country country = new("system", "Княжество Саорса", 2, "#808080", "Шведский");
-                _repository.Countries.Add(country);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие страны "Королевство Берген"
-            if (!_repository.Countries.Any(x => x.Name == "Королевство Берген"))
-            {
-                //Создаём страну "Королевство Берген"
-                Country country = new("system", "Королевство Берген", 3, "#00687C", "Финский");
-                _repository.Countries.Add(country);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие страны "Фесгарское княжество"
-            if (!_repository.Countries.Any(x => x.Name == "Фесгарское княжество"))
-            {
-                //Создаём страну "Фесгарское княжество"
-                Country country = new("system", "Фесгарское княжество", 4, "#B200FF", "Шотландский");
-                _repository.Countries.Add(country);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие страны "Сверденский каганат"
-            if (!_repository.Countries.Any(x => x.Name == "Сверденский каганат"))
-            {
-                //Создаём страну "Сверденский каганат"
-                Country country = new("system", "Сверденский каганат", 5, "#7F3B00", "Немецкий");
-                _repository.Countries.Add(country);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие страны "Ханство Тавалин"
-            if (!_repository.Countries.Any(x => x.Name == "Ханство Тавалин"))
-            {
-                //Создаём страну "Ханство Тавалин"
-                Country country = new("system", "Ханство Тавалин", 6, "#7F006D", "Венгерский");
-                _repository.Countries.Add(country);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие страны "Княжество Саргиб"
-            if (!_repository.Countries.Any(x => x.Name == "Княжество Саргиб"))
-            {
-                //Создаём страну "Княжество Саргиб"
-                Country country = new("system", "Княжество Саргиб", 7, "#007F0E", "Австрийский");
-                _repository.Countries.Add(country);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие страны "Царство Банду"
-            if (!_repository.Countries.Any(x => x.Name == "Царство Банду"))
-            {
-                //Создаём страну "Царство Банду"
-                Country country = new("system", "Царство Банду", 8, "#47617C", "Индийский");
-                _repository.Countries.Add(country);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие страны "Королевство Нордер"
-            if (!_repository.Countries.Any(x => x.Name == "Королевство Нордер"))
-            {
-                //Создаём страну "Королевство Нордер"
-                Country country = new("system", "Королевство Нордер", 9, "#D82929", "Датский");
-                _repository.Countries.Add(country);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие страны "Альтерское княжество"
-            if (!_repository.Countries.Any(x => x.Name == "Альтерское княжество"))
-            {
-                //Создаём страну "Альтерское княжество"
-                Country country = new("system", "Альтерское княжество", 10, "#4ACC39", "Французский");
-                _repository.Countries.Add(country);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие страны "Орлиадарская конведерация"
-            if (!_repository.Countries.Any(x => x.Name == "Орлиадарская конведерация"))
-            {
-                //Создаём страну "Орлиадарская конведерация"
-                Country country = new("system", "Орлиадарская конведерация", 11, "#AF9200", "Французский");
-                _repository.Countries.Add(country);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие страны "Королевство Удстир"
-            if (!_repository.Countries.Any(x => x.Name == "Королевство Удстир"))
-            {
-                //Создаём страну "Королевство Удстир"
-                Country country = new("system", "Королевство Удстир", 12, "#8CAF00", "Испанский");
-                _repository.Countries.Add(country);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие страны "Королевство Вервирунг"
-            if (!_repository.Countries.Any(x => x.Name == "Королевство Вервирунг"))
-            {
-                //Создаём страну "Королевство Вервирунг"
-                Country country = new("system", "Королевство Вервирунг", 13, "#7F1700", "Португальский");
-                _repository.Countries.Add(country);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие страны "Дестинский орден"
-            if (!_repository.Countries.Any(x => x.Name == "Дестинский орден"))
-            {
-                //Создаём страну "Дестинский орден"
-                Country country = new("system", "Дестинский орден", 14, "#2B7C55", "Испанский");
-                _repository.Countries.Add(country);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие страны "Вольный город Лийсет"
-            if (!_repository.Countries.Any(x => x.Name == "Вольный город Лийсет"))
-            {
-                //Создаём страну "Вольный город Лийсет"
-                Country country = new("system", "Вольный город Лийсет", 15, "#7B7F00", "Испанский");
-                _repository.Countries.Add(country);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие страны "Лисцийская империя"
-            if (!_repository.Countries.Any(x => x.Name == "Лисцийская империя"))
-            {
-                //Создаём страну "Лисцийская империя"
-                Country country = new("system", "Лисцийская империя", 16, "#7F002E", "Испанский");
-                _repository.Countries.Add(country);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие страны "Королевство Вальтир"
-            if (!_repository.Countries.Any(x => x.Name == "Королевство Вальтир"))
-            {
-                //Создаём страну "Королевство Вальтир"
-                Country country = new("system", "Королевство Вальтир", 17, "#B05BFF", "Швейарский");
-                _repository.Countries.Add(country);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие страны "Вассальное княжество Гратис"
-            if (!_repository.Countries.Any(x => x.Name == "Вассальное княжество Гратис"))
-            {
-                //Создаём страну "Вассальное княжество Гратис"
-                Country country = new("system", "Вассальное княжество Гратис", 18, "#005DFF", "Испанский");
-                _repository.Countries.Add(country);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие страны "Княжество Ректа"
-            if (!_repository.Countries.Any(x => x.Name == "Княжество Ректа"))
-            {
-                //Создаём страну "Княжество Ректа"
-                Country country = new("system", "Княжество Ректа", 19, "#487F00", "Македонский");
-                _repository.Countries.Add(country);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие страны "Волар"
-            if (!_repository.Countries.Any(x => x.Name == "Волар"))
-            {
-                //Создаём страну "Волар"
-                Country country = new("system", "Волар", 20, "#32217A", "Греческий");
-                _repository.Countries.Add(country);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие страны "Союз Иль-Ладро"
-            if (!_repository.Countries.Any(x => x.Name == "Союз Иль-Ладро"))
-            {
-                //Создаём страну "Союз Иль-Ладро"
-                Country country = new("system", "Союз Иль-Ладро", 21, "#35513B", "Итальянский");
-                _repository.Countries.Add(country);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие страны "Уния Ангуи"
-            if (!_repository.Countries.Any(x => x.Name == "Уния Ангуи"))
-            {
-                //Создаём страну "Уния Ангуи"
-                Country country = new("system", "Уния Ангуи", 22, "#BC3CB4", "Латынь");
-                _repository.Countries.Add(country);
-                await _repository.SaveChangesAsync();
-            }
-
-            return true;
-        }
-        catch (Exception ex)
-        {
-            throw new Exception("Initialization. InitializeCountries. Ошибка: {0}", ex);
-        }
-    }
-
-    /// <summary>
-    /// Метод инициализации регионов
-    /// </summary>
-    /// <returns></returns>
-    /// <exception cref="Exception"></exception>
-    public async Task<bool> InitializeRegions()
-    {
-        try
-        {
-            //Проверяем наличие региона "Восточный Зимний архипелаг"
-            if (!_repository.Regions.Any(x => x.Name == "Восточный Зимний архипелаг"))
-            {
-                //Добавляем регион
-                Region region = new("system", "Восточный Зимний архипелаг", 1, "#0004FF");
-                _repository.Regions.Add(region);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие региона "Южный Зимний архипелаг"
-            if (!_repository.Regions.Any(x => x.Name == "Южный Зимний архипелаг"))
-            {
-                //Добавляем регион
-                Region region = new("system", "Южный  Зимний архипелаг", 2, "#00FFFF");
-                _repository.Regions.Add(region);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие региона "Западный Зимний архипелаг"
-            if (!_repository.Regions.Any(x => x.Name == "Западный Зимний архипелаг"))
-            {
-                //Добавляем регион
-                Region region = new("system", "Западный Зимний архипелаг", 3, "#26FF00");
-                _repository.Regions.Add(region);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие региона "Северный Зимний архипелаг"
-            if (!_repository.Regions.Any(x => x.Name == "Северный Зимний архипелаг"))
-            {
-                //Добавляем регион
-                Region region = new("system", "Северный Зимний архипелаг", 4, "#FF0AB9");
-                _repository.Regions.Add(region);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие региона "Земли клана Дамхан"
-            if (!_repository.Regions.Any(x => x.Name == "Земли клана Дамхан"))
-            {
-                //Добавляем регион
-                Region region = new("system", "Земли клана Дамхан", 1, "#8C0275");
-                _repository.Regions.Add(region);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие региона "Земли клана Анлион"
-            if (!_repository.Regions.Any(x => x.Name == "Земли клана Анлион"))
-            {
-                //Добавляем регион
-                Region region = new("system", "Земли клана Анлион", 2, "#100089");
-                _repository.Regions.Add(region);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие региона "Земли клана Маиран"
-            if (!_repository.Regions.Any(x => x.Name == "Земли клана Маиран"))
-            {
-                //Добавляем регион
-                Region region = new("system", "Земли клана Маиран", 3, "#068700");
-                _repository.Regions.Add(region);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие региона "Земли клана Алаид"
-            if (!_repository.Regions.Any(x => x.Name == "Земли клана Алаид"))
-            {
-                //Добавляем регион
-                Region region = new("system", "Земли клана Алаид", 4, "#005684");
-                _repository.Regions.Add(region);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие региона "Земли клана Сеолт"
-            if (!_repository.Regions.Any(x => x.Name == "Земли клана Сеолт"))
-            {
-                //Добавляем регион
-                Region region = new("system", "Земли клана Сеолт", 5, "#658200");
-                _repository.Regions.Add(region);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие региона "Земли клана Гхоул"
-            if (!_repository.Regions.Any(x => x.Name == "Земли клана Гхоул"))
-            {
-                //Добавляем регион
-                Region region = new("system", "Земли клана Гхоул", 6, "#007F37");
-                _repository.Regions.Add(region);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие региона "Земли клана Фуил"
-            if (!_repository.Regions.Any(x => x.Name == "Земли клана Фуил"))
-            {
-                //Добавляем регион
-                Region region = new("system", "Земли клана Фуил", 7, "#7C002F");
-                _repository.Regions.Add(region);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие региона "Земли клана Ятаг"
-            if (!_repository.Regions.Any(x => x.Name == "Земли клана Ятаг"))
-            {
-                //Добавляем регион
-                Region region = new("system", "Земли клана Ятаг", 8, "#7A2400");
-                _repository.Regions.Add(region);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие региона "Земли клана Сеар"
-            if (!_repository.Regions.Any(x => x.Name == "Земли клана Сеар"))
-            {
-                //Добавляем регион
-                Region region = new("system", "Земли клана Сеар", 9, "#BC0000");
-                _repository.Regions.Add(region);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие региона "Западный зубец"
-            if (!_repository.Regions.Any(x => x.Name == "Западный зубец"))
-            {
-                //Добавляем регион
-                Region region = new("system", "Западный зубец", 1, "#F2DE00");
-                _repository.Regions.Add(region);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие региона "Светлый берег"
-            if (!_repository.Regions.Any(x => x.Name == "Светлый берег"))
-            {
-                //Добавляем регион
-                Region region = new("system", "Светлый берег", 2, "#28E5EF");
-                _repository.Regions.Add(region);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие региона "Центральный зубец"
-            if (!_repository.Regions.Any(x => x.Name == "Центральный зубец"))
-            {
-                //Добавляем регион
-                Region region = new("system", "Центральный зубец", 3, "#6568ED");
-                _repository.Regions.Add(region);
-                await _repository.SaveChangesAsync();
-            }
-
-            return true;
-        }
-        catch (Exception ex)
-        {
-            throw new Exception("Initialization. InitializeRegions. Ошибка: {0}", ex);
-        }
-    }
-
-    /// <summary>
-    /// Метод инициализации типов населённых пунктов
-    /// </summary>
-    /// <returns></returns>
-    /// <exception cref="Exception"></exception>
-    public async Task<bool> InitializeTypesSettlements()
-    {
-        try
-        {
-            //Проверяем наличие типа "Укрепление"
-            if (!_repository.TypesSettlements.Any(x => x.Name == "Укрепление"))
-            {
-                //Создаём тип "Укрепление"
-                TypeSettlement typeSettlement = new("system", "Укрепление", 3, 4);
-                _repository.TypesSettlements.Add(typeSettlement);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие типа "Маленький посёлок"
-            if (!_repository.TypesSettlements.Any(x => x.Name == "Маленький посёлок"))
-            {
-                //Создаём тип "Маленький посёлок"
-                TypeSettlement typeSettlement = new("system", "Маленький посёлок", 5, 7);
-                _repository.TypesSettlements.Add(typeSettlement);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие типа "Посёлок"
-            if (!_repository.TypesSettlements.Any(x => x.Name == "Посёлок"))
-            {
-                //Создаём тип "Посёлок"
-                TypeSettlement typeSettlement = new("system", "Посёлок", 8, 9);
-                _repository.TypesSettlements.Add(typeSettlement);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие типа "Замок"
-            if (!_repository.TypesSettlements.Any(x => x.Name == "Замок"))
-            {
-                //Создаём тип "Замок"
-                TypeSettlement typeSettlement = new("system", "Замок", 10, 11);
-                _repository.TypesSettlements.Add(typeSettlement);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие типа "Большой посёлок"
-            if (!_repository.TypesSettlements.Any(x => x.Name == "Большой посёлок"))
-            {
-                //Создаём тип "Большой посёлок"
-                TypeSettlement typeSettlement = new("system", "Большой посёлок", 12, 13);
-                _repository.TypesSettlements.Add(typeSettlement);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие типа "Маленький город"
-            if (!_repository.TypesSettlements.Any(x => x.Name == "Маленький город"))
-            {
-                //Создаём тип "Маленький город"
-                TypeSettlement typeSettlement = new("system", "Маленький город", 14, 16);
-                _repository.TypesSettlements.Add(typeSettlement);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие типа "Крепость"
-            if (!_repository.TypesSettlements.Any(x => x.Name == "Крепость"))
-            {
-                //Создаём тип "Крепость"
-                TypeSettlement typeSettlement = new("system", "Крепость", 17, 18);
-                _repository.TypesSettlements.Add(typeSettlement);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие типа "Город"
-            if (!_repository.TypesSettlements.Any(x => x.Name == "Город"))
-            {
-                //Создаём тип "Город"
-                TypeSettlement typeSettlement = new("system", "Город", 19, 20);
-                _repository.TypesSettlements.Add(typeSettlement);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие типа "Большой город"
-            if (!_repository.TypesSettlements.Any(x => x.Name == "Большой город"))
-            {
-                //Создаём тип "Большой город"
-                TypeSettlement typeSettlement = new("system", "Большой город", 21, 23);
-                _repository.TypesSettlements.Add(typeSettlement);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие типа "Цитадель"
-            if (!_repository.TypesSettlements.Any(x => x.Name == "Цитадель"))
-            {
-                //Создаём тип "Цитадель"
-                TypeSettlement typeSettlement = new("system", "Цитадель", 24, 25);
-                _repository.TypesSettlements.Add(typeSettlement);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие типа "Огромный город"
-            if (!_repository.TypesSettlements.Any(x => x.Name == "Огромный город"))
-            {
-                //Создаём тип "Огромный город"
-                TypeSettlement typeSettlement = new("system", "Огромный город", 26, 27);
-                _repository.TypesSettlements.Add(typeSettlement);
-                await _repository.SaveChangesAsync();
-            }
-
-            //Проверяем наличие типа "Столица"
-            if (!_repository.TypesSettlements.Any(x => x.Name == "Столица"))
-            {
-                //Создаём тип "Столица"
-                TypeSettlement typeSettlement = new("system", "Столица", 28, 30);
-                _repository.TypesSettlements.Add(typeSettlement);
-                await _repository.SaveChangesAsync();
-            }
-
-            return true;
-        }
-        catch (Exception ex)
-        {
-            throw new Exception("Initialization. InitializeTypesSettlements. Ошибка: {0}", ex);
         }
     }
 
@@ -6111,9 +5634,61 @@ public class Initialization : IInitialization
 
             return true;
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             throw new Exception("Initialization. InitializePersonalNames. Ошибка: {0}", ex);
+        }
+    }
+
+    /// <summary>
+    /// Метод инициализации фамилий
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public async Task<bool> InitializeLastNames()
+    {
+        try
+        {
+            //Проверяем наличие фамилии "Миркраниис"
+            if (!_repository.LastNames.Any(x => x.Name == "Миркраниис"))
+            {
+                //Создаём фамилию "Миркраниис"
+                LastName lastName = new("system", "Миркраниис");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Initialization. InitializeLastNames. Ошибка: {0}", ex);
+        }
+    }
+
+    /// <summary>
+    /// Метод инициализации префиксов
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public async Task<bool> InitializePrefixNames()
+    {
+        try
+        {
+            //Проверяем наличие префикса "из дома"
+            if (!_repository.PrefixNames.Any(x => x.Name == "из дома"))
+            {
+                //Создаём префикс "из дома"
+                PrefixName prefixName = new("system", "из дома");
+                _repository.PrefixNames.Add(prefixName);
+                await _repository.SaveChangesAsync();
+            }
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Initialization. InitializePrefixNames. Ошибка: {0}", ex);
         }
     }
 
@@ -17124,6 +16699,603 @@ public class Initialization : IInitialization
         catch (Exception ex)
         {
             throw new Exception("Initialization. InitializeNations. Ошибка: {0}", ex);
+        }
+    }
+
+    /// <summary>
+    /// Метод инициализации связи фамилий с нациями
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public async Task<bool> InitializeNationsLastNames()
+    {
+        try
+        {
+            //Проверяем наличие нации "Альв"
+            if (_repository.Nations.Any(x => x.Name == "Альв"))
+            {
+                //Получаем нацию "Альв"
+                Nation? nation = _repository.Nations.FirstOrDefault(x => x.Name == "Альв");
+
+                //Проверяем наличие нации "Альв"
+                if (nation != null)
+                {
+                    //Проверяем наличие фамилии "Миркраниис"
+                    if (_repository.LastNames.Any(x => x.Name == "Миркраниис"))
+                    {
+                        //Получаем фамилию "Миркраниис"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Миркраниис");
+
+                        //Проверяем наличие фамилии "Миркраниис"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Альв" с фамилией "Миркраниис"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Альв" с фамилией "Миркраниис"
+                                NationLastName nationLastName = new("system", 0.17, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+                }
+            }
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Initialization. InitializeNationsLastNames. Ошибка: {0}", ex);
+        }
+    }
+
+    /// <summary>
+    /// Метод инициализации связи префиксов с нациями
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public async Task<bool> InitializeNationsPrefixNames()
+    {
+        try
+        {
+            //Проверяем наличие нации "Альв"
+            if (_repository.Nations.Any(x => x.Name == "Альв"))
+            {
+                //Получаем нацию "Альв"
+                Nation? nation = _repository.Nations.FirstOrDefault(x => x.Name == "Альв");
+
+                //Проверяем наличие нации "Альв"
+                if (nation != null)
+                {
+                    //Проверяем наличие префикса "из дома"
+                    if (_repository.PrefixNames.Any(x => x.Name == "из дома"))
+                    {
+                        //Получаем префикс "из дома"
+                        PrefixName? prefixName = _repository.PrefixNames.FirstOrDefault(x => x.Name == "из дома");
+
+                        //Проверяем наличие префикса "из дома"
+                        if (prefixName != null)
+                        {
+                            //Проверяем наличие связи нации "Альв" с префиксом "из дома"
+                            if (!_repository.NationsPrefixNames.Any(x => x.Nation == nation && x.PrefixName == prefixName))
+                            {
+                                //Создаём связь нации "Альв" с префиксом "из дома"
+                                NationPrefixName nationsPrefixName = new("system", 0.17, nation, prefixName);
+                                _repository.NationsPrefixNames.Add(nationsPrefixName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+                }
+            }
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Initialization. InitializeNationsPrefixNames. Ошибка: {0}", ex);
+        }
+    }
+
+    /// <summary>
+    /// Метод инициализации стран
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public async Task<bool> InitializeCountries()
+    {
+        try
+        {
+            //Проверяем наличие страны "Альвраатская империя"
+            if (!_repository.Countries.Any(x => x.Name == "Альвраатская империя"))
+            {
+                //Создаём страну "Альвраатская империя"
+                Country country = new("system", "Альвраатская империя", 1, "#20D1DB", "Исландский");
+                _repository.Countries.Add(country);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие страны "Княжество Саорса"
+            if (!_repository.Countries.Any(x => x.Name == "Княжество Саорса"))
+            {
+                //Создаём страну "Княжество Саорса"
+                Country country = new("system", "Княжество Саорса", 2, "#808080", "Шведский");
+                _repository.Countries.Add(country);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие страны "Королевство Берген"
+            if (!_repository.Countries.Any(x => x.Name == "Королевство Берген"))
+            {
+                //Создаём страну "Королевство Берген"
+                Country country = new("system", "Королевство Берген", 3, "#00687C", "Финский");
+                _repository.Countries.Add(country);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие страны "Фесгарское княжество"
+            if (!_repository.Countries.Any(x => x.Name == "Фесгарское княжество"))
+            {
+                //Создаём страну "Фесгарское княжество"
+                Country country = new("system", "Фесгарское княжество", 4, "#B200FF", "Шотландский");
+                _repository.Countries.Add(country);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие страны "Сверденский каганат"
+            if (!_repository.Countries.Any(x => x.Name == "Сверденский каганат"))
+            {
+                //Создаём страну "Сверденский каганат"
+                Country country = new("system", "Сверденский каганат", 5, "#7F3B00", "Немецкий");
+                _repository.Countries.Add(country);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие страны "Ханство Тавалин"
+            if (!_repository.Countries.Any(x => x.Name == "Ханство Тавалин"))
+            {
+                //Создаём страну "Ханство Тавалин"
+                Country country = new("system", "Ханство Тавалин", 6, "#7F006D", "Венгерский");
+                _repository.Countries.Add(country);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие страны "Княжество Саргиб"
+            if (!_repository.Countries.Any(x => x.Name == "Княжество Саргиб"))
+            {
+                //Создаём страну "Княжество Саргиб"
+                Country country = new("system", "Княжество Саргиб", 7, "#007F0E", "Австрийский");
+                _repository.Countries.Add(country);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие страны "Царство Банду"
+            if (!_repository.Countries.Any(x => x.Name == "Царство Банду"))
+            {
+                //Создаём страну "Царство Банду"
+                Country country = new("system", "Царство Банду", 8, "#47617C", "Индийский");
+                _repository.Countries.Add(country);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие страны "Королевство Нордер"
+            if (!_repository.Countries.Any(x => x.Name == "Королевство Нордер"))
+            {
+                //Создаём страну "Королевство Нордер"
+                Country country = new("system", "Королевство Нордер", 9, "#D82929", "Датский");
+                _repository.Countries.Add(country);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие страны "Альтерское княжество"
+            if (!_repository.Countries.Any(x => x.Name == "Альтерское княжество"))
+            {
+                //Создаём страну "Альтерское княжество"
+                Country country = new("system", "Альтерское княжество", 10, "#4ACC39", "Французский");
+                _repository.Countries.Add(country);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие страны "Орлиадарская конведерация"
+            if (!_repository.Countries.Any(x => x.Name == "Орлиадарская конведерация"))
+            {
+                //Создаём страну "Орлиадарская конведерация"
+                Country country = new("system", "Орлиадарская конведерация", 11, "#AF9200", "Французский");
+                _repository.Countries.Add(country);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие страны "Королевство Удстир"
+            if (!_repository.Countries.Any(x => x.Name == "Королевство Удстир"))
+            {
+                //Создаём страну "Королевство Удстир"
+                Country country = new("system", "Королевство Удстир", 12, "#8CAF00", "Испанский");
+                _repository.Countries.Add(country);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие страны "Королевство Вервирунг"
+            if (!_repository.Countries.Any(x => x.Name == "Королевство Вервирунг"))
+            {
+                //Создаём страну "Королевство Вервирунг"
+                Country country = new("system", "Королевство Вервирунг", 13, "#7F1700", "Португальский");
+                _repository.Countries.Add(country);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие страны "Дестинский орден"
+            if (!_repository.Countries.Any(x => x.Name == "Дестинский орден"))
+            {
+                //Создаём страну "Дестинский орден"
+                Country country = new("system", "Дестинский орден", 14, "#2B7C55", "Испанский");
+                _repository.Countries.Add(country);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие страны "Вольный город Лийсет"
+            if (!_repository.Countries.Any(x => x.Name == "Вольный город Лийсет"))
+            {
+                //Создаём страну "Вольный город Лийсет"
+                Country country = new("system", "Вольный город Лийсет", 15, "#7B7F00", "Испанский");
+                _repository.Countries.Add(country);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие страны "Лисцийская империя"
+            if (!_repository.Countries.Any(x => x.Name == "Лисцийская империя"))
+            {
+                //Создаём страну "Лисцийская империя"
+                Country country = new("system", "Лисцийская империя", 16, "#7F002E", "Испанский");
+                _repository.Countries.Add(country);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие страны "Королевство Вальтир"
+            if (!_repository.Countries.Any(x => x.Name == "Королевство Вальтир"))
+            {
+                //Создаём страну "Королевство Вальтир"
+                Country country = new("system", "Королевство Вальтир", 17, "#B05BFF", "Швейарский");
+                _repository.Countries.Add(country);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие страны "Вассальное княжество Гратис"
+            if (!_repository.Countries.Any(x => x.Name == "Вассальное княжество Гратис"))
+            {
+                //Создаём страну "Вассальное княжество Гратис"
+                Country country = new("system", "Вассальное княжество Гратис", 18, "#005DFF", "Испанский");
+                _repository.Countries.Add(country);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие страны "Княжество Ректа"
+            if (!_repository.Countries.Any(x => x.Name == "Княжество Ректа"))
+            {
+                //Создаём страну "Княжество Ректа"
+                Country country = new("system", "Княжество Ректа", 19, "#487F00", "Македонский");
+                _repository.Countries.Add(country);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие страны "Волар"
+            if (!_repository.Countries.Any(x => x.Name == "Волар"))
+            {
+                //Создаём страну "Волар"
+                Country country = new("system", "Волар", 20, "#32217A", "Греческий");
+                _repository.Countries.Add(country);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие страны "Союз Иль-Ладро"
+            if (!_repository.Countries.Any(x => x.Name == "Союз Иль-Ладро"))
+            {
+                //Создаём страну "Союз Иль-Ладро"
+                Country country = new("system", "Союз Иль-Ладро", 21, "#35513B", "Итальянский");
+                _repository.Countries.Add(country);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие страны "Уния Ангуи"
+            if (!_repository.Countries.Any(x => x.Name == "Уния Ангуи"))
+            {
+                //Создаём страну "Уния Ангуи"
+                Country country = new("system", "Уния Ангуи", 22, "#BC3CB4", "Латынь");
+                _repository.Countries.Add(country);
+                await _repository.SaveChangesAsync();
+            }
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Initialization. InitializeCountries. Ошибка: {0}", ex);
+        }
+    }
+
+    /// <summary>
+    /// Метод инициализации регионов
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public async Task<bool> InitializeRegions()
+    {
+        try
+        {
+            //Проверяем наличие региона "Восточный Зимний архипелаг"
+            if (!_repository.Regions.Any(x => x.Name == "Восточный Зимний архипелаг"))
+            {
+                //Добавляем регион
+                Region region = new("system", "Восточный Зимний архипелаг", 1, "#0004FF");
+                _repository.Regions.Add(region);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие региона "Южный Зимний архипелаг"
+            if (!_repository.Regions.Any(x => x.Name == "Южный Зимний архипелаг"))
+            {
+                //Добавляем регион
+                Region region = new("system", "Южный  Зимний архипелаг", 2, "#00FFFF");
+                _repository.Regions.Add(region);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие региона "Западный Зимний архипелаг"
+            if (!_repository.Regions.Any(x => x.Name == "Западный Зимний архипелаг"))
+            {
+                //Добавляем регион
+                Region region = new("system", "Западный Зимний архипелаг", 3, "#26FF00");
+                _repository.Regions.Add(region);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие региона "Северный Зимний архипелаг"
+            if (!_repository.Regions.Any(x => x.Name == "Северный Зимний архипелаг"))
+            {
+                //Добавляем регион
+                Region region = new("system", "Северный Зимний архипелаг", 4, "#FF0AB9");
+                _repository.Regions.Add(region);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие региона "Земли клана Дамхан"
+            if (!_repository.Regions.Any(x => x.Name == "Земли клана Дамхан"))
+            {
+                //Добавляем регион
+                Region region = new("system", "Земли клана Дамхан", 1, "#8C0275");
+                _repository.Regions.Add(region);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие региона "Земли клана Анлион"
+            if (!_repository.Regions.Any(x => x.Name == "Земли клана Анлион"))
+            {
+                //Добавляем регион
+                Region region = new("system", "Земли клана Анлион", 2, "#100089");
+                _repository.Regions.Add(region);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие региона "Земли клана Маиран"
+            if (!_repository.Regions.Any(x => x.Name == "Земли клана Маиран"))
+            {
+                //Добавляем регион
+                Region region = new("system", "Земли клана Маиран", 3, "#068700");
+                _repository.Regions.Add(region);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие региона "Земли клана Алаид"
+            if (!_repository.Regions.Any(x => x.Name == "Земли клана Алаид"))
+            {
+                //Добавляем регион
+                Region region = new("system", "Земли клана Алаид", 4, "#005684");
+                _repository.Regions.Add(region);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие региона "Земли клана Сеолт"
+            if (!_repository.Regions.Any(x => x.Name == "Земли клана Сеолт"))
+            {
+                //Добавляем регион
+                Region region = new("system", "Земли клана Сеолт", 5, "#658200");
+                _repository.Regions.Add(region);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие региона "Земли клана Гхоул"
+            if (!_repository.Regions.Any(x => x.Name == "Земли клана Гхоул"))
+            {
+                //Добавляем регион
+                Region region = new("system", "Земли клана Гхоул", 6, "#007F37");
+                _repository.Regions.Add(region);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие региона "Земли клана Фуил"
+            if (!_repository.Regions.Any(x => x.Name == "Земли клана Фуил"))
+            {
+                //Добавляем регион
+                Region region = new("system", "Земли клана Фуил", 7, "#7C002F");
+                _repository.Regions.Add(region);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие региона "Земли клана Ятаг"
+            if (!_repository.Regions.Any(x => x.Name == "Земли клана Ятаг"))
+            {
+                //Добавляем регион
+                Region region = new("system", "Земли клана Ятаг", 8, "#7A2400");
+                _repository.Regions.Add(region);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие региона "Земли клана Сеар"
+            if (!_repository.Regions.Any(x => x.Name == "Земли клана Сеар"))
+            {
+                //Добавляем регион
+                Region region = new("system", "Земли клана Сеар", 9, "#BC0000");
+                _repository.Regions.Add(region);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие региона "Западный зубец"
+            if (!_repository.Regions.Any(x => x.Name == "Западный зубец"))
+            {
+                //Добавляем регион
+                Region region = new("system", "Западный зубец", 1, "#F2DE00");
+                _repository.Regions.Add(region);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие региона "Светлый берег"
+            if (!_repository.Regions.Any(x => x.Name == "Светлый берег"))
+            {
+                //Добавляем регион
+                Region region = new("system", "Светлый берег", 2, "#28E5EF");
+                _repository.Regions.Add(region);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие региона "Центральный зубец"
+            if (!_repository.Regions.Any(x => x.Name == "Центральный зубец"))
+            {
+                //Добавляем регион
+                Region region = new("system", "Центральный зубец", 3, "#6568ED");
+                _repository.Regions.Add(region);
+                await _repository.SaveChangesAsync();
+            }
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Initialization. InitializeRegions. Ошибка: {0}", ex);
+        }
+    }
+
+    /// <summary>
+    /// Метод инициализации типов населённых пунктов
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public async Task<bool> InitializeTypesSettlements()
+    {
+        try
+        {
+            //Проверяем наличие типа "Укрепление"
+            if (!_repository.TypesSettlements.Any(x => x.Name == "Укрепление"))
+            {
+                //Создаём тип "Укрепление"
+                TypeSettlement typeSettlement = new("system", "Укрепление", 3, 4);
+                _repository.TypesSettlements.Add(typeSettlement);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие типа "Маленький посёлок"
+            if (!_repository.TypesSettlements.Any(x => x.Name == "Маленький посёлок"))
+            {
+                //Создаём тип "Маленький посёлок"
+                TypeSettlement typeSettlement = new("system", "Маленький посёлок", 5, 7);
+                _repository.TypesSettlements.Add(typeSettlement);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие типа "Посёлок"
+            if (!_repository.TypesSettlements.Any(x => x.Name == "Посёлок"))
+            {
+                //Создаём тип "Посёлок"
+                TypeSettlement typeSettlement = new("system", "Посёлок", 8, 9);
+                _repository.TypesSettlements.Add(typeSettlement);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие типа "Замок"
+            if (!_repository.TypesSettlements.Any(x => x.Name == "Замок"))
+            {
+                //Создаём тип "Замок"
+                TypeSettlement typeSettlement = new("system", "Замок", 10, 11);
+                _repository.TypesSettlements.Add(typeSettlement);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие типа "Большой посёлок"
+            if (!_repository.TypesSettlements.Any(x => x.Name == "Большой посёлок"))
+            {
+                //Создаём тип "Большой посёлок"
+                TypeSettlement typeSettlement = new("system", "Большой посёлок", 12, 13);
+                _repository.TypesSettlements.Add(typeSettlement);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие типа "Маленький город"
+            if (!_repository.TypesSettlements.Any(x => x.Name == "Маленький город"))
+            {
+                //Создаём тип "Маленький город"
+                TypeSettlement typeSettlement = new("system", "Маленький город", 14, 16);
+                _repository.TypesSettlements.Add(typeSettlement);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие типа "Крепость"
+            if (!_repository.TypesSettlements.Any(x => x.Name == "Крепость"))
+            {
+                //Создаём тип "Крепость"
+                TypeSettlement typeSettlement = new("system", "Крепость", 17, 18);
+                _repository.TypesSettlements.Add(typeSettlement);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие типа "Город"
+            if (!_repository.TypesSettlements.Any(x => x.Name == "Город"))
+            {
+                //Создаём тип "Город"
+                TypeSettlement typeSettlement = new("system", "Город", 19, 20);
+                _repository.TypesSettlements.Add(typeSettlement);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие типа "Большой город"
+            if (!_repository.TypesSettlements.Any(x => x.Name == "Большой город"))
+            {
+                //Создаём тип "Большой город"
+                TypeSettlement typeSettlement = new("system", "Большой город", 21, 23);
+                _repository.TypesSettlements.Add(typeSettlement);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие типа "Цитадель"
+            if (!_repository.TypesSettlements.Any(x => x.Name == "Цитадель"))
+            {
+                //Создаём тип "Цитадель"
+                TypeSettlement typeSettlement = new("system", "Цитадель", 24, 25);
+                _repository.TypesSettlements.Add(typeSettlement);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие типа "Огромный город"
+            if (!_repository.TypesSettlements.Any(x => x.Name == "Огромный город"))
+            {
+                //Создаём тип "Огромный город"
+                TypeSettlement typeSettlement = new("system", "Огромный город", 26, 27);
+                _repository.TypesSettlements.Add(typeSettlement);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие типа "Столица"
+            if (!_repository.TypesSettlements.Any(x => x.Name == "Столица"))
+            {
+                //Создаём тип "Столица"
+                TypeSettlement typeSettlement = new("system", "Столица", 28, 30);
+                _repository.TypesSettlements.Add(typeSettlement);
+                await _repository.SaveChangesAsync();
+            }
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Initialization. InitializeTypesSettlements. Ошибка: {0}", ex);
         }
     }
 }
