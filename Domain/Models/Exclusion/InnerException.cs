@@ -12,4 +12,13 @@ public class InnerException: Exception
     public InnerException(string message): base(message)
     {
     }
+
+    /// <summary>
+    /// Конструктор с текстом ошибки и исключением
+    /// </summary>
+    /// <param name="message"></param>
+    /// <param name="exception"></param>
+    public InnerException(string message, Exception exception) : base(message, exception)
+    {
+    }
 }

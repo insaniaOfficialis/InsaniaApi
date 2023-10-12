@@ -5,6 +5,7 @@ using Domain.Models.Exclusion;
 using Domain.Models.Sociology.Names;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System.Linq;
 using System.Xml.Linq;
 
 namespace Services.Sociology.PersonalNames;
@@ -96,7 +97,7 @@ public class PersonalNames : IPersonalNames
             }
 
             //Генерируем фамилию
-            if(generateLastName)
+            if(generateLastName && nationId != null)
             {
                 //Формируем запрос к базе
                 _logger.LogInformation("PersonalNames. GetGeneratedName. Формируем запрос к базе за префиксами");
@@ -104,7 +105,7 @@ public class PersonalNames : IPersonalNames
                     .NationsPrefixNames
                     .Include(x => x.Nation)
                     .Include(x => x.PrefixName)
-                    .Where(x => x.DateDeleted == null && x.Nation.DateDeleted == null && x.PrefixName.DateDeleted == null);
+                    .Where(x => x.DateDeleted == null && x.Nation.DateDeleted == null && x.PrefixName.DateDeleted == null && x.NationId == nationId);
 
                 //Получаем данные с базы
                 _logger.LogInformation("PersonalNames. GetGeneratedName. Получаем данные за префиксами с базы");
@@ -120,7 +121,7 @@ public class PersonalNames : IPersonalNames
                     .NationsLastNames
                     .Include(x => x.Nation)
                     .Include(x => x.LastName)
-                    .Where(x => x.DateDeleted == null && x.Nation.DateDeleted == null && x.LastName.DateDeleted == null);
+                    .Where(x => x.DateDeleted == null && x.Nation.DateDeleted == null && x.LastName.DateDeleted == null && x.NationId == nationId);
 
                 //Получаем данные с базы
                 _logger.LogInformation("PersonalNames. GetGeneratedName. Получаем данные за фамилиями с базы");
@@ -163,6 +164,111 @@ public class PersonalNames : IPersonalNames
         {
             _logger.LogInformation("PersonalNames. GetGeneratedName. Системная ошибка: {0}", ex);
             return new GeneratedName(false, new BaseError(500, ex.Message));
+        }
+    }
+
+    /// <summary>
+    /// Метод получения начал имён
+    /// </summary>
+    /// <param name="nationId"></param>
+    /// <param name="gender"></param>
+    /// <returns></returns>
+    public async Task<BaseResponseList> GetListBeginningsNames(long? nationId, bool? gender)
+    {
+        try
+        {
+            //Объявляем переменные
+
+            //Формируем запрос к базе
+            _logger.LogInformation("PersonalNames. GetListBeginningsNames. Формируем запрос к базе");
+            var namesQuery = _repository
+                .NationsPersonalNames
+                .Include(x => x.Nation)
+                .Include(x => x.PersonalName)
+                .Where(x => x.DateDeleted == null && x.Nation.DateDeleted == null && x.PersonalName.DateDeleted == null);
+
+            //Если передали нацию
+            if (nationId != null)
+            {
+                _logger.LogInformation("PersonalNames. GetListBeginningsNames. Дополняем запрос фильтром по нации");
+                namesQuery = namesQuery.Where(x => x.NationId == nationId);
+            }
+
+            //Если передали пол
+            if (gender != null)
+            {
+                _logger.LogInformation("PersonalNames. GetListBeginningsNames. Дополняем запрос фильтром по полу");
+                namesQuery = namesQuery.Where(x => x.PersonalName.Gender == gender);
+            }
+
+            //Получаем данные с базы
+            _logger.LogInformation("PersonalNames. GetListBeginningsNames. Получаем данные с базы");
+            var namesBd = await namesQuery.ToListAsync();
+
+            //Преобразовываем модели
+            _logger.LogInformation("Races. GetListBeginningsNames. Преобразуем данные из базы в стандартный ответ");
+            var names = namesBd
+                .Select(x => new BaseResponseListItem(GetFirstSyllable(x.PersonalName.Name)))
+                .Where(x => !String.IsNullOrEmpty(x.Name))
+                .DistinctBy(x => x.Name)
+                .OrderBy(x => x.Name)
+                .ToList();
+
+            //Формируем ответ
+            _logger.LogInformation("PersonalNames. GetListBeginningsNames. Возвращаем результат");
+            return new BaseResponseList(true, null, names!);
+        }
+        //Обрабатываем внутренние исключения
+        catch (InnerException ex)
+        {
+            _logger.LogInformation("PersonalNames. GetListBeginningsNames. Внутренняя ошибка: {0}", ex);
+            return new BaseResponseList(false, new BaseError(400, ex.Message));
+        }
+        //Обрабатываем системные исключения
+        catch (Exception ex)
+        {
+            _logger.LogInformation("PersonalNames. GetListBeginningsNames. Системная ошибка: {0}", ex);
+            return new BaseResponseList(false, new BaseError(500, ex.Message));
+        }
+    }
+
+    /// <summary>
+    /// Метод получения первого слога
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public static string GetFirstSyllable(string? value)
+    {
+        try
+        {
+            //Объявляем переменные
+            string vowels = "аоуиэыяюеё"; //массив гласных букв
+            string firstSyllable = String.Empty; //первый слог
+
+            //Если строка указана
+            if (!String.IsNullOrEmpty(value))
+            {
+                //Проходим по каждому элементу строки
+                foreach (var symbol in value)
+                {
+                    //Если массив гласных содержит символ
+                    if (vowels.Contains(symbol))
+                    {
+                        //Возвращаем продстроку до этого элемента
+                        firstSyllable = value.Substring(0, value.IndexOf(symbol) + 1);
+                        break;
+                    }
+                }
+            }
+
+            //Возвращаем первый слог
+            return firstSyllable;
+        }
+        //Обрабатываем системные исключения
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message, ex);
         }
     }
 }

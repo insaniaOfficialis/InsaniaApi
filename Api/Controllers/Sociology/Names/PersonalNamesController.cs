@@ -40,4 +40,18 @@ public class PersonalNamesController : BaseController
         {
             return await _personalNames.GetGeneratedName(nationId, gender, generateLastName);
         });
+
+    /// <summary>
+    /// Метод получения начал имён
+    /// </summary>
+    /// <param name="nationId"></param>
+    /// <param name="gender"></param>
+    /// <returns></returns>
+    [HttpGet]
+    [Route("beginningsNames")]
+    public async Task<IActionResult> GetListBeginningsNames([FromQuery] long? nationId, [FromQuery] bool? gender)
+        => await GetAnswerAsync(async () =>
+        {
+            return await _personalNames.GetListBeginningsNames(nationId, gender);
+        });
 }

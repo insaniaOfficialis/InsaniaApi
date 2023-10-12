@@ -20,5 +20,6 @@ public class AppMappingProfile: Profile
         CreateMap<Country, CountriesResponseListItem>();
         CreateMap<Race, BaseResponseListItem>();
         CreateMap<Nation, BaseResponseListItem>();
+        CreateMap<PersonalName, BaseResponseListItem>();
     }
 }
