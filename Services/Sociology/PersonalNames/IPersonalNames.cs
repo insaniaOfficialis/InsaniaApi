@@ -24,4 +24,12 @@ public interface IPersonalNames
     /// <param name="gender"></param>
     /// <returns></returns>
     Task<BaseResponseList> GetListBeginningsNames(long? nationId, bool? gender);
+
+    /// <summary>
+    /// Метод получения окончания имён
+    /// </summary>
+    /// <param name="nationId"></param>
+    /// <param name="gender"></param>
+    /// <returns></returns>
+    Task<BaseResponseList> GetListEndingsNames(long? nationId, bool? gender);
 }

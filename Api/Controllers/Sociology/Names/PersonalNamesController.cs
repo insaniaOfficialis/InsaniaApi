@@ -35,7 +35,8 @@ public class PersonalNamesController : BaseController
     /// <returns></returns>
     [HttpGet]
     [Route("generate")]
-    public async Task<IActionResult> GetGeneratedName([FromQuery] long? nationId, [FromQuery] bool? gender, [FromQuery] bool generateLastName)
+    public async Task<IActionResult> GetGeneratedName([FromQuery] long? nationId, [FromQuery] bool? gender,
+        [FromQuery] bool generateLastName)
         => await GetAnswerAsync(async () =>
         {
             return await _personalNames.GetGeneratedName(nationId, gender, generateLastName);
@@ -48,10 +49,24 @@ public class PersonalNamesController : BaseController
     /// <param name="gender"></param>
     /// <returns></returns>
     [HttpGet]
-    [Route("beginningsNames")]
+    [Route("beginnings")]
     public async Task<IActionResult> GetListBeginningsNames([FromQuery] long? nationId, [FromQuery] bool? gender)
         => await GetAnswerAsync(async () =>
         {
             return await _personalNames.GetListBeginningsNames(nationId, gender);
+        });
+
+    /// <summary>
+    /// Метод получения окончаний имён
+    /// </summary>
+    /// <param name="nationId"></param>
+    /// <param name="gender"></param>
+    /// <returns></returns>
+    [HttpGet]
+    [Route("endings")]
+    public async Task<IActionResult> GetListEndingsNames([FromQuery] long? nationId, [FromQuery] bool? gender)
+        => await GetAnswerAsync(async () =>
+        {
+            return await _personalNames.GetListEndingsNames(nationId, gender);
         });
 }

@@ -238,7 +238,7 @@ public class PersonalNames : IPersonalNames
     /// <param name="value"></param>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public static string GetFirstSyllable(string? value)
+    public string GetFirstSyllable(string? value)
     {
         try
         {
@@ -269,6 +269,122 @@ public class PersonalNames : IPersonalNames
         catch (Exception ex)
         {
             throw new Exception(ex.Message, ex);
+        }
+    }
+
+    /// <summary>
+    /// Метод получения последнего слога
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public string GetLastSyllable(string? value)
+    {
+        try
+        {
+            //Объявляем переменные
+            string vowels = "аоуиэыяюеё"; //массив гласных букв
+            string lastSyllable = String.Empty; //последний слог
+
+            //Если строка указана
+            if (!string.IsNullOrEmpty(value))
+            {
+                //Получаем длину строки
+                int length = value.Length - 1;
+
+                //Проходим по каждому элементу строки с конца
+                for(int i = length; i > -1; i--)
+                {
+                    //Если массив гласных содержит символ
+                    if (vowels.Contains(value[i]))
+                    {
+                        //Получаем индекс последнего вхождения символа в строке
+                        var index = value.LastIndexOf(value[i]);
+
+                        //Получаем количество символов до конца
+                        var count = length - i + 1;
+                        
+                        //Получаем продстроку от этого элемента
+                        lastSyllable = value.Substring(index, count);
+                        
+                        //Выходим из цикла
+                        break;
+                    }
+                }
+            }
+
+            //Возвращаем последний слог
+            return lastSyllable;
+        }
+        //Обрабатываем системные исключения
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message, ex);
+        }
+    }
+
+    /// <summary>
+    /// Метод получения окончания имён
+    /// </summary>
+    /// <param name="nationId"></param>
+    /// <param name="gender"></param>
+    /// <returns></returns>
+    public async Task<BaseResponseList> GetListEndingsNames(long? nationId, bool? gender)
+    {
+        try
+        {
+            //Объявляем переменные
+
+            //Формируем запрос к базе
+            _logger.LogInformation("PersonalNames. GetListEndingsNames. Формируем запрос к базе");
+            var namesQuery = _repository
+                .NationsPersonalNames
+                .Include(x => x.Nation)
+                .Include(x => x.PersonalName)
+                .Where(x => x.DateDeleted == null && x.Nation.DateDeleted == null && x.PersonalName.DateDeleted == null);
+
+            //Если передали нацию
+            if (nationId != null)
+            {
+                _logger.LogInformation("PersonalNames. GetListEndingsNames. Дополняем запрос фильтром по нации");
+                namesQuery = namesQuery.Where(x => x.NationId == nationId);
+            }
+
+            //Если передали пол
+            if (gender != null)
+            {
+                _logger.LogInformation("PersonalNames. GetListEndingsNames. Дополняем запрос фильтром по полу");
+                namesQuery = namesQuery.Where(x => x.PersonalName.Gender == gender);
+            }
+
+            //Получаем данные с базы
+            _logger.LogInformation("PersonalNames. GetListEndingsNames. Получаем данные с базы");
+            var namesBd = await namesQuery.ToListAsync();
+
+            //Преобразовываем модели
+            _logger.LogInformation("Races. GetListEndingsNames. Преобразуем данные из базы в стандартный ответ");
+            var names = namesBd
+                .Select(x => new BaseResponseListItem(GetLastSyllable(x.PersonalName.Name)))
+                .Where(x => !string.IsNullOrEmpty(x.Name))
+                .DistinctBy(x => x.Name)
+                .OrderBy(x => x.Name)
+                .ToList();
+
+            //Формируем ответ
+            _logger.LogInformation("PersonalNames. GetListEndingsNames. Возвращаем результат");
+            return new BaseResponseList(true, null, names!);
+        }
+        //Обрабатываем внутренние исключения
+        catch (InnerException ex)
+        {
+            _logger.LogError("PersonalNames. GetListEndingsNames. Внутренняя ошибка: {0}", ex);
+            return new BaseResponseList(false, new BaseError(400, ex.Message));
+        }
+        //Обрабатываем системные исключения
+        catch (Exception ex)
+        {
+            _logger.LogError("PersonalNames. GetListEndingsNames. Системная ошибка: {0}", ex);
+            return new BaseResponseList(false, new BaseError(500, ex.Message));
         }
     }
 }
