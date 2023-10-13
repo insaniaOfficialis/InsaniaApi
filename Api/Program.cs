@@ -20,6 +20,7 @@ using Files = Services.Files.Files;
 using Services.Sociology.Races;
 using Services.Sociology.Nations;
 using Services.Sociology.PersonalNames;
+using Api.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +32,7 @@ var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(config["TokenOptions:
 var issuer = config["TokenOptions:Issuer"];
 var audience = config["TokenOptions:Audience"];
 
-//Добавляем параметры для контекста базы жанных
+//Добавляем параметры для контекста базы данных
 services.AddDbContext<ApplicationContext>(options =>
 {
     options.UseNpgsql(config.GetConnectionString("DefaultPostgresConnectionString"));
@@ -119,6 +120,9 @@ builder.Services.AddScoped<INations, Nations>();
 builder.Services.AddScoped<IPersonalNames, PersonalNames>();
 
 var app = builder.Build();
+
+//Добавляем параетры конвеера запросов
+app.UseMiddleware<LoggingMiddleware>();
 
 app.UseRouting();
 app.UseAuthentication();

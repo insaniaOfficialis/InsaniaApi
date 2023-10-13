@@ -1,4 +1,4 @@
-﻿using Domain.Models.Base;
+﻿using Api.Controllers.Base;
 using Microsoft.AspNetCore.Mvc;
 using Services.Identification.Authorization;
 
@@ -8,7 +8,7 @@ namespace Api.Controllers.Identification.Authorization;
 /// Контроллер авторизации
 /// </summary>
 [Route("api/v1/authorization")]
-public class AuthorizationController : Controller
+public class AuthorizationController : BaseController
 {
     private readonly ILogger<AuthorizationController> _logger; //логгер для записи логов
     private readonly IAuthorization _authorization; //сервис авторизации
@@ -18,7 +18,7 @@ public class AuthorizationController : Controller
     /// </summary>
     /// <param name="logger"></param>
     /// <param name="authorization"></param>
-    public AuthorizationController(ILogger<AuthorizationController> logger, IAuthorization authorization)
+    public AuthorizationController(ILogger<AuthorizationController> logger, IAuthorization authorization) : base(logger)
     {
         _logger = logger;
         _authorization = authorization;
@@ -32,44 +32,9 @@ public class AuthorizationController : Controller
     /// <returns></returns>
     [HttpGet]
     [Route("login")]
-    public async Task<IActionResult> Login([FromQuery] string? username, [FromQuery] string? password)
+    public async Task<IActionResult> Login([FromQuery] string? username, [FromQuery] string? password) => 
+        await GetAnswerAsync(async () =>
     {
-        try
-        {
-            var result = await _authorization.Login(username, password);
-
-            if (result.Success)
-            {
-                _logger.LogInformation("Login. Успешно");
-                return Ok(result);
-            }
-            else
-            {
-                if (result != null && result.Error != null)
-                {
-                    if (result.Error.Code != 500)
-                    {
-                        _logger.LogError("Login. Обработанная ошибка: " + result.Error);
-                        return StatusCode(result.Error.Code ?? 400, result);
-                    }
-                    else
-                    {
-                        _logger.LogError("Login. Необработанная ошибка: " + result.Error);
-                        return StatusCode(result.Error.Code ?? 500, result);
-                    }
-                }
-                else
-                {
-                    _logger.LogError("Login. Непредвиденная ошибка");
-                    BaseResponse response = new(false, new BaseError(500, "Непредвиденная ошибка"));
-                    return StatusCode(500, response);
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError("Login. Необработанная ошибка: " + ex.Message);
-            return StatusCode(500, new BaseResponse(false, new BaseError(500, ex.Message)));
-        }
-    }
+        return await _authorization.Login(username, password);
+    });
 }

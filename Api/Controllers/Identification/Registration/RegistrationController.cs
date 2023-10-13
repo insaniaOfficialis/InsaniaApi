@@ -1,4 +1,4 @@
-﻿using Domain.Models.Base;
+﻿using Api.Controllers.Base;
 using Domain.Models.Identification.Registration.Request;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +11,7 @@ namespace Api.Controllers.Identification.Registration;
 /// </summary>
 [Authorize]
 [Route("api/v1/registration")]
-public class RegistrationController: Controller
+public class RegistrationController: BaseController
 {
     private readonly ILogger<RegistrationController> _logger; //логгер для записи логов
     private readonly IRegistration _registration; //сервис регистрации
@@ -21,7 +21,7 @@ public class RegistrationController: Controller
     /// </summary>
     /// <param name="logger"></param>
     /// <param name="registration"></param>
-    public RegistrationController(ILogger<RegistrationController> logger, IRegistration registration)
+    public RegistrationController(ILogger<RegistrationController> logger, IRegistration registration) : base(logger)
     {
         _logger = logger;
         _registration = registration;
@@ -34,44 +34,8 @@ public class RegistrationController: Controller
     /// <returns></returns>
     [HttpPost]
     [Route("add")]
-    public async Task<IActionResult> AddUser([FromBody] AddUserRequest? request)
-    {
-        try
+    public async Task<IActionResult> AddUser([FromBody] AddUserRequest? request) => await GetAnswerAsync(async () =>
         {
-            var result = await _registration.AddUser(request);
-
-            if (result.Success)
-            {
-                _logger.LogInformation("AddUser. Успешно");
-                return Ok(result);
-            }
-            else
-            {
-                if (result != null && result.Error != null)
-                {
-                    if (result.Error.Code != 500)
-                    {
-                        _logger.LogError("AddUser. Обработанная ошибка: " + result.Error);
-                        return StatusCode(result.Error.Code ?? 400, result);
-                    }
-                    else
-                    {
-                        _logger.LogError("AddUser. Необработанная ошибка: " + result.Error);
-                        return StatusCode(result.Error.Code ?? 500, result);
-                    }
-                }
-                else
-                {
-                    _logger.LogError("AddUser. Непредвиденная ошибка");
-                    BaseResponse response = new(false, new BaseError(500, "Непредвиденная ошибка"));
-                    return StatusCode(500, response);
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError("AddUser. Необработанная ошибка: " + ex.Message);
-            return StatusCode(500, new BaseResponse(false, new BaseError(500, ex.Message)));
-        }
-    }
+            return await _registration.AddUser(request);
+        });
 }

@@ -3,6 +3,7 @@ using System;
 using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20231013121248_AddLog_1")]
+    partial class AddLog_1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -222,16 +225,6 @@ namespace Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<string>("DataIn")
-                        .HasColumnType("text")
-                        .HasColumnName("data_in")
-                        .HasComment("Данные на вход");
-
-                    b.Property<string>("DataOut")
-                        .HasColumnType("text")
-                        .HasColumnName("data_out")
-                        .HasComment("Данные на выход");
-
                     b.Property<DateTime>("DateCreate")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("date_create")
@@ -244,7 +237,7 @@ namespace Data.Migrations
 
                     b.Property<DateTime?>("DateEnd")
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("date_end")
+                        .HasColumnName("dateEnd")
                         .HasComment("Дата окончания");
 
                     b.Property<DateTime>("DateStart")
@@ -257,6 +250,11 @@ namespace Data.Migrations
                         .HasColumnName("date_update")
                         .HasComment("Дата обновления");
 
+                    b.Property<string>("In")
+                        .HasColumnType("text")
+                        .HasColumnName("in")
+                        .HasComment("Данные на вход");
+
                     b.Property<bool>("IsSystem")
                         .HasColumnType("boolean")
                         .HasColumnName("is_system")
@@ -267,6 +265,11 @@ namespace Data.Migrations
                         .HasColumnType("text")
                         .HasColumnName("method")
                         .HasComment("Наименование вызываемого метода");
+
+                    b.Property<string>("Out")
+                        .HasColumnType("text")
+                        .HasColumnName("out")
+                        .HasComment("Данные на выход");
 
                     b.Property<bool>("Success")
                         .HasColumnType("boolean")

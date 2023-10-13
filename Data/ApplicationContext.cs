@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using File = Domain.Entities.General.File.File;
 using Domain.Entities.Sociology;
 using Domain.Entities.Geography;
+using Domain.Entities.General.Log;
 
 namespace Data;
 
@@ -17,6 +18,7 @@ public class ApplicationContext : IdentityDbContext<User, Role, long, IdentityUs
     public DbSet<File> Files { get; set; } //файлы
     public DbSet<FileUser> FilesUsers { get; set; } //связь файлов с пользователями
     public DbSet<Parametr> Parametrs { get; set; } //параметры
+    public DbSet<Log> Logs { get; set; } //логи
     public DbSet<Country> Countries { get; set; } //страны
     public DbSet<Region> Regions { get; set; } //регионы
     public DbSet<Race> Races { get; set; } //расы

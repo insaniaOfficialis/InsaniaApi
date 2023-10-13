@@ -1,4 +1,4 @@
-﻿using Domain.Models.Base;
+﻿using Api.Controllers.Base;
 using Domain.Models.Identification.Roles.Request;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +11,7 @@ namespace Api.Controllers.Identification.Roles;
 /// </summary>
 [Authorize]
 [Route("api/v1/roles")]
-public class RolesController : Controller
+public class RolesController : BaseController
 {
     private readonly ILogger<RolesController> _logger; //логгер для записи логов
     private readonly IRoles _roles; //сервис ролей
@@ -21,7 +21,7 @@ public class RolesController : Controller
     /// </summary>
     /// <param name="logger"></param>
     /// <param name="roles"></param>
-    public RolesController(ILogger<RolesController> logger, IRoles roles)
+    public RolesController(ILogger<RolesController> logger, IRoles roles) : base(logger)
     {
         _logger = logger;
         _roles = roles;
@@ -34,46 +34,10 @@ public class RolesController : Controller
     /// <returns></returns>
     [HttpPost]
     [Route("add")]
-    public async Task<IActionResult> AddRole([FromBody] AddRoleRequest? request)
+    public async Task<IActionResult> AddRole([FromBody] AddRoleRequest? request) => await GetAnswerAsync(async () =>
     {
-        try
-        {
-            var result = await _roles.AddRole(request);
-
-            if (result.Success)
-            {
-                _logger.LogInformation("AddRole. Успешно");
-                return Ok(result);
-            }
-            else
-            {
-                if (result != null && result.Error != null)
-                {
-                    if (result.Error.Code != 500)
-                    {
-                        _logger.LogError("AddRole. Обработанная ошибка: " + result.Error);
-                        return StatusCode(result.Error.Code ?? 400, result);
-                    }
-                    else
-                    {
-                        _logger.LogError("AddRole. Необработанная ошибка: " + result.Error);
-                        return StatusCode(result.Error.Code ?? 500, result);
-                    }
-                }
-                else
-                {
-                    _logger.LogError("AddRole. Непредвиденная ошибка");
-                    BaseResponse response = new(false, new BaseError(500, "Непредвиденная ошибка"));
-                    return StatusCode(500, response);
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError("AddRole. Необработанная ошибка: " + ex.Message);
-            return StatusCode(500, new BaseResponse(false, new BaseError(500, ex.Message)));
-        }
-    }
+        return await _roles.AddRole(request);
+    });
 
     /// <summary>
     /// Метод получения списка ролей
@@ -81,45 +45,8 @@ public class RolesController : Controller
     /// <returns></returns>
     [HttpGet]
     [Route("list")]
-    public async Task<IActionResult> GetRoles()
+    public async Task<IActionResult> GetRoles() => await GetAnswerAsync(async () =>
     {
-        try
-        {
-            var result = await _roles.GetRoles();
-
-            if (result.Success)
-            {
-                _logger.LogInformation("GetRoles. Успешно");
-                return Ok(result);
-            }
-            else
-            {
-                if (result != null && result.Error != null)
-                {
-                    if (result.Error.Code != 500)
-                    {
-                        _logger.LogError("GetRoles. Обработанная ошибка: " + result.Error);
-                        return StatusCode(result.Error.Code ?? 400, result);
-                    }
-                    else
-                    {
-                        _logger.LogError("GetRoles. Необработанная ошибка: " + result.Error);
-                        return StatusCode(result.Error.Code ?? 500, result);
-                    }
-                }
-                else
-                {
-                    _logger.LogError("GetRoles. Непредвиденная ошибка");
-                    BaseResponse response = new(false, new BaseError(500, "Непредвиденная ошибка"));
-                    return StatusCode(500, response);
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError("GetRoles. Необработанная ошибка: " + ex.Message);
-            return StatusCode(500, new BaseResponse(false, new BaseError(500, ex.Message)));
-
-        }
-    }
+        return await _roles.GetRoles();
+    });
 }

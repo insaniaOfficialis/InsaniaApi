@@ -9,7 +9,7 @@ namespace Domain.Entities.General.System;
 /// </summary>
 [Table("dir_parameters")]
 [Comment("Параметры")]
-public class Parametr: Directory
+public class Parametr : Directory
 {
     /// <summary>
     /// Значение
