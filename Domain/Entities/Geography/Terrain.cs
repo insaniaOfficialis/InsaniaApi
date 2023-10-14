@@ -12,6 +12,13 @@ namespace Domain.Entities.Geography;
 public class Terrain : Directory
 {
     /// <summary>
+    /// Цвет на карте
+    /// </summary>
+    [Column("color")]
+    [Comment("Цвет на карте")]
+    public string Color { get; private set; }
+
+    /// <summary>
     /// Пустой конструктор сущности рельефа
     /// </summary>
     public Terrain() : base()
@@ -24,8 +31,10 @@ public class Terrain : Directory
     /// <param name="id"></param>
     /// <param name="user"></param>
     /// <param name="name"></param>
-    public Terrain(long id, string user, string name) : base(id, user, name)
+    /// <param name="color"></param>
+    public Terrain(long id, string user, string name, string color) : base(id, user, name)
     {
+        Color = color;
     }
 
     /// <summary>
@@ -33,7 +42,18 @@ public class Terrain : Directory
     /// </summary>
     /// <param name="user"></param>
     /// <param name="name"></param>
-    public Terrain(string user, string name) : base(user, name)
+    /// <param name="color"></param>
+    public Terrain(string user, string name, string color) : base(user, name)
     {
+        Color = color;
+    }
+
+    /// <summary>
+    /// Метод записи цвета
+    /// </summary>
+    /// <param name="color"></param>
+    public void SetColor(string color)
+    {
+        Color = color;
     }
 }

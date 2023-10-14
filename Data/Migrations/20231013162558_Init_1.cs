@@ -18,6 +18,7 @@ namespace Data.Migrations
                 {
                     id = table.Column<long>(type: "bigint", nullable: false, comment: "Первичный ключ таблицы")
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    color = table.Column<string>(type: "text", nullable: false, comment: "Цвет на карте"),
                     date_create = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, comment: "Дата создания"),
                     user_create = table.Column<string>(type: "text", nullable: false, comment: "Пользователь, создавший"),
                     date_update = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, comment: "Дата обновления"),
@@ -102,7 +103,6 @@ namespace Data.Migrations
                 {
                     id = table.Column<long>(type: "bigint", nullable: false, comment: "Первичный ключ таблицы")
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    gender = table.Column<bool>(type: "boolean", nullable: false, comment: "Пол (истина - мужской/ложь - женский)"),
                     date_create = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, comment: "Дата создания"),
                     user_create = table.Column<string>(type: "text", nullable: false, comment: "Пользователь, создавший"),
                     date_update = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, comment: "Дата обновления"),
@@ -227,6 +227,7 @@ namespace Data.Migrations
                 {
                     id = table.Column<long>(type: "bigint", nullable: false, comment: "Первичный ключ таблицы")
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    color = table.Column<string>(type: "text", nullable: false, comment: "Цвет на карте"),
                     date_create = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, comment: "Дата создания"),
                     user_create = table.Column<string>(type: "text", nullable: false, comment: "Пользователь, создавший"),
                     date_update = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, comment: "Дата обновления"),
@@ -282,6 +283,32 @@ namespace Data.Migrations
                     table.PrimaryKey("PK_dir_types_settlements", x => x.id);
                 },
                 comment: "Типы населённых пунктов");
+
+            migrationBuilder.CreateTable(
+                name: "re_logs",
+                columns: table => new
+                {
+                    id = table.Column<long>(type: "bigint", nullable: false, comment: "Первичный ключ таблицы")
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    method = table.Column<string>(type: "text", nullable: false, comment: "Наименование вызываемого метода"),
+                    type = table.Column<string>(type: "text", nullable: false, comment: "Тип вызываемого метода"),
+                    success = table.Column<bool>(type: "boolean", nullable: false, comment: "Признак успешного выполнения"),
+                    date_start = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, comment: "Дата начала"),
+                    date_end = table.Column<DateTime>(type: "timestamp with time zone", nullable: true, comment: "Дата окончания"),
+                    data_in = table.Column<string>(type: "text", nullable: true, comment: "Данные на вход"),
+                    data_out = table.Column<string>(type: "text", nullable: true, comment: "Данные на выход"),
+                    date_create = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, comment: "Дата создания"),
+                    user_create = table.Column<string>(type: "text", nullable: false, comment: "Пользователь, создавший"),
+                    date_update = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, comment: "Дата обновления"),
+                    user_update = table.Column<string>(type: "text", nullable: false, comment: "Пользователь, обновивший"),
+                    date_deleted = table.Column<DateTime>(type: "timestamp with time zone", nullable: true, comment: "Дата удаления"),
+                    is_system = table.Column<bool>(type: "boolean", nullable: false, comment: "Признак системной записи")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_re_logs", x => x.id);
+                },
+                comment: "Логи");
 
             migrationBuilder.CreateTable(
                 name: "sys_roles",
@@ -530,6 +557,39 @@ namespace Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 },
                 comment: "Связь наций с именами");
+
+            migrationBuilder.CreateTable(
+                name: "un_nations_prefix_names",
+                columns: table => new
+                {
+                    id = table.Column<long>(type: "bigint", nullable: false, comment: "Первичный ключ таблицы")
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    probability = table.Column<double>(type: "double precision", nullable: false, comment: "Вероятность выпадения"),
+                    nation_id = table.Column<long>(type: "bigint", nullable: false, comment: "Ссылка на нацию"),
+                    prefix_name_id = table.Column<long>(type: "bigint", nullable: false, comment: "Ссылка на префикс имени"),
+                    date_create = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, comment: "Дата создания"),
+                    user_create = table.Column<string>(type: "text", nullable: false, comment: "Пользователь, создавший"),
+                    date_update = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, comment: "Дата обновления"),
+                    user_update = table.Column<string>(type: "text", nullable: false, comment: "Пользователь, обновивший"),
+                    date_deleted = table.Column<DateTime>(type: "timestamp with time zone", nullable: true, comment: "Дата удаления")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_un_nations_prefix_names", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_un_nations_prefix_names_dir_nations_nation_id",
+                        column: x => x.nation_id,
+                        principalTable: "dir_nations",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_un_nations_prefix_names_dir_prefixes_name_prefix_name_id",
+                        column: x => x.prefix_name_id,
+                        principalTable: "dir_prefixes_name",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                },
+                comment: "Связь наций с префиксами имён");
 
             migrationBuilder.CreateTable(
                 name: "dir_areas",
@@ -855,6 +915,16 @@ namespace Data.Migrations
                 column: "personal_name_id");
 
             migrationBuilder.CreateIndex(
+                name: "IX_un_nations_prefix_names_nation_id",
+                table: "un_nations_prefix_names",
+                column: "nation_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_un_nations_prefix_names_prefix_name_id",
+                table: "un_nations_prefix_names",
+                column: "prefix_name_id");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_un_terrains_areas_area_id",
                 table: "un_terrains_areas",
                 column: "area_id");
@@ -882,7 +952,7 @@ namespace Data.Migrations
                 name: "dir_parameters");
 
             migrationBuilder.DropTable(
-                name: "dir_prefixes_name");
+                name: "re_logs");
 
             migrationBuilder.DropTable(
                 name: "re_population_areas");
@@ -906,6 +976,9 @@ namespace Data.Migrations
                 name: "un_nations_personal_names");
 
             migrationBuilder.DropTable(
+                name: "un_nations_prefix_names");
+
+            migrationBuilder.DropTable(
                 name: "un_terrains_areas");
 
             migrationBuilder.DropTable(
@@ -921,10 +994,13 @@ namespace Data.Migrations
                 name: "dir_last_names");
 
             migrationBuilder.DropTable(
+                name: "dir_personal_names");
+
+            migrationBuilder.DropTable(
                 name: "dir_nations");
 
             migrationBuilder.DropTable(
-                name: "dir_personal_names");
+                name: "dir_prefixes_name");
 
             migrationBuilder.DropTable(
                 name: "dir_terrains");

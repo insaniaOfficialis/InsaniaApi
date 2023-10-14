@@ -214,15 +214,6 @@ public class Initialization : IInitialization
     {
         try
         {
-            //Проверяем наличие параметра цвета чисел на карте
-            if (!_repository.Parametrs.Any(x => x.Name == "Цвет чисел на карте"))
-            {
-                //Создаём параметр для цвета чисел на карте
-                Parametr parametr = new("system", "Цвет чисел на карте", "#7E0000");
-                _repository.Parametrs.Add(parametr);
-                await _repository.SaveChangesAsync();
-            }
-
             //Проверяем наличие параметра шрифт чисел на карте
             if (!_repository.Parametrs.Any(x => x.Name == "Шрифт чисел на карте"))
             {
@@ -255,6 +246,24 @@ public class Initialization : IInitialization
             {
                 //Создаём параметр для размера чисел областей на карте
                 Parametr parametr = new("system", "Размер чисел областей на карте", "10");
+                _repository.Parametrs.Add(parametr);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие параметра цвета чисел на карте
+            if (!_repository.Parametrs.Any(x => x.Name == "Цвет чисел на карте"))
+            {
+                //Создаём параметр для цвета чисел на карте
+                Parametr parametr = new("system", "Цвет чисел на карте", "#7E0000");
+                _repository.Parametrs.Add(parametr);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие параметра цвета границ регионов на карте
+            if (!_repository.Parametrs.Any(x => x.Name == "Цвет границ регионов на карте"))
+            {
+                //Создаём параметр для цвета границ регионов на карте
+                Parametr parametr = new("system", "Цвет границ регионов на карте", "#363636");
                 _repository.Parametrs.Add(parametr);
                 await _repository.SaveChangesAsync();
             }
@@ -324,7 +333,7 @@ public class Initialization : IInitialization
             if (!_repository.Climates.Any(x => x.Name == "Полярный"))
             {
                 //Создаём климат "Полярный"
-                Climate climate = new("system", "Полярный");
+                Climate climate = new("system", "Полярный", "#0021A5");
                 _repository.Climates.Add(climate);
                 await _repository.SaveChangesAsync();
             }
@@ -333,7 +342,7 @@ public class Initialization : IInitialization
             if (!_repository.Climates.Any(x => x.Name == "Субполярный"))
             {
                 //Создаём климат "Субполярный"
-                Climate climate = new("system", "Субполярный");
+                Climate climate = new("system", "Субполярный", "#008FA5");
                 _repository.Climates.Add(climate);
                 await _repository.SaveChangesAsync();
             }
@@ -342,7 +351,7 @@ public class Initialization : IInitialization
             if (!_repository.Climates.Any(x => x.Name == "Умеренный"))
             {
                 //Создаём климат "Умеренный"
-                Climate climate = new("system", "Умеренный");
+                Climate climate = new("system", "Умеренный", "#00A346");
                 _repository.Climates.Add(climate);
                 await _repository.SaveChangesAsync();
             }
@@ -351,7 +360,7 @@ public class Initialization : IInitialization
             if (!_repository.Climates.Any(x => x.Name == "Субтропический"))
             {
                 //Создаём климат "Субтропический"
-                Climate climate = new("system", "Субтропический");
+                Climate climate = new("system", "Субтропический", "#65A000");
                 _repository.Climates.Add(climate);
                 await _repository.SaveChangesAsync();
             }
@@ -360,7 +369,7 @@ public class Initialization : IInitialization
             if (!_repository.Climates.Any(x => x.Name == "Тропический"))
             {
                 //Создаём климат "Тропический"
-                Climate climate = new("system", "Тропический");
+                Climate climate = new("system", "Тропический", "#A09500");
                 _repository.Climates.Add(climate);
                 await _repository.SaveChangesAsync();
             }
@@ -369,7 +378,7 @@ public class Initialization : IInitialization
             if (!_repository.Climates.Any(x => x.Name == "Субэкваториальный"))
             {
                 //Создаём климат "Субэкваториальный"
-                Climate climate = new("system", "Субэкваториальный");
+                Climate climate = new("system", "Субэкваториальный", "#9E5C00");
                 _repository.Climates.Add(climate);
                 await _repository.SaveChangesAsync();
             }
@@ -378,7 +387,7 @@ public class Initialization : IInitialization
             if (!_repository.Climates.Any(x => x.Name == "Экваториальный"))
             {
                 //Создаём климат "Экваториальный"
-                Climate climate = new("system", "Экваториальный");
+                Climate climate = new("system", "Экваториальный", "#9E0A00");
                 _repository.Climates.Add(climate);
                 await _repository.SaveChangesAsync();
             }
@@ -404,7 +413,7 @@ public class Initialization : IInitialization
             if (!_repository.Terrains.Any(x => x.Name == "Горный"))
             {
                 //Создаём рельеф "Горный"
-                Terrain terrain = new("system", "Горный");
+                Terrain terrain = new("system", "Горный", "#512C00");
                 _repository.Terrains.Add(terrain);
                 await _repository.SaveChangesAsync();
             }
@@ -413,7 +422,7 @@ public class Initialization : IInitialization
             if (!_repository.Terrains.Any(x => x.Name == "Холмистый"))
             {
                 //Создаём рельеф "Холмистый"
-                Terrain terrain = new("system", "Холмистый");
+                Terrain terrain = new("system", "Холмистый", "#4C3C17");
                 _repository.Terrains.Add(terrain);
                 await _repository.SaveChangesAsync();
             }
@@ -422,7 +431,7 @@ public class Initialization : IInitialization
             if (!_repository.Terrains.Any(x => x.Name == "Лесистый"))
             {
                 //Создаём рельеф "Лесистый"
-                Terrain terrain = new("system", "Лесистый");
+                Terrain terrain = new("system", "Лесистый", "#014900");
                 _repository.Terrains.Add(terrain);
                 await _repository.SaveChangesAsync();
             }
@@ -431,7 +440,7 @@ public class Initialization : IInitialization
             if (!_repository.Terrains.Any(x => x.Name == "Равнинный"))
             {
                 //Создаём рельеф "Равнинный"
-                Terrain terrain = new("system", "Равнинный");
+                Terrain terrain = new("system", "Равнинный", "#424700");
                 _repository.Terrains.Add(terrain);
                 await _repository.SaveChangesAsync();
             }

@@ -378,6 +378,12 @@ namespace Data.Migrations
                         .HasColumnName("alias")
                         .HasComment("Английское наименование");
 
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("color")
+                        .HasComment("Цвет на карте");
+
                     b.Property<DateTime>("DateCreate")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("date_create")
@@ -575,6 +581,12 @@ namespace Data.Migrations
                         .HasColumnName("alias")
                         .HasComment("Английское наименование");
 
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("color")
+                        .HasComment("Цвет на карте");
+
                     b.Property<DateTime>("DateCreate")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("date_create")
@@ -734,6 +746,122 @@ namespace Data.Migrations
                     b.ToTable("dir_types_geographical_objects", t =>
                         {
                             t.HasComment("Типы географических объектов");
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Entities.Identification.AccessRight", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id")
+                        .HasComment("Первичный ключ таблицы");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Alias")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("alias")
+                        .HasComment("Английское наименование");
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_create")
+                        .HasComment("Дата создания");
+
+                    b.Property<DateTime?>("DateDeleted")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_deleted")
+                        .HasComment("Дата удаления");
+
+                    b.Property<DateTime>("DateUpdate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_update")
+                        .HasComment("Дата обновления");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("name")
+                        .HasComment("Наименование");
+
+                    b.Property<string>("UserCreate")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("user_create")
+                        .HasComment("Пользователь, создавший");
+
+                    b.Property<string>("UserUpdate")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("user_update")
+                        .HasComment("Пользователь, обновивший");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("dir_access_rights", t =>
+                        {
+                            t.HasComment("Права доступа");
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Entities.Identification.RoleAcccessRight", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id")
+                        .HasComment("Первичный ключ таблицы");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("AccessRightId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("access_right_id")
+                        .HasComment("Ссылка на право доступа");
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_create")
+                        .HasComment("Дата создания");
+
+                    b.Property<DateTime?>("DateDeleted")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_deleted")
+                        .HasComment("Дата удаления");
+
+                    b.Property<DateTime>("DateUpdate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_update")
+                        .HasComment("Дата обновления");
+
+                    b.Property<long>("RoleId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("role_id")
+                        .HasComment("Ссылка на роль");
+
+                    b.Property<string>("UserCreate")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("user_create")
+                        .HasComment("Пользователь, создавший");
+
+                    b.Property<string>("UserUpdate")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("user_update")
+                        .HasComment("Пользователь, обновивший");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccessRightId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("un_roles_access_rights", t =>
+                        {
+                            t.HasComment("Связь ролей с правами доступа");
                         });
                 });
 
@@ -2134,6 +2262,25 @@ namespace Data.Migrations
                     b.Navigation("Area");
 
                     b.Navigation("Terrain");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Identification.RoleAcccessRight", b =>
+                {
+                    b.HasOne("Domain.Entities.Identification.AccessRight", "AccessRight")
+                        .WithMany()
+                        .HasForeignKey("AccessRightId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Identification.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AccessRight");
+
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("Domain.Entities.Politics.Area", b =>

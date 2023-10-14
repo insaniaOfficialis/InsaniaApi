@@ -18,6 +18,8 @@ public class ApplicationContext : IdentityDbContext<User, Role, long, IdentityUs
     public DbSet<File> Files { get; set; } //файлы
     public DbSet<FileUser> FilesUsers { get; set; } //связь файлов с пользователями
     public DbSet<Parametr> Parametrs { get; set; } //параметры
+    public DbSet<AccessRight> AccessRights { get; set; } //права доступа
+    public DbSet<RoleAcccessRight> RolesAcccessRights { get; set; } //связь ролей с правами доступа
     public DbSet<Log> Logs { get; set; } //логи
     public DbSet<Country> Countries { get; set; } //страны
     public DbSet<Region> Regions { get; set; } //регионы
