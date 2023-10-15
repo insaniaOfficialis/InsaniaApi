@@ -1,5 +1,4 @@
 ﻿using Api.Controllers.Base;
-using Domain.Models.Base;
 using Domain.Models.Files.Request;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

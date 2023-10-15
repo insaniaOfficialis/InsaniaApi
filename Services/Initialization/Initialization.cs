@@ -388,7 +388,7 @@ public class Initialization : IInitialization
             if (!_repository.FileTypes.Any(x => x.Name == "Пользователь"))
             {
                 //Создаём тип файла для пользователей
-                FileType fileType = new("system", "Пользователь", "I:\\Insania\\ПО\\Files");
+                FileType fileType = new("system", "Пользователь", "I:\\Insania\\ПО\\Files\\Users");
                 _repository.FileTypes.Add(fileType);
                 await _repository.SaveChangesAsync();
             }

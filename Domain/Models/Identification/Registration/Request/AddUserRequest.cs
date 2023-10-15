@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace Domain.Models.Identification.Registration.Request;
+﻿namespace Domain.Models.Identification.Registration.Request;
 
 /// <summary>
 /// Модель запроса добавления пользователя
@@ -50,7 +48,7 @@ public class AddUserRequest
     /// <summary>
     /// Пол (истина - мужской/ложь - женский)
     /// </summary>
-    public bool? Gender { get; private set; }
+    public bool? Gender { get; set; }
 
     /// <summary>
     /// Массив ролей

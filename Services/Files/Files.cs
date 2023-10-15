@@ -35,7 +35,7 @@ public class Files: IFiles
         {
             long id; //id файла
 
-            /*Проверяем корректность данных*/
+            //Проверяем корректность данных
             if (request == null)
                 throw new InnerException("Пустой запрос");
 
@@ -51,14 +51,15 @@ public class Files: IFiles
             if (request.Stream == null)
                 throw new InnerException("Не указан файл");
 
-            var fileType = _repository.FileTypes.Where(x => x.Alias == request.Type).FirstOrDefault() ?? throw new InnerException("Не найден указанный тип файла");
+            var fileType = _repository.FileTypes.Where(x => x.Alias == request.Type).FirstOrDefault()
+                ?? throw new InnerException("Не найден указанный тип файла");
 
-            /*Начинаем транзакцию*/
+            //Начинаем транзакцию
             using var transaction = _repository.Database.BeginTransaction();
 
             try
             {
-                /*Объявляем новый файл и записываем его в базу*/
+                //Объявляем новый файл и записываем его в базу
                 FileEntity file = new(null, false, request.Name, fileType.Id);
 
                 if (file.Extention == null || !_allowedExtensions.Contains(file.Extention))
@@ -79,19 +80,19 @@ public class Files: IFiles
 
                 await _repository.SaveChangesAsync();
 
-                /*Проверяем наличие пути сохранения файла, и если нет, сохраняем*/
+                //Проверяем наличие пути сохранения файла, и если нет, сохраняем
                 var path = Path.Combine(fileType.Path, request.Id.ToString()!);
 
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
 
-                /*Проверяем наличие такого файла*/
+                //Проверяем наличие такого файла
                 var pathFile = Path.Combine(path, request.Name);
 
                 if (Directory.Exists(pathFile))
                     throw new InnerException("Файл с таким наименованием, типом и сущностью уже существует");
 
-                /*Записываем файл*/
+                //Записываем файл
                 await using var fs = new FileStream(pathFile, FileMode.CreateNew);
 
                 request.Stream.Position = 0;
@@ -99,19 +100,19 @@ public class Files: IFiles
 
                 request.Stream.Position = 0;
 
-                /*Фиксируем транзакцию*/
+                //Фиксируем транзакцию
                 transaction.Commit();
                 
-                /*Записывае id для вывода*/
+                //Записывае id для вывода
                 id = file.Id;
             }
-            /*Обрабатываем внутренние исключения*/
+            //Обрабатываем внутренние исключения
             catch (InnerException ex)
             {
                 transaction.Rollback();
                 throw new InnerException(ex.Message);
             }
-            /*Обрабатываем системные исключения*/
+            //Обрабатываем системные исключения
             catch (Exception ex)
             {
                 transaction.Rollback();
@@ -120,12 +121,12 @@ public class Files: IFiles
 
             return new BaseResponse(true, id);
         }
-        /*Обрабатываем внутренние исключения*/
+        //Обрабатываем внутренние исключения
         catch (InnerException ex)
         {
             return new BaseResponse(false, new BaseError(400, ex.Message));
         }
-        /*Обрабатываем системные исключения*/
+        //Обрабатываем системные исключения
         catch (Exception ex)
         {
             return new BaseResponse(false, new BaseError(500, ex.Message));

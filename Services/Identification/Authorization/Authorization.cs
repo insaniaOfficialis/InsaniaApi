@@ -96,7 +96,7 @@ public class Authorization: IAuthorization
         try
         {
             //Проверяем входящие данные
-            if (username == null)
+            if (String.IsNullOrEmpty(username))
                 throw new InnerException("Не указан пользователь");
 
             //Получаем пользователя
@@ -104,7 +104,7 @@ public class Authorization: IAuthorization
 
             //Получаем роли
             var roles = await _userManager.GetRolesAsync(user) as List<string>
-                ?? throw new InnerException("Не удалось полусить роли пользователя");
+                ?? throw new InnerException("Не удалось получить роли пользователя");
 
             //Получаем права доступа
             List<string> accessRights = await _repository
