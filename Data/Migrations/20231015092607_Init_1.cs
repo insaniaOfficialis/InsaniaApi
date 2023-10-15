@@ -13,6 +13,32 @@ namespace Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "dir_access_rights",
+                columns: table => new
+                {
+                    id = table.Column<long>(type: "bigint", nullable: false, comment: "Первичный ключ таблицы")
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    parent_id = table.Column<long>(type: "bigint", nullable: true, comment: "Ссылка на родительский элемент"),
+                    date_create = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, comment: "Дата создания"),
+                    user_create = table.Column<string>(type: "text", nullable: false, comment: "Пользователь, создавший"),
+                    date_update = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, comment: "Дата обновления"),
+                    user_update = table.Column<string>(type: "text", nullable: false, comment: "Пользователь, обновивший"),
+                    date_deleted = table.Column<DateTime>(type: "timestamp with time zone", nullable: true, comment: "Дата удаления"),
+                    name = table.Column<string>(type: "text", nullable: false, comment: "Наименование"),
+                    alias = table.Column<string>(type: "text", nullable: false, comment: "Английское наименование")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_dir_access_rights", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_dir_access_rights_dir_access_rights_parent_id",
+                        column: x => x.parent_id,
+                        principalTable: "dir_access_rights",
+                        principalColumn: "id");
+                },
+                comment: "Права доступа");
+
+            migrationBuilder.CreateTable(
                 name: "dir_climates",
                 columns: table => new
                 {
@@ -351,7 +377,8 @@ namespace Data.Migrations
                     LastName = table.Column<string>(type: "text", nullable: true, comment: "Фамилия"),
                     FirstName = table.Column<string>(type: "text", nullable: true, comment: "Имя"),
                     Patronymic = table.Column<string>(type: "text", nullable: true, comment: "Отчество"),
-                    IsBlocked = table.Column<bool>(type: "boolean", nullable: true, comment: "Признак заблокированного пользователя")
+                    IsBlocked = table.Column<bool>(type: "boolean", nullable: true, comment: "Признак заблокированного пользователя"),
+                    Gender = table.Column<bool>(type: "boolean", nullable: true, comment: "Пол (истина - мужской/ложь - женский)")
                 },
                 constraints: table =>
                 {
@@ -459,6 +486,38 @@ namespace Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 },
                 comment: "Географические объекты");
+
+            migrationBuilder.CreateTable(
+                name: "un_roles_access_rights",
+                columns: table => new
+                {
+                    id = table.Column<long>(type: "bigint", nullable: false, comment: "Первичный ключ таблицы")
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    role_id = table.Column<long>(type: "bigint", nullable: false, comment: "Ссылка на роль"),
+                    access_right_id = table.Column<long>(type: "bigint", nullable: false, comment: "Ссылка на право доступа"),
+                    date_create = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, comment: "Дата создания"),
+                    user_create = table.Column<string>(type: "text", nullable: false, comment: "Пользователь, создавший"),
+                    date_update = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, comment: "Дата обновления"),
+                    user_update = table.Column<string>(type: "text", nullable: false, comment: "Пользователь, обновивший"),
+                    date_deleted = table.Column<DateTime>(type: "timestamp with time zone", nullable: true, comment: "Дата удаления")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_un_roles_access_rights", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_un_roles_access_rights_dir_access_rights_access_right_id",
+                        column: x => x.access_right_id,
+                        principalTable: "dir_access_rights",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_un_roles_access_rights_sys_roles_role_id",
+                        column: x => x.role_id,
+                        principalTable: "sys_roles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                },
+                comment: "Связь ролей с правами доступа");
 
             migrationBuilder.CreateTable(
                 name: "un_users_files",
@@ -815,6 +874,11 @@ namespace Data.Migrations
                 comment: "Население населённых пунктов");
 
             migrationBuilder.CreateIndex(
+                name: "IX_dir_access_rights_parent_id",
+                table: "dir_access_rights",
+                column: "parent_id");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_dir_areas_country_id",
                 table: "dir_areas",
                 column: "country_id");
@@ -925,6 +989,16 @@ namespace Data.Migrations
                 column: "prefix_name_id");
 
             migrationBuilder.CreateIndex(
+                name: "IX_un_roles_access_rights_access_right_id",
+                table: "un_roles_access_rights",
+                column: "access_right_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_un_roles_access_rights_role_id",
+                table: "un_roles_access_rights",
+                column: "role_id");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_un_terrains_areas_area_id",
                 table: "un_terrains_areas",
                 column: "area_id");
@@ -961,9 +1035,6 @@ namespace Data.Migrations
                 name: "re_population_settlements");
 
             migrationBuilder.DropTable(
-                name: "sys_roles");
-
-            migrationBuilder.DropTable(
                 name: "sys_users_roles");
 
             migrationBuilder.DropTable(
@@ -977,6 +1048,9 @@ namespace Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "un_nations_prefix_names");
+
+            migrationBuilder.DropTable(
+                name: "un_roles_access_rights");
 
             migrationBuilder.DropTable(
                 name: "un_terrains_areas");
@@ -1001,6 +1075,12 @@ namespace Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "dir_prefixes_name");
+
+            migrationBuilder.DropTable(
+                name: "dir_access_rights");
+
+            migrationBuilder.DropTable(
+                name: "sys_roles");
 
             migrationBuilder.DropTable(
                 name: "dir_terrains");

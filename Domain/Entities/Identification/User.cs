@@ -35,6 +35,12 @@ public class User : IdentityUser<long>
     public bool IsBlocked { get; private set; }
 
     /// <summary>
+    /// Пол (истина - мужской/ложь - женский)
+    /// </summary>
+    [Comment("Пол (истина - мужской/ложь - женский)")]
+    public bool Gender { get; private set; }
+
+    /// <summary>
     /// Полное имя
     /// </summary>
     [NotMapped]
@@ -71,12 +77,14 @@ public class User : IdentityUser<long>
     /// <param name="email"></param>
     /// <param name="phone"></param>
     /// <param name="isBlocked"></param>
-    public User(string? login, string? email, string? phone, bool isBlocked) : this()
+    /// <param name="gender"></param>
+    public User(string? login, string? email, string? phone, bool isBlocked, bool gender) : this()
     {
         UserName = login;
         Email = email;
         PhoneNumber = phone;
         IsBlocked = isBlocked;
+        Gender = gender;
     }
 
     /// <summary>
@@ -87,7 +95,9 @@ public class User : IdentityUser<long>
     /// <param name="email"></param>
     /// <param name="phone"></param>
     /// <param name="isBlocked"></param>
-    public User(long id, string? login, string? email, string? phone, bool isBlocked) : this(login, email, phone, isBlocked)
+    /// <param name="gender"></param>
+    public User(long id, string? login, string? email, string? phone, bool isBlocked, bool gender) 
+        : this(login, email, phone, isBlocked, gender)
     {
         Id = id;
     }
@@ -103,8 +113,9 @@ public class User : IdentityUser<long>
     /// <param name="firstName"></param>
     /// <param name="patronymic"></param>
     /// <param name="isBlocked"></param>
-    public User(long id, string? login, string? email, string? phone, bool isBlocked, string? lastName, string? firstName, string? patronymic)
-        : this(id, login, email, phone, isBlocked)
+    public User(long id, string? login, string? email, string? phone, bool isBlocked, bool gender, string? lastName, string? firstName,
+        string? patronymic)
+        : this(id, login, email, phone, isBlocked, gender)
     {
         LastName = lastName;
         FirstName = firstName;
@@ -121,8 +132,9 @@ public class User : IdentityUser<long>
     /// <param name="firstName"></param>
     /// <param name="patronymic"></param>
     /// <param name="isBlocked"></param>
-    public User(string? login, string? email, string? phone, bool isBlocked, string? lastName, string? firstName, string? patronymic)
-        : this(login, email, phone, isBlocked)
+    public User(string? login, string? email, string? phone, bool isBlocked, bool gender, string? lastName, string? firstName,
+        string? patronymic)
+        : this(login, email, phone, isBlocked, gender)
     {
         LastName = lastName;
         FirstName = firstName;
@@ -181,5 +193,14 @@ public class User : IdentityUser<long>
     public void SetIsBlocked(bool isBlocked)
     {
         IsBlocked = isBlocked;
+    }
+
+    /// <summary>
+    /// Метод записи пола
+    /// </summary>
+    /// <param name="gender"></param>
+    public void SetGender(bool gender)
+    {
+        Gender = gender;
     }
 }

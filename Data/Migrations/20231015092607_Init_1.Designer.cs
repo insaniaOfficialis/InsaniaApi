@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20231014175529_AddAccessRight_1")]
-    partial class AddAccessRight_1
+    [Migration("20231015092607_Init_1")]
+    partial class Init_1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -789,6 +789,11 @@ namespace Data.Migrations
                         .HasColumnName("name")
                         .HasComment("Наименование");
 
+                    b.Property<long?>("ParentId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("parent_id")
+                        .HasComment("Ссылка на родительский элемент");
+
                     b.Property<string>("UserCreate")
                         .IsRequired()
                         .HasColumnType("text")
@@ -802,6 +807,8 @@ namespace Data.Migrations
                         .HasComment("Пользователь, обновивший");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ParentId");
 
                     b.ToTable("dir_access_rights", t =>
                         {
@@ -2162,6 +2169,10 @@ namespace Data.Migrations
                         .HasColumnType("text")
                         .HasComment("Имя");
 
+                    b.Property<bool>("Gender")
+                        .HasColumnType("boolean")
+                        .HasComment("Пол (истина - мужской/ложь - женский)");
+
                     b.Property<bool>("IsBlocked")
                         .HasColumnType("boolean")
                         .HasComment("Признак заблокированного пользователя");
@@ -2265,6 +2276,15 @@ namespace Data.Migrations
                     b.Navigation("Area");
 
                     b.Navigation("Terrain");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Identification.AccessRight", b =>
+                {
+                    b.HasOne("Domain.Entities.Identification.AccessRight", "Parent")
+                        .WithMany()
+                        .HasForeignKey("ParentId");
+
+                    b.Navigation("Parent");
                 });
 
             modelBuilder.Entity("Domain.Entities.Identification.RoleAcccessRight", b =>

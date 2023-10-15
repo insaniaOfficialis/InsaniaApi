@@ -37,4 +37,17 @@ public class AuthorizationController : BaseController
     {
         return await _authorization.Login(username, password);
     });
+
+    /// <summary>
+    /// Метод получения информации о пользователе
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet]
+    [Route("userInfo")]
+    public async Task<IActionResult> GetUserInfo() =>
+        await GetAnswerAsync(async () =>
+        {
+            string? username = User?.Identity?.Name;
+            return await _authorization.GetUserInfo(username);
+        });
 }

@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using Domain.Entities.Geography;
 using Domain.Entities.Sociology;
 using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
 
 namespace Services.Initialization;
 
@@ -46,7 +47,7 @@ public class Initialization : IInitialization
     /// </summary>
     /// <returns></returns>
     /// <exception cref="InnerException"></exception>
-    public async Task<bool> InitializeDatabase()
+    public async Task InitializeDatabase()
     {
         try
         {
@@ -54,7 +55,7 @@ public class Initialization : IInitialization
             if (Convert.ToBoolean(_configuration["InitializeOptions:InitializeRoles"]))
             {
                 //Проверяем наличие роли админа
-                if (_roleManager.FindByNameAsync("admin").Result == null)
+                if (await _roleManager.FindByNameAsync("admin") == null)
                 {
                     //Добавляем роль админа
                     Role role = new("admin");
@@ -73,8 +74,10 @@ public class Initialization : IInitialization
                 if (_userManager.FindByNameAsync("insania").Result == null)
                 {
                     //Добавляем пользователя инсании
-                    User user = new("insania", "insania_officialis@vk.com", "+79996370439", false);
-                    var resultUser = await _userManager.CreateAsync(user, "K02032018v.") ?? throw new Exception("Не удалось создать пользователя");
+                    User user = new("insania", "insania_officialis@vk.com", "+79996370439", false, true, "Альфхейм",
+                        "Альтаир", "фон");
+                    var resultUser = await _userManager.CreateAsync(user, "K02032018v.")
+                        ?? throw new Exception("Не удалось создать пользователя");
 
                     //Если успешно
                     if (resultUser.Succeeded)
@@ -97,10 +100,22 @@ public class Initialization : IInitialization
 
             try
             {
+                //ПАРАМЕТРЫ
                 if (Convert.ToBoolean(_configuration["InitializeOptions:InitializeParametrs"]))
                 {
-                    //ПАРАМЕТРЫ
                     await InitializeParametrs();
+                }
+                
+                //ПРАВА ДОСТУПА
+                if (Convert.ToBoolean(_configuration["InitializeOptions:InitializeAccessRights"]))
+                {
+                    await InitializeAccessRights();
+                }
+
+                //СВЯЗЬ РОЛЕЙ С ПРАВАМИ ДОСТУПА
+                if (Convert.ToBoolean(_configuration["InitializeOptions:InitializeRolesAccessRights"]))
+                {
+                    await InitializeRolesAccessRights();
                 }
 
                 //ТИПЫ ФАЙЛОВ
@@ -189,19 +204,16 @@ public class Initialization : IInitialization
 
                 //Фиксируем транзакцию
                 await transaction.CommitAsync();
-                return true;
             }
             catch (Exception ex)
             {
                 _logger.LogError("InitializeDatabase. Ошибка: " + ex.Message);
                 await transaction.RollbackAsync();
-                return false;
             }
         }
         catch (Exception ex)
         {
             _logger.LogError("InitializeDatabase. Ошибка: " + ex.Message);
-            return false;
         }
     }
 
@@ -210,7 +222,7 @@ public class Initialization : IInitialization
     /// </summary>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public async Task<bool> InitializeParametrs()
+    public async Task InitializeParametrs()
     {
         try
         {
@@ -285,8 +297,6 @@ public class Initialization : IInitialization
                 _repository.Parametrs.Add(parametr);
                 await _repository.SaveChangesAsync();
             }
-
-            return true;
         }
         catch (Exception ex)
         {
@@ -295,11 +305,82 @@ public class Initialization : IInitialization
     }
 
     /// <summary>
+    /// Метод инициализации прав доступа
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public async Task InitializeAccessRights()
+    {
+        try
+        {
+            //Проверяем наличие права доступа "Страница администрирования"
+            if (!_repository.AccessRights.Any(x => x.Name == "Страница администрирования"))
+            {
+                //Создаём право доступа "Страница администрирования"
+                AccessRight accessRight = new("system", "Страница администрирования", null);
+                _repository.AccessRights.Add(accessRight);
+                await _repository.SaveChangesAsync();
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Initialization. InitializeAccessRights. Ошибка: {0}", ex);
+        }
+    }
+
+    /// <summary>
+    /// Метод инициализации связи ролей с правами доступа
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public async Task InitializeRolesAccessRights()
+    {
+        try
+        {
+            //Проверяем наличие роли "Админ"
+            if (await _roleManager.FindByNameAsync("admin") != null)
+            {
+                //Получаем роль "Админ"
+                Role? role = await _roleManager.FindByNameAsync("admin");
+
+                //Проверяем наличие роли "Админ"
+                if (role != null)
+                {
+                    //Проверяем наличие права доступа "Страница администрирования"
+                    if (_repository.AccessRights.Any(x => x.Name == "Страница администрирования"))
+                    {
+                        //Получаем право доступа "Страница администрирования"
+                        AccessRight? accessRight = await _repository.AccessRights
+                            .FirstOrDefaultAsync(x => x.Name == "Страница администрирования");
+
+                        //Проверяем права доступа "Страница администрирования"
+                        if (accessRight != null)
+                        {
+                            //Проверяем наличие связи роли "Админ" с правом доступа "Страница администрирования"
+                            if (!_repository.RolesAcccessRights.Any(x => x.Role == role && x.AccessRight == accessRight))
+                            {
+                                //Создаём связь роли "Админ" с правом доступа "Страница администрирования"
+                                RoleAcccessRight roleAcccessRight = new("system", role, accessRight);
+                                _repository.RolesAcccessRights.Add(roleAcccessRight);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Initialization. InitializeRolesAccessRights. Ошибка: {0}", ex);
+        }
+    }
+
+    /// <summary>
     /// Метод инициализации типов файлов
     /// </summary>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public async Task<bool> InitializeFileTypes()
+    public async Task InitializeFileTypes()
     {
         try
         {
@@ -311,8 +392,6 @@ public class Initialization : IInitialization
                 _repository.FileTypes.Add(fileType);
                 await _repository.SaveChangesAsync();
             }
-
-            return true;
         }
         catch (Exception ex)
         {
@@ -325,7 +404,7 @@ public class Initialization : IInitialization
     /// </summary>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public async Task<bool> InitializeClimates()
+    public async Task InitializeClimates()
     {
         try
         {
@@ -390,9 +469,7 @@ public class Initialization : IInitialization
                 Climate climate = new("system", "Экваториальный", "#9E0A00");
                 _repository.Climates.Add(climate);
                 await _repository.SaveChangesAsync();
-            }
-
-            return true;
+            }   
         }
         catch (Exception ex)
         {
@@ -405,7 +482,7 @@ public class Initialization : IInitialization
     /// </summary>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public async Task<bool> InitializeTerrains()
+    public async Task InitializeTerrains()
     {
         try
         {
@@ -443,9 +520,7 @@ public class Initialization : IInitialization
                 Terrain terrain = new("system", "Равнинный", "#424700");
                 _repository.Terrains.Add(terrain);
                 await _repository.SaveChangesAsync();
-            }
-
-            return true;
+            }   
         }
         catch (Exception ex)
         {
@@ -458,7 +533,7 @@ public class Initialization : IInitialization
     /// </summary>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public async Task<bool> InitializeRaces()
+    public async Task InitializeRaces()
     {
         try
         {
@@ -595,9 +670,7 @@ public class Initialization : IInitialization
                 Race race = new("system", "Антропозавр");
                 _repository.Races.Add(race);
                 await _repository.SaveChangesAsync();
-            }
-
-            return true;
+            }   
         }
         catch (Exception ex)
         {
@@ -610,7 +683,7 @@ public class Initialization : IInitialization
     /// </summary>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public async Task<bool> InitializeNations()
+    public async Task InitializeNations()
     {
         try
         {
@@ -690,9 +763,7 @@ public class Initialization : IInitialization
                         await _repository.SaveChangesAsync();
                     }
                 }
-            }
-
-            return true;
+            }   
         }
         catch (Exception ex)
         {
@@ -705,7 +776,7 @@ public class Initialization : IInitialization
     /// </summary>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public async Task<bool> InitializePersonalNames()
+    public async Task InitializePersonalNames()
     {
         try
         {
@@ -5639,9 +5710,7 @@ public class Initialization : IInitialization
                 PersonalName personalName = new("system", "Эфа", false);
                 _repository.PersonalNames.Add(personalName);
                 await _repository.SaveChangesAsync();
-            }
-
-            return true;
+            }   
         }
         catch (Exception ex)
         {
@@ -5654,7 +5723,7 @@ public class Initialization : IInitialization
     /// </summary>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public async Task<bool> InitializeLastNames()
+    public async Task InitializeLastNames()
     {
         try
         {
@@ -5665,9 +5734,7 @@ public class Initialization : IInitialization
                 LastName lastName = new("system", "Миркраниис");
                 _repository.LastNames.Add(lastName);
                 await _repository.SaveChangesAsync();
-            }
-
-            return true;
+            }   
         }
         catch (Exception ex)
         {
@@ -5680,7 +5747,7 @@ public class Initialization : IInitialization
     /// </summary>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public async Task<bool> InitializePrefixNames()
+    public async Task InitializePrefixNames()
     {
         try
         {
@@ -5691,9 +5758,7 @@ public class Initialization : IInitialization
                 PrefixName prefixName = new("system", "из дома");
                 _repository.PrefixNames.Add(prefixName);
                 await _repository.SaveChangesAsync();
-            }
-
-            return true;
+            }   
         }
         catch (Exception ex)
         {
@@ -5706,7 +5771,7 @@ public class Initialization : IInitialization
     /// </summary>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public async Task<bool> InitializeNationsPersonalNames()
+    public async Task InitializeNationsPersonalNames()
     {
         try
         {
@@ -16701,9 +16766,7 @@ public class Initialization : IInitialization
                         }
                     }
                 }
-            }
-
-            return true;
+            }   
         }
         catch (Exception ex)
         {
@@ -16716,7 +16779,7 @@ public class Initialization : IInitialization
     /// </summary>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public async Task<bool> InitializeNationsLastNames()
+    public async Task InitializeNationsLastNames()
     {
         try
         {
@@ -16749,9 +16812,7 @@ public class Initialization : IInitialization
                         }
                     }
                 }
-            }
-
-            return true;
+            }   
         }
         catch (Exception ex)
         {
@@ -16764,7 +16825,7 @@ public class Initialization : IInitialization
     /// </summary>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public async Task<bool> InitializeNationsPrefixNames()
+    public async Task InitializeNationsPrefixNames()
     {
         try
         {
@@ -16797,9 +16858,7 @@ public class Initialization : IInitialization
                         }
                     }
                 }
-            }
-
-            return true;
+            }   
         }
         catch (Exception ex)
         {
@@ -16812,7 +16871,7 @@ public class Initialization : IInitialization
     /// </summary>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public async Task<bool> InitializeCountries()
+    public async Task InitializeCountries()
     {
         try
         {
@@ -17012,9 +17071,7 @@ public class Initialization : IInitialization
                 Country country = new("system", "Уния Ангуи", 22, "#BC3CB4", "Латынь");
                 _repository.Countries.Add(country);
                 await _repository.SaveChangesAsync();
-            }
-
-            return true;
+            }   
         }
         catch (Exception ex)
         {
@@ -17027,7 +17084,7 @@ public class Initialization : IInitialization
     /// </summary>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public async Task<bool> InitializeRegions()
+    public async Task InitializeRegions()
     {
         try
         {
@@ -17173,9 +17230,7 @@ public class Initialization : IInitialization
                 Region region = new("system", "Центральный зубец", 3, "#6568ED");
                 _repository.Regions.Add(region);
                 await _repository.SaveChangesAsync();
-            }
-
-            return true;
+            }   
         }
         catch (Exception ex)
         {
@@ -17188,7 +17243,7 @@ public class Initialization : IInitialization
     /// </summary>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public async Task<bool> InitializeTypesSettlements()
+    public async Task InitializeTypesSettlements()
     {
         try
         {
@@ -17298,9 +17353,7 @@ public class Initialization : IInitialization
                 TypeSettlement typeSettlement = new("system", "Столица", 28, 30);
                 _repository.TypesSettlements.Add(typeSettlement);
                 await _repository.SaveChangesAsync();
-            }
-
-            return true;
+            }   
         }
         catch (Exception ex)
         {

@@ -1,4 +1,6 @@
-﻿namespace Domain.Models.Identification.Registration.Request;
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace Domain.Models.Identification.Registration.Request;
 
 /// <summary>
 /// Модель запроса добавления пользователя
@@ -44,6 +46,11 @@ public class AddUserRequest
     /// Признак записи блокировки
     /// </summary>
     public bool? IsBlocked { get; set; }
+
+    /// <summary>
+    /// Пол (истина - мужской/ложь - женский)
+    /// </summary>
+    public bool? Gender { get; private set; }
 
     /// <summary>
     /// Массив ролей

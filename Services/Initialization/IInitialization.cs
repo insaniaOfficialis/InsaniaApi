@@ -9,5 +9,5 @@ public interface IInitialization
     /// Метод инициализации базы данных
     /// </summary>
     /// <returns></returns>
-    Task<bool> InitializeDatabase();
+    Task InitializeDatabase();
 }

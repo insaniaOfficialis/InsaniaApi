@@ -136,6 +136,6 @@ app.MapGet("/", () => "Hello World!");
 //Проводим первоначальную инициализацию
 using var scope = app.Services.CreateScope();
 var initialize = scope.ServiceProvider.GetService<IInitialization>();
-var success = await initialize!.InitializeDatabase();
+await initialize!.InitializeDatabase();
 
 app.Run();

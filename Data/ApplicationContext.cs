@@ -14,13 +14,13 @@ namespace Data;
 
 public class ApplicationContext : IdentityDbContext<User, Role, long, IdentityUserClaim<long>, IdentityUserRole<long>, IdentityUserLogin<long>, IdentityRoleClaim<long>, IdentityUserToken<long>>
 {
+    public DbSet<Parametr> Parametrs { get; set; } //параметры
+    public DbSet<Log> Logs { get; set; } //логи
+    public DbSet<AccessRight> AccessRights { get; set; } //права доступа
+    public DbSet<RoleAcccessRight> RolesAcccessRights { get; set; } //связь ролей с правами доступа
     public DbSet<FileType> FileTypes { get; set; } //типы файлов
     public DbSet<File> Files { get; set; } //файлы
     public DbSet<FileUser> FilesUsers { get; set; } //связь файлов с пользователями
-    public DbSet<Parametr> Parametrs { get; set; } //параметры
-    public DbSet<AccessRight> AccessRights { get; set; } //права доступа
-    public DbSet<RoleAcccessRight> RolesAcccessRights { get; set; } //связь ролей с правами доступа
-    public DbSet<Log> Logs { get; set; } //логи
     public DbSet<Country> Countries { get; set; } //страны
     public DbSet<Region> Regions { get; set; } //регионы
     public DbSet<Race> Races { get; set; } //расы

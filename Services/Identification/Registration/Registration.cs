@@ -38,7 +38,7 @@ public class Registration: IRegistration
     {
         try
         {
-            /*Проверяем корректность данных*/
+            //Проверяем корректность данных
             if (request == null)
                 throw new InnerException("Пустой запрос");
             if (String.IsNullOrEmpty(request.UserName))
@@ -55,39 +55,43 @@ public class Registration: IRegistration
                 throw new InnerException("Не указаны роли");
             if (request.Roles.Any(x => !_repository.Roles.Any(y => y.Name == x)))
                 throw new InnerException("Указаны недействительные роли");
+            if (request.Gender == null)
+                throw new InnerException("Не указан пол");
 
-            /*Обрабатываем пустоту в признаке блокировки*/
+            //Обрабатываем пустоту в признаке блокировки
             request.IsBlocked ??= false;
 
-            /*Преобразуем модель запроса в модель пользователя*/
-            var user = _mapper.Map<User>(request) ?? throw new InnerException("Не удалось преобразовать модель запроса в модель пользователя");
+            //Преобразуем модель запроса в модель пользователя
+            var user = _mapper.Map<User>(request)
+                ?? throw new InnerException("Не удалось преобразовать модель запроса в модель пользователя");
 
-            /*Регистрируем пользователя*/
-            var result = await _userManager.CreateAsync(user, request.Password) ?? throw new InnerException("Не удалось создать пользователя");
+            //Регистрируем пользователя
+            var result = await _userManager.CreateAsync(user, request.Password)
+                ?? throw new InnerException("Не удалось создать пользователя");
 
-            /*Если успешно, создаём роли*/
+            //Если успешно, создаём роли
             if (result.Succeeded)
             {
-                /*Добавляем роли пользователю*/
+                //Добавляем роли пользователю
                 result = await _userManager.AddToRolesAsync(user, request.Roles) ?? throw new InnerException("Не удалось добавить роли");
 
-                /*Если успешно, выводим результат*/
+                //Если успешно, выводим результат
                 if (result.Succeeded)
                     return new BaseResponse(true, user.Id);
-                /*Иначе выбиваем ошибку*/
+                //Иначе выбиваем ошибку
                 else
                     throw new InnerException(result?.Errors?.FirstOrDefault()?.Description ?? "Неопознанная ошибка");
             }
-            /*Иначе выбиваем ошибку*/
+            //Иначе выбиваем ошибку
             else
                 throw new InnerException(result?.Errors?.FirstOrDefault()?.Description ?? "Неопознанная ошибка");
         }
-        /*Обрабатываем внутренние исключения*/
+        //Обрабатываем внутренние исключения
         catch(InnerException ex)
         {
             return new BaseResponse(false, new BaseError(400, ex.Message));
         }
-        /*Обрабатываем системные исключения*/
+        //Обрабатываем системные исключения
         catch(Exception ex)
         {
             return new BaseResponse(false, new BaseError(500, ex.Message));
