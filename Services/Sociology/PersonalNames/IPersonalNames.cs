@@ -32,4 +32,27 @@ public interface IPersonalNames
     /// <param name="gender"></param>
     /// <returns></returns>
     Task<BaseResponseList> GetListEndingsNames(long? nationId, bool? gender);
+
+    /// <summary>
+    /// Метод генерации нового имени
+    /// </summary>
+    /// <param name="nationId"></param>
+    /// <param name="gender"></param>
+    /// <param name="firstSyllable"></param>
+    /// <param name="lastSyllable"></param>
+    /// <returns></returns>
+    Task<GeneratedName> GetGeneratingNewName(long? nationId, bool? gender, string? firstSyllable,
+        string? lastSyllable);
+
+    /// <summary>
+    /// Метод добавления имени
+    /// </summary>
+    /// <param name="user"></param>
+    /// <param name="nationId"></param>
+    /// <param name="gender"></param>
+    /// <param name="name"></param>
+    /// <param name="probability"></param>
+    /// <returns></returns>
+    Task<BaseResponse> AddName(string? user, long? nationId, bool? gender, string? name,
+        double? probability);
 }

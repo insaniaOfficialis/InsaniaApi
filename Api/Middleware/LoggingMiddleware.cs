@@ -35,11 +35,6 @@ public class LoggingMiddleware
         var method = context.Request.Path; //адрес запроса
         var type = context.Request.Method; //тип запроса
         var request = await GetRequest(context.Request); //тело и query параметры запроса
-        /*
-        string request = string.Empty; //параметры запроса
-
-        //Если это не сохранение файлов, записываем запрос
-        if (!method.StartsWithSegments("api/v1/files"))*/
 
         //Записываем в базу о начале выполнения
         Log log = new("system", true, method, type, request);

@@ -1,11 +1,14 @@
 ﻿using AutoMapper;
 using Data;
+using Domain.Entities.General.System;
+using Domain.Entities.Sociology;
 using Domain.Models.Base;
 using Domain.Models.Exclusion;
 using Domain.Models.Sociology.Names;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System.Linq;
+using System.Text;
 using System.Xml.Linq;
 
 namespace Services.Sociology.PersonalNames;
@@ -18,6 +21,7 @@ public class PersonalNames : IPersonalNames
     private readonly IMapper _mapper; //маппер моделей
     private readonly ApplicationContext _repository; //репозиторий сущности
     private readonly ILogger<PersonalNames> _logger; //сервис записи логов
+    private char[] _vowels = "аоуиэыяюеё".ToCharArray(); //массив гласных букв
 
     /// <summary>
     /// Конструктор сервиса имён
@@ -97,7 +101,7 @@ public class PersonalNames : IPersonalNames
             }
 
             //Генерируем фамилию
-            if(generateLastName && nationId != null)
+            if (generateLastName && nationId != null)
             {
                 //Формируем запрос к базе
                 _logger.LogInformation("PersonalNames. GetGeneratedName. Формируем запрос к базе за префиксами");
@@ -112,7 +116,7 @@ public class PersonalNames : IPersonalNames
                 var generatePrefixBd = await generatePrefixQuery.FirstOrDefaultAsync();
 
                 //Если префикс найден, записываем его
-                if(generatePrefixBd != null)
+                if (generatePrefixBd != null)
                     prefix = generatePrefixBd.PrefixName.Name;
 
                 //Формируем запрос к базе
@@ -238,32 +242,23 @@ public class PersonalNames : IPersonalNames
     /// <param name="value"></param>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public string GetFirstSyllable(string? value)
+    public string? GetFirstSyllable(string? value)
     {
         try
         {
-            //Объявляем переменные
-            string vowels = "аоуиэыяюеё"; //массив гласных букв
-            string firstSyllable = String.Empty; //первый слог
+            //Разбиваем строки на слоги
+            var syllables = GetSyllables(value);
 
-            //Если строка указана
-            if (!String.IsNullOrEmpty(value))
-            {
-                //Проходим по каждому элементу строки
-                foreach (var symbol in value)
-                {
-                    //Если массив гласных содержит символ
-                    if (vowels.Contains(symbol))
-                    {
-                        //Возвращаем продстроку до этого элемента
-                        firstSyllable = value.Substring(0, value.IndexOf(symbol) + 1);
-                        break;
-                    }
-                }
-            }
+            //Получаем первый слог
+            var firstSyllable = syllables.FirstOrDefault();
 
-            //Возвращаем первый слог
-            return firstSyllable;
+            //Если слово не одинаковое со слогом
+            if (value != firstSyllable)
+                //Возвращаем первый слог
+                return firstSyllable;
+            //Иначе возвращаем пустоту
+            else
+                return null;
         }
         //Обрабатываем системные исключения
         catch (Exception ex)
@@ -278,48 +273,52 @@ public class PersonalNames : IPersonalNames
     /// <param name="value"></param>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public string GetLastSyllable(string? value)
+    public string? GetLastSyllable(string? value)
     {
         try
         {
-            //Объявляем переменные
-            string vowels = "аоуиэыяюеё"; //массив гласных букв
-            string lastSyllable = String.Empty; //последний слог
+            //Разбиваем строки на слоги
+            var syllables = GetSyllables(value);
 
-            //Если строка указана
-            if (!string.IsNullOrEmpty(value))
-            {
-                //Получаем длину строки
-                int length = value.Length - 1;
+            //Получаем последний слог
+            var lastSyllable = syllables.LastOrDefault();
 
-                //Проходим по каждому элементу строки с конца
-                for(int i = length; i > -1; i--)
-                {
-                    //Если массив гласных содержит символ
-                    if (vowels.Contains(value[i]))
-                    {
-                        //Получаем индекс последнего вхождения символа в строке
-                        var index = value.LastIndexOf(value[i]);
-
-                        //Получаем количество символов до конца
-                        var count = length - i + 1;
-                        
-                        //Получаем продстроку от этого элемента
-                        lastSyllable = value.Substring(index, count);
-                        
-                        //Выходим из цикла
-                        break;
-                    }
-                }
-            }
-
-            //Возвращаем последний слог
-            return lastSyllable;
+            //Если слово не одинаковое со слогом
+            if(value != lastSyllable)
+                //Возвращаем последний слог
+                return lastSyllable;
+            //Иначе возвращаем пустоту
+            else
+                return null;
         }
         //Обрабатываем системные исключения
         catch (Exception ex)
         {
             throw new Exception(ex.Message, ex);
+        }
+    }
+
+    /// <summary>
+    /// Метод получения слогов
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
+    public IEnumerable<string?> GetSyllables(string? value)
+    {
+        if (!string.IsNullOrEmpty(value))
+        {
+            var sb = new StringBuilder();
+            int i = 0;
+            for (; value.Skip(i).Count(_vowels.Contains) > 1; i++)
+            {
+                sb.Append(value[i]);
+                if (_vowels.Contains(value[i]))
+                {
+                    yield return sb.ToString();
+                    sb.Clear();
+                }
+            }
+            yield return value[i..];
         }
     }
 
@@ -385,6 +384,243 @@ public class PersonalNames : IPersonalNames
         {
             _logger.LogError("PersonalNames. GetListEndingsNames. Системная ошибка: {0}", ex);
             return new BaseResponseList(false, new BaseError(500, ex.Message));
+        }
+    }
+
+    /// <summary>
+    /// Метод генерации нового имени
+    /// </summary>
+    /// <param name="nationId"></param>
+    /// <param name="gender"></param>
+    /// <param name="firstSyllable"></param>
+    /// <param name="lastSyllable"></param>
+    /// <returns></returns>
+    public async Task<GeneratedName> GetGeneratingNewName(long? nationId, bool? gender, string? firstSyllable,
+        string? lastSyllable)
+    {
+        try
+        {
+            //Формируем запрос к базе
+            _logger.LogInformation("PersonalNames. GetGeneratingNewName. Формируем запрос к базе");
+            var namesQuery = _repository
+                .NationsPersonalNames
+                .Include(x => x.Nation)
+                .Include(x => x.PersonalName)
+                .Where(x => x.DateDeleted == null && x.Nation.DateDeleted == null && x.PersonalName.DateDeleted == null);
+
+            //Если передали нацию
+            if (nationId != null)
+            {
+                _logger.LogInformation("PersonalNames. GetGeneratingNewName. Дополняем запрос фильтром по нации: {0}", nationId);
+                namesQuery = namesQuery.Where(x => x.NationId == nationId);
+            }
+
+            //Если передали пол
+            if (gender != null)
+            {
+                _logger.LogInformation("PersonalNames. GetGeneratingNewName. Дополняем запрос фильтром по полу: {0}", gender);
+                namesQuery = namesQuery.Where(x => x.PersonalName.Gender == gender);
+            }
+
+            //Получаем данные с базы
+            _logger.LogInformation("PersonalNames. GetGeneratingNewName. Получаем данные с базы");
+            var namesBd = await namesQuery.ToListAsync();
+
+            //Получаем слоги слов
+            _logger.LogInformation("PersonalNames. GetGeneratingNewName. Получаем слоги слов");
+            List<string?> syllables = namesBd
+                .SelectMany(x => GetSyllables(x.PersonalName.Name))
+                .Where(x => x != firstSyllable && x != lastSyllable)
+                .ToList();
+
+            //Генерируем количество слогов в имени
+            _logger.LogInformation("PersonalNames. GetGeneratingNewName. Генерируем количество слогов в имени");
+            Random random = new();
+            int maxCountNewSyllables = 2;
+            //Если не указано ни начало ни конец
+            if (string.IsNullOrEmpty(firstSyllable) && string.IsNullOrEmpty(lastSyllable))
+                maxCountNewSyllables = 4;
+            //Если есть или начало, или конец
+            if (!string.IsNullOrEmpty(firstSyllable) && string.IsNullOrEmpty(lastSyllable) 
+                || string.IsNullOrEmpty(firstSyllable) && !string.IsNullOrEmpty(lastSyllable))
+                maxCountNewSyllables = 3;
+
+            int countNewSyllables = random.Next(1, maxCountNewSyllables);
+
+            //Формируем список случайных слогов
+            _logger.LogInformation("PersonalNames. GetGeneratingNewName. Формируем список случайных слогов");
+            List<string> randomSyllables = new();
+
+            //Если есть первый слог, добавляем в начало
+            if (!string.IsNullOrEmpty(firstSyllable))
+                randomSyllables.Add(firstSyllable);
+
+            //Получаем слоги, начинающиеся с прописных букв
+            _logger.LogInformation("PersonalNames. GetGeneratingNewName. Получаем слоги, начинающиеся с прописных букв");
+            List<string?> syllabalesUpper = new();
+            if(string.IsNullOrEmpty(firstSyllable))
+                syllabalesUpper = syllables.Where(x => char.IsUpper(x![0])).ToList();
+
+            //Получаем слоги, начинающиеся со строчных букв
+            _logger.LogInformation("PersonalNames. GetGeneratingNewName. Получаем слоги, начинающиеся со строчных букв");
+            List<string?> syllablesLower = syllables.Where(x => !char.IsUpper(x![0])).ToList();
+
+
+            //Проходим циклом столько раз, сколько нужно новых слогов
+            _logger.LogInformation("PersonalNames. GetGeneratingNewName. Проходим циклом столько раз, сколько нужно новых слогов");
+            for (int i = 0; i < countNewSyllables; i++)
+            {
+                string randomSyllable = string.Empty;
+                //Если нет первого слога на вход и это первый проход
+                if (string.IsNullOrEmpty(firstSyllable) && i == 0)
+                {
+                    //Получаем общее количество слогов
+                    _logger.LogInformation("PersonalNames. GetGeneratingNewName. Получаем общее количество слогов");
+                    int countSyllables = syllabalesUpper.Count - 1;
+
+                    //Генерируем случайных индекс слога
+                    _logger.LogInformation("PersonalNames. GetGeneratingNewName. Генерируем случайных индекс слога");
+                    int randomSyllableIndex = random.Next(0, countSyllables);
+
+                    //Получаем случайный слог
+                    _logger.LogInformation("PersonalNames. GetGeneratingNewName. Получаем случайный слог");
+                    randomSyllable = syllabalesUpper[randomSyllableIndex]!;
+                }
+                //Иначе, находим слоги с незаглавных букв
+                else
+                {
+                    //Получаем общее количество слогов
+                    _logger.LogInformation("PersonalNames. GetGeneratingNewName. Получаем общее количество слогов");
+                    int countSyllables = syllablesLower.Count - 1;
+
+                    //Генерируем случайных индекс слога
+                    _logger.LogInformation("PersonalNames. GetGeneratingNewName. Генерируем случайных индекс слога");
+                    int randomSyllableIndex = random.Next(0, countSyllables);
+
+                    //Получаем случайный слог
+                    _logger.LogInformation("PersonalNames. GetGeneratingNewName. Получаем случайный слог");
+                    randomSyllable = syllablesLower[randomSyllableIndex]!;
+                }
+
+                //Добавляем случайный слог в коллекцию
+                _logger.LogInformation("PersonalNames. GetGeneratingNewName. Добавляем случайный слог в коллекцию");
+                randomSyllables.Add(randomSyllable);
+            }
+
+            //Если есть полсдений сло, добавляем в конец
+            if (!string.IsNullOrEmpty(lastSyllable))
+                randomSyllables.Add(lastSyllable);
+
+            //Объединяем строку
+            _logger.LogInformation("PersonalNames. GetGeneratingNewName. Объединяем строку");
+            string name = string.Join("", randomSyllables.ToArray());
+
+            //Формируем ответ
+            _logger.LogInformation("PersonalNames. GetGeneratingNewName. Возвращаем результат");
+            return new GeneratedName(true, name, null);
+        }
+        //Обрабатываем внутренние исключения
+        catch (InnerException ex)
+        {
+            _logger.LogError("PersonalNames. GetGeneratingNewName. Внутренняя ошибка: {0}", ex);
+            return new GeneratedName(false, new BaseError(400, ex.Message));
+        }
+        //Обрабатываем системные исключения
+        catch (Exception ex)
+        {
+            _logger.LogError("PersonalNames. GetGeneratingNewName. Системная ошибка: {0}", ex);
+            return new GeneratedName(false, new BaseError(500, ex.Message));
+        }
+    }
+
+    /// <summary>
+    /// Метод добавления имени
+    /// </summary>
+    /// <param name="user"></param>
+    /// <param name="nationId"></param>
+    /// <param name="gender"></param>
+    /// <param name="name"></param>
+    /// <param name="probability"></param>
+    /// <returns></returns>
+    public async Task<BaseResponse> AddName(string? user, long? nationId, bool? gender, string? name,
+        double? probability)
+    {
+        try
+        {
+            //Объявляем переменную первичного ключа имени
+            long id = 0;
+
+            //Получаем экземпляр имени
+            Nation? nation = await _repository.Nations.FirstOrDefaultAsync(x => x.Id == nationId);
+
+            //Проверяем входящие переменные
+            if (string.IsNullOrEmpty(user))
+                throw new InnerException("Не найден текущий пользователь");
+            if (nationId == null)
+                throw new InnerException("Не указана нация");
+            if (gender == null)
+                throw new InnerException("Не указан пол");
+            if (string.IsNullOrEmpty(name))
+                throw new InnerException("Не указано имя");
+            if(nation == null)
+                throw new InnerException("Не найдена указанная нация");
+            if(_repository.PersonalNames.Any(x => x.Name == name))
+                throw new InnerException("Указанное имя уже существует");
+
+            //Если не указана частота встречи имени, генерируем её
+            if((probability ?? 0) <= 0)
+            {
+                Random random = new();
+                double probabilityRandom = Convert.ToDouble(random.Next(1, 200)) / 100.00;
+                probability = Math.Round(probabilityRandom, 2);
+            }
+
+            //Открываем транзакцию
+            using var transaction = _repository.Database.BeginTransaction();
+
+            //Сохраняем данные в базу
+            try
+            {
+                //Формируем экземпляр имени и сохраняем в базу
+                PersonalName personalName = new(user, name, gender ?? false);
+                _repository.PersonalNames.Add(personalName);
+                await _repository.SaveChangesAsync();
+
+                //Формируем экземпляр связи нации с именем
+                NationPersonalName nationPersonalName = new(user, probability ?? 0, nation, personalName);
+                _repository.NationsPersonalNames.Add(nationPersonalName);
+                await _repository.SaveChangesAsync();
+
+                //Фиксируем транзакцию
+                await transaction.CommitAsync();
+
+                //Записываем id имени
+                id = personalName.Id;
+            }
+            catch(Exception ex)
+            {
+                //Откатываем транзакцию
+                transaction.Rollback();
+
+                //Прокидываем исключение
+                throw new Exception(ex.Message, ex);
+            }
+
+            //Формируем ответ
+            _logger.LogInformation("PersonalNames. AddName. Возвращаем результат");
+            return new BaseResponse(true, id);
+        }
+        //Обрабатываем внутренние исключения
+        catch (InnerException ex)
+        {
+            _logger.LogInformation("PersonalNames. AddName. Внутренняя ошибка: {0}", ex);
+            return new BaseResponse(false, new BaseError(400, ex.Message));
+        }
+        //Обрабатываем системные исключения
+        catch (Exception ex)
+        {
+            _logger.LogInformation("PersonalNames. AddName. Системная ошибка: {0}", ex);
+            return new BaseResponse(false, new BaseError(500, ex.Message));
         }
     }
 }

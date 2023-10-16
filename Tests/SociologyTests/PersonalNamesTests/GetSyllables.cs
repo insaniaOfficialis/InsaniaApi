@@ -4,16 +4,16 @@ using Services.Sociology.PersonalNames;
 namespace Tests.SociologyTests.PersonalNamesTests;
 
 /// <summary>
-/// Тест получения последнего слога
+/// Тест получения слогов
 /// </summary>
-public class GetLastSyllable : BaseTest
+public class GetSyllables : BaseTest
 {
     Mock<ILogger<PersonalNames>> _mockLogger; //зашитый логгер
 
     /// <summary>
-    /// Конструктор теста получения успешного кода
+    /// Конструктор теста получения cлогов
     /// </summary>
-    public GetLastSyllable() : base()
+    public GetSyllables() : base()
     {
         _mockLogger = new Mock<ILogger<PersonalNames>>();
     }
@@ -28,10 +28,10 @@ public class GetLastSyllable : BaseTest
         PersonalNames personalNames = new(_mapper, _repository, _mockLogger.Object);
 
         //Получаем результат
-        var result = personalNames.GetLastSyllable("Альтаир");
+        var result = personalNames.GetSyllables("Альтаир");
 
         //Проверяем, что результат успешный
-        Assert.True(!string.IsNullOrEmpty(result));
+        Assert.DoesNotContain(result, string.IsNullOrEmpty);
     }
 
     /// <summary>
@@ -44,10 +44,17 @@ public class GetLastSyllable : BaseTest
         PersonalNames personalNames = new(_mapper, _repository, _mockLogger.Object);
 
         //Получаем результат
-        var result = personalNames.GetLastSyllable("Альтаир");
+        var result = personalNames.GetSyllables("Альтаир");
+
+        //Формируем корректный результат
+        List<string> correctResult = new()
+        {
+            "Альта",
+            "ир"
+        };
 
         //Проверяем, что результат успешный
-        Assert.Equal("ир", result);
+        Assert.Equal(correctResult, result);
     }
 
     /// <summary>
@@ -60,9 +67,9 @@ public class GetLastSyllable : BaseTest
         PersonalNames personalNames = new(_mapper, _repository, _mockLogger.Object);
 
         //Получаем результат
-        var result = personalNames.GetLastSyllable("");
+        var result = personalNames.GetSyllables("");
 
         //Проверяем, что результат успешный
-        Assert.Null(result);
+        Assert.False(result.Any());
     }
 }

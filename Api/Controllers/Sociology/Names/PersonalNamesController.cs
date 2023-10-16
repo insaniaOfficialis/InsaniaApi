@@ -69,4 +69,39 @@ public class PersonalNamesController : BaseController
         {
             return await _personalNames.GetListEndingsNames(nationId, gender);
         });
+
+    /// <summary>
+    /// Метод генерации нового имени
+    /// </summary>
+    /// <param name="nationId"></param>
+    /// <param name="gender"></param>
+    /// <param name="firstSyllable"></param>
+    /// <param name="lastSyllable"></param>
+    /// <returns></returns>
+    [HttpGet]
+    [Route("generateNew")]
+    public async Task<IActionResult> GetGeneratingNewName([FromQuery] long? nationId, [FromQuery] bool? gender,
+        [FromQuery] string? firstSyllable, [FromQuery] string? lastSyllable)
+        => await GetAnswerAsync(async () =>
+        {
+            return await _personalNames.GetGeneratingNewName(nationId, gender, firstSyllable, lastSyllable);
+        });
+
+    /// <summary>
+    /// Метод добавления имени
+    /// </summary>
+    /// <param name="nationId"></param>
+    /// <param name="gender"></param>
+    /// <param name="name"></param>
+    /// <param name="probability"></param>
+    /// <returns></returns>
+    [HttpPost]
+    public async Task<IActionResult> AddName([FromQuery] long? nationId, [FromQuery] bool? gender,
+        [FromQuery] string? name, [FromQuery] double? probability)
+        => await GetAnswerAsync(async () =>
+        {
+            string? user = User?.Identity?.Name;
+
+            return await _personalNames.AddName(user, nationId, gender, name, probability);
+        });
 }

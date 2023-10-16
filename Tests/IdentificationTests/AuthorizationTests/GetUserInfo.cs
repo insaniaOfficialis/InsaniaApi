@@ -86,7 +86,7 @@ public class GetUserInfo : BaseTest
         Authorization authorization = new(_userManager, _token, _mapper, _repository);
 
         //Получаем результат 
-        var result = await authorization.GetUserInfo("test");
+        var result = await authorization.GetUserInfo("asdfg");
 
         //Проверяем, что результат успешный
         Assert.Equal("Пользователь не найден", result.Error?.Message);
