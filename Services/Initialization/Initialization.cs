@@ -392,6 +392,15 @@ public class Initialization : IInitialization
                 _repository.FileTypes.Add(fileType);
                 await _repository.SaveChangesAsync();
             }
+            
+            //Проверяем наличие типа файла для информационных статей
+            if (!_repository.FileTypes.Any(x => x.Name == "Информационная статья"))
+            {
+                //Создаём тип файла для информационных статей
+                FileType fileType = new("system", "Информационная статья", "I:\\Insania\\ПО\\Files\\InformationArticles");
+                _repository.FileTypes.Add(fileType);
+                await _repository.SaveChangesAsync();
+            }
         }
         catch (Exception ex)
         {

@@ -1,6 +1,5 @@
 ﻿using Domain.Entities.Identification;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using BaseEntity = Domain.Entities.Base.Base;
 
@@ -9,7 +8,7 @@ namespace Domain.Entities.General.File;
 /// <summary>
 /// Сущности связи файлов с пользователями
 /// </summary>
-[Table("un_users_files")]
+[Table("un_files_users")]
 [Comment("Связь файлов с пользователями")]
 public class FileUser : BaseEntity
 {
@@ -66,8 +65,8 @@ public class FileUser : BaseEntity
     /// </summary>
     /// <param name="id"></param>
     /// <param name="user"></param>
-    /// <param name="fileId"></param>
-    /// <param name="userId"></param>
+    /// <param name="file"></param>
+    /// <param name="userEntity"></param>
     public FileUser(long id, string user, File file, User userEntity): base(id, user)
     {
         File = file;
