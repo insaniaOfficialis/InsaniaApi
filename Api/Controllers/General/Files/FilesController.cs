@@ -1,8 +1,8 @@
 ﻿using Api.Controllers.Base;
-using Domain.Models.Files.Request;
+using Domain.Models.General.Files.Request;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Services.Files;
+using Services.General.Files;
 
 namespace Api.Controllers.General.Files;
 

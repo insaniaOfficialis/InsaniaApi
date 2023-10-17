@@ -7,6 +7,8 @@ using Domain.Models.Identification.Registration.Request;
 using Domain.Models.Identification.Roles.Request;
 using Domain.Entities.Sociology;
 using Domain.Models.Identification.Users.Response;
+using Domain.Models.General.Logs.Response;
+using Domain.Entities.General.Log;
 
 namespace Domain;
 
@@ -23,5 +25,6 @@ public class AppMappingProfile: Profile
         CreateMap<Nation, BaseResponseListItem>();
         CreateMap<PersonalName, BaseResponseListItem>();
         CreateMap<User, UserInfoResponse>();
+        CreateMap<Log, GetLogsResponseItem>();
     }
 }

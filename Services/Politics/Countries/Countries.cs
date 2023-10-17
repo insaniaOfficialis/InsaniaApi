@@ -75,8 +75,8 @@ public class Countries: ICountries
     /// <param name="sort"></param>
     /// <param name="isDeleted"></param>
     /// <returns></returns>
-    public async Task<CountriesResponseList> GetCountriesFullInformation(string? search, int? skip, int? take, List<BaseSortRequest?>? sort,
-        bool isDeleted)
+    public async Task<CountriesResponseList> GetCountriesFullInformation(string? search, int? skip, int? take,
+        List<BaseSortRequest?>? sort, bool isDeleted)
     {
         try
         {
@@ -98,7 +98,8 @@ public class Countries: ICountries
             if (sort?.Any() == true)
             {
                 //Сортируем по первому элементу сортировки
-                IOrderedQueryable<Country> countriesOrderQuery = (sort.FirstOrDefault()!.SortKey, sort.FirstOrDefault()!.IsAscending) switch
+                IOrderedQueryable<Country> countriesOrderQuery = (sort.FirstOrDefault()!.SortKey,
+                    sort.FirstOrDefault()!.IsAscending) switch
                 {
                     ("name", true) => countriesQuery.OrderBy(x => x.Name),
                     ("number", true) => countriesQuery.OrderBy(x => x.Number),

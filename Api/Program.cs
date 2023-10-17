@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
-using Services.Files;
 using Services.Politics.Countries;
 using Services.Identification.Authorization;
 using Services.Identification.Registration;
@@ -16,11 +15,13 @@ using Services.Identification.Roles;
 using Services.Identification.Token;
 using Services.Initialization;
 using System.Text;
-using Files = Services.Files.Files;
+using Files = Services.General.Files.Files;
 using Services.Sociology.Races;
 using Services.Sociology.Nations;
 using Services.Sociology.PersonalNames;
 using Api.Middleware;
+using Services.General.Files;
+using Services.General.Logs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -118,6 +119,7 @@ builder.Services.AddScoped<ICountries, Countries>();
 builder.Services.AddScoped<IRaces, Races>();
 builder.Services.AddScoped<INations, Nations>();
 builder.Services.AddScoped<IPersonalNames, PersonalNames>();
+builder.Services.AddScoped<IGetLogs, GetLogs>();
 
 var app = builder.Build();
 

@@ -1,7 +1,7 @@
 ﻿using Domain.Models.Base;
-using Domain.Models.Files.Request;
+using Domain.Models.General.Files.Request;
 
-namespace Services.Files;
+namespace Services.General.Files;
 
 /// <summary>
 /// Интерфейс файлов

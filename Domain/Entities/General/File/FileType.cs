@@ -1,5 +1,4 @@
-﻿using Domain.Entities.Base;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 using Directory = Domain.Entities.Base.Directory;
 

@@ -50,7 +50,8 @@ public class FileInformationArticleDetail : BaseEntity
     /// <param name="user"></param>
     /// <param name="file"></param>
     /// <param name="informationArticleDetail"></param>
-    public FileInformationArticleDetail(string? user, File file, InformationArticleDetail informationArticleDetail)
+    public FileInformationArticleDetail(string? user, File file,
+        InformationArticleDetail informationArticleDetail)
         : base(user)
     {
         File = file;

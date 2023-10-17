@@ -1,4 +1,4 @@
-﻿namespace Domain.Models.Files.Request;
+﻿namespace Domain.Models.General.Files.Request;
 
 /// <summary>
 /// Модель запроса на добавление файла

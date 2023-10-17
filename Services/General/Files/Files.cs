@@ -1,16 +1,16 @@
 ﻿using Domain.Models.Base;
 using Domain.Models.Exclusion;
-using Domain.Models.Files.Request;
 using Data;
 using FileEntity = Domain.Entities.General.File.File;
 using Domain.Entities.General.File;
+using Domain.Models.General.Files.Request;
 
-namespace Services.Files;
+namespace Services.General.Files;
 
 /// <summary>
 /// Сервис файлов
 /// </summary>
-public class Files: IFiles
+public class Files : IFiles
 {
     private readonly ApplicationContext _repository; //репозиторий сущности
     private readonly List<string> _allowedExtensions = new() { "pdf", "png", "jpeg", "jpg", "bmp" }; //доступные расширения
@@ -42,10 +42,10 @@ public class Files: IFiles
             if (request.Id == null)
                 throw new InnerException("Не указан id сущности");
 
-            if (String.IsNullOrEmpty(request.Type))
+            if (string.IsNullOrEmpty(request.Type))
                 throw new InnerException("Не указан тип файла");
 
-            if (String.IsNullOrEmpty(request.Name))
+            if (string.IsNullOrEmpty(request.Name))
                 throw new InnerException("Не указано наименование файла");
 
             if (request.Stream == null)
@@ -102,7 +102,7 @@ public class Files: IFiles
 
                 //Фиксируем транзакцию
                 transaction.Commit();
-                
+
                 //Записывае id для вывода
                 id = file.Id;
             }

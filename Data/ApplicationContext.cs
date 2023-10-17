@@ -21,10 +21,14 @@ public class ApplicationContext : IdentityDbContext<User, Role, long, IdentityUs
     public DbSet<RoleAcccessRight> RolesAcccessRights { get; set; } //связь ролей с правами доступа
     public DbSet<InformationArticle> InformationArticles { get; set; } //информационные статьи
     public DbSet<InformationArticleDetail> InformationArticlesDetails { get; set; } //детальные части информационных статьей
+    public DbSet<NewsType> NewsTypes { get; set; } //типы новостей
+    public DbSet<News> News { get; set; } //новости
+    public DbSet<NewsDetail> NewsDetails { get; set; } //детальные части новостей
     public DbSet<FileType> FileTypes { get; set; } //типы файлов
     public DbSet<File> Files { get; set; } //файлы
     public DbSet<FileUser> FilesUsers { get; set; } //связь файлов с пользователями
-    public DbSet<FileInformationArticleDetail> FilesInformationArticles { get; set; } //связь файлов с детальными частями информационных статей
+    public DbSet<FileInformationArticleDetail> FilesInformationArticleDetails { get; set; } //связь файлов с детальными частями информационных статей
+    public DbSet<FileNewsDetail> FilesNewsDetails { get; set; } //связь файлов с детальными частями новостей
     public DbSet<Country> Countries { get; set; } //страны
     public DbSet<Region> Regions { get; set; } //регионы
     public DbSet<Race> Races { get; set; } //расы
