@@ -22,6 +22,9 @@ using Services.Sociology.PersonalNames;
 using Api.Middleware;
 using Services.General.Files;
 using Services.General.Logs;
+using Services.General.Logs.GetLogs;
+using Services.Informations.InformationArticles.AddInformationArticle;
+using Services.Informations.InformationArticlesDetails.AddInformationArticleDetail;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -120,6 +123,8 @@ builder.Services.AddScoped<IRaces, Races>();
 builder.Services.AddScoped<INations, Nations>();
 builder.Services.AddScoped<IPersonalNames, PersonalNames>();
 builder.Services.AddScoped<IGetLogs, GetLogs>();
+builder.Services.AddScoped<IAddInformationArticle, AddInformationArticle>();
+builder.Services.AddScoped<IAddInformationArticleDetail, AddInformationArticleDetail>();
 
 var app = builder.Build();
 

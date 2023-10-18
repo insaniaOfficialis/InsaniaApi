@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using Services.General.Logs;
+using Services.General.Logs.GetLogs;
 
 namespace Tests.GeneralTests.LogsTests;
 

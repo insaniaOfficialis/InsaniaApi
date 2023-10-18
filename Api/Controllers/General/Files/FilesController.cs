@@ -32,11 +32,12 @@ public class FilesController : BaseController
     /// </summary>
     /// <param name="type"></param>
     /// <param name="id"></param>
-    /// <param name="files"></param>
+    /// <param name="file"></param>
     /// <returns></returns>
     [HttpPost]
     [Route("add/{type}/{id}")]
-    public async Task<IActionResult> AddFile([FromRoute] string type, [FromRoute] long id, [FromForm] IFormFile file) => await GetAnswerAsync(async () =>
+    public async Task<IActionResult> AddFile([FromRoute] string type, [FromRoute] long id,
+        [FromForm] IFormFile file) => await GetAnswerAsync(async () =>
     {
         AddFileRequest request = new(id, file.FileName, type, file.OpenReadStream());
         return await _files.AddFile(request);
