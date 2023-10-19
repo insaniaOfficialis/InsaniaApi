@@ -4,6 +4,7 @@ using Domain.Models.Informations.InformationArticlesDetails.Request;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Informations.InformationArticles.AddInformationArticle;
+using Services.Informations.InformationArticles.GetInformationArticles;
 using Services.Informations.InformationArticlesDetails.AddInformationArticleDetail;
 
 namespace Api.Controllers.Informations.InformationArticles;
@@ -18,6 +19,7 @@ public class InformationArticlesController : BaseController
     private readonly ILogger<InformationArticlesController> _logger; //интерфейс логгирования
     private readonly IAddInformationArticle _addInformationArticle; //интерфейс добавления информационных статей
     private readonly IAddInformationArticleDetail _addInformationArticleDetail; //интерфейс добавления детальных часте информационных статей
+    private readonly IGetListInformationArticles _getListInformationArticles; //интерфейс получения списка информационных статей
 
     /// <summary>
     /// Конструктор контроллера информационных статей
@@ -25,13 +27,16 @@ public class InformationArticlesController : BaseController
     /// <param name="logger"></param>
     /// <param name="addInformationArticle"></param>
     /// <param name="addInformationArticleDetail"></param>
+    /// <param name="getListInformationArticles"></param>
     public InformationArticlesController(ILogger<InformationArticlesController> logger,
-        IAddInformationArticle addInformationArticle, IAddInformationArticleDetail addInformationArticleDetail)
+        IAddInformationArticle addInformationArticle, IAddInformationArticleDetail addInformationArticleDetail,
+        IGetListInformationArticles getListInformationArticles)
         : base(logger)
     {
         _logger = logger;
         _addInformationArticle = addInformationArticle;
         _addInformationArticleDetail = addInformationArticleDetail;
+        _getListInformationArticles = getListInformationArticles;
     }
 
     /// <summary>
@@ -59,5 +64,18 @@ public class InformationArticlesController : BaseController
         {
             string? user = User?.Identity?.Name;
             return await _addInformationArticleDetail.Handler(user, request);
+        });
+
+    /// <summary>
+    /// Метод получения списка информационных статей
+    /// </summary>
+    /// <param name="search"></param>
+    /// <returns></returns>
+    [HttpGet]
+    [Route("list")]
+    public async Task<IActionResult> GetListInformationArticles([FromQuery] string? search)
+        => await GetAnswerAsync(async () =>
+        {
+            return await _getListInformationArticles.Handler(search);
         });
 }
