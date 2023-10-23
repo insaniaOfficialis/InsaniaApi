@@ -26,6 +26,9 @@ using Services.General.Logs.GetLogs;
 using Services.Informations.InformationArticles.AddInformationArticle;
 using Services.Informations.InformationArticlesDetails.AddInformationArticleDetail;
 using Services.Informations.InformationArticles.GetInformationArticles;
+using Services.General.Files.GetFile;
+using Services.General.Files.GetFilesInformationArticleDetails;
+using Services.Informations.InformationArticlesDetails.GetInformationArticleDetails;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -127,6 +130,10 @@ builder.Services.AddScoped<IGetLogs, GetLogs>();
 builder.Services.AddScoped<IAddInformationArticle, AddInformationArticle>();
 builder.Services.AddScoped<IAddInformationArticleDetail, AddInformationArticleDetail>();
 builder.Services.AddScoped<IGetListInformationArticles, GetListInformationArticles>();
+builder.Services.AddScoped<IGetFile, GetFile>();
+builder.Services.AddScoped<IGetFilesInformationArticleDetails, GetFilesInformationArticleDetails>();
+builder.Services.AddScoped<IGetInformationArticleDetails, GetInformationArticleDetails>();
+
 
 var app = builder.Build();
 

@@ -10,6 +10,7 @@ using Domain.Models.Identification.Users.Response;
 using Domain.Models.General.Logs.Response;
 using Domain.Entities.General.Log;
 using Domain.Entities.Informations;
+using FileEntity = Domain.Entities.General.File.File;
 
 namespace Domain;
 
@@ -28,5 +29,6 @@ public class AppMappingProfile: Profile
         CreateMap<User, UserInfoResponse>();
         CreateMap<Log, GetLogsResponseItem>();
         CreateMap<InformationArticle, BaseResponseListItem>().ForMember("Name", x => x.MapFrom(y => y.Title));
+        CreateMap<FileEntity, BaseResponseListItem>();
     }
 }

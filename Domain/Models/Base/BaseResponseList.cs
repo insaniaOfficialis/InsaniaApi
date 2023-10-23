@@ -8,6 +8,14 @@ namespace Domain.Models.Base;
 public class BaseResponseList : BaseResponse
 {
     /// <summary>
+    /// Пустой конструктор ответа модели ответа списка
+    /// </summary>
+    public BaseResponseList() : base()
+    {
+
+    }
+
+    /// <summary>
     /// Простой конструктор ответа модели ответа списка
     /// </summary>
     /// <param name="success"></param>
@@ -47,12 +55,32 @@ public class BaseResponseListItem
     }
 
     /// <summary>
-    /// Конструктор модели элемента списка
+    /// Конструктор модели элемента списка с наименованием
     /// </summary>
     /// <param name="name"></param>
     public BaseResponseListItem(string? name)
     {
         Name = name;
+    }
+
+    /// <summary>
+    /// Конструктор модели элемента списка с id
+    /// </summary>
+    /// <param name="id"></param>
+    public BaseResponseListItem(long? id)
+    {
+        Id = id;
+    }
+
+    /// <summary>
+    /// Полный конструктор модели элемента списка
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="id"></param>
+    public BaseResponseListItem(string? name, long? id)
+    {
+        Name = name;
+        Id = id;
     }
 
     /// <summary>

@@ -16,7 +16,7 @@ public class GetListInformationArticles : IGetListInformationArticles
     private readonly ApplicationContext _repository; //репозиторий сущности
 
     /// <summary>
-    /// Конструктор сервиса получения списка стран
+    /// Конструктор сервиса получения списка информационных статей
     /// </summary>
     /// <param name="mapper"></param>
     /// <param name="repository"></param>

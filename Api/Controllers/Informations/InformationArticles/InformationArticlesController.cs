@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Services.Informations.InformationArticles.AddInformationArticle;
 using Services.Informations.InformationArticles.GetInformationArticles;
 using Services.Informations.InformationArticlesDetails.AddInformationArticleDetail;
+using Services.Informations.InformationArticlesDetails.GetInformationArticleDetails;
 
 namespace Api.Controllers.Informations.InformationArticles;
 
@@ -20,6 +21,7 @@ public class InformationArticlesController : BaseController
     private readonly IAddInformationArticle _addInformationArticle; //интерфейс добавления информационных статей
     private readonly IAddInformationArticleDetail _addInformationArticleDetail; //интерфейс добавления детальных часте информационных статей
     private readonly IGetListInformationArticles _getListInformationArticles; //интерфейс получения списка информационных статей
+    private readonly IGetInformationArticleDetails _getInformationArticleDetails; //интерфейс получения списка детальных частей информационной статьи
 
     /// <summary>
     /// Конструктор контроллера информационных статей
@@ -28,15 +30,17 @@ public class InformationArticlesController : BaseController
     /// <param name="addInformationArticle"></param>
     /// <param name="addInformationArticleDetail"></param>
     /// <param name="getListInformationArticles"></param>
+    /// <param name="getInformationArticleDetails"></param>
     public InformationArticlesController(ILogger<InformationArticlesController> logger,
         IAddInformationArticle addInformationArticle, IAddInformationArticleDetail addInformationArticleDetail,
-        IGetListInformationArticles getListInformationArticles)
+        IGetListInformationArticles getListInformationArticles, IGetInformationArticleDetails getInformationArticleDetails)
         : base(logger)
     {
         _logger = logger;
         _addInformationArticle = addInformationArticle;
         _addInformationArticleDetail = addInformationArticleDetail;
         _getListInformationArticles = getListInformationArticles;
+        _getInformationArticleDetails = getInformationArticleDetails;
     }
 
     /// <summary>
@@ -77,5 +81,18 @@ public class InformationArticlesController : BaseController
         => await GetAnswerAsync(async () =>
         {
             return await _getListInformationArticles.Handler(search);
+        });
+
+    /// <summary>
+    /// Метод получения детальных частей информационной статьи
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [HttpGet]
+    [Route("details")]
+    public async Task<IActionResult> GetInformationArticleDetails([FromQuery] long? id)
+        => await GetAnswerAsync(async () =>
+        {
+            return await _getInformationArticleDetails.Handler(id);
         });
 }

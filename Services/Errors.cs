@@ -14,9 +14,13 @@ public static class Errors
     //ИНФОРМАЦИОННЫЕ СТАТЬИ
     public const string EmptyTitle = "Пустой заголовок";
     public const string ExistingInformationArticle = "Данная информационна статья уже существует";
+    public const string NotExistsInformationArticle = "Не существующая информационная статья";
 
     //ДЕТАЛЬНЫЕ ЧАСТИ ИНФОРМАЦИОННЫХ СТАТЕЙ
     public const string EmptyText = "Пустой текст";
     public const string EmptyInformationArticleId = "Пустая ссылка на информационную статью";
-    public const string NotExistsInformationArticle = "Не существующая информационная статья";
+    public const string NotExistsInformationArticleDetail = "Не существующая детальная часть информационной статьи";
+
+    //ФАЙЛЫ
+    public const string NotExistsFile = "Не существует файл";
 }

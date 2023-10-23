@@ -105,6 +105,6 @@ public class LoggingMiddleware
         response.Body.Seek(0, SeekOrigin.Begin);
         
         //Возвращаем результат
-        return string.Format("Body: {0}", bodyString);
+        return string.Format("Body: {0}", bodyString.Replace("�", "").Replace("\0", ""));
     }
 }
