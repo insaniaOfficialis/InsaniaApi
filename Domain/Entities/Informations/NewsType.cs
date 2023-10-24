@@ -12,6 +12,13 @@ namespace Domain.Entities.Informations;
 public class NewsType : Directory
 {
     /// <summary>
+    /// Цвет
+    /// </summary>
+    [Column("color")]
+    [Comment("Цвет")]
+    public string Color { get; private set; }
+
+    /// <summary>
     /// Пустой конструктор
     /// </summary>
     public NewsType()
@@ -24,9 +31,10 @@ public class NewsType : Directory
     /// </summary>
     /// <param name="user"></param>
     /// <param name="name"></param>
-    public NewsType(string user, string name) : base(user, name)
+    /// <param name="color"></param>
+    public NewsType(string user, string name, string color) : base(user, name)
     {
-
+        Color = color;
     }
 
     /// <summary>
@@ -35,8 +43,18 @@ public class NewsType : Directory
     /// <param name="id"></param>
     /// <param name="user"></param>
     /// <param name="name"></param>
-    public NewsType(long id, string user, string name) : base(id, user, name)
+    /// <param name="color"></param>
+    public NewsType(long id, string user, string name, string color) : base(id, user, name)
     {
+        Color = color;
+    }
 
+    /// <summary>
+    /// Метод записи цвета
+    /// </summary>
+    /// <param name="color"></param>
+    public void SetColor(string color)
+    {
+        Color = color;
     }
 }

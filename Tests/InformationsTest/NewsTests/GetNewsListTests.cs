@@ -1,16 +1,16 @@
-﻿using Services.Informations.InformationArticles.GetInformationArticles;
+﻿using Services.Informations.News.GetNewsList;
 
-namespace Tests.InformationsTest.InformationArticlesTests;
+namespace Tests.InformationsTest.NewsTests;
 
 /// <summary>
-/// Тест метода получения списка информационных статей
+/// Тест метода получения списка новостей
 /// </summary>
-public class GetListInformationArticlesTests : BaseTest
+public class GetNewsListTests : BaseTest
 {
     /// <summary>
-    /// Конструктор теста метода получения списка информационных статей
+    /// Конструктор теста метода получения списка новостей
     /// </summary>
-    public GetListInformationArticlesTests() : base()
+    public GetNewsListTests() : base()
     {
     }
 
@@ -21,12 +21,12 @@ public class GetListInformationArticlesTests : BaseTest
     public async void Success()
     {
         //Создаём новый экземпляр сервиса
-        GetListInformationArticles service = new(_mapper, _repository);
+        GetNewsList service = new(_repository);
 
         //Получаем результат
         var result = await service.Handler(null);
 
-        //Проверяем, что результат успешный
+        //Проверяем на соответствие результат
         Assert.True(result.Success);
     }
 
@@ -37,12 +37,12 @@ public class GetListInformationArticlesTests : BaseTest
     public async void CorrectResult()
     {
         //Создаём новый экземпляр сервиса
-        GetListInformationArticles service = new(_mapper, _repository);
+        GetNewsList service = new(_repository);
 
         //Получаем результат
         var result = await service.Handler(null);
 
-        //Проверяем, что результат успешный
+        //Проверяем на соответствие результат
         Assert.True(result.Items?.Any());
     }
 
@@ -53,12 +53,12 @@ public class GetListInformationArticlesTests : BaseTest
     public async void CorrectResultWithSearch()
     {
         //Создаём новый экземпляр сервиса
-        GetListInformationArticles service = new(_mapper, _repository);
+        GetNewsList service = new(_repository);
 
         //Получаем результат
-        var result = await service.Handler("Тест");
+        var result = await service.Handler("Запуск");
 
-        //Проверяем, что результат успешный
+        //Проверяем на соответствие результат
         Assert.True(result.Items?.Any());
     }
 }

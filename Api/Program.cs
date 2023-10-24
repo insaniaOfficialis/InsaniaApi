@@ -29,6 +29,7 @@ using Services.Informations.InformationArticles.GetInformationArticles;
 using Services.General.Files.GetFile;
 using Services.General.Files.GetFilesInformationArticleDetails;
 using Services.Informations.InformationArticlesDetails.GetInformationArticleDetails;
+using Services.Informations.News.GetNewsList;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -133,6 +134,7 @@ builder.Services.AddScoped<IGetListInformationArticles, GetListInformationArticl
 builder.Services.AddScoped<IGetFile, GetFile>();
 builder.Services.AddScoped<IGetFilesInformationArticleDetails, GetFilesInformationArticleDetails>();
 builder.Services.AddScoped<IGetInformationArticleDetails, GetInformationArticleDetails>();
+builder.Services.AddScoped<IGetNewsList, GetNewsList>();
 
 
 var app = builder.Build();

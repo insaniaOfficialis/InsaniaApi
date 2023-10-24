@@ -10,6 +10,7 @@ using Domain.Entities.Geography;
 using Domain.Entities.Sociology;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Domain.Entities.Informations;
 
 namespace Services.Initialization;
 
@@ -116,6 +117,18 @@ public class Initialization : IInitialization
                 if (Convert.ToBoolean(_configuration["InitializeOptions:InitializeRolesAccessRights"]))
                 {
                     await InitializeRolesAccessRights();
+                }
+
+                //ТИПЫ НОВОСТЕЙ
+                if (Convert.ToBoolean(_configuration["InitializeOptions:InitializeNewsTypes"]))
+                {
+                    await InitializeNewsTypes();
+                }
+
+                //НОВОСТИ
+                if (Convert.ToBoolean(_configuration["InitializeOptions:InitializeNews"]))
+                {
+                    await InitializeNews();
                 }
 
                 //ТИПЫ ФАЙЛОВ
@@ -520,6 +533,61 @@ public class Initialization : IInitialization
         catch (Exception ex)
         {
             throw new Exception("Initialization. InitializeRolesAccessRights. Ошибка: {0}", ex);
+        }
+    }
+
+    /// <summary>
+    /// Метод инициализации типов новостей
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public async Task InitializeNewsTypes()
+    {
+        try
+        {
+            //Проверяем наличие типа новостей "Системные"
+            if (!_repository.NewsTypes.Any(x => x.Name == "Системные"))
+            {
+                //Создаём тип новостей "Системные"
+                NewsType newsType = new("system", "Системные", "#77969696");
+                _repository.NewsTypes.Add(newsType);
+                await _repository.SaveChangesAsync();
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Initialization. InitializeNewsTypes. Ошибка: {0}", ex);
+        }
+    }
+
+    /// <summary>
+    /// Метод инициализации новостей
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public async Task InitializeNews()
+    {
+        try
+        {
+            //Проверяем наличие новости "Запуск новостей"
+            if (!_repository.News.Any(x => x.Title == "Запуск новостей"))
+            {
+                //Получаем тип новостей "Системные"
+                NewsType type = await _repository.NewsTypes.FirstAsync(x => x.Name == "Системные");
+
+                //Если есть тип новостей "Системные"
+                if (type != null)
+                {
+                    //Создаём новость "Запуск новостей"
+                    News news = new("system", true, "Запуск новостей", "В системе начали работать новости", type);
+                    _repository.News.Add(news);
+                    await _repository.SaveChangesAsync();
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Initialization. InitializeNews. Ошибка: {0}", ex);
         }
     }
 

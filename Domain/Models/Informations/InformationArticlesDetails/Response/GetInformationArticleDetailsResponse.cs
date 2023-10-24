@@ -8,7 +8,6 @@ namespace Domain.Models.Informations.InformationArticlesDetails.Response;
 /// </summary>
 public class GetInformationArticleDetailsResponse : BaseResponseList
 {
-
     /// <summary>
     /// Простой конструктор модели ответа списка детальных частей иинформационной статьи
     /// </summary>
