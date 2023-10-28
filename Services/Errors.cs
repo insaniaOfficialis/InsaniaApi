@@ -23,4 +23,7 @@ public static class Errors
 
     //ФАЙЛЫ
     public const string NotExistsFile = "Не существует файл";
+
+    //НОВОСТИ
+    public const string NotExistsNews = "Не существующая новость";
 }
