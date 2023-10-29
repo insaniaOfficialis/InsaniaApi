@@ -40,6 +40,7 @@ public class ApplicationContext : IdentityDbContext<User, Role, long, IdentityUs
     public DbSet<NationLastName> NationsLastNames { get; set; } //связь наций с фамилиями
     public DbSet<NationPrefixName> NationsPrefixNames { get; set; } //связь наций с префиксами имён
     public DbSet<Fraction> Fractions { get; set; } //фракции
+    public DbSet<CharacterTrait> CharacterTraits { get; set; } //черты характера
     public DbSet<Area> Areas { get; set; } //области
     public DbSet<TypeSettlement> TypesSettlements { get; set; } //типы населённых пунктов
     public DbSet<Settlement> Settlements { get; set; } //населённые пункты

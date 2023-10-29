@@ -197,6 +197,12 @@ public class Initialization : IInitialization
                     await InitializeNationsPrefixNames();
                 }
 
+                //ЧЕРТЫ ХАРАКТЕРА
+                if (Convert.ToBoolean(_configuration["InitializeOptions:InitializeCharacterTraits"]))
+                {
+                    await InitializeCharacterTraits();
+                }
+
                 //СТРАНЫ
                 if (Convert.ToBoolean(_configuration["InitializeOptions:InitializeCountries"]))
                 {
@@ -17098,6 +17104,6132 @@ public class Initialization : IInitialization
         {
             throw new Exception("Initialization. InitializeNationsPrefixNames. Ошибка: {0}", ex);
         }
+    }
+
+    /// <summary>
+    /// Метод инициализации черт характера
+    /// </summary>
+    /// <returns></returns>
+    public async Task InitializeCharacterTraits()
+    {
+        try
+        {
+            //Проверяем наличие черты характера "Авантюрный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Авантюрный (-ая)"))
+            {
+                //Создаём черту характера "Авантюрный (-ая)"
+                CharacterTrait characterTrait = new("system", "Авантюрный (-ая)", "Склонен (-на) к риску и приключению", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Авторитарный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Авторитарный (-ая)"))
+            {
+                //Создаём черту характера "Авторитарный (-ая)"
+                CharacterTrait characterTrait = new("system", "Авторитарный (-ая)", "Склонен (-на) к утверждению своей власти и влияния", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Авторитетный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Авторитетный (-ая)"))
+            {
+                //Создаём черту характера "Авторитетный (-ая)"
+                CharacterTrait characterTrait = new("system", "Авторитетный (-ая)", "Склонен (-на) к заслуживанию доверия у других", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Агрессивный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Агрессивный (-ая)"))
+            {
+                //Создаём черту характера "Агрессивный (-ая)"
+                CharacterTrait characterTrait = new("system", "Агрессивный (-ая)", "Склонен (-на) к использованию насильственных сопособов для достижения цели", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Адаптивный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Адаптивный (-ая)"))
+            {
+                //Создаём черту характера "Адаптивный (-ая)"
+                CharacterTrait characterTrait = new("system", "Адаптивный (-ая)", "Склонен (-на) к приспособлению", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Адекватный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Адекватный (-ая)"))
+            {
+                //Создаём черту характера "Адекватный (-ая)"
+                CharacterTrait characterTrait = new("system", "Адекватный (-ая)", "Склонен (-на) к совпадению с общепринятыми нормами", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Азартный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Азартный (-ая)"))
+            {
+                //Создаём черту характера "Азартный (-ая)"
+                CharacterTrait characterTrait = new("system", "Азартный (-ая)", "Склонен (-на) к страстности и увлечённости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Аккуратный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Аккуратный (-ая)"))
+            {
+                //Создаём черту характера "Аккуратный (-ая)"
+                CharacterTrait characterTrait = new("system", "Аккуратный (-ая)", "Склонен (-на) к соблюдению порядка, точности, осторожности и бережености", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Активный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Активный (-ая)"))
+            {
+                //Создаём черту характера "Активный (-ая)"
+                CharacterTrait characterTrait = new("system", "Активный (-ая)", "Склонен (-на) к энергичности, деятельности, развитию и усиленному действию", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Алчный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Алчный (-ая)"))
+            {
+                //Создаём черту характера "Алчный (-ая)"
+                CharacterTrait characterTrait = new("system", "Алчный (-ая)", "Склонен (-на) к страстному желанию чего-либо, жадности, корысти", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Альтруистичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Альтруистичный (-ая)"))
+            {
+                //Создаём черту характера "Альтруистичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Альтруистичный (-ая)", "Склонен (-на) к самоотверженности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Амбивалентный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Амбивалентный (-ая)"))
+            {
+                //Создаём черту характера "Амбивалентный (-ая)"
+                CharacterTrait characterTrait = new("system", "Амбивалентный (-ая)", "Склонен (-на) к двойственности и противоречивому отношению к чему-либо", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Амбициозный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Амбициозный (-ая)"))
+            {
+                //Создаём черту характера "Амбициозный (-ая)"
+                CharacterTrait characterTrait = new("system", "Амбициозный (-ая)", "Склонен (-на) к претензиям, притязаниям на что-либо", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Аморальный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Аморальный (-ая)"))
+            {
+                //Создаём черту характера "Аморальный (-ая)"
+                CharacterTrait characterTrait = new("system", "Аморальный (-ая)", "Склонен (-на) к отрицанию морали и нравственности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Анархичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Анархичный (-ая)"))
+            {
+                //Создаём черту характера "Анархичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Анархичный (-ая)", "Склонен (-на) к отсутсвию порядка и организованности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Апатичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Апатичный (-ая)"))
+            {
+                //Создаём черту характера "Апатичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Апатичный (-ая)", "Склонен (-на) к вялости и равнодушию", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Аполитичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Аполитичный (-ая)"))
+            {
+                //Создаём черту характера "Аполитичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Аполитичный (-ая)", "Склонен (-на) к безразличию в вопросах политики и уклонению от отбщественно-политической жизни", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Артистичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Артистичный (-ая)"))
+            {
+                //Создаём черту характера "Артистичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Артистичный (-ая)", "Склонен (-на) к художественному вкусу", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Ассертивный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Ассертивный (-ая)"))
+            {
+                //Создаём черту характера "Ассертивный (-ая)"
+                CharacterTrait characterTrait = new("system", "Ассертивный (-ая)", "Склонен (-на) не зависеть от чужого мнения и внешних оценок", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Аскетичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Аскетичный (-ая)"))
+            {
+                //Создаём черту характера "Аскетичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Аскетичный (-ая)", "Склонен (-на) к отказу от жизненных благ и удовольствий", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Баламут (-ша)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Баламут (-ша)"))
+            {
+                //Создаём черту характера "Баламут (-ша)"
+                CharacterTrait characterTrait = new("system", "Баламут (-ша)", "Склонен (-на) к вызыванию беспокойства и волнения среди кого-то", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Балованный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Балованный (-ая)"))
+            {
+                //Создаём черту характера "Балованный (-ая)"
+                CharacterTrait characterTrait = new("system", "Балованный (-ая)", "Склонен (-на) к баловству, капризности и своевольности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Банальный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Банальный (-ая)"))
+            {
+                //Создаём черту характера "Банальный (-ая)"
+                CharacterTrait characterTrait = new("system", "Банальный (-ая)", "Склонен (-на) к отсутсвию оригинальности, избитости и тривиальности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Бдительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Бдительный (-ая)"))
+            {
+                //Создаём черту характера "Бдительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Бдительный (-ая)", "Склонен (-на) к внимательности и неослабно нстороженности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Безвольный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Безвольный (-ая)"))
+            {
+                //Создаём черту характера "Безвольный (-ая)"
+                CharacterTrait characterTrait = new("system", "Безвольный (-ая)", "Склонен (-на) к нерешительности и слабохарактерности, лишён силы воли", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Бездушный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Бездушный (-ая)"))
+            {
+                //Создаём черту характера "Бездушный (-ая)"
+                CharacterTrait characterTrait = new("system", "Бездушный (-ая)", "Склонен (-на) к отсутсвию сочувствия и равнодушию к людям", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Безжалостный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Безжалостный (-ая)"))
+            {
+                //Создаём черту характера "Безжалостный (-ая)"
+                CharacterTrait characterTrait = new("system", "Безжалостный (-ая)", "Склонен (-на) к отсутсвтию жалости и жестокости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Беззаботный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Беззаботный (-ая)"))
+            {
+                //Создаём черту характера "Беззаботный (-ая)"
+                CharacterTrait characterTrait = new("system", "Беззаботный (-ая)", "Склонен (-на) к легкомыслию и безудмию", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Беззаветный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Беззаветный (-ая)"))
+            {
+                //Создаём черту характера "Беззаветный (-ая)"
+                CharacterTrait characterTrait = new("system", "Беззаветный (-ая)", "Склонен (-на) к самотверженности и героичности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Беззлобный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Беззлобный (-ая)"))
+            {
+                //Создаём черту характера "Беззлобный (-ая)"
+                CharacterTrait characterTrait = new("system", "Беззлобный (-ая)", "Склонен (-на) к добродушности и отсутствию зла и злости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Безличый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Безличый (-ая)"))
+            {
+                //Создаём черту характера "Безличый (-ая)"
+                CharacterTrait characterTrait = new("system", "Безличый (-ая)", "Склонен (-на) к отсутсвию личного отношения, безучастности и равнодушию", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Безмятежный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Безмятежный (-ая)"))
+            {
+                //Создаём черту характера "Безмятежный (-ая)"
+                CharacterTrait characterTrait = new("system", "Безмятежный (-ая)", "Склонен (-на) к спокойствию и отсутствию тревожности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Безнравственный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Безнравственный (-ая)"))
+            {
+                //Создаём черту характера "Безнравственный (-ая)"
+                CharacterTrait characterTrait = new("system", "Безнравственный (-ая)", "Склонен (-на) к нарушению правил нравственности и противоречию им", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Безответственный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Безответственный (-ая)"))
+            {
+                //Создаём черту характера "Безответственный (-ая)"
+                CharacterTrait characterTrait = new("system", "Безответственный (-ая)", "Склонен (-на) к отсутсвию осознанности ответсвенности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Безотказный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Безотказный (-ая)"))
+            {
+                //Создаём черту характера "Безотказный (-ая)"
+                CharacterTrait characterTrait = new("system", "Безотказный (-ая)", "Склонен (-на) к неспособности к отказу просьбам", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Безразличный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Безразличный (-ая)"))
+            {
+                //Создаём черту характера "Безразличный (-ая)"
+                CharacterTrait characterTrait = new("system", "Безразличный (-ая)", "Склонен (-на) к равнодушию и безучастности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Безрасудный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Безрасудный (-ая)"))
+            {
+                //Создаём черту характера "Безрасудный (-ая)"
+                CharacterTrait characterTrait = new("system", "Безрасудный (-ая)", "Склонен (-на) к неосмотрительности и противоречию здравому смыслу", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Безропотный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Безропотный (-ая)"))
+            {
+                //Создаём черту характера "Безропотный (-ая)"
+                CharacterTrait characterTrait = new("system", "Безропотный (-ая)", "Склонен (-на) к покорности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Безудержный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Безудержный (-ая)"))
+            {
+                //Создаём черту характера "Безудержный (-ая)"
+                CharacterTrait characterTrait = new("system", "Безудержный (-ая)", "Склонен (-на) к несдерженности и необузданности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Безумный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Безумный (-ая)"))
+            {
+                //Создаём черту характера "Безумный (-ая)"
+                CharacterTrait characterTrait = new("system", "Безумный (-ая)", "Склонен (-на) к неразумности, лишению расудка и сумашествию", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Безупречный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Безупречный (-ая)"))
+            {
+                //Создаём черту характера "Безупречный (-ая)"
+                CharacterTrait characterTrait = new("system", "Безупречный (-ая)", "Склонен (-на) к высокой нравственности, порядочности и безукоризненности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Безучастный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Безучастный (-ая)"))
+            {
+                //Создаём черту характера "Безучастный (-ая)"
+                CharacterTrait characterTrait = new("system", "Безучастный (-ая)", "Склонен (-на) к не проявлению и не выражению участия к кому или чему-либо", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Безынициативный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Безынициативный (-ая)"))
+            {
+                //Создаём черту характера "Безынициативный (-ая)"
+                CharacterTrait characterTrait = new("system", "Безынициативный (-ая)", "Склонен (-на) к отсутсвию инициативы и пассивности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Бережливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Бережливый (-ая)"))
+            {
+                //Создаём черту характера "Бережливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Бережливый (-ая)", "Склонен (-на) к бережному отношению к имуществу, расчётливости и экономности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Бережный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Бережный (-ая)"))
+            {
+                //Создаём черту характера "Бережный (-ая)"
+                CharacterTrait characterTrait = new("system", "Бережный (-ая)", "Склонен (-на) к заботливости, внимательности и осторожности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Бескомпромиссный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Бескомпромиссный (-ая)"))
+            {
+                //Создаём черту характера "Бескомпромиссный (-ая)"
+                CharacterTrait characterTrait = new("system", "Бескомпромиссный (-ая)", "Склонен (-на) к отсутсвию стремлений к компромиссам", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Бесконфликтный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Бесконфликтный (-ая)"))
+            {
+                //Создаём черту характера "Бесконфликтный (-ая)"
+                CharacterTrait characterTrait = new("system", "Бесконфликтный (-ая)", "Склонен (-на) к отсутсвию стремлений к конфликтам", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Бескорыстный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Бескорыстный (-ая)"))
+            {
+                //Создаём черту характера "Бескорыстный (-ая)"
+                CharacterTrait characterTrait = new("system", "Бескорыстный (-ая)", "Склонен (-на) к отсутсвию стремления к личной выгоде и наживе", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Беспамятный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Беспамятный (-ая)"))
+            {
+                //Создаём черту характера "Беспамятный (-ая)"
+                CharacterTrait characterTrait = new("system", "Беспамятный (-ая)", "Склонен (-на) к слабой памяти и забывчивости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Беспечный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Беспечный (-ая)"))
+            {
+                //Создаём черту характера "Беспечный (-ая)"
+                CharacterTrait characterTrait = new("system", "Беспечный (-ая)", "Склонен (-на) к беззаботности и легкомыслию", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Беспокойный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Беспокойный (-ая)"))
+            {
+                //Создаём черту характера "Беспокойный (-ая)"
+                CharacterTrait characterTrait = new("system", "Беспокойный (-ая)", "Склонен (-на) к отсутсвию спокойствия и тревожности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Беспорочный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Беспорочный (-ая)"))
+            {
+                //Создаём черту характера "Беспорочный (-ая)"
+                CharacterTrait characterTrait = new("system", "Беспорочный (-ая)", "Склонен (-на) к безукоризненности и честности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Беспорядочный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Беспорядочный (-ая)"))
+            {
+                //Создаём черту характера "Беспорядочный (-ая)"
+                CharacterTrait characterTrait = new("system", "Беспорядочный (-ая)", "Склонен (-на) к беспорядку и бессистемности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Беспощадный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Беспощадный (-ая)"))
+            {
+                //Создаём черту характера "Беспощадный (-ая)"
+                CharacterTrait characterTrait = new("system", "Беспощадный (-ая)", "Склонен (-на) к отсутсвию пощады и жесткости, непримеримости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Беспрекословный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Беспрекословный (-ая)"))
+            {
+                //Создаём черту характера "Беспрекословный (-ая)"
+                CharacterTrait characterTrait = new("system", "Беспрекословный (-ая)", "Склонен (-на) к непререкаемости и категоричности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Беспринципный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Беспринципный (-ая)"))
+            {
+                //Создаём черту характера "Беспринципный (-ая)"
+                CharacterTrait characterTrait = new("system", "Беспринципный (-ая)", "Склонен (-на) к отсутсвию каких-либо определённых принципов и моральных устоев", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Беспристрастный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Беспристрастный (-ая)"))
+            {
+                //Создаём черту характера "Беспристрастный (-ая)"
+                CharacterTrait characterTrait = new("system", "Беспристрастный (-ая)", "Склонен (-на) к отсутсвию пристрастий и справедливости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Беспритязательный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Беспритязательный (-ая)"))
+            {
+                //Создаём черту характера "Беспритязательный (-ая)"
+                CharacterTrait characterTrait = new("system", "Беспритязательный (-ая)", "Склонен (-на) к скромности и непритязательности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Бессердечный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Бессердечный (-ая)"))
+            {
+                //Создаём черту характера "Бессердечный (-ая)"
+                CharacterTrait characterTrait = new("system", "Бессердечный (-ая)", "Склонен (-на) к безудушию, жестокости, отсутсвию мягксоти и сердечности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Бестактный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Бестактный (-ая)"))
+            {
+                //Создаём черту характера "Бестактный (-ая)"
+                CharacterTrait characterTrait = new("system", "Бестактный (-ая)", "Склонен (-на) к отсвутствию такта, чутксоти и чувства приличия", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Бесстратсный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Бесстратсный (-ая)"))
+            {
+                //Создаём черту характера "Бесстратсный (-ая)"
+                CharacterTrait characterTrait = new("system", "Бесстратсный (-ая)", "Склонен (-на) спокойствию, холодности и отстутсвию страстей", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Бесстрашный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Бесстрашный (-ая)"))
+            {
+                //Создаём черту характера "Бесстрашный (-ая)"
+                CharacterTrait characterTrait = new("system", "Бесстрашный (-ая)", "Склонен (-на) к храбрости и отсутсвию страхов", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Бесхарактерный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Бесхарактерный (-ая)"))
+            {
+                //Создаём черту характера "Бесхарактерный (-ая)"
+                CharacterTrait characterTrait = new("system", "Бесхарактерный (-ая)", "Склонен (-на) к безволию и лёгкому поддаванию чужому влиянию", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Бесхитростный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Бесхитростный (-ая)"))
+            {
+                //Создаём черту характера "Бесхитростный (-ая)"
+                CharacterTrait characterTrait = new("system", "Бесхитростный (-ая)", "Склонен (-на) к прямодушности, простоте и отсутсвию хитрости и лукавства", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Бесхребетный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Бесхребетный (-ая)"))
+            {
+                //Создаём черту характера "Бесхребетный (-ая)"
+                CharacterTrait characterTrait = new("system", "Бесхребетный (-ая)", "Склонен (-на) к отсутствию твёрдой линии поведения и твёрдости в характере", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Бесцельный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Бесцельный (-ая)"))
+            {
+                //Создаём черту характера "Бесцельный (-ая)"
+                CharacterTrait characterTrait = new("system", "Бесцельный (-ая)", "Склонен (-на) к отсутствию целей", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Бесцеремонный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Бесцеремонный (-ая)"))
+            {
+                //Создаём черту характера "Бесцеремонный (-ая)"
+                CharacterTrait characterTrait = new("system", "Бесцеремонный (-ая)", "Склонен (-на) к пренебреганию правил приличий, развязности и беззастенчивости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Бесчеловечный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Бесчеловечный (-ая)"))
+            {
+                //Создаём черту характера "Бесчеловечный (-ая)"
+                CharacterTrait characterTrait = new("system", "Бесчеловечный (-ая)", "Склонен (-на) к жестокости и безжалостности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Бесчестный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Бесчестный (-ая)"))
+            {
+                //Создаём черту характера "Бесчестный (-ая)"
+                CharacterTrait characterTrait = new("system", "Бесчестный (-ая)", "Склонен (-на) к нарушению требований чести, непорядочности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Бесчувственный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Бесчувственный (-ая)"))
+            {
+                //Создаём черту характера "Бесчувственный (-ая)"
+                CharacterTrait characterTrait = new("system", "Бесчувственный (-ая)", "Склонен (-на) к отсутсвию чувства сострадания и отзывчивости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Бешенный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Бешенный (-ая)"))
+            {
+                //Создаём черту характера "Бешенный (-ая)"
+                CharacterTrait characterTrait = new("system", "Бешенный (-ая)", "Склонен (-на) к необузданности и крайней раздражительности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Блавоспитанный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Блавоспитанный (-ая)"))
+            {
+                //Создаём черту характера "Блавоспитанный (-ая)"
+                CharacterTrait characterTrait = new("system", "Блавоспитанный (-ая)", "Склонен (-на) к хорошим манерам и умению вести себя в обществе", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Благодетельный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Благодетельный (-ая)"))
+            {
+                //Создаём черту характера "Благодетельный (-ая)"
+                CharacterTrait characterTrait = new("system", "Благодетельный (-ая)", "Склонен (-на) делать добро, оказывать бладеяния и приносить пользу", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Благоудшный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Благоудшный (-ая)"))
+            {
+                //Создаём черту характера "Благоудшный (-ая)"
+                CharacterTrait characterTrait = new("system", "Благоудшный (-ая)", "Склонен (-на) к спокойной беззаботности и радостности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Благожелательный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Благожелательный (-ая)"))
+            {
+                //Создаём черту характера "Благожелательный (-ая)"
+                CharacterTrait characterTrait = new("system", "Благожелательный (-ая)", "Склонен (-на) к проявлению доброты, участия, расположения и доброжелательности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Благонадёжный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Благонадёжный (-ая)"))
+            {
+                //Создаём черту характера "Благонадёжный (-ая)"
+                CharacterTrait characterTrait = new("system", "Благонадёжный (-ая)", "Склонен (-на) к внушению доверия, надёжности и преданности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Благонамеренный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Благонамеренный (-ая)"))
+            {
+                //Создаём черту характера "Благонамеренный (-ая)"
+                CharacterTrait characterTrait = new("system", "Благонамеренный (-ая)", "Склонен (-на) к поддержке официального образа мыслей", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Благонравный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Благонравный (-ая)"))
+            {
+                //Создаём черту характера "Благонравный (-ая)"
+                CharacterTrait characterTrait = new("system", "Благонравный (-ая)", "Склонен (-на) к хорошему поведению, кротости и мягкости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Благообразный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Благообразный (-ая)"))
+            {
+                //Создаём черту характера "Благообразный (-ая)"
+                CharacterTrait characterTrait = new("system", "Благообразный (-ая)", "Склонен (-на) к внушению уважения своей наружности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Благопристойный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Благопристойный (-ая)"))
+            {
+                //Создаём черту характера "Благопристойный (-ая)"
+                CharacterTrait characterTrait = new("system", "Благопристойный (-ая)", "Склонен (-на) к соответсвию правилам приличия", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Благоразумный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Благоразумный (-ая)"))
+            {
+                //Создаём черту характера "Благоразумный (-ая)"
+                CharacterTrait characterTrait = new("system", "Благоразумный (-ая)", "Склонен (-на) к рассудительности и разумности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Благородный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Благородный (-ая)"))
+            {
+                //Создаём черту характера "Благородный (-ая)"
+                CharacterTrait characterTrait = new("system", "Благородный (-ая)", "Склонен (-на) к высокнравственности, самоотверженности, честности и открытости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Благочестивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Благочестивый (-ая)"))
+            {
+                //Создаём черту характера "Благочестивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Благочестивый (-ая)", "Склонен (-на) к соблюдению предписаний религий", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Богобоязненный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Богобоязненный (-ая)"))
+            {
+                //Создаём черту характера "Богобоязненный (-ая)"
+                CharacterTrait characterTrait = new("system", "Богобоязненный (-ая)", "Склонен (-на) к вере в божество (-ва) и соблюдений религиозных правил", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Богомольный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Богомольный (-ая)"))
+            {
+                //Создаём черту характера "Богомольный (-ая)"
+                CharacterTrait characterTrait = new("system", "Богомольный (-ая)", "Склонен (-на) к любви молиться и набожности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Бойкий (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Бойкий (-ая)"))
+            {
+                //Создаём черту характера "Бойкий (-ая)"
+                CharacterTrait characterTrait = new("system", "Бойкий (-ая)", "Склонен (-на) к расторопности, ловкости и находчивости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Болтливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Болтливый (-ая)"))
+            {
+                //Создаём черту характера "Болтливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Болтливый (-ая)", "Склонен (-на) к любви много говорить и не умению хранить тайны", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Боязливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Боязливый (-ая)"))
+            {
+                //Создаём черту характера "Боязливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Боязливый (-ая)", "Склонен (-на) к робости, боязни, пугливости и лёгкому поддаванию страху", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Брезгливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Брезгливый (-ая)"))
+            {
+                //Создаём черту характера "Брезгливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Брезгливый (-ая)", "Склонен (-на) к отвращению к чему-либо", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Брюзливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Брюзливый (-ая)"))
+            {
+                //Создаём черту характера "Брюзливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Брюзливый (-ая)", "Склонен (-на) к постоянному недовольству и надоедливой ворчливости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Буйный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Буйный (-ая)"))
+            {
+                //Создаём черту характера "Буйный (-ая)"
+                CharacterTrait characterTrait = new("system", "Буйный (-ая)", "Склонен(-на) к своенравственности ,непокорности и шумности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Вальяжный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Вальяжный (-ая)"))
+            {
+                //Создаём черту характера "Вальяжный (-ая)"
+                CharacterTrait characterTrait = new("system", "Вальяжный (-ая)", "Склонен (-на) к достоинству, благообразию и приятной важности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Вдумчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Вдумчивый (-ая)"))
+            {
+                //Создаём черту характера "Вдумчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Вдумчивый (-ая)", "Склонен (-на) к сосредоточённым размышлениям и глубокому вниканию во что-либо", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Вежливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Вежливый (-ая)"))
+            {
+                //Создаём черту характера "Вежливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Вежливый (-ая)", "Склонен (-на) к соблюдению правил приличий, воспитанности и утичвости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Великодушный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Великодушный (-ая)"))
+            {
+                //Создаём черту характера "Великодушный (-ая)"
+                CharacterTrait characterTrait = new("system", "Великодушный (-ая)", "Склонен (-на) к высоким душевным качествам и бескорыстности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Величественный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Величественный (-ая)"))
+            {
+                //Создаём черту характера "Величественный (-ая)"
+                CharacterTrait characterTrait = new("system", "Величественный (-ая)", "Склонен (-на) к обладанию внушительном виду, горделивой осанке и торжественной красоты", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Верный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Верный (-ая)"))
+            {
+                //Создаём черту характера "Верный (-ая)"
+                CharacterTrait characterTrait = new("system", "Верный (-ая)", "Склонен (-на) к надёжности и преданности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Вероломный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Вероломный (-ая)"))
+            {
+                //Создаём черту характера "Вероломный (-ая)"
+                CharacterTrait characterTrait = new("system", "Вероломный (-ая)", "Склонен (-на) к коварству, обману и измене", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Весёлый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Весёлый (-ая)"))
+            {
+                //Создаём черту характера "Весёлый (-ая)"
+                CharacterTrait characterTrait = new("system", "Весёлый (-ая)", "Склонен (-на) к приятному для взора и доставлению веселья", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Ветренный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Ветренный (-ая)"))
+            {
+                //Создаём черту характера "Ветренный (-ая)"
+                CharacterTrait characterTrait = new("system", "Ветренный (-ая)", "Склонен (-на) к легкомысленности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Вздорный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Вздорный (-ая)"))
+            {
+                //Создаём черту характера "Вздорный (-ая)"
+                CharacterTrait characterTrait = new("system", "Вздорный (-ая)", "Склонен (-на) к сварливости и ворчливости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Взрывной (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Взрывной (-ая)"))
+            {
+                //Создаём черту характера "Взрывной (-ая)"
+                CharacterTrait characterTrait = new("system", "Взрывной (-ая)", "Склонен (-на) к внезапному бурному проявлению чувств", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Взыскательный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Взыскательный (-ая)"))
+            {
+                //Создаём черту характера "Взыскательный (-ая)"
+                CharacterTrait characterTrait = new("system", "Взыскательный (-ая)", "Склонен (-на) к требовательности и строгости", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Внимательный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Внимательный (-ая)"))
+            {
+                //Создаём черту характера "Внимательный (-ая)"
+                CharacterTrait characterTrait = new("system", "Внимательный (-ая)", "Склонен (-на) к проявлению внимания и чуткости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Властный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Властный (-ая)"))
+            {
+                //Создаём черту характера "Властный (-ая)"
+                CharacterTrait characterTrait = new("system", "Властный (-ая)", "Склонен (-на) к повелеванию над кем-либо", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Властолюбивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Властолюбивый (-ая)"))
+            {
+                //Создаём черту характера "Властолюбивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Властолюбивый (-ая)", "Склонен (-на) к стремлению и любви властвовать", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Влюбчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Влюбчивый (-ая)"))
+            {
+                //Создаём черту характера "Влюбчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Влюбчивый (-ая)", "Склонен (-на) к быстрой и частой влюбчивости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Возбудимый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Возбудимый (-ая)"))
+            {
+                //Создаём черту характера "Возбудимый (-ая)"
+                CharacterTrait characterTrait = new("system", "Возбудимый (-ая)", "Склонен (-на) к быстрому приведению в возбуждённое состояние", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Возвышенный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Возвышенный (-ая)"))
+            {
+                //Создаём черту характера "Возвышенный (-ая)"
+                CharacterTrait characterTrait = new("system", "Возвышенный (-ая)", "Склонен (-на) к благородности и торжественности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Воздержанный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Воздержанный (-ая)"))
+            {
+                //Создаём черту характера "Воздержанный (-ая)"
+                CharacterTrait characterTrait = new("system", "Воздержанный (-ая)", "Склонен (-на) к умению ограничить свои потребности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Возмутительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Возмутительный (-ая)"))
+            {
+                //Создаём черту характера "Возмутительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Возмутительный (-ая)", "Склонен (-на) вызывать чувство возмущения", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Воинственный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Воинственный (-ая)"))
+            {
+                //Создаём черту характера "Воинственный (-ая)"
+                CharacterTrait characterTrait = new("system", "Воинственный (-ая)", "Склонен (-на) к решительности и готовности к столкновению", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Волевой (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Волевой (-ая)"))
+            {
+                //Создаём черту характера "Волевой (-ая)"
+                CharacterTrait characterTrait = new("system", "Волевой (-ая)", "Склонен (-на) к обладанию твёрдой волей", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Вольный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Вольный (-ая)"))
+            {
+                //Создаём черту характера "Вольный (-ая)"
+                CharacterTrait characterTrait = new("system", "Вольный (-ая)", "Склонен (-на) к независимости и свободе", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Воодушевлённый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Воодушевлённый (-ая)"))
+            {
+                //Создаём черту характера "Воодушевлённый (-ая)"
+                CharacterTrait characterTrait = new("system", "Воодушевлённый (-ая)", "Склонен (-на) к воодушевлённости и вдохновенности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Воспитанный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Воспитанный (-ая)"))
+            {
+                //Создаём черту характера "Воспитанный (-ая)"
+                CharacterTrait characterTrait = new("system", "Воспитанный (-ая)", "Склонен (-на) к способности хорошо вести и обладанию хорошим восптанием", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Восприимчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Восприимчивый (-ая)"))
+            {
+                //Создаём черту характера "Восприимчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Восприимчивый (-ая)", "Склонен (-на) к лёнкому восприятию чего-либо", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Ворчливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Ворчливый (-ая)"))
+            {
+                //Создаём черту характера "Ворчливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Ворчливый (-ая)", "Склонен (-на) к частому ворчанию и брюзгливости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Восторженный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Восторженный (-ая)"))
+            {
+                //Создаём черту характера "Восторженный (-ая)"
+                CharacterTrait characterTrait = new("system", "Восторженный (-ая)", "Склонен (-на) к частому восторганию", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Впечатлительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Впечатлительный (-ая)"))
+            {
+                //Создаём черту характера "Впечатлительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Впечатлительный (-ая)", "Склонен (-на) к лёгкому поддаванию впечатлениям и чуткости", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Вредный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Вредный (-ая)"))
+            {
+                //Создаём черту характера "Вредный (-ая)"
+                CharacterTrait characterTrait = new("system", "Вредный (-ая)", "Склонен (-на) к недоброжелательности и неприязно настроенности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Всепрощающий (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Всепрощающий (-ая)"))
+            {
+                //Создаём черту характера "Всепрощающий (-ая)"
+                CharacterTrait characterTrait = new("system", "Всепрощающий (-ая)", "Склонен (-на) к лёгкому прощению", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Вспыльчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Вспыльчивый (-ая)"))
+            {
+                //Создаём черту характера "Вспыльчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Вспыльчивый (-ая)", "Склонен (-на) к вспыльчивости и быстрому раздражению", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Вульгарный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Вульгарный (-ая)"))
+            {
+                //Создаём черту характера "Вульгарный (-ая)"
+                CharacterTrait characterTrait = new("system", "Вульгарный (-ая)", "Склонен (-на) к пошлости, грубости и непристойности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Въедливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Въедливый (-ая)"))
+            {
+                //Создаём черту характера "Въедливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Въедливый (-ая)", "Склонен (-на) к придирчивому вниканию во все мелочи и дотошности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Высокомерный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Высокомерный (-ая)"))
+            {
+                //Создаём черту характера "Высокомерный (-ая)"
+                CharacterTrait characterTrait = new("system", "Высокомерный (-ая)", "Склонен (-на) к надменности и высокомерию", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Высоконравственный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Высоконравственный (-ая)"))
+            {
+                //Создаём черту характера "Высоконравственный (-ая)"
+                CharacterTrait characterTrait = new("system", "Высоконравственный (-ая)", "Склонен (-на) к высокой нравственности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Вышколенный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Вышколенный (-ая)"))
+            {
+                //Создаём черту характера "Вышколенный (-ая)"
+                CharacterTrait characterTrait = new("system", "Вышколенный (-ая)", "Склонен (-на) к строгому порядку и дисциплине", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Вялый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Вялый (-ая)"))
+            {
+                //Создаём черту характера "Вялый (-ая)"
+                CharacterTrait characterTrait = new("system", "Вялый (-ая)", "Склонен (-на) к отсутствию бодрости и энергии", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Гадкий (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Гадкий (-ая)"))
+            {
+                //Создаём черту характера "Гадкий (-ая)"
+                CharacterTrait characterTrait = new("system", "Гадкий (-ая)", "Склонен (-на) к вызыванию отвращения и мерзости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Галантный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Галантный (-ая)"))
+            {
+                //Создаём черту характера "Галантный (-ая)"
+                CharacterTrait characterTrait = new("system", "Галантный (-ая)", "Склонен (-на) к изысканной вежливости и любезности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Глумливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Глумливый (-ая)"))
+            {
+                //Создаём черту характера "Глумливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Глумливый (-ая)", "Склонен (-на) к глумлению", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Гневливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Гневливый (-ая)"))
+            {
+                //Создаём черту характера "Гневливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Гневливый (-ая)", "Склонен (-на) к гневу, вспыльчивости и раздражительности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Гнусный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Гнусный (-ая)"))
+            {
+                //Создаём черту характера "Гнусный (-ая)"
+                CharacterTrait characterTrait = new("system", "Гнусный (-ая)", "Склонен (-на) к внушению отвращению и омерзительности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Гостеприимный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Гостеприимный (-ая)"))
+            {
+                //Создаём черту характера "Гостеприимный (-ая)"
+                CharacterTrait characterTrait = new("system", "Гостеприимный (-ая)", "Склонен (-на) к радушию к гостям", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Гордый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Гордый (-ая)"))
+            {
+                //Создаём черту характера "Гордый (-ая)"
+                CharacterTrait characterTrait = new("system", "Гордый (-ая)", "Склонен (-на) к исполненности чуства собственного достоинства и осознования своего превосходства", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Грубый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Грубый (-ая)"))
+            {
+                //Создаём черту характера "Грубый (-ая)"
+                CharacterTrait characterTrait = new("system", "Грубый (-ая)", "Склонен (-на) к отсутсвию культурности, деликатности и чуткости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Грозный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Грозный (-ая)"))
+            {
+                //Создаём черту характера "Грозный (-ая)"
+                CharacterTrait characterTrait = new("system", "Грозный (-ая)", "Склонен (-на) к суровости и жестокости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Гуманный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Гуманный (-ая)"))
+            {
+                //Создаём черту характера "Гуманный (-ая)"
+                CharacterTrait characterTrait = new("system", "Гуманный (-ая)", "Склонен (-на) к человеколюбию и отзывчивости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Дальновидный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Дальновидный (-ая)"))
+            {
+                //Создаём черту характера "Дальновидный (-ая)"
+                CharacterTrait characterTrait = new("system", "Дальновидный (-ая)", "Склонен (-на) к предусмотрительности и предвидению последствий", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Двоедушный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Двоедушный (-ая)"))
+            {
+                //Создаём черту характера "Двоедушный (-ая)"
+                CharacterTrait characterTrait = new("system", "Двоедушный (-ая)", "Склонен (-на) к двуличности и неискренности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Двойственный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Двойственный (-ая)"))
+            {
+                //Создаём черту характера "Двойственный (-ая)"
+                CharacterTrait characterTrait = new("system", "Двойственный (-ая)", "Склонен (-на) к противоречивости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Деловой (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Деловой (-ая)"))
+            {
+                //Создаём черту характера "Деловой (-ая)"
+                CharacterTrait characterTrait = new("system", "Деловой (-ая)", "Склонен (-на) к знанию дела, толковости и дельности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Деликатный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Деликатный (-ая)"))
+            {
+                //Создаём черту характера "Деликатный (-ая)"
+                CharacterTrait characterTrait = new("system", "Деликатный (-ая)", "Склонен (-на) к вежливости и мягкости в обращении", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Демократичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Демократичный (-ая)"))
+            {
+                //Создаём черту характера "Демократичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Демократичный (-ая)", "Склонен (-на) к простоте и доступности в обращении в своих отношениях с людьми", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Депрессивный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Депрессивный (-ая)"))
+            {
+                //Создаём черту характера "Депрессивный (-ая)"
+                CharacterTrait characterTrait = new("system", "Депрессивный (-ая)", "Склонен (-на) к депрессии и аппатии", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Деспотичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Деспотичный (-ая)"))
+            {
+                //Создаём черту характера "Деспотичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Деспотичный (-ая)", "Склонен (-на) к самовластию и не желанию считаться с чужой волей", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Дерзкий (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Дерзкий (-ая)"))
+            {
+                //Создаём черту характера "Дерзкий (-ая)"
+                CharacterTrait characterTrait = new("system", "Дерзкий (-ая)", "Склонен (-на) к непочтительности, грубости, наглости и бесстыдности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Дерзновенный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Дерзновенный (-ая)"))
+            {
+                //Создаём черту характера "Дерзновенный (-ая)"
+                CharacterTrait characterTrait = new("system", "Дерзновенный (-ая)", "Склонен (-на) к смелости и отважности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Деятельный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Деятельный (-ая)"))
+            {
+                //Создаём черту характера "Деятельный (-ая)"
+                CharacterTrait characterTrait = new("system", "Деятельный (-ая)", "Склонен (-на) к энергичности и активной деятельности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Дипломатичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Дипломатичный (-ая)"))
+            {
+                //Создаём черту характера "Дипломатичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Дипломатичный (-ая)", "Склонен (-на) к искусном и тонкому отношению с людьми", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Дисциплинированный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Дисциплинированный (-ая)"))
+            {
+                //Создаём черту характера "Дисциплинированный (-ая)"
+                CharacterTrait characterTrait = new("system", "Дисциплинированный (-ая)", "Склонен (-на) к соблюдению порядка и подчинению дисциплине", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Доблестный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Доблестный (-ая)"))
+            {
+                //Создаём черту характера "Доблестный (-ая)"
+                CharacterTrait characterTrait = new("system", "Доблестный (-ая)", "Склонен (-на) к обладанию доблестью и получению славы", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Добродетельный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Добродетельный (-ая)"))
+            {
+                //Создаём черту характера "Добродетельный (-ая)"
+                CharacterTrait characterTrait = new("system", "Добродетельный (-ая)", "Склонен (-на) к высокой нравственности и проявлению добродетели", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Добродушный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Добродушный (-ая)"))
+            {
+                //Создаём черту характера "Добродушный (-ая)"
+                CharacterTrait characterTrait = new("system", "Добродушный (-ая)", "Склонен (-на) к доброте и мягкости характера", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Добронравный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Добронравный (-ая)"))
+            {
+                //Создаём черту характера "Добронравный (-ая)"
+                CharacterTrait characterTrait = new("system", "Добронравный (-ая)", "Склонен (-на) к хорошему поведению и благонравностью", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Доброжелательный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Доброжелательный (-ая)"))
+            {
+                //Создаём черту характера "Доброжелательный (-ая)"
+                CharacterTrait characterTrait = new("system", "Доброжелательный (-ая)", "Склонен (-на) к желаниб доба и готовности содействовать благополучию других", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Добропорядочный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Добропорядочный (-ая)"))
+            {
+                //Создаём черту характера "Добропорядочный (-ая)"
+                CharacterTrait characterTrait = new("system", "Добропорядочный (-ая)", "Склонен (-на) к приличности, порядочности и одобрению других", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Добросердечный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Добросердечный (-ая)"))
+            {
+                //Создаём черту характера "Добросердечный (-ая)"
+                CharacterTrait characterTrait = new("system", "Добросердечный (-ая)", "Склонен (-на) к ласковости, учтивости и обладанию добрым сердцем", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Добросовестный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Добросовестный (-ая)"))
+            {
+                //Создаём черту характера "Добросовестный (-ая)"
+                CharacterTrait characterTrait = new("system", "Добросовестный (-ая)", "Склонен (-на) к честному выполнению своих обязательств и обязанностей", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Добрый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Добрый (-ая)"))
+            {
+                //Создаём черту характера "Добрый (-ая)"
+                CharacterTrait characterTrait = new("system", "Добрый (-ая)", "Склонен (-на) к отзывчивости и принесению добра другим", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Доверчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Доверчивый (-ая)"))
+            {
+                //Создаём черту характера "Доверчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Доверчивый (-ая)", "Склонен (-на) к лёгкому доверию другим", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Догадливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Догадливый (-ая)"))
+            {
+                //Создаём черту характера "Догадливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Догадливый (-ая)", "Склонен (-на) к лёгкому и быстрому нахождению правильных решений", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Докучный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Докучный (-ая)"))
+            {
+                //Создаём черту характера "Докучный (-ая)"
+                CharacterTrait characterTrait = new("system", "Докучный (-ая)", "Склонен (-на) к докучливости и наведению скуки", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Домовитый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Домовитый (-ая)"))
+            {
+                //Создаём черту характера "Домовитый (-ая)"
+                CharacterTrait characterTrait = new("system", "Домовитый (-ая)", "Склонен (-на) к хозяйтсвенности и заботе о благополучии своего дома", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Дотошный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Дотошный (-ая)"))
+            {
+                //Создаём черту характера "Дотошный (-ая)"
+                CharacterTrait characterTrait = new("system", "Дотошный (-ая)", "Склонен (-на) к любознательности и вникание во всё", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Дружелюбный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Дружелюбный (-ая)"))
+            {
+                //Создаём черту характера "Дружелюбный (-ая)"
+                CharacterTrait characterTrait = new("system", "Дружелюбный (-ая)", "Склонен (-на) к дружескому расположению к другим", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Душевный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Душевный (-ая)"))
+            {
+                //Создаём черту характера "Душевный (-ая)"
+                CharacterTrait characterTrait = new("system", "Душевный (-ая)", "Склонен (-на) к полному искреннему дружелюбию", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Елейный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Елейный (-ая)"))
+            {
+                //Создаём черту характера "Елейный (-ая)"
+                CharacterTrait characterTrait = new("system", "Елейный (-ая)", "Склонен (-на) к умильности и слащавности в обращении", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Ершистый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Ершистый (-ая)"))
+            {
+                //Создаём черту характера "Ершистый (-ая)"
+                CharacterTrait characterTrait = new("system", "Ершистый (-ая)", "Склонен (-на) к задорности и неуступчивости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Ехидный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Ехидный (-ая)"))
+            {
+                //Создаём черту характера "Ехидный (-ая)"
+                CharacterTrait characterTrait = new("system", "Ехидный (-ая)", "Склонен (-на) к язвительности и коварности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Жадный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Жадный (-ая)"))
+            {
+                //Создаём черту характера "Жадный (-ая)"
+                CharacterTrait characterTrait = new("system", "Жадный (-ая)", "Склонен (-на) к скупости и стремлению к наживе", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Жалостливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Жалостливый (-ая)"))
+            {
+                //Создаём черту характера "Жалостливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Жалостливый (-ая)", "Склонен (-на) к жалости и сострадательности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Железный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Железный (-ая)"))
+            {
+                //Создаём черту характера "Железный (-ая)"
+                CharacterTrait characterTrait = new("system", "Железный (-ая)", "Склонен (-на) к твёрдости и непреклонности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Жеманный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Жеманный (-ая)"))
+            {
+                //Создаём черту характера "Жеманный (-ая)"
+                CharacterTrait characterTrait = new("system", "Жеманный (-ая)", "Склонен (-на) к манерности и отсутсвию простоты и естественности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Женственный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Женственный (-ая)"))
+            {
+                //Создаём черту характера "Женственный (-ая)"
+                CharacterTrait characterTrait = new("system", "Женственный (-ая)", "Склонен (-на) к мягкости, нежности и изящности", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Женоненавистник (-ца)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Женоненавистник (-ца)"))
+            {
+                //Создаём черту характера "Женоненавистник (-ца)"
+                CharacterTrait characterTrait = new("system", "Женоненавистник (-ца)", "Склонен (-на) к ненависти к женщинам и избеганию их", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Жертвенный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Жертвенный (-ая)"))
+            {
+                //Создаём черту характера "Жертвенный (-ая)"
+                CharacterTrait characterTrait = new("system", "Жертвенный (-ая)", "Склонен (-на) к самопожертвованию", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Жесткий (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Жесткий (-ая)"))
+            {
+                //Создаём черту характера "Жесткий (-ая)"
+                CharacterTrait characterTrait = new("system", "Жесткий (-ая)", "Склонен (-на) к суровости, грубоватости и резкости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Жестокий (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Жестокий (-ая)"))
+            {
+                //Создаём черту характера "Жестокий (-ая)"
+                CharacterTrait characterTrait = new("system", "Жестокий (-ая)", "Склонен (-на) к крайней суровости, безжалостности и беспощадности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Жестокосердный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Жестокосердный (-ая)"))
+            {
+                //Создаём черту характера "Жестокосердный (-ая)"
+                CharacterTrait characterTrait = new("system", "Жестокосердный (-ая)", "Склонен (-на) к жестокости, бессердечности и отсутсвию чутва жалости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Желчный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Желчный (-ая)"))
+            {
+                //Создаём черту характера "Желчный (-ая)"
+                CharacterTrait characterTrait = new("system", "Желчный (-ая)", "Склонен (-на) к раздражительности и злости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Жизнелюбивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Жизнелюбивый (-ая)"))
+            {
+                //Создаём черту характера "Жизнелюбивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Жизнелюбивый (-ая)", "Склонен (-на) к любви к жизни", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Жизнедеятельный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Жизнедеятельный (-ая)"))
+            {
+                //Создаём черту характера "Жизнедеятельный (-ая)"
+                CharacterTrait characterTrait = new("system", "Жизнедеятельный (-ая)", "Склонен (-на) к живости, деятельности и энергичности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Жизнерадостный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Жизнерадостный (-ая)"))
+            {
+                //Создаём черту характера "Жизнерадостный (-ая)"
+                CharacterTrait characterTrait = new("system", "Жизнерадостный (-ая)", "Склонен (-на) к радости, бодрости и отсутсвию уныния", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Жизнестойкий (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Жизнестойкий (-ая)"))
+            {
+                //Создаём черту характера "Жизнестойкий (-ая)"
+                CharacterTrait characterTrait = new("system", "Жизнестойкий (-ая)", "Склонен (-на) к умению сопротивляться неблагоприятным жизненным обстоятельствам и условиям", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Забавный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Забавный (-ая)"))
+            {
+                //Создаём черту характера "Забавный (-ая)"
+                CharacterTrait characterTrait = new("system", "Забавный (-ая)", "Склонен (-на) к доставлению забавы и интереса", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Заботливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Заботливый (-ая)"))
+            {
+                //Создаём черту характера "Заботливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Заботливый (-ая)", "Склонен (-на) к проявлению заботы, внимательности и старательности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Забывчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Забывчивый (-ая)"))
+            {
+                //Создаём черту характера "Забывчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Забывчивый (-ая)", "Склонен (-на) к рассеяности и лёгкому забыванию чего-либо", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Завистливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Завистливый (-ая)"))
+            {
+                //Создаём черту характера "Завистливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Завистливый (-ая)", "Склонен (-на) к постоянной зависти", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Заводной (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Заводной (-ая)"))
+            {
+                //Создаём черту характера "Заводной (-ая)"
+                CharacterTrait characterTrait = new("system", "Заводной (-ая)", "Склонен (-на) к непоседливости и озорству", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Загадочный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Загадочный (-ая)"))
+            {
+                //Создаём черту характера "Загадочный (-ая)"
+                CharacterTrait characterTrait = new("system", "Загадочный (-ая)", "Склонен (-на) к непонятности, неясности и таинственности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Задиристый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Задиристый (-ая)"))
+            {
+                //Создаём черту характера "Задиристый (-ая)"
+                CharacterTrait characterTrait = new("system", "Задиристый (-ая)", "Склонен (-на) к спорам и склокам", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Задорный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Задорный (-ая)"))
+            {
+                //Создаём черту характера "Задорный (-ая)"
+                CharacterTrait characterTrait = new("system", "Задорный (-ая)", "Склонен (-на) к запальчивости, задиристости и быстрому воодушевлению", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Задумчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Задумчивый (-ая)"))
+            {
+                //Создаём черту характера "Задумчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Задумчивый (-ая)", "Склонен (-на) к мечтательности и погруженности в размышления", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Закалённый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Закалённый (-ая)"))
+            {
+                //Создаём черту характера "Закалённый (-ая)"
+                CharacterTrait characterTrait = new("system", "Закалённый (-ая)", "Склонен (-на) к стойкости и умению преодолевать трудности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Замкнутый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Замкнутый (-ая)"))
+            {
+                //Создаём черту характера "Замкнутый (-ая)"
+                CharacterTrait characterTrait = new("system", "Замкнутый (-ая)", "Склонен (-на) к обособленности и отделённости от общества", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Заносчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Заносчивый (-ая)"))
+            {
+                //Создаём черту характера "Заносчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Заносчивый (-ая)", "Склонен (-на) к высокомерию и чванности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Занудный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Занудный (-ая)"))
+            {
+                //Создаём черту характера "Занудный (-ая)"
+                CharacterTrait characterTrait = new("system", "Занудный (-ая)", "Склонен (-на) к надоедливости и нудности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Запасливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Запасливый (-ая)"))
+            {
+                //Создаём черту характера "Запасливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Запасливый (-ая)", "Склонен (-на) к предусмотрительности и созданию запасов", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Запуганный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Запуганный (-ая)"))
+            {
+                //Создаём черту характера "Запуганный (-ая)"
+                CharacterTrait characterTrait = new("system", "Запуганный (-ая)", "Склонен (-на) к робости и пугливости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Застенчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Застенчивый (-ая)"))
+            {
+                //Создаём черту характера "Застенчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Застенчивый (-ая)", "Склонен (-на) к стыдливости, робости и смущению", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Затейливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Затейливый (-ая)"))
+            {
+                //Создаём черту характера "Затейливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Затейливый (-ая)", "Склонен (-на) к выдумкам и затеям", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Заурядный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Заурядный (-ая)"))
+            {
+                //Создаём черту характера "Заурядный (-ая)"
+                CharacterTrait characterTrait = new("system", "Заурядный (-ая)", "Склонен (-на) к посредственности", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Зашоренный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Зашоренный (-ая)"))
+            {
+                //Создаём черту характера "Зашоренный (-ая)"
+                CharacterTrait characterTrait = new("system", "Зашоренный (-ая)", "Склонен (-на) к ограниченности и духовной неразвитости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Зверский (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Зверский (-ая)"))
+            {
+                //Создаём черту характера "Зверский (-ая)"
+                CharacterTrait characterTrait = new("system", "Зверский (-ая)", "Склонен (-на) к крайней жестокости и свирепости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Здравомыслящий (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Здравомыслящий (-ая)"))
+            {
+                //Создаём черту характера "Здравомыслящий (-ая)"
+                CharacterTrait characterTrait = new("system", "Здравомыслящий (-ая)", "Склонен (-на) к правильным размышлениям и разумности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Злобный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Злобный (-ая)"))
+            {
+                //Создаём черту характера "Злобный (-ая)"
+                CharacterTrait characterTrait = new("system", "Злобный (-ая)", "Склонен (-на) к преисполненности злобы", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Зловредный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Зловредный (-ая)"))
+            {
+                //Создаём черту характера "Зловредный (-ая)"
+                CharacterTrait characterTrait = new("system", "Зловредный (-ая)", "Склонен (-на) к крайней вредности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Здложелательный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Здложелательный (-ая)"))
+            {
+                //Создаём черту характера "Здложелательный (-ая)"
+                CharacterTrait characterTrait = new("system", "Здложелательный (-ая)", "Склонен (-на) к недоброжелательности и желанию зла", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Злой (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Злой (-ая)"))
+            {
+                //Создаём черту характера "Злой (-ая)"
+                CharacterTrait characterTrait = new("system", "Злой (-ая)", "Склонен (-на) к злобе, злости и свирепости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Злокозненный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Злокозненный (-ая)"))
+            {
+                //Создаём черту характера "Злокозненный (-ая)"
+                CharacterTrait characterTrait = new("system", "Злокозненный (-ая)", "Склонен (-на) к хитрости и коварству", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Злонравный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Злонравный (-ая)"))
+            {
+                //Создаём черту характера "Злонравный (-ая)"
+                CharacterTrait characterTrait = new("system", "Злонравный (-ая)", "Склонен (-на) к дурному нраву и характеру", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Злопамятный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Злопамятный (-ая)"))
+            {
+                //Создаём черту характера "Злопамятный (-ая)"
+                CharacterTrait characterTrait = new("system", "Злопамятный (-ая)", "Склонен (-на) к долгому запомининанию и не прощению зла и обид", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Злорадный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Злорадный (-ая)"))
+            {
+                //Создаём черту характера "Злорадный (-ая)"
+                CharacterTrait characterTrait = new("system", "Злорадный (-ая)", "Склонен (-на) к испытыванию радости при несчастье или неудаче другого", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Злостный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Злостный (-ая)"))
+            {
+                //Создаём черту характера "Злостный (-ая)"
+                CharacterTrait characterTrait = new("system", "Злостный (-ая)", "Склонен (-на) к злу и злым умыслам", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Злосчастный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Злосчастный (-ая)"))
+            {
+                //Создаём черту характера "Злосчастный (-ая)"
+                CharacterTrait characterTrait = new("system", "Злосчастный (-ая)", "Склонен (-на) к злополучной несчастности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Злоязычный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Злоязычный (-ая)"))
+            {
+                //Создаём черту характера "Злоязычный (-ая)"
+                CharacterTrait characterTrait = new("system", "Злоязычный (-ая)", "Склонен (-на) к злобной язвительности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Игривый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Игривый (-ая)"))
+            {
+                //Создаём черту характера "Игривый (-ая)"
+                CharacterTrait characterTrait = new("system", "Игривый (-ая)", "Склонен (-на) к легкомысленной весёлости и щаловливости", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Избалованный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Избалованный (-ая)"))
+            {
+                //Создаём черту характера "Избалованный (-ая)"
+                CharacterTrait characterTrait = new("system", "Избалованный (-ая)", "Склоенн (-на) к изнеженности и испорченности баловством", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Изворотливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Изворотливый (-ая)"))
+            {
+                //Создаём черту характера "Изворотливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Изворотливый (-ая)", "Склонен (-на) к находчивости и хитрости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Извращённый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Извращённый (-ая)"))
+            {
+                //Создаём черту характера "Извращённый (-ая)"
+                CharacterTrait characterTrait = new("system", "Извращённый (-ая)", "Склонен (-на) к противоестественности и уродливости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Издёрганный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Издёрганный (-ая)"))
+            {
+                //Создаём черту характера "Издёрганный (-ая)"
+                CharacterTrait characterTrait = new("system", "Издёрганный (-ая)", "Склонен (-на) к разрдражительности от усталости и нервозности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Изнеженный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Изнеженный (-ая)"))
+            {
+                //Создаём черту характера "Изнеженный (-ая)"
+                CharacterTrait characterTrait = new("system", "Изнеженный (-ая)", "Склонен (-на) к чуствительности к лишениям и привычности к неге", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Изобретательный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Изобретательный (-ая)"))
+            {
+                //Создаём черту характера "Изобретательный (-ая)"
+                CharacterTrait characterTrait = new("system", "Изобретательный (-ая)", "Склонен (-на) к способности изобретать и находчивости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Изощренный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Изощренный (-ая)"))
+            {
+                //Создаём черту характера "Изощренный (-ая)"
+                CharacterTrait characterTrait = new("system", "Изощренный (-ая)", "Склонен (-на) к утончённости и замысловатости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Импульсивный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Импульсивный (-ая)"))
+            {
+                //Создаём черту характера "Импульсивный (-ая)"
+                CharacterTrait characterTrait = new("system", "Импульсивный (-ая)", "Склонен (-на) к порывистости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Индифферентный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Индифферентный (-ая)"))
+            {
+                //Создаём черту характера "Индифферентный (-ая)"
+                CharacterTrait characterTrait = new("system", "Индифферентный (-ая)", "Склонен (-на) к безразличности, безучастности и равнодушию", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Инертный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Инертный (-ая)"))
+            {
+                //Создаём черту характера "Инертный (-ая)"
+                CharacterTrait characterTrait = new("system", "Инертный (-ая)", "Склонен (-на) к бездеятельности и безынициативности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Инициативный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Инициативный (-ая)"))
+            {
+                //Создаём черту характера "Инициативный (-ая)"
+                CharacterTrait characterTrait = new("system", "Инициативный (-ая)", "Склонен (-на) к предприимчивости и проявлению инициативы", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Интеллектуальный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Интеллектуальный (-ая)"))
+            {
+                //Создаём черту характера "Интеллектуальный (-ая)"
+                CharacterTrait characterTrait = new("system", "Интеллектуальный (-ая)", "Склонен (-на) к умственности и духовности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Интеллигентный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Интеллигентный (-ая)"))
+            {
+                //Создаём черту характера "Интеллигентный (-ая)"
+                CharacterTrait characterTrait = new("system", "Интеллигентный (-ая)", "Склонен (-на) к большой внутренней культуре", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Инфантильный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Инфантильный (-ая)"))
+            {
+                //Создаём черту характера "Инфантильный (-ая)"
+                CharacterTrait characterTrait = new("system", "Инфантильный (-ая)", "Склонен (-на) к детской неразвитости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Исполнительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Исполнительный (-ая)"))
+            {
+                //Создаём черту характера "Исполнительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Исполнительный (-ая)", "Склонен (-на) к старательности и хорошему исполнению поручений", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Испорченный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Испорченный (-ая)"))
+            {
+                //Создаём черту характера "Испорченный (-ая)"
+                CharacterTrait characterTrait = new("system", "Испорченный (-ая)", "Склонен (-на) к дурным наклонностям и привычкам", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Исправный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Исправный (-ая)"))
+            {
+                //Создаём черту характера "Исправный (-ая)"
+                CharacterTrait characterTrait = new("system", "Исправный (-ая)", "Склонен (-на) к исполнительности и старательности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Исступленный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Исступленный (-ая)"))
+            {
+                //Создаём черту характера "Исступленный (-ая)"
+                CharacterTrait characterTrait = new("system", "Исступленный (-ая)", "Склонен (-на) к крайнему возбуждению", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Истеричный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Истеричный (-ая)"))
+            {
+                //Создаём черту характера "Истеричный (-ая)"
+                CharacterTrait characterTrait = new("system", "Истеричный (-ая)", "Склонен (-на) к крайнему возбуждению", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Каверзный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Каверзный (-ая)"))
+            {
+                //Создаём черту характера "Каверзный (-ая)"
+                CharacterTrait characterTrait = new("system", "Каверзный (-ая)", "Склонен (-на) к каверзам", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Капризный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Капризный (-ая)"))
+            {
+                //Создаём черту характера "Капризный (-ая)"
+                CharacterTrait characterTrait = new("system", "Капризный (-ая)", "Склонен (-на) к капризам, причудам, своеволию и своенравности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Кичливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Кичливый (-ая)"))
+            {
+                //Создаём черту характера "Кичливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Кичливый (-ая)", "Склонен (-на) к заносчивости и высокомерности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Коварный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Коварный (-ая)"))
+            {
+                //Создаём черту характера "Коварный (-ая)"
+                CharacterTrait characterTrait = new("system", "Коварный (-ая)", "Склонен (-на) к коварству и хитрости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Кокетливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Кокетливый (-ая)"))
+            {
+                //Создаём черту характера "Кокетливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Кокетливый (-ая)", "Склонен (-на) к кокеству, нарядности, изысканности и привлекать внимания противоположного пола", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Консервативный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Консервативный (-ая)"))
+            {
+                //Создаём черту характера "Консервативный (-ая)"
+                CharacterTrait characterTrait = new("system", "Консервативный (-ая)", "Склонен (-на) к отстаиванию неизменности чего-либо и проявлению враждебности по отношению к новому", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Компанейский (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Компанейский (-ая)"))
+            {
+                //Создаём черту характера "Компанейский (-ая)"
+                CharacterTrait characterTrait = new("system", "Компанейский (-ая)", "Склонен (-на) к общительности и любви находиться в компании", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Коммуникабельный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Коммуникабельный (-ая)"))
+            {
+                //Создаём черту характера "Коммуникабельный (-ая)"
+                CharacterTrait characterTrait = new("system", "Коммуникабельный (-ая)", "Склонен (-на) к общительности и лёгкому вступлению в контакт с кем-либо", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Корыстный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Корыстный (-ая)"))
+            {
+                //Создаём черту характера "Корыстный (-ая)"
+                CharacterTrait characterTrait = new("system", "Корыстный (-ая)", "Склонен (-на) к расчётливости и корысти", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Косноязычный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Косноязычный (-ая)"))
+            {
+                //Создаём черту характера "Косноязычный (-ая)"
+                CharacterTrait characterTrait = new("system", "Косноязычный (-ая)", "Склонен (-на) к неправильной и невнятной речи", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Красноречивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Красноречивый (-ая)"))
+            {
+                //Создаём черту характера "Красноречивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Красноречивый (-ая)", "Склонен (-на) к красноречию и убедительной красивой речи", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Криводушный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Криводушный (-ая)"))
+            {
+                //Создаём черту характера "Криводушный (-ая)"
+                CharacterTrait characterTrait = new("system", "Криводушный (-ая)", "Склонен (-на) к неискренности и лживости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Кровожадный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Кровожадный (-ая)"))
+            {
+                //Создаём черту характера "Кровожадный (-ая)"
+                CharacterTrait characterTrait = new("system", "Кровожадный (-ая)", "Склонен (-на) к жестокости и жажде убийств и крови", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Кроткий (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Кроткий (-ая)"))
+            {
+                //Создаём черту характера "Кроткий (-ая)"
+                CharacterTrait characterTrait = new("system", "Кроткий (-ая)", "Склонен (-на) к незлобивости, покорсности и смирности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Культурный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Культурный (-ая)"))
+            {
+                //Создаём черту характера "Культурный (-ая)"
+                CharacterTrait characterTrait = new("system", "Культурный (-ая)", "Склонен (-на) к высокой культуре", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Лаконичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Лаконичный (-ая)"))
+            {
+                //Создаём черту характера "Лаконичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Лаконичный (-ая)", "Склонен (-на) к лакончиности и немногословности", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Ласковый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Ласковый (-ая)"))
+            {
+                //Создаём черту характера "Ласковый (-ая)"
+                CharacterTrait characterTrait = new("system", "Ласковый (-ая)", "Склонен (-на) к ласке и нежности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Легковерный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Легковерный (-ая)"))
+            {
+                //Создаём черту характера "Легковерный (-ая)"
+                CharacterTrait characterTrait = new("system", "Легковерный (-ая)", "Склонен (-на) к доверчивости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Легковесный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Легковесный (-ая)"))
+            {
+                //Создаём черту характера "Легковесный (-ая)"
+                CharacterTrait characterTrait = new("system", "Легковесный (-ая)", "Склонен (-на) к легкомысленности и поверхностности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Легкомысленный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Легкомысленный (-ая)"))
+            {
+                //Создаём черту характера "Легкомысленный (-ая)"
+                CharacterTrait characterTrait = new("system", "Легкомысленный (-ая)", "Склонен (-на) к несерьёзности и необдуманности в поступках", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Лживый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Лживый (-ая)"))
+            {
+                //Создаём черту характера "Лживый (-ая)"
+                CharacterTrait characterTrait = new("system", "Лживый (-ая)", "Склонен (-на) к лжи, обману и неискренности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Лиричный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Лиричный (-ая)"))
+            {
+                //Создаём черту характера "Лиричный (-ая)"
+                CharacterTrait characterTrait = new("system", "Лиричный (-ая)", "Склонен (-на) к чувственности, мягкости и эмоциональности", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Лицемерный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Лицемерный (-ая)"))
+            {
+                //Создаём черту характера "Лицемерный (-ая)"
+                CharacterTrait characterTrait = new("system", "Лицемерный (-ая)", "Склонен (-на) к неискренности и злонамеренности притвортной добродетелью", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Ленивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Ленивый (-ая)"))
+            {
+                //Создаём черту характера "Ленивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Ленивый (-ая)", "Склонен (-на) к безделию, не желанию трудиться, вялости и медлительности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Логичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Логичный (-ая)"))
+            {
+                //Создаём черту характера "Логичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Логичный (-ая)", "Склонен (-на) к закономерности, разумности, последовательности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Лукавый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Лукавый (-ая)"))
+            {
+                //Создаём черту характера "Лукавый (-ая)"
+                CharacterTrait characterTrait = new("system", "Лукавый (-ая)", "Склонен (-на) к игривости и добродушной хитрости", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Льстивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Льстивый (-ая)"))
+            {
+                //Создаём черту характера "Льстивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Льстивый (-ая)", "Склонен (-на) к лести, лицемерию и угодливому восхвалению", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Любвеобильный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Любвеобильный (-ая)"))
+            {
+                //Создаём черту характера "Любвеобильный (-ая)"
+                CharacterTrait characterTrait = new("system", "Любвеобильный (-ая)", "Склонен (-на) к сильной любви или частой любви многих", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Любезный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Любезный (-ая)"))
+            {
+                //Создаём черту характера "Любезный (-ая)"
+                CharacterTrait characterTrait = new("system", "Любезный (-ая)", "Склонен (-на) к обходительности, предупредительности и учтивости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Любознательный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Любознательный (-ая)"))
+            {
+                //Создаём черту характера "Любознательный (-ая)"
+                CharacterTrait characterTrait = new("system", "Любознательный (-ая)", "Склонен (-на) к приобретению новых знаний и пытливости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Любопытный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Любопытный (-ая)"))
+            {
+                //Создаём черту характера "Любопытный (-ая)"
+                CharacterTrait characterTrait = new("system", "Любопытный (-ая)", "Склонен (-на) к мелочному интересу даже н несущественным подробностям", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Малодушный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Малодушный (-ая)"))
+            {
+                //Создаём черту характера "Малодушный (-ая)"
+                CharacterTrait characterTrait = new("system", "Малодушный (-ая)", "Склонен (-на) к слабоволию и отсутсвию твёрдости духа, решительности и мужества", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Манерный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Манерный (-ая)"))
+            {
+                //Создаём черту характера "Манерный (-ая)"
+                CharacterTrait characterTrait = new("system", "Манерный (-ая)", "Склонен (-на) к жеманным действиям и отсутсвию простоты и ественности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Маниакальный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Маниакальный (-ая)"))
+            {
+                //Создаём черту характера "Маниакальный (-ая)"
+                CharacterTrait characterTrait = new("system", "Маниакальный (-ая)", "Склонен (-на) к исключительной сосредоточенности сознания и чувств на какой-нибудь идее", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Медлительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Медлительный (-ая)"))
+            {
+                //Создаём черту характера "Медлительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Медлительный (-ая)", "Склонен (-на) к размернному спокойствию, неторопливости и неспешности", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Меланхоличный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Меланхоличный (-ая)"))
+            {
+                //Создаём черту характера "Меланхоличный (-ая)"
+                CharacterTrait characterTrait = new("system", "Меланхоличный (-ая)", "Склонен (-на) к слабой возбудимости, глубокими и длительными эмоциями", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Мелочный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Мелочный (-ая)"))
+            {
+                //Создаём черту характера "Мелочный (-ая)"
+                CharacterTrait characterTrait = new("system", "Мелочный (-ая)", "Склонен (-на) придавать значения пустякам и мелочам", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Меркантильный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Меркантильный (-ая)"))
+            {
+                //Создаём черту характера "Меркантильный (-ая)"
+                CharacterTrait characterTrait = new("system", "Меркантильный (-ая)", "Склонен (-на) к излишней расчётливости и торгашеству", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Мечтательный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Мечтательный (-ая)"))
+            {
+                //Создаём черту характера "Мечтательный (-ая)"
+                CharacterTrait characterTrait = new("system", "Мечтательный (-ая)", "Склонен (-на) к мечтам и воображению", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Мешкотный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Мешкотный (-ая)"))
+            {
+                //Создаём черту характера "Мешкотный (-ая)"
+                CharacterTrait characterTrait = new("system", "Мешкотный (-ая)", "Склонен (-на) к медлительности и вялости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Мизантроп"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Мизантроп"))
+            {
+                //Создаём черту характера "Мизантроп"
+                CharacterTrait characterTrait = new("system", "Мизантроп", "Склонен (-на) к ненависти, нелюбви к другим и отчуждению от них", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Миловидный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Миловидный (-ая)"))
+            {
+                //Создаём черту характера "Миловидный (-ая)"
+                CharacterTrait characterTrait = new("system", "Миловидный (-ая)", "Склонен (-на) к привлекательности, приятному и милому на вид", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Милосердный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Милосердный (-ая)"))
+            {
+                //Создаём черту характера "Милосердный (-ая)"
+                CharacterTrait characterTrait = new("system", "Милосердный (-ая)", "Склонен (-на) к проявлению милосердия, готовности помогать и прощать кого-нибудь", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Милостивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Милостивый (-ая)"))
+            {
+                //Создаём черту характера "Милостивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Милостивый (-ая)", "Склонен (-на) к милостивому, доброму и человеколюбивому отношению", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Миролюбивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Миролюбивый (-ая)"))
+            {
+                //Создаём черту характера "Миролюбивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Миролюбивый (-ая)", "Склонен (-на) к отсутсвию склонности к вражде, ссорам и войнам", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Мнительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Мнительный (-ая)"))
+            {
+                //Создаём черту характера "Мнительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Мнительный (-ая)", "Склонен (-на) к видению во всём опасности и неблагоприятности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Многогранный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Многогранный (-ая)"))
+            {
+                //Создаём черту характера "Многогранный (-ая)"
+                CharacterTrait characterTrait = new("system", "Многогранный (-ая)", "Склонен (-на) к многогранности и разносторонности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Молчаливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Молчаливый (-ая)"))
+            {
+                //Создаём черту характера "Молчаливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Молчаливый (-ая)", "Склонен (-на) к немногословности и не любви к разговорам", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Мрачный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Мрачный (-ая)"))
+            {
+                //Создаём черту характера "Мрачный (-ая)"
+                CharacterTrait characterTrait = new("system", "Мрачный (-ая)", "Склонен (-на) к грусти и печальной угрюмости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Мстительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Мстительный (-ая)"))
+            {
+                //Создаём черту характера "Мстительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Мстительный (-ая)", "Склонен (-на) к злопамятности и жажде мести", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Мужененавистник (-ца)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Мужененавистник (-ца)"))
+            {
+                //Создаём черту характера "Мужененавистник (-ца)"
+                CharacterTrait characterTrait = new("system", "Мужененавистник (-ца)", "Склонен (-на) к ненависти к мужичнам и избеганию их", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Мужественный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Мужественный (-ая)"))
+            {
+                //Создаём черту характера "Мужественный (-ая)"
+                CharacterTrait characterTrait = new("system", "Мужественный (-ая)", "Склонен (-на) к мужеству, стойкости, энергичности и храбрости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Мудрый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Мудрый (-ая)"))
+            {
+                //Создаём черту характера "Мудрый (-ая)"
+                CharacterTrait characterTrait = new("system", "Мудрый (-ая)", "Склонен (-на) к обладанию больших знаний, основанных на опыте", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Мягкий (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Мягкий (-ая)"))
+            {
+                //Создаём черту характера "Мягкий (-ая)"
+                CharacterTrait characterTrait = new("system", "Мягкий (-ая)", "Склонен (-на) к кроткости и отсутсвию грубости и резкости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Мягкосердечный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Мягкосердечный (-ая)"))
+            {
+                //Создаём черту характера "Мягкосердечный (-ая)"
+                CharacterTrait characterTrait = new("system", "Мягкосердечный (-ая)", "Склонен (-на) к душевной мягкости, доброте и отзывчивости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Мятежный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Мятежный (-ая)"))
+            {
+                //Создаём черту характера "Мятежный (-ая)"
+                CharacterTrait characterTrait = new("system", "Мятежный (-ая)", "Склонен (-на) к тревожности, неспокойности, бурности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Наблюдательный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Наблюдательный (-ая)"))
+            {
+                //Создаём черту характера "Наблюдательный (-ая)"
+                CharacterTrait characterTrait = new("system", "Наблюдательный (-ая)", "Склонен (-на) к внимательности и умению наблюдать и подмечать", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Набожный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Набожный (-ая)"))
+            {
+                //Создаём черту характера "Набожный (-ая)"
+                CharacterTrait characterTrait = new("system", "Набожный (-ая)", "Склонен (-на) к богомольности и соблюдению религиозных обрядов", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Навязчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Навязчивый (-ая)"))
+            {
+                //Создаём черту характера "Навязчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Навязчивый (-ая)", "Склонен (-на) к назойливости и надоедливо пристающий с чем-либо", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Наивный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Наивный (-ая)"))
+            {
+                //Создаём черту характера "Наивный (-ая)"
+                CharacterTrait characterTrait = new("system", "Наивный (-ая)", "Склонен (-на) к простодушности, неопытности и неосведомлённости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Наглый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Наглый (-ая)"))
+            {
+                //Создаём черту характера "Наглый (-ая)"
+                CharacterTrait characterTrait = new("system", "Наглый (-ая)", "Склонен (-на) к дерзко беззастенчивости и бесстыдности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Надёжный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Надёжный (-ая)"))
+            {
+                //Создаём черту характера "Надёжный (-ая)"
+                CharacterTrait characterTrait = new("system", "Надёжный (-ая)", "Склонен (-на) к верности и внушению доверия", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Надменный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Надменный (-ая)"))
+            {
+                //Создаём черту характера "Надменный (-ая)"
+                CharacterTrait characterTrait = new("system", "Надменный (-ая)", "Склонен (-на) к самонадеянности, высокомерности и кичливости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Напористый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Напористый (-ая)"))
+            {
+                //Создаём черту характера "Напористый (-ая)"
+                CharacterTrait characterTrait = new("system", "Напористый (-ая)", "Склонен (-на) к настойчивости и решительному добиванию своей цели", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Напыщенный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Напыщенный (-ая)"))
+            {
+                //Создаём черту характера "Напыщенный (-ая)"
+                CharacterTrait characterTrait = new("system", "Напыщенный (-ая)", "Склонен (-на) к преувеличенной важности, гордочти и кичливости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Насмешливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Насмешливый (-ая)"))
+            {
+                //Создаём черту характера "Насмешливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Насмешливый (-ая)", "Склонен (-на) к насмешкам и шуткам ", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Настойчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Настойчивый (-ая)"))
+            {
+                //Создаём черту характера "Настойчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Настойчивый (-ая)", "Склонен (-на) к упорности и твёрдости в достижении чего-либо", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Настырный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Настырный (-ая)"))
+            {
+                //Создаём черту характера "Настырный (-ая)"
+                CharacterTrait characterTrait = new("system", "Настырный (-ая)", "Склонен (-на) к упорности и чрезмерной настойчивости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Нахальный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Нахальный (-ая)"))
+            {
+                //Создаём черту характера "Нахальный (-ая)"
+                CharacterTrait characterTrait = new("system", "Нахальный (-ая)", "Склонен (-на) к крайней бесцеремонности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Находчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Находчивый (-ая)"))
+            {
+                //Создаём черту характера "Находчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Находчивый (-ая)", "Склонен (-на) к сообразительности и способности легко находить выход из трудного положения", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Нахрапистый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Нахрапистый (-ая)"))
+            {
+                //Создаём черту характера "Нахрапистый (-ая)"
+                CharacterTrait characterTrait = new("system", "Нахрапистый (-ая)", "Склонен (-на) к наглым действиям", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Начальственный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Начальственный (-ая)"))
+            {
+                //Создаём черту характера "Начальственный (-ая)"
+                CharacterTrait characterTrait = new("system", "Начальственный (-ая)", "Склонен (-на) к высокомерной строгости, важности и властности", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Начитанный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Начитанный (-ая)"))
+            {
+                //Создаём черту характера "Начитанный (-ая)"
+                CharacterTrait characterTrait = new("system", "Начитанный (-ая)", "Склонен (-на) к хорошим знаниям с литературой и большому чтению", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неадекватный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неадекватный (-ая)"))
+            {
+                //Создаём черту характера "Неадекватный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неадекватный (-ая)", "Склонен (-на) к отсутсвию адекватности и не совпадению с чем-либо", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неаккуратный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неаккуратный (-ая)"))
+            {
+                //Создаём черту характера "Неаккуратный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неаккуратный (-ая)", "Склонен (-на) к неопрятности и неряшливости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неблагодарный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неблагодарный (-ая)"))
+            {
+                //Создаём черту характера "Неблагодарный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неблагодарный (-ая)", "Склонен (-на) к отсутсвию чувств благодарности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неблагожелательный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неблагожелательный (-ая)"))
+            {
+                //Создаём черту характера "Неблагожелательный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неблагожелательный (-ая)", "Склонен (-на) к недображелательности и неблагосклонности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неблагопристойный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неблагопристойный (-ая)"))
+            {
+                //Создаём черту характера "Неблагопристойный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неблагопристойный (-ая)", "Склонен (-на) к неприличности и отсутсвию благопристойности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неблагоразумный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неблагоразумный (-ая)"))
+            {
+                //Создаём черту характера "Неблагоразумный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неблагоразумный (-ая)", "Склонен (-на) к поступкам вопреки требованиям благоразумия", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неблагородный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неблагородный (-ая)"))
+            {
+                //Создаём черту характера "Неблагородный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неблагородный (-ая)", "Склонен (-на) к отсутсвию благородства в поведении и непорядочности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неблагосклонный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неблагосклонный (-ая)"))
+            {
+                //Создаём черту характера "Неблагосклонный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неблагосклонный (-ая)", "Склонен (-на) к отсутсвию благосклонности и доброжелательности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Небрежный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Небрежный (-ая)"))
+            {
+                //Создаём черту характера "Небрежный (-ая)"
+                CharacterTrait characterTrait = new("system", "Небрежный (-ая)", "Склонен (-на) к неряшливости, пренебрежительности и невнимательности к своим обязанностям", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Невежественный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Невежественный (-ая)"))
+            {
+                //Создаём черту характера "Невежественный (-ая)"
+                CharacterTrait characterTrait = new("system", "Невежественный (-ая)", "Склонен (-на) к малообразованности и малокультурности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Невезучий (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Невезучий (-ая)"))
+            {
+                //Создаём черту характера "Невезучий (-ая)"
+                CharacterTrait characterTrait = new("system", "Невезучий (-ая)", "Склонен (-на) к неудачливости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неверный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неверный (-ая)"))
+            {
+                //Создаём черту характера "Неверный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неверный (-ая)", "Склонен (-на) к отсутсвию верности и нарушению обязательств перед кем-чем-нибудь", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Невзыскательный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Невзыскательный (-ая)"))
+            {
+                //Создаём черту характера "Невзыскательный (-ая)"
+                CharacterTrait characterTrait = new("system", "Невзыскательный (-ая)", "Склонен (-на) к нетребовательности нерзборчивости", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Невинный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Невинный (-ая)"))
+            {
+                //Создаём черту характера "Невинный (-ая)"
+                CharacterTrait characterTrait = new("system", "Невинный (-ая)", "Склонен (-на) к чистосердечности, простодушности, наивности, безвредности и целомудренности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Невнимательный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Невнимательный (-ая)"))
+            {
+                //Создаём черту характера "Невнимательный (-ая)"
+                CharacterTrait characterTrait = new("system", "Невнимательный (-ая)", "Склонен (-на) к рассеянности и отсутсвию внимания", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Невоздержанный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Невоздержанный (-ая)"))
+            {
+                //Создаём черту характера "Невоздержанный (-ая)"
+                CharacterTrait characterTrait = new("system", "Невоздержанный (-ая)", "Склонен (-на) к несдержанности, неосторожности и предаванию излишествам", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Невозмутимый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Невозмутимый (-ая)"))
+            {
+                //Создаём черту характера "Невозмутимый (-ая)"
+                CharacterTrait characterTrait = new("system", "Невозмутимый (-ая)", "Склонен (-на) к спокойстви и самообладанию", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Невоспитанный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Невоспитанный (-ая)"))
+            {
+                //Создаём черту характера "Невоспитанный (-ая)"
+                CharacterTrait characterTrait = new("system", "Невоспитанный (-ая)", "Склонен (-на) к неучтивости, грубости и отсутсвию воспитания", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Невосприимчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Невосприимчивый (-ая)"))
+            {
+                //Создаём черту характера "Невосприимчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Невосприимчивый (-ая)", "Склонен (-на) к плохому усваиванию чего-либо", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Невредный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Невредный (-ая)"))
+            {
+                //Создаём черту характера "Невредный (-ая)"
+                CharacterTrait characterTrait = new("system", "Невредный (-ая)", "Склонен (-на) к бевредности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Невыдержанный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Невыдержанный (-ая)"))
+            {
+                //Создаём черту характера "Невыдержанный (-ая)"
+                CharacterTrait characterTrait = new("system", "Невыдержанный (-ая)", "Склонен (-на) к отсутсвию выдержки и самообладания", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Невыразительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Невыразительный (-ая)"))
+            {
+                //Создаём черту характера "Невыразительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Невыразительный (-ая)", "Склонен (-на) к отсутсвию выразительности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Негостеприимный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Негостеприимный (-ая)"))
+            {
+                //Создаём черту характера "Негостеприимный (-ая)"
+                CharacterTrait characterTrait = new("system", "Негостеприимный (-ая)", "Склонен (-на) к нерадушности, неприветливости и отсутсвию гостеприимства", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неграмотный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неграмотный (-ая)"))
+            {
+                //Создаём черту характера "Неграмотный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неграмотный (-ая)", "Склонен (-на) к отсутсвию нужных знаний и сведений в какой-нибудь области", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Недальновидный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Недальновидный (-ая)"))
+            {
+                //Создаём черту характера "Недальновидный (-ая)"
+                CharacterTrait characterTrait = new("system", "Недальновидный (-ая)", "Склонен (-на) к отсутсвию способности правильно рассчитать, предусмотреть, предвидеть последствия", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Недееспособный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Недееспособный (-ая)"))
+            {
+                //Создаём черту характера "Недееспособный (-ая)"
+                CharacterTrait characterTrait = new("system", "Недееспособный (-ая)", "Склонен (-на) к отсутсвию способности к какой-нибудь деятельности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неделикатный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неделикатный (-ая)"))
+            {
+                //Создаём черту характера "Неделикатный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неделикатный (-ая)", "Склонен (-на) к грубоватости, невежливости, нескромности, нетактичности и бесцеремонности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Недисциплинированный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Недисциплинированный (-ая)"))
+            {
+                //Создаём черту характера "Недисциплинированный (-ая)"
+                CharacterTrait characterTrait = new("system", "Недисциплинированный (-ая)", "Склонен (-на) к отсутсвию дисциплины и нарушению порядка", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Недоброжелательный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Недоброжелательный (-ая)"))
+            {
+                //Создаём черту характера "Недоброжелательный (-ая)"
+                CharacterTrait characterTrait = new("system", "Недоброжелательный (-ая)", "Склонен (-на) к неприязни и недружелюбию", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Недобросовестный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Недобросовестный (-ая)"))
+            {
+                //Создаём черту характера "Недобросовестный (-ая)"
+                CharacterTrait characterTrait = new("system", "Недобросовестный (-ая)", "Склонен (-на) к нечестности и небрежности в делах", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Недоверчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Недоверчивый (-ая)"))
+            {
+                //Создаём черту характера "Недоверчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Недоверчивый (-ая)", "Склонен (-на) к недоверию и подозрительности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Недоступный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Недоступный (-ая)"))
+            {
+                //Создаём черту характера "Недоступный (-ая)"
+                CharacterTrait characterTrait = new("system", "Недоступный (-ая)", "Склонен (-на) к высокомерности, недостежимости и недоступности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Недреманный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Недреманный (-ая)"))
+            {
+                //Создаём черту характера "Недреманный (-ая)"
+                CharacterTrait characterTrait = new("system", "Недреманный (-ая)", "Склонен (-на) к бдительности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Недружелюбный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Недружелюбный (-ая)"))
+            {
+                //Создаём черту характера "Недружелюбный (-ая)"
+                CharacterTrait characterTrait = new("system", "Недружелюбный (-ая)", "Склонен (-на) к неприязни и отсутсвию дружелюбия", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Нежный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Нежный (-ая)"))
+            {
+                //Создаём черту характера "Нежный (-ая)"
+                CharacterTrait characterTrait = new("system", "Нежный (-ая)", "Склонен (-на) к ласковости, мягкости, слабости и хрупкости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Независимый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Независимый (-ая)"))
+            {
+                //Создаём черту характера "Независимый (-ая)"
+                CharacterTrait characterTrait = new("system", "Независимый (-ая)", "Склонен (-на) к самостоятельности и свободе", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Незлобный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Незлобный (-ая)"))
+            {
+                //Создаём черту характера "Незлобный (-ая)"
+                CharacterTrait characterTrait = new("system", "Незлобный (-ая)", "Склонен (-на) к кроткости, простодушности и незлобивости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Незлопамятный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Незлопамятный (-ая)"))
+            {
+                //Создаём черту характера "Незлопамятный (-ая)"
+                CharacterTrait characterTrait = new("system", "Незлопамятный (-ая)", "Склонен (-на) к отсутсвию зла и обиды на кого-либо", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неинтеллигентный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неинтеллигентный (-ая)"))
+            {
+                //Создаём черту характера "Неинтеллигентный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неинтеллигентный (-ая)", "Склонен (-на) к некультурности и необразованности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неисполнительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неисполнительный (-ая)"))
+            {
+                //Создаём черту характера "Неисполнительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неисполнительный (-ая)", "Склонен (-на) к отсутствию исполнительности и неточности в исполнению обязанностей", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неиспорченный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неиспорченный (-ая)"))
+            {
+                //Создаём черту характера "Неиспорченный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неиспорченный (-ая)", "Склонен (-на) к нравственной чистоте и здоровью", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неистовый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неистовый (-ая)"))
+            {
+                //Создаём черту характера "Неистовый (-ая)"
+                CharacterTrait characterTrait = new("system", "Неистовый (-ая)", "Склонен (-на) к необычайно сильному провялению чего-нибудь, буйности и беудержности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Некомпетентный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Некомпетентный (-ая)"))
+            {
+                //Создаём черту характера "Некомпетентный (-ая)"
+                CharacterTrait characterTrait = new("system", "Некомпетентный (-ая)", "Склонен (-на) к отсутсвию достаточных знаний в какой-либо области", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Некорректный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Некорректный (-ая)"))
+            {
+                //Создаём черту характера "Некорректный (-ая)"
+                CharacterTrait characterTrait = new("system", "Некорректный (-ая)", "Склонен (-на) к нетактичности и не соблюдению правил корректности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Некультурный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Некультурный (-ая)"))
+            {
+                //Создаём черту характера "Некультурный (-ая)"
+                CharacterTrait characterTrait = new("system", "Некультурный (-ая)", "Склонен (-на) к отсутсвию культурных навыков и не соответсвию правилам и нормам поведения", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Нелицемерный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Нелицемерный (-ая)"))
+            {
+                //Создаём черту характера "Нелицемерный (-ая)"
+                CharacterTrait characterTrait = new("system", "Нелицемерный (-ая)", "Склонен (-на) к отсутсвию лицемерия", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Нелицеприятный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Нелицеприятный (-ая)"))
+            {
+                //Создаём черту характера "Нелицеприятный (-ая)"
+                CharacterTrait characterTrait = new("system", "Нелицеприятный (-ая)", "Склонен (-на) к беспристрастности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Нелогичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Нелогичный (-ая)"))
+            {
+                //Создаём черту характера "Нелогичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Нелогичный (-ая)", "Склонен (-на) к противоречию логике, непоследовательности и противоречивости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Нелояльный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Нелояльный (-ая)"))
+            {
+                //Создаём черту характера "Нелояльный (-ая)"
+                CharacterTrait characterTrait = new("system", "Нелояльный (-ая)", "Склонен (-на) к нарушению принятых положений и законов", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Нелюбезный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Нелюбезный (-ая)"))
+            {
+                //Создаём черту характера "Нелюбезный (-ая)"
+                CharacterTrait characterTrait = new("system", "Нелюбезный (-ая)", "Склонен (-на) к неучтивости, неприветливости и невежливости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Нелюдимый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Нелюдимый (-ая)"))
+            {
+                //Создаём черту характера "Нелюдимый (-ая)"
+                CharacterTrait characterTrait = new("system", "Нелюдимый (-ая)", "Склонен (-на) к необщительности и замкнутости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Немилосердный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Немилосердный (-ая)"))
+            {
+                //Создаём черту характера "Немилосердный (-ая)"
+                CharacterTrait characterTrait = new("system", "Немилосердный (-ая)", "Склонен (-на) к жестокости и отсутсвию милосердия", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Немногословный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Немногословный (-ая)"))
+            {
+                //Создаём черту характера "Немногословный (-ая)"
+                CharacterTrait characterTrait = new("system", "Немногословный (-ая)", "Склонен (-на) к лаконичности и краткому выражению мыслей", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Ненадёжный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Ненадёжный (-ая)"))
+            {
+                //Создаём черту характера "Ненадёжный (-ая)"
+                CharacterTrait characterTrait = new("system", "Ненадёжный (-ая)", "Склонен (-на) к не вызыванию доверию", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Ненасытный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Ненасытный (-ая)"))
+            {
+                //Создаём черту характера "Ненасытный (-ая)"
+                CharacterTrait characterTrait = new("system", "Ненасытный (-ая)", "Склонен (-на) к неудовлетворённости ничем, что имеется", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Необразованный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Необразованный (-ая)"))
+            {
+                //Создаём черту характера "Необразованный (-ая)"
+                CharacterTrait characterTrait = new("system", "Необразованный (-ая)", "Склонен (-на) к невежественности и отсутсвию достаточного образования", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Необузданный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Необузданный (-ая)"))
+            {
+                //Создаём черту характера "Необузданный (-ая)"
+                CharacterTrait characterTrait = new("system", "Необузданный (-ая)", "Склонен (-на) к неукротимости и отсутсвию возможности сдержать", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Необщительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Необщительный (-ая)"))
+            {
+                //Создаём черту характера "Необщительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Необщительный (-ая)", "Склонен (-на) к замкнутости и отсутсвию общительности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Необязательный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Необязательный (-ая)"))
+            {
+                //Создаём черту характера "Необязательный (-ая)"
+                CharacterTrait characterTrait = new("system", "Необязательный (-ая)", "Склонен (-на) к отсутсвию любезности, внимательности и предусмотрительности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неопрятный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неопрятный (-ая)"))
+            {
+                //Создаём черту характера "Неопрятный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неопрятный (-ая)", "Склонен (-на) к нечистоплотности, неряшливости и отсутсвию опрятности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неопытный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неопытный (-ая)"))
+            {
+                //Создаём черту характера "Неопытный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неопытный (-ая)", "Склонен (-на) к отсутсвию дотсаточного опыта", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неорганизованный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неорганизованный (-ая)"))
+            {
+                //Создаём черту характера "Неорганизованный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неорганизованный (-ая)", "Склонен (-на) к отсутсвию организованности и порядка", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неосмотрительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неосмотрительный (-ая)"))
+            {
+                //Создаём черту характера "Неосмотрительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неосмотрительный (-ая)", "Склонен (-на) к отсутсвию осмотрительности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неосновательный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неосновательный (-ая)"))
+            {
+                //Создаём черту характера "Неосновательный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неосновательный (-ая)", "Склонен (-на) к легкомысленности и несерьёзности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неосторожный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неосторожный (-ая)"))
+            {
+                //Создаём черту характера "Неосторожный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неосторожный (-ая)", "Склонен (-на) к недостаточной сдержанности и продуманности, невнимательности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неотвязный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неотвязный (-ая)"))
+            {
+                //Создаём черту характера "Неотвязный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неотвязный (-ая)", "Склонен (-на) к назойливости и постоянному преследованию", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неотзывчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неотзывчивый (-ая)"))
+            {
+                //Создаём черту характера "Неотзывчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Неотзывчивый (-ая)", "Склонен (-на) к отсутсвию отзывчивости и сочуствия", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неотёсанный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неотёсанный (-ая)"))
+            {
+                //Создаём черту характера "Неотёсанный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неотёсанный (-ая)", "Склонен (-на) к грубости некультурности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неотступный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неотступный (-ая)"))
+            {
+                //Создаём черту характера "Неотступный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неотступный (-ая)", "Склонен (-на) к настойчивости и неотвязности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Непедагогичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Непедагогичный (-ая)"))
+            {
+                //Создаём черту характера "Непедагогичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Непедагогичный (-ая)", "Склонен (-на) к отсутсвию правилам и требованиям педагогики", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неповинный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неповинный (-ая)"))
+            {
+                //Создаём черту характера "Неповинный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неповинный (-ая)", "Склонен (-на) к отсутсвия вины", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неповоротливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неповоротливый (-ая)"))
+            {
+                //Создаём черту характера "Неповоротливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Неповоротливый (-ая)", "Склонен (-на) к медлительности и нерасторопный", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неподатливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неподатливый (-ая)"))
+            {
+                //Создаём черту характера "Неподатливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Неподатливый (-ая)", "Склонен (-на) к упорности, неуступчивости и непреклонности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неподкупный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неподкупный (-ая)"))
+            {
+                //Создаём черту характера "Неподкупный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неподкупный (-ая)", "Склонен (-на) к честности и невозможности подкупить", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Непокорный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Непокорный (-ая)"))
+            {
+                //Создаём черту характера "Непокорный (-ая)"
+                CharacterTrait characterTrait = new("system", "Непокорный (-ая)", "Склонен (-на) к непослушности, строптивости и не признанию чьей-либо власти", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Непорочный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Непорочный (-ая)"))
+            {
+                //Создаём черту характера "Непорочный (-ая)"
+                CharacterTrait characterTrait = new("system", "Непорочный (-ая)", "Склонен (-на) к безгрешности и нравственной чистоте", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Непорядочный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Непорядочный (-ая)"))
+            {
+                //Создаём черту характера "Непорядочный (-ая)"
+                CharacterTrait characterTrait = new("system", "Непорядочный (-ая)", "Склонен (-на) к отстутсвию честности и способности на низкие поступки", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Непоследовательный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Непоследовательный (-ая)"))
+            {
+                //Создаём черту характера "Непоследовательный (-ая)"
+                CharacterTrait characterTrait = new("system", "Непоследовательный (-ая)", "Склонен (-на) к нелогичности и отсутсвию последовательности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Непослушный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Непослушный (-ая)"))
+            {
+                //Создаём черту характера "Непослушный (-ая)"
+                CharacterTrait characterTrait = new("system", "Непослушный (-ая)", "Склонен (-на) к отсутсвию повиновения и послушания", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Непосредственный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Непосредственный (-ая)"))
+            {
+                //Создаём черту характера "Непосредственный (-ая)"
+                CharacterTrait characterTrait = new("system", "Непосредственный (-ая)", "Склонен (-на) к откровенности и непринуждённости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Непостоянный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Непостоянный (-ая)"))
+            {
+                //Создаём черту характера "Непостоянный (-ая)"
+                CharacterTrait characterTrait = new("system", "Непостоянный (-ая)", "Склонен (-на) к изменчивости, неустойчивости и колебаниям", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Непочтительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Непочтительный (-ая)"))
+            {
+                //Создаём черту характера "Непочтительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Непочтительный (-ая)", "Склонен (-на) к невежливости, отсутвию учтивости и почтения", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неправедный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неправедный (-ая)"))
+            {
+                //Создаём черту характера "Неправедный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неправедный (-ая)", "Склонен (-на) к грешности, греховности, отствуию справедливости и нравственности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Непрактичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Непрактичный (-ая)"))
+            {
+                //Создаём черту характера "Непрактичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Непрактичный (-ая)", "Склонен (-на) к отсутсвию способности разбираться в практических бытовых делах", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Непредусмотрительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Непредусмотрительный (-ая)"))
+            {
+                //Создаём черту характера "Непредусмотрительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Непредусмотрительный (-ая)", "Склонен (-на) к отсутвию предвидению возможных последствий", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Непреклонный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Непреклонный (-ая)"))
+            {
+                //Создаём черту характера "Непреклонный (-ая)"
+                CharacterTrait characterTrait = new("system", "Непреклонный (-ая)", "Склонен (-на) к стокости и твёрдости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Непривлекательный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Непривлекательный (-ая)"))
+            {
+                //Создаём черту характера "Непривлекательный (-ая)"
+                CharacterTrait characterTrait = new("system", "Непривлекательный (-ая)", "Склонен (-на) к отсутсвию привлекательности и способности располагать к себе", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неприкаянный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неприкаянный (-ая)"))
+            {
+                //Создаём черту характера "Неприкаянный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неприкаянный (-ая)", "Склонен (-на) к беспокойству и отсутсвию способности найти себе места", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неприличный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неприличный (-ая)"))
+            {
+                //Создаём черту характера "Неприличный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неприличный (-ая)", "Склонен (-на) к непристойности, бранности, неблаговспитанности и не соответствию правилам приличия", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неприметный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неприметный (-ая)"))
+            {
+                //Создаём черту характера "Неприметный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неприметный (-ая)", "Склонен (-на) к незаметности и незначительности", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Непринужденный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Непринужденный (-ая)"))
+            {
+                //Создаём черту характера "Непринужденный (-ая)"
+                CharacterTrait characterTrait = new("system", "Непринужденный (-ая)", "Склонен (-на) к отсутсвию всякой натянутости, естественности и свободе", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Непристойный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Непристойный (-ая)"))
+            {
+                //Создаём черту характера "Непристойный (-ая)"
+                CharacterTrait characterTrait = new("system", "Непристойный (-ая)", "Склонен (-на) к крайней неприличности, бестыдности и предосудительности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неприступный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неприступный (-ая)"))
+            {
+                //Создаём черту характера "Неприступный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неприступный (-ая)", "Склонен (-на) к сторгости, надменности и избеганию близости с другими людьми", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Непритворный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Непритворный (-ая)"))
+            {
+                //Создаём черту характера "Непритворный (-ая)"
+                CharacterTrait characterTrait = new("system", "Непритворный (-ая)", "Склонен (-на) к исренности и отсутсвию притворства", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Непритязательный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Непритязательный (-ая)"))
+            {
+                //Создаём черту характера "Непритязательный (-ая)"
+                CharacterTrait characterTrait = new("system", "Непритязательный (-ая)", "Склонен (-на) к скромности и простоте", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неприхотливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неприхотливый (-ая)"))
+            {
+                //Создаём черту характера "Неприхотливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Неприхотливый (-ая)", "Склонен (-на) к простоте, незатейливости и скромности в требованиях", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неприязненный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неприязненный (-ая)"))
+            {
+                //Создаём черту характера "Неприязненный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неприязненный (-ая)", "Склонен (-на) к неприязни и недружелюбию", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Непродуктивный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Непродуктивный (-ая)"))
+            {
+                //Создаём черту характера "Непродуктивный (-ая)"
+                CharacterTrait characterTrait = new("system", "Непродуктивный (-ая)", "Склонен (-на) к непроизводительности и низкой продуктивности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Непроницательный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Непроницательный (-ая)"))
+            {
+                //Создаём черту характера "Непроницательный (-ая)"
+                CharacterTrait characterTrait = new("system", "Непроницательный (-ая)", "Склонен (-на) к отсутсвию проницательности и умению уагадывать и разгадывать", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Непросвещённый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Непросвещённый (-ая)"))
+            {
+                //Создаём черту характера "Непросвещённый (-ая)"
+                CharacterTrait characterTrait = new("system", "Непросвещённый (-ая)", "Склонен (-на) к необразовательности и невежественности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Непутевый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Непутевый (-ая)"))
+            {
+                //Создаём черту характера "Непутевый (-ая)"
+                CharacterTrait characterTrait = new("system", "Непутевый (-ая)", "Склонен (-на) к легкомысленности, беспутности и безлаберности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неработоспособный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неработоспособный (-ая)"))
+            {
+                //Создаём черту характера "Неработоспособный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неработоспособный (-ая)", "Склонен (-на) к отсутсвию работоспособности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неравнодушный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неравнодушный (-ая)"))
+            {
+                //Создаём черту характера "Неравнодушный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неравнодушный (-ая)", "Склонен (-на) к небезразличности и небезучастности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Нерадивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Нерадивый (-ая)"))
+            {
+                //Создаём черту характера "Нерадивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Нерадивый (-ая)", "Склонен (-на) к небрежности, ленивости и беззаботному отношению к своим обязанностям", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Нерадостный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Нерадостный (-ая)"))
+            {
+                //Создаём черту характера "Нерадостный (-ая)"
+                CharacterTrait characterTrait = new("system", "Нерадостный (-ая)", "Склонен (-на) к грусти, печальности и отсутсвию радости и веселья", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неразборчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неразборчивый (-ая)"))
+            {
+                //Создаём черту характера "Неразборчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Неразборчивый (-ая)", "Склонен (-на) к нетребовальности, отсутсвию разборчивости и строгости в выборе", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неразумный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неразумный (-ая)"))
+            {
+                //Создаём черту характера "Неразумный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неразумный (-ая)", "Склонен (-на) к несмышлённости и нецелесообразности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Нерешительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Нерешительный (-ая)"))
+            {
+                //Создаём черту характера "Нерешительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Нерешительный (-ая)", "Склонен (-на) к колебаниям и отсутсвию решительности и твёрдости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Нервный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Нервный (-ая)"))
+            {
+                //Создаём черту характера "Нервный (-ая)"
+                CharacterTrait characterTrait = new("system", "Нервный (-ая)", "Склонен (-на) к беспокойству и волнениям", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Нервозный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Нервозный (-ая)"))
+            {
+                //Создаём черту характера "Нервозный (-ая)"
+                CharacterTrait characterTrait = new("system", "Нервозный (-ая)", "Склонен (-на) к повышенной возбудимости и болезненной раздражительности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неряшливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неряшливый (-ая)"))
+            {
+                //Создаём черту характера "Неряшливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Неряшливый (-ая)", "Склонен (-на) к неаккуратности и отсутсвию опрятности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Несгибаемый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Несгибаемый (-ая)"))
+            {
+                //Создаём черту характера "Несгибаемый (-ая)"
+                CharacterTrait characterTrait = new("system", "Несгибаемый (-ая)", "Склонен (-на) к непреклонности и стойкости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Несговорчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Несговорчивый (-ая)"))
+            {
+                //Создаём черту характера "Несговорчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Несговорчивый (-ая)", "Склонен (-на) к упрямости и трудности склонения к согласию и сговору", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Нескромный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Нескромный (-ая)"))
+            {
+                //Создаём черту характера "Нескромный (-ая)"
+                CharacterTrait characterTrait = new("system", "Нескромный (-ая)", "Склонен (-на) к отсутсвию скромности и стыдливости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Нестойкий (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Нестойкий (-ая)"))
+            {
+                //Создаём черту характера "Нестойкий (-ая)"
+                CharacterTrait characterTrait = new("system", "Нестойкий (-ая)", "Склонен (-на) к отсутсвию стойкости и твёрдости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Непоседливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Непоседливый (-ая)"))
+            {
+                //Создаём черту характера "Непоседливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Непоседливый (-ая)", "Склонен (-на) к большой подвижности, суетливости и беспокойности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Непредсказуемый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Непредсказуемый (-ая)"))
+            {
+                //Создаём черту характера "Непредсказуемый (-ая)"
+                CharacterTrait characterTrait = new("system", "Непредсказуемый (-ая)", "Склонен (-на) к отсутсвию возможности предскаказать, предугадать и предвидеть поведение", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Несдержанный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Несдержанный (-ая)"))
+            {
+                //Создаём черту характера "Несдержанный (-ая)"
+                CharacterTrait characterTrait = new("system", "Несдержанный (-ая)", "Склонен (-на) к отсутсвию самообладания и способности сдерживаться", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Нетерпеливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Нетерпеливый (-ая)"))
+            {
+                //Создаём черту характера "Нетерпеливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Нетерпеливый (-ая)", "Склонен (-на) к отсутствию терпения", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неуемный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неуемный (-ая)"))
+            {
+                //Создаём черту характера "Неуемный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неуемный (-ая)", "Склонен (-на) неутомимости и отсутсвию возможности сдержать", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Нечистоплотный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Нечистоплотный (-ая)"))
+            {
+                //Создаём черту характера "Нечистоплотный (-ая)"
+                CharacterTrait characterTrait = new("system", "Нечистоплотный (-ая)", "Склонен (-на) к неопрятности и небрежности в уходе за собой", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Нечуткий (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Нечуткий (-ая)"))
+            {
+                //Создаём черту характера "Нечуткий (-ая)"
+                CharacterTrait characterTrait = new("system", "Нечуткий (-ая)", "Склонен (-на) к неотзывчивости и невнимательности к окружающим", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неуверенный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неуверенный (-ая)"))
+            {
+                //Создаём черту характера "Неуверенный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неуверенный (-ая)", "Склонен (-на) к нерешительности и отсутсвию твёрдости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неугомонный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неугомонный (-ая)"))
+            {
+                //Создаём черту характера "Неугомонный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неугомонный (-ая)", "Склонен (-на) к шумливости, подвижности и отсутствию возможности угомониться и успокоиться", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неуживчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неуживчивый (-ая)"))
+            {
+                //Создаём черту характера "Неуживчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Неуживчивый (-ая)", "Склонен (-на) к плохим способностям уживаться с другими", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неуклюжий (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неуклюжий (-ая)"))
+            {
+                //Создаём черту характера "Неуклюжий (-ая)"
+                CharacterTrait characterTrait = new("system", "Неуклюжий (-ая)", "Склонен (-на) к неловкости в движениях, неповоротливости и нескладности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неунывающий (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неунывающий (-ая)"))
+            {
+                //Создаём черту характера "Неунывающий (-ая)"
+                CharacterTrait characterTrait = new("system", "Неунывающий (-ая)", "Склонен (-на) к жизнерадостности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неуравновешенный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неуравновешенный (-ая)"))
+            {
+                //Создаём черту характера "Неуравновешенный (-ая)"
+                CharacterTrait characterTrait = new("system", "Неуравновешенный (-ая)", "Склонен (-на) к психической неустойчивости и отсутсвию душевсного равновесия", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неусидчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неусидчивый (-ая)"))
+            {
+                //Создаём черту характера "Неусидчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Неусидчивый (-ая)", "Склонен (-на) к отсутсвию усидчивости, выдержки и терпения в каких-либо занятиях", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неуступчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неуступчивый (-ая)"))
+            {
+                //Создаём черту характера "Неуступчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Неуступчивый (-ая)", "Склонен (-на) к упорному настаиванию на своём и отсутсвию склонности уступать", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Неутомимый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Неутомимый (-ая)"))
+            {
+                //Создаём черту характера "Неутомимый (-ая)"
+                CharacterTrait characterTrait = new("system", "Неутомимый (-ая)", "Склонен (-на) к выносливости и отсутсвию усталости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Нравственный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Нравственный (-ая)"))
+            {
+                //Создаём черту характера "Нравственный (-ая)"
+                CharacterTrait characterTrait = new("system", "Нравственный (-ая)", "Склонен (-на) к соответсвию требованиям высокой нравственности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Норовистый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Норовистый (-ая)"))
+            {
+                //Создаём черту характера "Норовистый (-ая)"
+                CharacterTrait characterTrait = new("system", "Норовистый (-ая)", "Склонен (-на) к упрямствую и наличию норова", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Нудный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Нудный (-ая)"))
+            {
+                //Создаём черту характера "Нудный (-ая)"
+                CharacterTrait characterTrait = new("system", "Нудный (-ая)", "Склонен (-на) к докучливости, монотонности и надоедливости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Обаятельный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Обаятельный (-ая)"))
+            {
+                //Создаём черту характера "Обаятельный (-ая)"
+                CharacterTrait characterTrait = new("system", "Обаятельный (-ая)", "Склонен (-на) к очаровтальности и наличию обояния", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Обидчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Обидчивый (-ая)"))
+            {
+                //Создаём черту характера "Обидчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Обидчивый (-ая)", "Склонен (-на) к лёгкой и быстрой обиде", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Образованный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Образованный (-ая)"))
+            {
+                //Создаём черту характера "Образованный (-ая)"
+                CharacterTrait characterTrait = new("system", "Образованный (-ая)", "Склонен (-на) к наличию образования и разносторонних знаний", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Обходительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Обходительный (-ая)"))
+            {
+                //Создаём черту характера "Обходительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Обходительный (-ая)", "Склонен (-на) к вежливости и приветливости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Общительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Общительный (-ая)"))
+            {
+                //Создаём черту характера "Общительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Общительный (-ая)", "Склонен (-на) к лёгкому вхождению в общению с другими и не замкнутости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Объективный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Объективный (-ая)"))
+            {
+                //Создаём черту характера "Объективный (-ая)"
+                CharacterTrait characterTrait = new("system", "Объективный (-ая)", "Склонен (-на) к непредвзятости и беспристрастности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Обыденный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Обыденный (-ая)"))
+            {
+                //Создаём черту характера "Обыденный (-ая)"
+                CharacterTrait characterTrait = new("system", "Обыденный (-ая)", "Склонен (-на) к обыкновенности и заурядности", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Обязательный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Обязательный (-ая)"))
+            {
+                //Создаём черту характера "Обязательный (-ая)"
+                CharacterTrait characterTrait = new("system", "Обязательный (-ая)", "Склонен (-на) к ответсвенности, готовности оказывать содействие и внимательности к людям", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Ограниченный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Ограниченный (-ая)"))
+            {
+                //Создаём черту характера "Ограниченный (-ая)"
+                CharacterTrait characterTrait = new("system", "Ограниченный (-ая)", "Склонен (-на) к наличию небольших познаний, узкому кругозору и интересам", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Одаренный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Одаренный (-ая)"))
+            {
+                //Создаём черту характера "Одаренный (-ая)"
+                CharacterTrait characterTrait = new("system", "Одаренный (-ая)", "Склонен (-на) к талантливости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Одержимый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Одержимый (-ая)"))
+            {
+                //Создаём черту характера "Одержимый (-ая)"
+                CharacterTrait characterTrait = new("system", "Одержимый (-ая)", "Склонен (-на) к всецелой охваченности чем или кем-либо", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Одиозный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Одиозный (-ая)"))
+            {
+                //Создаём черту характера "Одиозный (-ая)"
+                CharacterTrait characterTrait = new("system", "Одиозный (-ая)", "Склонен (-на) к вызыванию крайнего отрицательного отношения и крайней неприязни", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Одухотворенный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Одухотворенный (-ая)"))
+            {
+                //Создаём черту характера "Одухотворенный (-ая)"
+                CharacterTrait characterTrait = new("system", "Одухотворенный (-ая)", "Склонен (-на) к проникнутости возвышенным чувством или высокой мыслью", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Озорной (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Озорной (-ая)"))
+            {
+                //Создаём черту характера "Озорной (-ая)"
+                CharacterTrait characterTrait = new("system", "Озорной (-ая)", "Склонен (-на) к озорству", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Озлобленный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Озлобленный (-ая)"))
+            {
+                //Создаём черту характера "Озлобленный (-ая)"
+                CharacterTrait characterTrait = new("system", "Озлобленный (-ая)", "Склонен (-на) к озлобленности, злобной настроенности и выражению злобы", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Окрылённый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Окрылённый (-ая)"))
+            {
+                //Создаём черту характера "Окрылённый (-ая)"
+                CharacterTrait characterTrait = new("system", "Окрылённый (-ая)", "Склонен (-на) к воодушевлённости и соответсвию состоянию душевного покоя", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Опрометчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Опрометчивый (-ая)"))
+            {
+                //Создаём черту характера "Опрометчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Опрометчивый (-ая)", "Склонен (-на) к необдуманности, неосмотрительности и поспешности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Опрятный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Опрятный (-ая)"))
+            {
+                //Создаём черту характера "Опрятный (-ая)"
+                CharacterTrait characterTrait = new("system", "Опрятный (-ая)", "Склонен (-на) к чистоте, чистоплотности и аккуратности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Оптимистичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Оптимистичный (-ая)"))
+            {
+                //Создаём черту характера "Оптимистичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Оптимистичный (-ая)", "Склонен (-на) к оптимизму и жизнерадостности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Опытный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Опытный (-ая)"))
+            {
+                //Создаём черту характера "Опытный (-ая)"
+                CharacterTrait characterTrait = new("system", "Опытный (-ая)", "Склонен (-на) к наличию опыта", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Организованный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Организованный (-ая)"))
+            {
+                //Создаём черту характера "Организованный (-ая)"
+                CharacterTrait characterTrait = new("system", "Организованный (-ая)", "Склонен (-на) к дисциплинированности, планомерности, согласованности и упорядоченности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Осмотрительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Осмотрительный (-ая)"))
+            {
+                //Создаём черту характера "Осмотрительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Осмотрительный (-ая)", "Склонен (-на) к осторожности и не опрометчивости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Основательный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Основательный (-ая)"))
+            {
+                //Создаём черту характера "Основательный (-ая)"
+                CharacterTrait characterTrait = new("system", "Основательный (-ая)", "Склонен (-на) к дельности и солидности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Остервенелый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Остервенелый (-ая)"))
+            {
+                //Создаём черту характера "Остервенелый (-ая)"
+                CharacterTrait characterTrait = new("system", "Остервенелый (-ая)", "Склонен (-на) к крайней ярости, неистовстве и ожесточённости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Осторожный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Осторожный (-ая)"))
+            {
+                //Создаём черту характера "Осторожный (-ая)"
+                CharacterTrait characterTrait = new("system", "Осторожный (-ая)", "Склонен (-на) к сдержанности, бережности и не грубости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Остроумный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Остроумный (-ая)"))
+            {
+                //Создаём черту характера "Остроумный (-ая)"
+                CharacterTrait characterTrait = new("system", "Остроумный (-ая)", "Склонен (-на) к остроумию", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Отважный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Отважный (-ая)"))
+            {
+                //Создаём черту характера "Отважный (-ая)"
+                CharacterTrait characterTrait = new("system", "Отважный (-ая)", "Склонен (-на) к отваге, смелости, бестрашности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Ответственный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Ответственный (-ая)"))
+            {
+                //Создаём черту характера "Ответственный (-ая)"
+                CharacterTrait characterTrait = new("system", "Ответственный (-ая)", "Склонен (-на) к ответсвенности, высокому чувству долга и добросовестности к обязанностям", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Отзывчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Отзывчивый (-ая)"))
+            {
+                //Создаём черту характера "Отзывчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Отзывчивый (-ая)", "Склонен (-на) к готовности помочь и чуткости восприятия чего-либо", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Откровенный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Откровенный (-ая)"))
+            {
+                //Создаём черту характера "Откровенный (-ая)"
+                CharacterTrait characterTrait = new("system", "Откровенный (-ая)", "Склонен (-на) к правдивости, чистосердечности, искренности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Открытый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Открытый (-ая)"))
+            {
+                //Создаём черту характера "Открытый (-ая)"
+                CharacterTrait characterTrait = new("system", "Открытый (-ая)", "Склонен (-на) к искренности, открытости, прямоте", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Отходчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Отходчивый (-ая)"))
+            {
+                //Создаём черту характера "Отходчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Отходчивый (-ая)", "Склонен (-на) к быстрому успокоению после гнева, раздражения", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Отчаянный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Отчаянный (-ая)"))
+            {
+                //Создаём черту характера "Отчаянный (-ая)"
+                CharacterTrait characterTrait = new("system", "Отчаянный (-ая)", "Склонен (-на) к отсутсвию страха и способности на рискованный поступок", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Пассивный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Пассивный (-ая)"))
+            {
+                //Создаём черту характера "Пассивный (-ая)"
+                CharacterTrait characterTrait = new("system", "Пассивный (-ая)", "Склонен (-на) к вялости, безучастности и отсутсвию активности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Педантичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Педантичный (-ая)"))
+            {
+                //Создаём черту характера "Педантичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Педантичный (-ая)", "Склонен (-на) к излишнему формализму, строгости в выполнении формальных требований", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Перфекционист"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Перфекционист"))
+            {
+                //Создаём черту характера "Перфекционист"
+                CharacterTrait characterTrait = new("system", "Перфекционист", "Склонен (-на) к стремлению к совершенству и отрицанию не идеального результата", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Пессимистический (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Пессимистический (-ая)"))
+            {
+                //Создаём черту характера "Пессимистический (-ая)"
+                CharacterTrait characterTrait = new("system", "Пессимистический (-ая)", "Склонен (-на) к мрачому мироощущению, унынию и безнадёжности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Переменчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Переменчивый (-ая)"))
+            {
+                //Создаём черту характера "Переменчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Переменчивый (-ая)", "Склонен (-на) к частым переменам", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Плаксивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Плаксивый (-ая)"))
+            {
+                //Создаём черту характера "Плаксивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Плаксивый (-ая)", "Склонен (-на) к частому плачу и жалобности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Поверхностный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Поверхностный (-ая)"))
+            {
+                //Создаём черту характера "Поверхностный (-ая)"
+                CharacterTrait characterTrait = new("system", "Поверхностный (-ая)", "Склонен (-на) к несерьёзности и не затрагиванию существа дела", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Подлый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Подлый (-ая)"))
+            {
+                //Создаём черту характера "Подлый (-ая)"
+                CharacterTrait characterTrait = new("system", "Подлый (-ая)", "Склонен (-на) к бесчестности и низости в нравственном отношении", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Позитивный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Позитивный (-ая)"))
+            {
+                //Создаём черту характера "Позитивный (-ая)"
+                CharacterTrait characterTrait = new("system", "Позитивный (-ая)", "Склонен (-на) к счастью, доброте и полезности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Покладистый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Покладистый (-ая)"))
+            {
+                //Создаём черту характера "Покладистый (-ая)"
+                CharacterTrait characterTrait = new("system", "Покладистый (-ая)", "Склонен (-на) к сговорчивости и уступчивости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Покорный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Покорный (-ая)"))
+            {
+                //Создаём черту характера "Покорный (-ая)"
+                CharacterTrait characterTrait = new("system", "Покорный (-ая)", "Склонен (-на) к послушности и уступчивости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Порядочный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Порядочный (-ая)"))
+            {
+                //Создаём черту характера "Порядочный (-ая)"
+                CharacterTrait characterTrait = new("system", "Порядочный (-ая)", "Склонен (-на) к честности и соответсвию принятым правилам поведения", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Посредственный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Посредственный (-ая)"))
+            {
+                //Создаём черту характера "Посредственный (-ая)"
+                CharacterTrait characterTrait = new("system", "Посредственный (-ая)", "Склонен (-на) к заурядности и усреднённости", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Постоянный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Постоянный (-ая)"))
+            {
+                //Создаём черту характера "Постоянный (-ая)"
+                CharacterTrait characterTrait = new("system", "Постоянный (-ая)", "Склонен (-на) к твёрдости и не изменчивости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Похотливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Похотливый (-ая)"))
+            {
+                //Создаём черту характера "Похотливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Похотливый (-ая)", "Склонен (-на) к похоти и сладострастию", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Пошлый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Пошлый (-ая)"))
+            {
+                //Создаём черту характера "Пошлый (-ая)"
+                CharacterTrait characterTrait = new("system", "Пошлый (-ая)", "Склонен (-на) к низости в нравственнос отношении и безвкусной грубости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Поэтичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Поэтичный (-ая)"))
+            {
+                //Создаём черту характера "Поэтичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Поэтичный (-ая)", "Склонен (-на) к эмоциональности и восторженности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Правдивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Правдивый (-ая)"))
+            {
+                //Создаём черту характера "Правдивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Правдивый (-ая)", "Склонен (-на) к стремлению говорить правду", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Праведный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Праведный (-ая)"))
+            {
+                //Создаём черту характера "Праведный (-ая)"
+                CharacterTrait characterTrait = new("system", "Праведный (-ая)", "Склонен (-на) к справедливости, следованию правилам, благочестию и безгрешности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Прагматичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Прагматичный (-ая)"))
+            {
+                //Создаём черту характера "Прагматичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Прагматичный (-ая)", "Склонен (-на) к практичности и стремлению только к полезным результатам", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Практичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Практичный (-ая)"))
+            {
+                //Создаём черту характера "Практичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Практичный (-ая)", "Склонен (-на) к деловитости и умению разбираться в практических жизненных делах", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Преданный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Преданный (-ая)"))
+            {
+                //Создаём черту характера "Преданный (-ая)"
+                CharacterTrait characterTrait = new("system", "Преданный (-ая)", "Склонен (-на) к верности и любви к кому-чему-либо", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Предприимчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Предприимчивый (-ая)"))
+            {
+                //Создаём черту характера "Предприимчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Предприимчивый (-ая)", "Склонен (-на) к находчивости, практичности и умению предпринять что-нибудь в нужный момент", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Предупредительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Предупредительный (-ая)"))
+            {
+                //Создаём черту характера "Предупредительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Предупредительный (-ая)", "Склонен (-на) к внимательности, любезности и готовности всегда оказать услугу", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Предусмотрительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Предусмотрительный (-ая)"))
+            {
+                //Создаём черту характера "Предусмотрительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Предусмотрительный (-ая)", "Склонен (-на) к дальновидности и способности заранее предвидеть возможные последствия", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Презрительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Презрительный (-ая)"))
+            {
+                //Создаём черту характера "Презрительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Презрительный (-ая)", "Склонен (-на) к презрению, пренебрежению и подчёркнутому безразличию к кому-чему-либо", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Пренебрежительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Пренебрежительный (-ая)"))
+            {
+                //Создаём черту характера "Пренебрежительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Пренебрежительный (-ая)", "Склонен (-на) к пренебрежентю, высокомерности и презрительности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Претенциозный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Претенциозный (-ая)"))
+            {
+                //Создаём черту характера "Претенциозный (-ая)"
+                CharacterTrait characterTrait = new("system", "Претенциозный (-ая)", "Склонен (-на) к вычурности и оригинальности", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Привередливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Привередливый (-ая)"))
+            {
+                //Создаём черту характера "Привередливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Привередливый (-ая)", "Склонен (-на) к капризам, прихотям и излишней разборчивости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Приветливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Приветливый (-ая)"))
+            {
+                //Создаём черту характера "Приветливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Приветливый (-ая)", "Склонен (-на) к благожелательности, радошию и ласковости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Придирчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Придирчивый (-ая)"))
+            {
+                //Создаём черту характера "Придирчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Придирчивый (-ая)", "Склонен (-на) к придиркам, упрёкам и обвинениям", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Прижимистый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Прижимистый (-ая)"))
+            {
+                //Создаём черту характера "Прижимистый (-ая)"
+                CharacterTrait characterTrait = new("system", "Прижимистый (-ая)", "Склонен (-на) к жадности, скупости и неуступчивости в денежных делах", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Приземленный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Приземленный (-ая)"))
+            {
+                //Создаём черту характера "Приземленный (-ая)"
+                CharacterTrait characterTrait = new("system", "Приземленный (-ая)", "Склонен (-на) к практичности и материализму", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Примерный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Примерный (-ая)"))
+            {
+                //Создаём черту характера "Примерный (-ая)"
+                CharacterTrait characterTrait = new("system", "Примерный (-ая)", "Склонен (-на) к образцовости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Примитивный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Примитивный (-ая)"))
+            {
+                //Создаём черту характера "Примитивный (-ая)"
+                CharacterTrait characterTrait = new("system", "Примитивный (-ая)", "Склонен (-на) к нравственной неразвитости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Принципиальный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Принципиальный (-ая)"))
+            {
+                //Создаём черту характера "Принципиальный (-ая)"
+                CharacterTrait characterTrait = new("system", "Принципиальный (-ая)", "Склонен (-на) к строгому соблюдению принципов и убеждений", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Прозорливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Прозорливый (-ая)"))
+            {
+                //Создаём черту характера "Прозорливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Прозорливый (-ая)", "Склонен (-на) к проницательности и умению предвитеть последствия", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Проницательный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Проницательный (-ая)"))
+            {
+                //Создаём черту характера "Проницательный (-ая)"
+                CharacterTrait characterTrait = new("system", "Проницательный (-ая)", "Склонен (-на) к наблюдательности и умению предвидеть последствия", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Простодушный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Простодушный (-ая)"))
+            {
+                //Создаём черту характера "Простодушный (-ая)"
+                CharacterTrait characterTrait = new("system", "Простодушный (-ая)", "Склонен (-на) к бесхитростности, доброте и простосердечности", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Противоречивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Противоречивый (-ая)"))
+            {
+                //Создаём черту характера "Противоречивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Противоречивый (-ая)", "Склонен (-на) к двойственности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Прямодушный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Прямодушный (-ая)"))
+            {
+                //Создаём черту характера "Прямодушный (-ая)"
+                CharacterTrait characterTrait = new("system", "Прямодушный (-ая)", "Склонен (-на) к откровенности и прямоте", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Прямолинейный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Прямолинейный (-ая)"))
+            {
+                //Создаём черту характера "Прямолинейный (-ая)"
+                CharacterTrait characterTrait = new("system", "Прямолинейный (-ая)", "Склонен (-на) к откровенности, прямоте и отсутсвию необходимой гибкости", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Притворный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Притворный (-ая)"))
+            {
+                //Создаём черту характера "Притворный (-ая)"
+                CharacterTrait characterTrait = new("system", "Притворный (-ая)", "Склонен (-на) к неискренности и лицемерности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Пугливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Пугливый (-ая)"))
+            {
+                //Создаём черту характера "Пугливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Пугливый (-ая)", "Склонен (-на) к испугу, боязни и робости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Пунктуальный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Пунктуальный (-ая)"))
+            {
+                //Создаём черту характера "Пунктуальный (-ая)"
+                CharacterTrait characterTrait = new("system", "Пунктуальный (-ая)", "Склонен (-на) к точности и аккуратности в исполнении чего-либо", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Пылкий (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Пылкий (-ая)"))
+            {
+                //Создаём черту характера "Пылкий (-ая)"
+                CharacterTrait characterTrait = new("system", "Пылкий (-ая)", "Склонен (-на) к страстности и горячности", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Равнодушный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Равнодушный (-ая)"))
+            {
+                //Создаём черту характера "Равнодушный (-ая)"
+                CharacterTrait characterTrait = new("system", "Равнодушный (-ая)", "Склонен (-на) к безразличности и безучастности", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Радушный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Радушный (-ая)"))
+            {
+                //Создаём черту характера "Радушный (-ая)"
+                CharacterTrait characterTrait = new("system", "Радушный (-ая)", "Склонен (-на) к сердечности, ласковости и открытому отношению к кому-либо", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Развратный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Развратный (-ая)"))
+            {
+                //Создаём черту характера "Развратный (-ая)"
+                CharacterTrait characterTrait = new("system", "Развратный (-ая)", "Склонен (-на) к испорченности, распущенности и низкому моральному уровню поведения", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Развязный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Развязный (-ая)"))
+            {
+                //Создаём черту характера "Развязный (-ая)"
+                CharacterTrait characterTrait = new("system", "Развязный (-ая)", "Склонен (-на) к излишней свободности и непринуждённости в обрещении с другими", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Раздражительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Раздражительный (-ая)"))
+            {
+                //Создаём черту характера "Раздражительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Раздражительный (-ая)", "Склонен (-на) к досаде и недовольству", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Размеренный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Размеренный (-ая)"))
+            {
+                //Создаём черту характера "Размеренный (-ая)"
+                CharacterTrait characterTrait = new("system", "Размеренный (-ая)", "Склонен (-на) к упордоченности и неторопливости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Разносторонний (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Разносторонний (-ая)"))
+            {
+                //Создаём черту характера "Разносторонний (-ая)"
+                CharacterTrait characterTrait = new("system", "Разносторонний (-ая)", "Склонен (-на) к многообразности и широте взглядов и/или знаний", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Разумный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Разумный (-ая)"))
+            {
+                //Создаём черту характера "Разумный (-ая)"
+                CharacterTrait characterTrait = new("system", "Разумный (-ая)", "Склонен (-на) к толковости и рассудительности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Ранимый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Ранимый (-ая)"))
+            {
+                //Создаём черту характера "Ранимый (-ая)"
+                CharacterTrait characterTrait = new("system", "Ранимый (-ая)", "Склонен (-на) к острой реакции на любую обиду или несправедливость", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Раскованный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Раскованный (-ая)"))
+            {
+                //Создаём черту характера "Раскованный (-ая)"
+                CharacterTrait characterTrait = new("system", "Раскованный (-ая)", "Склонен (-на) к свободности и непринуждённости в обращении с другими", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Распущенный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Распущенный (-ая)"))
+            {
+                //Создаём черту характера "Распущенный (-ая)"
+                CharacterTrait characterTrait = new("system", "Распущенный (-ая)", "Склонен (-на) к недисциплинированности и своевольности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Рассеянный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Рассеянный (-ая)"))
+            {
+                //Создаём черту характера "Рассеянный (-ая)"
+                CharacterTrait characterTrait = new("system", "Рассеянный (-ая)", "Склонен (-на) к невнимательности, несобранности и неспособности сосредоточиться", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Рассудительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Рассудительный (-ая)"))
+            {
+                //Создаём черту характера "Рассудительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Рассудительный (-ая)", "Склонен (-на) к благоразумности, обдуманности и следованию требованиям рассудка", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Расторопный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Расторопный (-ая)"))
+            {
+                //Создаём черту характера "Расторопный (-ая)"
+                CharacterTrait characterTrait = new("system", "Расторопный (-ая)", "Склонен (-на) к быстроте и ловкости в деле", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Расточительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Расточительный (-ая)"))
+            {
+                //Создаём черту характера "Расточительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Расточительный (-ая)", "Склонен (-на) к большим и нецелесообразным тратам", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Расчетливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Расчетливый (-ая)"))
+            {
+                //Создаём черту характера "Расчетливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Расчетливый (-ая)", "Склонен (-на) к бережливости и поступкам с расчетом", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Ревнивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Ревнивый (-ая)"))
+            {
+                //Создаём черту характера "Ревнивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Ревнивый (-ая)", "Склонен (-на) к придирчивой настороженности в отношении к верности кого-либо", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Рациональный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Рациональный (-ая)"))
+            {
+                //Создаём черту характера "Рациональный (-ая)"
+                CharacterTrait characterTrait = new("system", "Рациональный (-ая)", "Склонен (-на) к целесообразности и обоснованности разумом", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Религиозный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Религиозный (-ая)"))
+            {
+                //Создаём черту характера "Религиозный (-ая)"
+                CharacterTrait characterTrait = new("system", "Религиозный (-ая)", "Склонен (-на) к верованиям в божественные сущности", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Решительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Решительный (-ая)"))
+            {
+                //Создаём черту характера "Решительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Решительный (-ая)", "Склонен (-на) к твёрдости в поступках и отсутсвию колебаний", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Рисковый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Рисковый (-ая)"))
+            {
+                //Создаём черту характера "Рисковый (-ая)"
+                CharacterTrait characterTrait = new("system", "Рисковый (-ая)", "Склонен (-на) к отсутсвию страха перед риском и опасностью", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Робкий (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Робкий (-ая)"))
+            {
+                //Создаём черту характера "Робкий (-ая)"
+                CharacterTrait characterTrait = new("system", "Робкий (-ая)", "Склонен (-на) к боязливости, опасливости и несмелости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Романтичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Романтичный (-ая)"))
+            {
+                //Создаём черту характера "Романтичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Романтичный (-ая)", "Склонен (-на) к мечтательной созерцательности", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Самобытный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Самобытный (-ая)"))
+            {
+                //Создаём черту характера "Самобытный (-ая)"
+                CharacterTrait characterTrait = new("system", "Самобытный (-ая)", "Склонен (-на) к самостоятельности в своём развитии", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Самовлюблённый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Самовлюблённый (-ая)"))
+            {
+                //Создаём черту характера "Самовлюблённый (-ая)"
+                CharacterTrait characterTrait = new("system", "Самовлюблённый (-ая)", "Склонен (-на) к влюблённости в себя и убеждённости в исключительности своей личности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Самодовольный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Самодовольный (-ая)"))
+            {
+                //Создаём черту характера "Самодовольный (-ая)"
+                CharacterTrait characterTrait = new("system", "Самодовольный (-ая)", "Склонен (-на) к любованию и довольству себя", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Самодостаточный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Самодостаточный (-ая)"))
+            {
+                //Создаём черту характера "Самодостаточный (-ая)"
+                CharacterTrait characterTrait = new("system", "Самодостаточный (-ая)", "Склонен (-на) к обладанию собственным, самостоятельным значением", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Самозабвенный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Самозабвенный (-ая)"))
+            {
+                //Создаём черту характера "Самозабвенный (-ая)"
+                CharacterTrait characterTrait = new("system", "Самозабвенный (-ая)", "Склонен (-на) к крайней увлеченности и воодушевления собой", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Самокритичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Самокритичный (-ая)"))
+            {
+                //Создаём черту характера "Самокритичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Самокритичный (-ая)", "Склонен (-на) к критике своей деятельности и своих поступков", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Самонадеянный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Самонадеянный (-ая)"))
+            {
+                //Создаём черту характера "Самонадеянный (-ая)"
+                CharacterTrait characterTrait = new("system", "Самонадеянный (-ая)", "Склонен (-на) к чрезмерной уверенности в самом себе", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Самоотверженный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Самоотверженный (-ая)"))
+            {
+                //Создаём черту характера "Самоотверженный (-ая)"
+                CharacterTrait characterTrait = new("system", "Самоотверженный (-ая)", "Склонен (-на) к жертвам своими интересами ради других или общего блага", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Самостоятельный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Самостоятельный (-ая)"))
+            {
+                //Создаём черту характера "Самостоятельный (-ая)"
+                CharacterTrait characterTrait = new("system", "Самостоятельный (-ая)", "Склонен (-на) к решительности и проявлению собсвтенной инициативы", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Самоуверенный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Самоуверенный (-ая)"))
+            {
+                //Создаём черту характера "Самоуверенный (-ая)"
+                CharacterTrait characterTrait = new("system", "Самоуверенный (-ая)", "Склонен (-на) к чрезмеренной уверенности в самом себе и своей непогрешимости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Саркастичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Саркастичный (-ая)"))
+            {
+                //Создаём черту характера "Саркастичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Саркастичный (-ая)", "Склонен (-на) к язвительным насмешкам и едкой иронии", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Сварливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Сварливый (-ая)"))
+            {
+                //Создаём черту характера "Сварливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Сварливый (-ая)", "Склонен (-на) к ворчливости и ссорам", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Сведущий (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Сведущий (-ая)"))
+            {
+                //Создаём черту характера "Сведущий (-ая)"
+                CharacterTrait characterTrait = new("system", "Сведущий (-ая)", "Склонен (-на) к большой осведомленности о чём-нибудь", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Свирепый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Свирепый (-ая)"))
+            {
+                //Создаём черту характера "Свирепый (-ая)"
+                CharacterTrait characterTrait = new("system", "Свирепый (-ая)", "Склонен (-на) к зверской жестокости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Свободолюбивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Свободолюбивый (-ая)"))
+            {
+                //Создаём черту характера "Свободолюбивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Свободолюбивый (-ая)", "Склонен (-на) к независимости и стремлению к свободе", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Своевольный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Своевольный (-ая)"))
+            {
+                //Создаём черту характера "Своевольный (-ая)"
+                CharacterTrait characterTrait = new("system", "Своевольный (-ая)", "Склонен (-на) к поступкам по своей прихоти и произволу", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Своенравный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Своенравный (-ая)"))
+            {
+                //Создаём черту характера "Своенравный (-ая)"
+                CharacterTrait characterTrait = new("system", "Своенравный (-ая)", "Склонен (-на) к упрямости и капризности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Сдержанный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Сдержанный (-ая)"))
+            {
+                //Создаём черту характера "Сдержанный (-ая)"
+                CharacterTrait characterTrait = new("system", "Сдержанный (-ая)", "Склонен (-на) к умению сдерживаться и владеть собой", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Сентиментальный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Сентиментальный (-ая)"))
+            {
+                //Создаём черту характера "Сентиментальный (-ая)"
+                CharacterTrait characterTrait = new("system", "Сентиментальный (-ая)", "Склонен (-на) к способности легко растрогаться и расчувствоваться", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Сердобольный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Сердобольный (-ая)"))
+            {
+                //Создаём черту характера "Сердобольный (-ая)"
+                CharacterTrait characterTrait = new("system", "Сердобольный (-ая)", "Склонен (-на) к сострадательности и жалостливости", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Скептичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Скептичный (-ая)"))
+            {
+                //Создаём черту характера "Скептичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Скептичный (-ая)", "Склонен (-на) к критической недоверчивости и сомнению по отношению к чему-нибудь", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Склочный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Склочный (-ая)"))
+            {
+                //Создаём черту характера "Склочный (-ая)"
+                CharacterTrait characterTrait = new("system", "Склочный (-ая)", "Склонен (-на) к ссорам и враждебному отношению из-за мелких интриг и борьбы личных интересов", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Скользкий (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Скользкий (-ая)"))
+            {
+                //Создаём черту характера "Скользкий (-ая)"
+                CharacterTrait characterTrait = new("system", "Скользкий (-ая)", "Склонен (-на) к двусмысленности и ненадёжности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Скромный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Скромный (-ая)"))
+            {
+                //Создаём черту характера "Скромный (-ая)"
+                CharacterTrait characterTrait = new("system", "Скромный (-ая)", "Склонен (-на) к сдержанности, умеренности, простоте и пристойности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Скрытный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Скрытный (-ая)"))
+            {
+                //Создаём черту характера "Скрытный (-ая)"
+                CharacterTrait characterTrait = new("system", "Скрытный (-ая)", "Склонен (-на) к избеганию откровенности и рассказов о себе", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Скупой (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Скупой (-ая)"))
+            {
+                //Создаём черту характера "Скупой (-ая)"
+                CharacterTrait characterTrait = new("system", "Скупой (-ая)", "Склонен (-на) к чрезмерной брежливости и жадности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Слабовольный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Слабовольный (-ая)"))
+            {
+                //Создаём черту характера "Слабовольный (-ая)"
+                CharacterTrait characterTrait = new("system", "Слабовольный (-ая)", "Склонен (-на) к отсутсвию твёрдой сильной воли", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Слабонервный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Слабонервный (-ая)"))
+            {
+                //Создаём черту характера "Слабонервный (-ая)"
+                CharacterTrait characterTrait = new("system", "Слабонервный (-ая)", "Склонен (-на) к излишней нервности и отсутсвия хладнокровия", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Сладострастный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Сладострастный (-ая)"))
+            {
+                //Создаём черту характера "Сладострастный (-ая)"
+                CharacterTrait characterTrait = new("system", "Сладострастный (-ая)", "Склонен (-на) к чувственности и сильному влечению к удовлетворению полового чувства", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Словоохотливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Словоохотливый (-ая)"))
+            {
+                //Создаём черту характера "Словоохотливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Словоохотливый (-ая)", "Склонен (-на) к разговорчивости", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Смекалистый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Смекалистый (-ая)"))
+            {
+                //Создаём черту характера "Смекалистый (-ая)"
+                CharacterTrait characterTrait = new("system", "Смекалистый (-ая)", "Склонен (-на) к обладанию хорошей смекалки и сообразительности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Смелый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Смелый (-ая)"))
+            {
+                //Создаём черту характера "Смелый (-ая)"
+                CharacterTrait characterTrait = new("system", "Смелый (-ая)", "Склонен (-на) к решительности и отсуствию страха", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Смешливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Смешливый (-ая)"))
+            {
+                //Создаём черту характера "Смешливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Смешливый (-ая)", "Склонен (-на) к смеху", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Смиренный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Смиренный (-ая)"))
+            {
+                //Создаём черту характера "Смиренный (-ая)"
+                CharacterTrait characterTrait = new("system", "Смиренный (-ая)", "Склонен (-на) к смирению, отсутсвию гордости и высокомерия", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Смышленый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Смышленый (-ая)"))
+            {
+                //Создаём черту характера "Смышленый (-ая)"
+                CharacterTrait characterTrait = new("system", "Смышленый (-ая)", "Склонен (-на) к сообразительности и понятливости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Снисходительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Снисходительный (-ая)"))
+            {
+                //Создаём черту характера "Снисходительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Снисходительный (-ая)", "Склонен (-на) к не строгости и не взыскательности", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Сноровистый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Сноровистый (-ая)"))
+            {
+                //Создаём черту характера "Сноровистый (-ая)"
+                CharacterTrait characterTrait = new("system", "Сноровистый (-ая)", "Склонен (-на) к расторопности, ловкости и сноровке в чём-нибудь", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Собранный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Собранный (-ая)"))
+            {
+                //Создаём черту характера "Собранный (-ая)"
+                CharacterTrait characterTrait = new("system", "Собранный (-ая)", "Склонен (-на) к аккуратности и сосредоточенности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Совестливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Совестливый (-ая)"))
+            {
+                //Создаём черту характера "Совестливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Совестливый (-ая)", "Склонен (-на) к наличию чувства нравственности перед другими", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Сообразительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Сообразительный (-ая)"))
+            {
+                //Создаём черту характера "Сообразительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Сообразительный (-ая)", "Склонен (-на) понятливости и наличию хорошей сообразительности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Сострадательный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Сострадательный (-ая)"))
+            {
+                //Создаём черту характера "Сострадательный (-ая)"
+                CharacterTrait characterTrait = new("system", "Сострадательный (-ая)", "Склонен (-на) к жалости и сочувствию", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Спесивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Спесивый (-ая)"))
+            {
+                //Создаём черту характера "Спесивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Спесивый (-ая)", "Склонен (-на) к спеси, гордости и чванливости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Спокойный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Спокойный (-ая)"))
+            {
+                //Создаём черту характера "Спокойный (-ая)"
+                CharacterTrait characterTrait = new("system", "Спокойный (-ая)", "Склонен (-на) отсутствию беспокойства и раздражения", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Справедливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Справедливый (-ая)"))
+            {
+                //Создаём черту характера "Справедливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Справедливый (-ая)", "Склонен (-на) к беспристрастности, законности и честности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Сребролюбивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Сребролюбивый (-ая)"))
+            {
+                //Создаём черту характера "Сребролюбивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Сребролюбивый (-ая)", "Склонен (-на) к жадности к деньгам", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Старательный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Старательный (-ая)"))
+            {
+                //Создаём черту характера "Старательный (-ая)"
+                CharacterTrait characterTrait = new("system", "Старательный (-ая)", "Склонен (-на) к прилежности и усердности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Стеснительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Стеснительный (-ая)"))
+            {
+                //Создаём черту характера "Стеснительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Стеснительный (-ая)", "Склонен (-на) к застенчивости и стыдливости", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Стервозный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Стервозный (-ая)"))
+            {
+                //Создаём черту характера "Стервозный (-ая)"
+                CharacterTrait characterTrait = new("system", "Стервозный (-ая)", "Склонен (-на) к подлости и гадкости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Стойкий (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Стойкий (-ая)"))
+            {
+                //Создаём черту характера "Стойкий (-ая)"
+                CharacterTrait characterTrait = new("system", "Стойкий (-ая)", "Склонен (-на) к непоколебимости, упорности и твёрдости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Страстный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Страстный (-ая)"))
+            {
+                //Создаём черту характера "Страстный (-ая)"
+                CharacterTrait characterTrait = new("system", "Страстный (-ая)", "Склонен (-на) к увлечённости чем-либо", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Строгий (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Строгий (-ая)"))
+            {
+                //Создаём черту характера "Строгий (-ая)"
+                CharacterTrait characterTrait = new("system", "Строгий (-ая)", "Склонен (-на) к суровости и жёсткости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Строптивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Строптивый (-ая)"))
+            {
+                //Создаём черту характера "Строптивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Строптивый (-ая)", "Склонен (-на) к упрямости и непокорности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Стыдливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Стыдливый (-ая)"))
+            {
+                //Создаём черту характера "Стыдливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Стыдливый (-ая)", "Склонен (-на) к застенчивости и стеснительности", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Суеверный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Суеверный (-ая)"))
+            {
+                //Создаём черту характера "Суеверный (-ая)"
+                CharacterTrait characterTrait = new("system", "Суеверный (-ая)", "Склонен (-на) к предрасудкам", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Суетливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Суетливый (-ая)"))
+            {
+                //Создаём черту характера "Суетливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Суетливый (-ая)", "Склонен (-на) к торопливости, беспорядочным хлопотам и излищней торопливости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Сумасбродный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Сумасбродный (-ая)"))
+            {
+                //Создаём черту характера "Сумасбродный (-ая)"
+                CharacterTrait characterTrait = new("system", "Сумасбродный (-ая)", "Склонен (-на) к безрасудности и действиям по случайной прихоти", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Суровый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Суровый (-ая)"))
+            {
+                //Создаём черту характера "Суровый (-ая)"
+                CharacterTrait characterTrait = new("system", "Суровый (-ая)", "Склонен (-на) к излишней строгости и серьёзности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Тактичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Тактичный (-ая)"))
+            {
+                //Создаём черту характера "Тактичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Тактичный (-ая)", "Склонен (-на) к деликатности и знанию меры в поведении и поступках", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Твердолобый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Твердолобый (-ая)"))
+            {
+                //Создаём черту характера "Твердолобый (-ая)"
+                CharacterTrait characterTrait = new("system", "Твердолобый (-ая)", "Склонен (-на) к тупости и косности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Творческий (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Творческий (-ая)"))
+            {
+                //Создаём черту характера "Творческий (-ая)"
+                CharacterTrait characterTrait = new("system", "Творческий (-ая)", "Склонен (-на) к созиданию, созданию чего-либо нового и оригинального", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Темпераментный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Темпераментный (-ая)"))
+            {
+                //Создаём черту характера "Темпераментный (-ая)"
+                CharacterTrait characterTrait = new("system", "Темпераментный (-ая)", "Склонен (-на) к энергичности и живому, пылкому темпераменту", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Терпеливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Терпеливый (-ая)"))
+            {
+                //Создаём черту характера "Терпеливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Терпеливый (-ая)", "Склонен (-на) к настойчивости и упорству в ожидании чего-либо", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Терпимый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Терпимый (-ая)"))
+            {
+                //Создаём черту характера "Терпимый (-ая)"
+                CharacterTrait characterTrait = new("system", "Терпимый (-ая)", "Склонен (-на) к терпеливому отношению к чужому мненнию", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Тихий (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Тихий (-ая)"))
+            {
+                //Создаём черту характера "Тихий (-ая)"
+                CharacterTrait characterTrait = new("system", "Тихий (-ая)", "Склонен (-на) к смирению и спокойствию", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Толстокожий (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Толстокожий (-ая)"))
+            {
+                //Создаём черту характера "Толстокожий (-ая)"
+                CharacterTrait characterTrait = new("system", "Толстокожий (-ая)", "Склонен (-на) к грубости и неотзывчивости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Требовательный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Требовательный (-ая)"))
+            {
+                //Создаём черту характера "Требовательный (-ая)"
+                CharacterTrait characterTrait = new("system", "Требовательный (-ая)", "Склонен (-на) к повелительности и предъявлению высоких требований", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Тревожный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Тревожный (-ая)"))
+            {
+                //Создаём черту характера "Тревожный (-ая)"
+                CharacterTrait characterTrait = new("system", "Тревожный (-ая)", "Склонен (-на) к беспокойству и волнениям", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Трепетный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Трепетный (-ая)"))
+            {
+                //Создаём черту характера "Трепетный (-ая)"
+                CharacterTrait characterTrait = new("system", "Трепетный (-ая)", "Склонен (-на) к взволнованности", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Трусливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Трусливый (-ая)"))
+            {
+                //Создаём черту характера "Трусливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Трусливый (-ая)", "Склонен (-на) к боязливости, опасливости и несмелости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Трудолюбивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Трудолюбивый (-ая)"))
+            {
+                //Создаём черту характера "Трудолюбивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Трудолюбивый (-ая)", "Склонен (-на) к любви к труду", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Тщеславный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Тщеславный (-ая)"))
+            {
+                //Создаём черту характера "Тщеславный (-ая)"
+                CharacterTrait characterTrait = new("system", "Тщеславный (-ая)", "Склонен (-на) к высокомерному стремлению к славе и почитанию", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Уважительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Уважительный (-ая)"))
+            {
+                //Создаём черту характера "Уважительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Уважительный (-ая)", "Склонен (-на) к проявлению уважения к кому- чему-либо", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Уверенный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Уверенный (-ая)"))
+            {
+                //Создаём черту характера "Уверенный (-ая)"
+                CharacterTrait characterTrait = new("system", "Уверенный (-ая)", "Склонен (-на) к твёрдости и отсутствию колебаний и сомнений", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Увертливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Увертливый (-ая)"))
+            {
+                //Создаём черту характера "Увертливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Увертливый (-ая)", "Склонен (-на) к хитрости и извороливости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Увлекающийся (-ася)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Увлекающийся (-ася)"))
+            {
+                //Создаём черту характера "Увлекающийся (-ася)"
+                CharacterTrait characterTrait = new("system", "Увлекающийся (-ася)", "Склонен (-на) к строастности и лёгкому увлечению чем- кем-либо", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Угодливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Угодливый (-ая)"))
+            {
+                //Создаём черту характера "Угодливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Угодливый (-ая)", "Склонен (-на) к чрезмерной услужливости и льстивости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Угрюмый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Угрюмый (-ая)"))
+            {
+                //Создаём черту характера "Угрюмый (-ая)"
+                CharacterTrait characterTrait = new("system", "Угрюмый (-ая)", "Склонен (-на) к мрачности, неприветливости и безотрадности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Уживчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Уживчивый (-ая)"))
+            {
+                //Создаём черту характера "Уживчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Уживчивый (-ая)", "Склонен (-на) к способности уживаться и ладить с другими", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Умеренный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Умеренный (-ая)"))
+            {
+                //Создаём черту характера "Умеренный (-ая)"
+                CharacterTrait characterTrait = new("system", "Умеренный (-ая)", "Склонен (-на) к скромности в своих требованиях и желаниях, непритязательности и воздержанности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Уклончивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Уклончивый (-ая)"))
+            {
+                //Создаём черту характера "Уклончивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Уклончивый (-ая)", "Склонен (-на) к отсутсвию прямоты и искренности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Улыбчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Улыбчивый (-ая)"))
+            {
+                //Создаём черту характера "Улыбчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Улыбчивый (-ая)", "Склонен (-на) к частым улыбкам", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Умиротворенный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Умиротворенный (-ая)"))
+            {
+                //Создаём черту характера "Умиротворенный (-ая)"
+                CharacterTrait characterTrait = new("system", "Умиротворенный (-ая)", "Склонен (-на) к спокойствию и удовлетворению", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Упорный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Упорный (-ая)"))
+            {
+                //Создаём черту характера "Упорный (-ая)"
+                CharacterTrait characterTrait = new("system", "Упорный (-ая)", "Склонен (-на) к последовательности и твёрдости в осуществлении чего-либо", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Упрямый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Упрямый (-ая)"))
+            {
+                //Создаём черту характера "Упрямый (-ая)"
+                CharacterTrait characterTrait = new("system", "Упрямый (-ая)", "Склонен (-на) к упорности, настойчивости и неуступчивости", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Усердный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Усердный (-ая)"))
+            {
+                //Создаём черту характера "Усердный (-ая)"
+                CharacterTrait characterTrait = new("system", "Усердный (-ая)", "Склонен (-на) к крайнему старанию", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Усидчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Усидчивый (-ая)"))
+            {
+                //Создаём черту характера "Усидчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Усидчивый (-ая)", "Склонен (-на) к усердию, терпению и постоянству", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Услужливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Услужливый (-ая)"))
+            {
+                //Создаём черту характера "Услужливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Услужливый (-ая)", "Склонен (-на) к лёгкому согласию на оказанию услуг другим", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Утонченный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Утонченный (-ая)"))
+            {
+                //Создаём черту характера "Утонченный (-ая)"
+                CharacterTrait characterTrait = new("system", "Утонченный (-ая)", "Склонен (-на) к изысканности и изощрённости", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Уступчивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Уступчивый (-ая)"))
+            {
+                //Создаём черту характера "Уступчивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Уступчивый (-ая)", "Склонен (-на) к сговорочивости и лёгкому согласию на уступки", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Уравновешенный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Уравновешенный (-ая)"))
+            {
+                //Создаём черту характера "Уравновешенный (-ая)"
+                CharacterTrait characterTrait = new("system", "Уравновешенный (-ая)", "Склонен (-на) к спокойствию и равномерности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Ухватистый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Ухватистый (-ая)"))
+            {
+                //Создаём черту характера "Ухватистый (-ая)"
+                CharacterTrait characterTrait = new("system", "Ухватистый (-ая)", "Склонен (-на) к проворности, бойкости и расторопности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Участливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Участливый (-ая)"))
+            {
+                //Создаём черту характера "Участливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Участливый (-ая)", "Склонен (-на) к отзывчивости и готовности оказать помощь", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Учтивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Учтивый (-ая)"))
+            {
+                //Создаём черту характера "Учтивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Учтивый (-ая)", "Склонен (-на) к почтительной вежливости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Фамильярный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Фамильярный (-ая)"))
+            {
+                //Создаём черту характера "Фамильярный (-ая)"
+                CharacterTrait characterTrait = new("system", "Фамильярный (-ая)", "Склонен (-на) к неуместной развязности и излишней непринуждённости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Фанатичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Фанатичный (-ая)"))
+            {
+                //Создаём черту характера "Фанатичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Фанатичный (-ая)", "Склонен (-на) к иступленной преданности своей религии или идеи", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Фаталистичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Фаталистичный (-ая)"))
+            {
+                //Создаём черту характера "Фаталистичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Фаталистичный (-ая)", "Склонен (-на) к вере в неотвратимость судьбы", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Флегматичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Флегматичный (-ая)"))
+            {
+                //Создаём черту характера "Флегматичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Флегматичный (-ая)", "Склонен (-на) к невозмутимому спокойствию и безразличию", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Хамоватый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Хамоватый (-ая)"))
+            {
+                //Создаём черту характера "Хамоватый (-ая)"
+                CharacterTrait characterTrait = new("system", "Хамоватый (-ая)", "Склонен (-на) к грубости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Харизматичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Харизматичный (-ая)"))
+            {
+                //Создаём черту характера "Харизматичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Харизматичный (-ая)", "Склонен (-на) к привлечению людей качествами своей личности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Хвастливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Хвастливый (-ая)"))
+            {
+                //Создаём черту характера "Хвастливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Хвастливый (-ая)", "Склонен (-на) к восхвалению чего-либо, касающегося его самого", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Хитроумный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Хитроумный (-ая)"))
+            {
+                //Создаём черту характера "Хитроумный (-ая)"
+                CharacterTrait characterTrait = new("system", "Хитроумный (-ая)", "Склонен (-на) к изобретательности и тонкости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Хитрый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Хитрый (-ая)"))
+            {
+                //Создаём черту характера "Хитрый (-ая)"
+                CharacterTrait characterTrait = new("system", "Хитрый (-ая)", "Склонен (-на) к изворотливости и сркытности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Хладнокровный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Хладнокровный (-ая)"))
+            {
+                //Создаём черту характера "Хладнокровный (-ая)"
+                CharacterTrait characterTrait = new("system", "Хладнокровный (-ая)", "Склонен (-на) к спокойствию и выдержке", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Хлопотливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Хлопотливый (-ая)"))
+            {
+                //Создаём черту характера "Хлопотливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Хлопотливый (-ая)", "Склонен (-на) к суетливости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Хмурый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Хмурый (-ая)"))
+            {
+                //Создаём черту характера "Хмурый (-ая)"
+                CharacterTrait characterTrait = new("system", "Хмурый (-ая)", "Склонен (-на) к угрюмости и насупленности", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Хозяйственный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Хозяйственный (-ая)"))
+            {
+                //Создаём черту характера "Хозяйственный (-ая)"
+                CharacterTrait characterTrait = new("system", "Хозяйственный (-ая)", "Склонен (-на) к расчётливости, экономности и заботливости о хозяйтсве", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Холеричный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Холеричный (-ая)"))
+            {
+                //Создаём черту характера "Холеричный (-ая)"
+                CharacterTrait characterTrait = new("system", "Холеричный (-ая)", "Склонен (-на) к импульсивности и резкости", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Храбрый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Храбрый (-ая)"))
+            {
+                //Создаём черту характера "Храбрый (-ая)"
+                CharacterTrait characterTrait = new("system", "Храбрый (-ая)", "Склонен (-на) к смелости и отсутствию страха", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Целеустремлённый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Целеустремлённый (-ая)"))
+            {
+                //Создаём черту характера "Целеустремлённый (-ая)"
+                CharacterTrait characterTrait = new("system", "Целеустремлённый (-ая)", "Склонен (-на) к стремлению к цели(-ям)", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Целомудренный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Целомудренный (-ая)"))
+            {
+                //Создаём черту характера "Целомудренный (-ая)"
+                CharacterTrait characterTrait = new("system", "Целомудренный (-ая)", "Склонен (-на) к чистоте, строгой нравственности невинности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Циничный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Циничный (-ая)"))
+            {
+                //Создаём черту характера "Циничный (-ая)"
+                CharacterTrait characterTrait = new("system", "Циничный (-ая)", "Склонен (-на) к пренебреганию нормами общественной морали", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Чванливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Чванливый (-ая)"))
+            {
+                //Создаём черту характера "Чванливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Чванливый (-ая)", "Склонен (-на) к заносчивости и высокомерию", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Честный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Честный (-ая)"))
+            {
+                //Создаём черту характера "Честный (-ая)"
+                CharacterTrait characterTrait = new("system", "Честный (-ая)", "Склонен (-на) к искренности и прямоте", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Честолюбивый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Честолюбивый (-ая)"))
+            {
+                //Создаём черту характера "Честолюбивый (-ая)"
+                CharacterTrait characterTrait = new("system", "Честолюбивый (-ая)", "Склонен (-на) к жажде известности и почестям", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Черствый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Черствый (-ая)"))
+            {
+                //Создаём черту характера "Черствый (-ая)"
+                CharacterTrait characterTrait = new("system", "Черствый (-ая)", "Склонен (-на) к бездушности и неотзывчивости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Чистоплотный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Чистоплотный (-ая)"))
+            {
+                //Создаём черту характера "Чистоплотный (-ая)"
+                CharacterTrait characterTrait = new("system", "Чистоплотный (-ая)", "Склонен (-на) к порядочности и опрятности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Чистосердечный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Чистосердечный (-ая)"))
+            {
+                //Создаём черту характера "Чистосердечный (-ая)"
+                CharacterTrait characterTrait = new("system", "Чистосердечный (-ая)", "Склонен (-на) к искренности и откровенности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Чопорный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Чопорный (-ая)"))
+            {
+                //Создаём черту характера "Чопорный (-ая)"
+                CharacterTrait characterTrait = new("system", "Чопорный (-ая)", "Склонен (-на) к чрезмерной строгости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Чуткий (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Чуткий (-ая)"))
+            {
+                //Создаём черту характера "Чуткий (-ая)"
+                CharacterTrait characterTrait = new("system", "Чуткий (-ая)", "Склонен (-на) к отзывчивости и сочувственности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Шаловливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Шаловливый (-ая)"))
+            {
+                //Создаём черту характера "Шаловливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Шаловливый (-ая)", "Склонен (-на) к легкомысленной игривости", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Шкодливый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Шкодливый (-ая)"))
+            {
+                //Создаём черту характера "Шкодливый (-ая)"
+                CharacterTrait characterTrait = new("system", "Шкодливый (-ая)", "Склонен (-на) к озорству и блудливости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Щедрый (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Щедрый (-ая)"))
+            {
+                //Создаём черту характера "Щедрый (-ая)"
+                CharacterTrait characterTrait = new("system", "Щедрый (-ая)", "Склонен (-на) к отсутсвию скупости и охотным тратам на других", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Щепетильный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Щепетильный (-ая)"))
+            {
+                //Создаём черту характера "Щепетильный (-ая)"
+                CharacterTrait characterTrait = new("system", "Щепетильный (-ая)", "Склонен (-на) к деликатности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Эгоистичный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Эгоистичный (-ая)"))
+            {
+                //Создаём черту характера "Эгоистичный (-ая)"
+                CharacterTrait characterTrait = new("system", "Эгоистичный (-ая)", "Склонен (-на) к себялюбию и предпочтению своих интересов выше других", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Экономный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Экономный (-ая)"))
+            {
+                //Создаём черту характера "Экономный (-ая)"
+                CharacterTrait characterTrait = new("system", "Экономный (-ая)", "Склонен (-на) к брежливости", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Экспрессивный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Экспрессивный (-ая)"))
+            {
+                //Создаём черту характера "Экспрессивный (-ая)"
+                CharacterTrait characterTrait = new("system", "Экспрессивный (-ая)", "Склонен (-на) к яркому проявлению чувств и настроения", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Элегантный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Элегантный (-ая)"))
+            {
+                //Создаём черту характера "Элегантный (-ая)"
+                CharacterTrait characterTrait = new("system", "Элегантный (-ая)", "Склонен (-на) к изысканности и изящности", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Эмоциональный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Эмоциональный (-ая)"))
+            {
+                //Создаём черту характера "Эмоциональный (-ая)"
+                CharacterTrait characterTrait = new("system", "Эмоциональный (-ая)", "Склонен (-на) к подверженности эмоциям", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Эрудированный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Эрудированный (-ая)"))
+            {
+                //Создаём черту характера "Эрудированный (-ая)"
+                CharacterTrait characterTrait = new("system", "Эрудированный (-ая)", "Склонен (-на) к глубоким познаниям в какой-либо области", true);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Юморной (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Юморной (-ая)"))
+            {
+                //Создаём черту характера "Юморной (-ая)"
+                CharacterTrait characterTrait = new("system", "Юморной (-ая)", "Склонен (-на) к забавам и шуткам", null);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Язвительный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Язвительный (-ая)"))
+            {
+                //Создаём черту характера "Язвительный (-ая)"
+                CharacterTrait characterTrait = new("system", "Язвительный (-ая)", "Склонен (-на)  злобной насмешливости и стремлению досадить", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие черты характера "Яростный (-ая)"
+            if (!_repository.CharacterTraits.Any(x => x.Name == "Яростный (-ая)"))
+            {
+                //Создаём черту характера "Яростный (-ая)"
+                CharacterTrait characterTrait = new("system", "Яростный (-ая)", "Склонен (-на) к гневу, злости и неукротимости", false);
+                _repository.CharacterTraits.Add(characterTrait);
+                await _repository.SaveChangesAsync();
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Initialization. InitializeCharacterTraits. Ошибка: {0}", ex);
+        }
+
     }
 
     /// <summary>

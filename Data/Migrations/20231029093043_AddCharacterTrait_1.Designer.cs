@@ -3,6 +3,7 @@ using System;
 using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20231029093043_AddCharacterTrait_1")]
+    partial class AddCharacterTrait_1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1834,74 +1837,6 @@ namespace Data.Migrations
                     b.ToTable("dir_types_settlements", t =>
                         {
                             t.HasComment("Типы населённых пунктов");
-                        });
-                });
-
-            modelBuilder.Entity("Domain.Entities.Sociology.CharacterTrait", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasColumnName("id")
-                        .HasComment("Первичный ключ таблицы");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
-
-                    b.Property<string>("Alias")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("alias")
-                        .HasComment("Английское наименование");
-
-                    b.Property<DateTime>("DateCreate")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("date_create")
-                        .HasComment("Дата создания");
-
-                    b.Property<DateTime?>("DateDeleted")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("date_deleted")
-                        .HasComment("Дата удаления");
-
-                    b.Property<DateTime>("DateUpdate")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("date_update")
-                        .HasComment("Дата обновления");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("description")
-                        .HasComment("Описание");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("name")
-                        .HasComment("Наименование");
-
-                    b.Property<bool?>("Positivity")
-                        .HasColumnType("boolean")
-                        .HasColumnName("positivity")
-                        .HasComment("Положительность (истина - позитивный/пустой - нецтральный/ложь - отрицательный)");
-
-                    b.Property<string>("UserCreate")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("user_create")
-                        .HasComment("Пользователь, создавший");
-
-                    b.Property<string>("UserUpdate")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("user_update")
-                        .HasComment("Пользователь, обновивший");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("dir_character_traits", t =>
-                        {
-                            t.HasComment("Черты характера");
                         });
                 });
 
