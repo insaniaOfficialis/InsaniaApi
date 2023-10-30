@@ -1,12 +1,12 @@
 ﻿using Domain.Models.Base;
-using Domain.Models.Informations.InformationArticles.Request;
+using Domain.Models.Informations.News.Request;
 
-namespace Services.Informations.InformationArticles.AddInformationArticle;
+namespace Services.Informations.News.AddNews;
 
 /// <summary>
-/// Интерфейс добавления информационной статьи
+/// Интерфейс добавления новости
 /// </summary>
-public interface IAddInformationArticle
+public interface IAddNews
 {
     /// <summary>
     /// Метод проверки входных данных
@@ -14,7 +14,7 @@ public interface IAddInformationArticle
     /// <param name="user"></param>
     /// <param name="request"></param>
     /// <returns></returns>
-    Task<bool> Validator(string? user, AddInformationArticleRequest? request);
+    Task<bool> Validator(string? user, AddNewsRequest? request);
 
     /// <summary>
     /// Метод обработки
@@ -22,7 +22,7 @@ public interface IAddInformationArticle
     /// <param name="user"></param>
     /// <param name="request"></param>
     /// <returns></returns>
-    Task<BaseResponse> Handler(string? user, AddInformationArticleRequest? request);
+    Task<BaseResponse> Handler(string? user, AddNewsRequest? request);
 
     /// <summary>
     /// Метод формирования запроса
@@ -30,5 +30,5 @@ public interface IAddInformationArticle
     /// <param name="user"></param>
     /// <param name="request"></param>
     /// <returns></returns>
-    Task<long?> Query(string? user, AddInformationArticleRequest? request);
+    Task<long?> Query(string? user, AddNewsRequest? request);
 }

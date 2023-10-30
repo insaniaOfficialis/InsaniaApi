@@ -26,4 +26,10 @@ public static class Errors
 
     //НОВОСТИ
     public const string NotExistsNews = "Не существующая новость";
+    public const string ExistingNews = "Новость с таким заголовком уже существует";
+    public const string EmptyIntroduction = "Пустое вступление";
+
+    //ТИПЫ НОВСТЕЙ
+    public const string EmptyTypeNews = "Пустой тип новсти";
+    public const string NotExistsTypeNews = "Не существущий тип новости";
 }
