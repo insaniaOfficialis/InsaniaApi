@@ -33,6 +33,7 @@ using Services.Informations.News.GetNewsList;
 using Services.General.Files.GetFilesNewsDetails;
 using Services.Informations.NewsDetails.GetNewsDetails;
 using Services.Informations.News.AddNews;
+using Services.Informations.NewsDetails.AddNewsDetail;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -141,6 +142,7 @@ builder.Services.AddScoped<IGetNewsList, GetNewsList>();
 builder.Services.AddScoped<IGetFilesNewsDetails, GetFilesNewsDetails>();
 builder.Services.AddScoped<IGetNewsDetails, GetNewsDetails>();
 builder.Services.AddScoped<IAddNews, AddNews>();
+builder.Services.AddScoped<IAddNewsDetail, AddNewsDetail>();
 
 var app = builder.Build();
 
