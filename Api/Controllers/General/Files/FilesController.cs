@@ -53,8 +53,9 @@ public class FilesController : BaseController
     /// <param name="id"></param>
     /// <returns></returns>
     [HttpGet]
+    [AllowAnonymous]
     [Route("{id}")]
-    public async Task<FileResult?> GetFile([FromRoute] long id)
+    public async Task<FileContentResult?> GetFile([FromRoute] long id)
     {
         try
         {
@@ -66,7 +67,7 @@ public class FilesController : BaseController
 
                 byte[] fileBytes = System.IO.File.ReadAllBytes(result.Path);
 
-                return File(fileBytes, result.ContentType, result.Name);
+                return File(fileBytes, result.ContentType);
             }
             else
             {
