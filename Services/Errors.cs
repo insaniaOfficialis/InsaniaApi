@@ -23,16 +23,19 @@ public static class Errors
 
     //ФАЙЛЫ
     public const string NotExistsFile = "Не существует файл";
+    public const string NotExistsFilesUsers = "Не существует файлы пользователей";
 
     //НОВОСТИ
     public const string NotExistsNews = "Не существующая новость";
     public const string ExistingNews = "Новость с таким заголовком уже существует";
     public const string EmptyIntroduction = "Пустое вступление";
 
-    //ДЕТАЛЬНЫЕ ЧАТИ НОВОСТИЕЙ
+    //ДЕТАЛЬНЫЕ ЧАТИ НОВОСТЕЙ
     public const string EmptyNewsId = "Пустая ссылка на новость";
 
     //ТИПЫ НОВСТЕЙ
     public const string EmptyTypeNews = "Пустой тип новсти";
     public const string NotExistsTypeNews = "Не существущий тип новости";
+
+    //ПОЛЬЗОВАТЕЛИ
 }
