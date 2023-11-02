@@ -7,6 +7,7 @@ using Domain.Models.Identification.Authorization.Response;
 using Domain.Models.Identification.Users.Response;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Services.General.Files.GetFilesUser;
 using Services.Identification.Token;
 
 namespace Services.Identification.Authorization;
@@ -20,6 +21,7 @@ public class Authorization: IAuthorization
     private readonly IToken _token; //сервис токенов
     private readonly IMapper _mapper; //маппер моделей
     private readonly ApplicationContext _repository; //репозиторий сущности
+    private readonly IGetFilesUser _getFilesUser; //сервис получения файлов пользователя
 
     /// <summary>
     /// Конструктор сервиса авторизации
@@ -28,12 +30,15 @@ public class Authorization: IAuthorization
     /// <param name="token"></param>
     /// <param name="mapper"></param>
     /// <param name="repository"></param>
-    public Authorization(UserManager<User> userManager, IToken token, IMapper mapper, ApplicationContext repository)
+    /// <param name="getFilesUser"></param>
+    public Authorization(UserManager<User> userManager, IToken token, IMapper mapper, ApplicationContext repository,
+        IGetFilesUser getFilesUser)
     {
         _userManager = userManager;
         _token = token;
         _mapper = mapper;
         _repository = repository;
+        _getFilesUser = getFilesUser;
     }
 
     /// <summary>
@@ -115,9 +120,15 @@ public class Authorization: IAuthorization
                 .Distinct()
                 .ToListAsync();
 
+            //Получаем файлы пользователя
+            List<long?>? files = new();
+            var filesRepose = await _getFilesUser.Handler(user.Id);
+            if (filesRepose != null && filesRepose.Items?.Any() == true)
+                files = filesRepose.Items.Select(x => x?.Id).ToList();
+
             //Формируем ответ
             return new UserInfoResponse(true, user.Id, user.UserName, user.FirstName, user.LastName, user.Patronymic,
-                user.FullName, user.Initials, user.Gender, user.Email, user.PhoneNumber, user.IsBlocked, roles, accessRights);
+                user.FullName, user.Initials, user.Gender, user.Email, user.PhoneNumber, user.IsBlocked, roles, accessRights, files);
         }
         //Обрабатываем внутренние исключения
         catch (InnerException ex)

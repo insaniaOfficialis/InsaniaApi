@@ -34,6 +34,7 @@ using Services.General.Files.GetFilesNewsDetails;
 using Services.Informations.NewsDetails.GetNewsDetails;
 using Services.Informations.News.AddNews;
 using Services.Informations.NewsDetails.AddNewsDetail;
+using Services.General.Files.GetFilesUser;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -143,6 +144,7 @@ builder.Services.AddScoped<IGetFilesNewsDetails, GetFilesNewsDetails>();
 builder.Services.AddScoped<IGetNewsDetails, GetNewsDetails>();
 builder.Services.AddScoped<IAddNews, AddNews>();
 builder.Services.AddScoped<IAddNewsDetail, AddNewsDetail>();
+builder.Services.AddScoped<IGetFilesUser, GetFilesUser>();
 
 var app = builder.Build();
 

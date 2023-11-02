@@ -1,6 +1,4 @@
 ﻿using Domain.Models.Base;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Models.Identification.Users.Response;
 
@@ -70,6 +68,11 @@ public class UserInfoResponse : BaseResponse
     public List<string>? AccessRights { get; private set; }
 
     /// <summary>
+    /// Список файлов пользователя
+    /// </summary>
+    public List<long?>? Files { get; private set; }
+
+    /// <summary>
     /// Конструктор ответа модели информации о пользователе с ошибкой
     /// </summary>
     /// <param name="success"></param>
@@ -96,9 +99,10 @@ public class UserInfoResponse : BaseResponse
     /// <param name="isBlockded"></param>
     /// <param name="roles"></param>
     /// <param name="accessRights"></param>
+    /// <param name="files"></param>
     public UserInfoResponse(bool success, long id, string? userName, string? firstName, string? lastName,
         string? patronimyc, string? fullName, string? initials, bool gender, string? email, string? phoneNumber,
-        bool? isBlockded, List<string>? roles, List<string>? accessRights) : base(success, id)
+        bool? isBlockded, List<string>? roles, List<string>? accessRights, List<long?>? files) : base(success, id)
     {
         Id = id;
         UserName = userName;
@@ -113,5 +117,6 @@ public class UserInfoResponse : BaseResponse
         IsBlocked = isBlockded;
         Roles = roles;
         AccessRights = accessRights;
+        Files = files;
     }
 }
