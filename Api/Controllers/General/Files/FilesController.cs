@@ -54,12 +54,12 @@ public class FilesController : BaseController
     /// <returns></returns>
     [HttpGet]
     [AllowAnonymous]
-    [Route("{id}")]
-    public async Task<FileContentResult?> GetFile([FromRoute] long id)
+    [Route("{entityId}/{id}")]
+    public async Task<FileContentResult?> GetFile([FromRoute] long entityId, [FromRoute] long id)
     {
         try
         {
-            var result = await _getFile.Handler(id);
+            var result = await _getFile.Handler(id, entityId);
 
             if (result.Success && !string.IsNullOrEmpty(result.Path) && !string.IsNullOrEmpty(result.ContentType))
             {

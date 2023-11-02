@@ -116,7 +116,7 @@ public class GetInformationArticleDetails : IGetInformationArticleDetails
         GetInformationArticleDetailsResponse response = new(true, null, new());
 
         //Проходим циклом по списку детальных частей
-        foreach (var item in request)
+        foreach (var item in request.OrderBy(x => x.Id))
         {
             //Получаем файлы
             BaseResponseList filesItem = await _getFilesInformationArticleDetails.Handler(item.Id);
@@ -125,7 +125,8 @@ public class GetInformationArticleDetails : IGetInformationArticleDetails
             if (filesItem != null && filesItem.Items != null && filesItem.Items.Any())
             {
                 //Формируем новый элемент
-                GetInformationArticleDetailsResponseItem responseItem = new(item.Text, filesItem.Items.Select(x => x!.Id ?? 0).ToList());
+                GetInformationArticleDetailsResponseItem responseItem = new(item.Id, item.Text,
+                    filesItem.Items.Select(x => x!.Id ?? 0).ToList());
 
                 //Добавляем в ответ новый элемент
                 response.Items!.Add(responseItem);

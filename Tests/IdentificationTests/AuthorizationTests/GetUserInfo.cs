@@ -1,15 +1,18 @@
-﻿using Services.Identification.Authorization;
+﻿using Services.General.Files.GetFilesUser;
+using Services.Identification.Authorization;
 
 namespace Tests.IdentificationTests.AuthorizationTests;
 
 public class GetUserInfo : BaseTest
 {
+    private GetFilesUser _getFilesUser; //сервис получения файлов пользователя
 
     /// <summary>
     /// Конструктор теста получения успешного кода
     /// </summary>
     public GetUserInfo() : base()
     {
+        _getFilesUser = new(_mapper, _repository);
     }
 
     /// <summary>
@@ -19,7 +22,7 @@ public class GetUserInfo : BaseTest
     public async void Success()
     {
         //Создаём новый экземпляр сервиса
-        Authorization authorization = new(_userManager, _token, _mapper, _repository);
+        Authorization authorization = new(_userManager, _token, _mapper, _repository, _getFilesUser);
 
         //Получаем результат
         var result = await authorization.GetUserInfo("insania");
@@ -35,7 +38,7 @@ public class GetUserInfo : BaseTest
     public async void CorrectResult()
     {
         //Создаём новый экземпляр сервиса
-        Authorization authorization = new(_userManager, _token, _mapper, _repository);
+        Authorization authorization = new(_userManager, _token, _mapper, _repository, _getFilesUser);
 
         //Получаем результат
         var result = await authorization.GetUserInfo("insania");
@@ -51,7 +54,7 @@ public class GetUserInfo : BaseTest
     public async void NotSuccess()
     {
         //Создаём новый экземпляр сервиса
-        Authorization authorization = new(_userManager, _token, _mapper, _repository);
+        Authorization authorization = new(_userManager, _token, _mapper, _repository, _getFilesUser);
 
         //Получаем результат
         var result = await authorization.GetUserInfo("");
@@ -67,7 +70,7 @@ public class GetUserInfo : BaseTest
     public async Task IncorrectUsername()
     {
         //Создаём новый экземпляр сервиса
-        Authorization authorization = new(_userManager, _token, _mapper, _repository);
+        Authorization authorization = new(_userManager, _token, _mapper, _repository, _getFilesUser);
 
         //Получаем результат 
         var result = await authorization.GetUserInfo(null);
@@ -83,7 +86,7 @@ public class GetUserInfo : BaseTest
     public async Task NotFoundUser()
     {
         //Создаём новый экземпляр сервиса
-        Authorization authorization = new(_userManager, _token, _mapper, _repository);
+        Authorization authorization = new(_userManager, _token, _mapper, _repository, _getFilesUser);
 
         //Получаем результат 
         var result = await authorization.GetUserInfo("asdfg");

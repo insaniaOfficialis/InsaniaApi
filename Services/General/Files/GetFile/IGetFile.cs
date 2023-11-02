@@ -12,15 +12,17 @@ public interface IGetFile
     /// Метод проверки
     /// </summary>
     /// <param name="id"></param>
+    /// <param name="entityId"></param>
     /// <returns></returns>
-    Task<bool> Validator(long? id);
+    Task<bool> Validator(long? id, long? entityId);
 
     /// <summary>
     /// Метод обработки
     /// </summary>
     /// <param name="id"></param>
+    /// <param name="entityId"></param>
     /// <returns></returns>
-    Task<GetFileReponse> Handler(long? id);
+    Task<GetFileReponse> Handler(long? id, long? entityId);
 
     /// <summary>
     /// Метод формирования запроса

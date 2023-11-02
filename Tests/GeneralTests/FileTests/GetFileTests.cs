@@ -1,7 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
-using Services;
+﻿using Services;
 using Services.General.Files.GetFile;
-using Services.General.Logs.GetLogs;
 
 namespace Tests.GeneralTests.FileTests;
 
@@ -27,9 +25,9 @@ public class GetFileTests : BaseTest
         GetFile getFile = new(_repository);
 
         //Получаем результат
-        var result = await getFile.Handler(6);
+        var result = await getFile.Handler(1, 1);
 
-        //Проверяем, что результат успешный
+        //Проверяем результат
         Assert.True(result.Success);
     }
 
@@ -43,12 +41,12 @@ public class GetFileTests : BaseTest
         GetFile getFile = new(_repository);
 
         //Получаем результат
-        var result = await getFile.Handler(6);
+        var result = await getFile.Handler(1, 1);
 
-        //Проверяем, что результат успешный
-        Assert.Equal("MyProfile.jpg", result.Name);
-        Assert.Equal("I:\\Insania\\ПО\\Files\\Users\\6\\MyProfile.jpg", result.Path);
-        Assert.Equal("image/jpeg", result.ContentType);
+        //Проверяем результат
+        Assert.Equal("demiurge.png", result.Name);
+        Assert.Equal("I:\\Insania\\ПО\\Files\\Users\\1\\demiurge.png", result.Path);
+        Assert.Equal("image/png", result.ContentType);
     }
 
     /// <summary>
@@ -61,10 +59,26 @@ public class GetFileTests : BaseTest
         GetFile getFile = new(_repository);
 
         //Получаем результат
-        var result = await getFile.Handler(null);
+        var result = await getFile.Handler(null, 1);
 
-        //Проверяем, что результат успешный
+        //Проверяем результат
         Assert.Equal(Errors.EmptyRequest, result.Error!.Message);
+    }
+
+    /// <summary>
+    /// Тест на проверку пустого id сущности
+    /// </summary>
+    [Fact]
+    public async void EmptyEntityId()
+    {
+        //Создаём новый экземпляр сервиса
+        GetFile getFile = new(_repository);
+
+        //Получаем результат
+        var result = await getFile.Handler(1, null);
+
+        //Проверяем результат
+        Assert.Equal(Errors.EmptyEntityId, result.Error!.Message);
     }
 
     /// <summary>
@@ -77,9 +91,9 @@ public class GetFileTests : BaseTest
         GetFile getFile = new(_repository);
 
         //Получаем результат
-        var result = await getFile.Handler(0);
+        var result = await getFile.Handler(0, 1);
 
-        //Проверяем, что результат успешный
+        //Проверяем результат
         Assert.Equal(Errors.NotExistsFile, result.Error!.Message);
     }
 }

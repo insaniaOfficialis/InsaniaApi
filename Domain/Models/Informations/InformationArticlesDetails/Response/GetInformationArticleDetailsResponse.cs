@@ -51,10 +51,12 @@ public class GetInformationArticleDetailsResponseItem : BaseResponseListItem
     /// <summary>
     /// Конструктор модели элемента ответа списка детальных частей иинформационной статьи
     /// </summary>
+    /// <param name="id"></param>
     /// <param name="text"></param>
     /// <param name="files"></param>
-    public GetInformationArticleDetailsResponseItem(string? text, List<long> files)
+    public GetInformationArticleDetailsResponseItem(long? id, string? text, List<long> files)
     {
+        Id = id;
         Text = text;
         Files = files;
     }

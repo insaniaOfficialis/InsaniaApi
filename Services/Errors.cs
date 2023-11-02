@@ -23,6 +23,7 @@ public static class Errors
 
     //ФАЙЛЫ
     public const string NotExistsFile = "Не существует файл";
+    public const string EmptyEntityId = "Пустой идентификатор сущности файла";
     public const string NotExistsFilesUsers = "Не существует файлы пользователей";
 
     //НОВОСТИ

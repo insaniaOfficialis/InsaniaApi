@@ -27,13 +27,18 @@ public class GetFile : IGetFile
     /// Метод проверки
     /// </summary>
     /// <param name="id"></param>
+    /// <param name="entityId"></param>
     /// <returns></returns>
     /// <exception cref="InnerException"></exception>
-    public async Task<bool> Validator(long? id)
+    public async Task<bool> Validator(long? id, long? entityId)
     {
         //Проверяем на пустой запрос
         if (id == null)
             throw new InnerException(Errors.EmptyRequest);
+        
+        //Проверяем на пустой запрос
+        if (entityId == null)
+            throw new InnerException(Errors.EmptyEntityId);
 
         //Проверяем на не существующую детальную часть информационной статьи
         if (!await _repository.Files.AnyAsync(x => x.Id == id))
@@ -47,13 +52,14 @@ public class GetFile : IGetFile
     /// Метод обработки
     /// </summary>
     /// <param name="id"></param>
+    /// <param name="entityId"></param>
     /// <returns></returns>
-    public async Task<GetFileReponse> Handler(long? id)
+    public async Task<GetFileReponse> Handler(long? id, long? entityId)
     {
         try
         {
             //Проверяем входные данные
-            var validate = await Validator(id);
+            var validate = await Validator(id, entityId);
 
             //Если проверка успешная
             if (validate)
@@ -62,7 +68,7 @@ public class GetFile : IGetFile
                 var response = await Query(id);
 
                 //Формируем ответ
-                string path = string.Format("{0}\\{1}\\{2}", response!.Type!.Path, response.Id, response.Name);
+                string path = string.Format("{0}\\{1}\\{2}", response!.Type!.Path, entityId, response.Name);
                 string name = response!.Name;
                 string contentType = ContentTypes.DictionaryContentTypes.First(x => x.Key == response.Extention).Value;
                 return new GetFileReponse(true, path, name, contentType);
