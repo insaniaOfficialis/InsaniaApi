@@ -16,13 +16,20 @@ public class AddInformationArticleDetailRequest
     public long? InformationArticleId { get; set; }
 
     /// <summary>
+    /// Порядковый номер
+    /// </summary>
+    public long? OrdinalNumber { get; set; }
+
+    /// <summary>
     /// Конструктор модели добавления детальной части информационной статьи
     /// </summary>
     /// <param name="text"></param>
     /// <param name="informationArticleId"></param>
-    public AddInformationArticleDetailRequest(string? text, long? informationArticleId)
+    /// <param name="ordinalNumber"></param>
+    public AddInformationArticleDetailRequest(string? text, long? informationArticleId, long? ordinalNumber)
     {
         Text = text;
         InformationArticleId = informationArticleId;
+        OrdinalNumber = ordinalNumber;
     }
 }

@@ -1,9 +1,11 @@
-﻿using Domain.Models.Base;
-using Domain.Models.Exclusion;
-using Data;
-using FileEntity = Domain.Entities.General.File.File;
+﻿using Data;
 using Domain.Entities.General.File;
+using Domain.Entities.Informations;
+using Domain.Models.Base;
+using Domain.Models.Exclusion;
 using Domain.Models.General.Files.Request;
+using Microsoft.EntityFrameworkCore;
+using FileEntity = Domain.Entities.General.File.File;
 
 namespace Services.General.Files;
 
@@ -69,11 +71,37 @@ public class Files : IFiles
 
                 switch (fileType.Alias)
                 {
-                    case "User":
+                    case "Pol'zovatel'":
                         {
-                            var user = _repository.Users.Where(x => x.Id == request.Id).FirstOrDefault() ?? throw new InnerException("Не найден пользователь");
+                            var user = await _repository
+                                .Users
+                                .Where(x => x.Id == request.Id)
+                                .FirstOrDefaultAsync()
+                                ?? throw new InnerException("Не найден пользователь");
                             FileUser fileUser = new(null, file, user);
-                            _repository.FilesUsers.Add(fileUser);
+                            await _repository.FilesUsers.AddAsync(fileUser);
+                        }
+                        break;
+                    case "Informatsionnaya_stat'ya":
+                        {
+                            var informationArticleDetail = await _repository
+                                .InformationArticlesDetails
+                                .Where(x => x.Id == request.Id)
+                                .FirstOrDefaultAsync()
+                                ?? throw new InnerException("Не найдена детальная часть информационной статьи");
+                            FileInformationArticleDetail fileInformationArticleDetail = new(null, file, informationArticleDetail);
+                            await _repository.InformationArticlesDetails.AddAsync(informationArticleDetail);
+                        }
+                        break;
+                    case "Novost'":
+                        {
+                            var newsDetail = await _repository
+                                .NewsDetails
+                                .Where(x => x.Id == request.Id)
+                                .FirstOrDefaultAsync()
+                                ?? throw new InnerException("Не найдена детальная часть новости");
+                            FileNewsDetail fileNewsDetail = new(null, file, newsDetail);
+                            await _repository.NewsDetails.AddAsync(newsDetail);
                         }
                         break;
                 }

@@ -31,6 +31,13 @@ public class InformationArticleDetail : Reestr
     public InformationArticle InformationArticle { get; private set; }
 
     /// <summary>
+    /// Порядковый номер
+    /// </summary>
+    [Column("ordinal_number")]
+    [Comment("Порядковый номер")]
+    public long OrdinalNumber { get; private set; }
+
+    /// <summary>
     /// Пустой конструктор детальной части информационных статей
     /// </summary>
     public InformationArticleDetail() : base()
@@ -45,12 +52,14 @@ public class InformationArticleDetail : Reestr
     /// <param name="isSystem"></param>
     /// <param name="text"></param>
     /// <param name="informationArticle"></param>
+    /// <param name="ordinalNumber"></param>
     public InformationArticleDetail(string? user, bool isSystem, string text,
-        InformationArticle informationArticle) : base(user, isSystem)
+        InformationArticle informationArticle, long ordinalNumber) : base(user, isSystem)
     {
         Text = text;
         InformationArticle = informationArticle;
         InformationArticleId = informationArticle.Id;
+        OrdinalNumber = ordinalNumber;
     }
 
     /// <summary>
@@ -61,12 +70,14 @@ public class InformationArticleDetail : Reestr
     /// <param name="isSystem"></param>
     /// <param name="text"></param>
     /// <param name="informationArticle"></param>
+    /// <param name="ordinalNumber"></param>
     public InformationArticleDetail(long id, string? user, bool isSystem, string text,
-        InformationArticle informationArticle) : base(id, user, isSystem)
+        InformationArticle informationArticle, long ordinalNumber) : base(id, user, isSystem)
     {
         Text = text;
         InformationArticle = informationArticle;
         InformationArticleId = informationArticle.Id;
+        OrdinalNumber = ordinalNumber;
     }
 
     /// <summary>
@@ -86,5 +97,14 @@ public class InformationArticleDetail : Reestr
     {
         InformationArticle = informationArticle;
         InformationArticleId = informationArticle.Id;
+    }
+
+    /// <summary>
+    /// Метод записи порядкового номера
+    /// </summary>
+    /// <param name="ordinalNumber"></param>
+    public void SetOrdinalNumber(long ordinalNumber)
+    {
+        OrdinalNumber = ordinalNumber;
     }
 }

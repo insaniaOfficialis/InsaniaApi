@@ -28,7 +28,7 @@ public class AddInformationArticleDetailDetailTests : BaseTest
         long id = _repository.InformationArticlesDetails.Max(x => x.Id) + 1;
 
         //Получаем результат
-        var result = await service.Handler("system", new(string.Format("Тест_{0}", id), 1));
+        var result = await service.Handler("system", new(string.Format("Тест_{0}", id), 1, 1));
 
         //Проверяем, что результат успешный
         Assert.True(result.Success);
@@ -47,7 +47,7 @@ public class AddInformationArticleDetailDetailTests : BaseTest
         long id = _repository.InformationArticlesDetails.Max(x => x.Id) + 1;
 
         //Получаем результат
-        var result = await service.Handler("system", new(string.Format("Тест_{0}", id), 1));
+        var result = await service.Handler("system", new(string.Format("Тест_{0}", id), 1, 1));
 
         //Проверяем, что совпадают id
         Assert.Equal(id, result.Id);
@@ -66,7 +66,7 @@ public class AddInformationArticleDetailDetailTests : BaseTest
         long id = _repository.InformationArticlesDetails.Max(x => x.Id) + 1;
 
         //Получаем результат
-        var result = await service.Handler(null, new(string.Format("Тест_{0}", id), 1));
+        var result = await service.Handler(null, new(string.Format("Тест_{0}", id), 1, 1));
 
         //Проверяем, что результат возвращён с корректной ошибкой
         Assert.Equal(Errors.EmptyCurrentUser, result.Error?.Message);
@@ -98,7 +98,7 @@ public class AddInformationArticleDetailDetailTests : BaseTest
         AddInformationArticleDetail service = new(_repository);
 
         //Получаем результат
-        var result = await service.Handler("system", new("", 1));
+        var result = await service.Handler("system", new("", 1, 1));
 
         //Проверяем, что результат возвращён с корректной ошибкой
         Assert.Equal(Errors.EmptyText, result.Error?.Message);
@@ -117,7 +117,7 @@ public class AddInformationArticleDetailDetailTests : BaseTest
         long id = _repository.InformationArticlesDetails.Max(x => x.Id) + 1;
 
         //Получаем результат
-        var result = await service.Handler(null, new(string.Format("Тест_{0}", id), null));
+        var result = await service.Handler(null, new(string.Format("Тест_{0}", id), null, 1));
 
         //Проверяем, что результат возвращён с корректной ошибкой
         Assert.Equal(Errors.EmptyInformationArticleId, result.Error?.Message);
@@ -136,7 +136,7 @@ public class AddInformationArticleDetailDetailTests : BaseTest
         long id = _repository.InformationArticlesDetails.Max(x => x.Id) + 1;
 
         //Получаем результат
-        var result = await service.Handler(null, new(string.Format("Тест_{0}", id), 100003245));
+        var result = await service.Handler(null, new(string.Format("Тест_{0}", id), 100003245, 1));
 
         //Проверяем, что результат возвращён с корректной ошибкой
         Assert.Equal(Errors.NotExistsInformationArticle, result.Error?.Message);

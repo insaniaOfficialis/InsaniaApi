@@ -116,7 +116,7 @@ public class GetInformationArticleDetails : IGetInformationArticleDetails
         GetInformationArticleDetailsResponse response = new(true, null, new());
 
         //Проходим циклом по списку детальных частей
-        foreach (var item in request.OrderBy(x => x.Id))
+        foreach (var item in request.OrderBy(x => x.OrdinalNumber))
         {
             //Получаем файлы
             BaseResponseList filesItem = await _getFilesInformationArticleDetails.Handler(item.Id);
