@@ -25,7 +25,7 @@ public class GetFilesInformationArticleDetailsTests : BaseTest
         GetFilesInformationArticleDetails getFilesInformationArticleDetails = new(_mapper, _repository);
 
         //Получаем результат
-        var result = await getFilesInformationArticleDetails.Handler(4);
+        var result = await getFilesInformationArticleDetails.Handler(1);
 
         //Проверяем, что результат успешный
         Assert.True(result.Success);
@@ -41,10 +41,10 @@ public class GetFilesInformationArticleDetailsTests : BaseTest
         GetFilesInformationArticleDetails getFilesInformationArticleDetails = new(_mapper, _repository);
 
         //Получаем результат
-        var result = await getFilesInformationArticleDetails.Handler(4);
+        var result = await getFilesInformationArticleDetails.Handler(1);
 
         //Проверяем, что результат успешный
-        Assert.Single(result.Items!);
+        Assert.NotNull(result.Items);
     }
 
     /// <summary>

@@ -65,11 +65,16 @@ public class GetListInformationArticles : IGetListInformationArticles
     public async Task<List<InformationArticle>> Query(string? search)
     {
         //Строим запрос
-        IQueryable<InformationArticle> query = _repository.InformationArticles.Where(x => x.DateDeleted == null);
+        IQueryable<InformationArticle> query = _repository
+            .InformationArticles
+            .Where(x => x.DateDeleted == null);
 
         //Если передали строку поиска
         if (!string.IsNullOrEmpty(search))
             query = query.Where(x => x.Title.ToLower().Contains(search.ToLower()));
+
+        //Сортируем список
+        query = query.OrderBy(x => x.OrdinalNumber);
 
         //Получаем данные с базы
         var entities = await query.ToListAsync();

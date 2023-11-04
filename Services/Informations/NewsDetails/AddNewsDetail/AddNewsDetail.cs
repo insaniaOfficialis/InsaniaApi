@@ -115,13 +115,18 @@ public class AddNewsDetail : IAddNewsDetail
         //Сохраняем данные в базу
         try
         {
+            //Получаем максимальный порядковый номер имеющихся записей
+            long ordinalNumber = 0;
+            if (request?.OrdinalNumber == null)
+                ordinalNumber = (await _repository.NewsDetails.MaxAsync(x => (long?)x.OrdinalNumber) ?? 0) + 1;
+
             //Получаем связи с другими таблицами
             NewsEntity? newsEntity = _repository
                 .News
                 .FirstOrDefault(x => x.Id == request!.NewsId);
 
             //Формируем экземпляр сущности и сохраняем в базу
-            NewsDetail entity = new(user, false, request!.Text!, newsEntity!);
+            NewsDetail entity = new(user, false, request!.Text!, newsEntity!, request?.OrdinalNumber ?? ordinalNumber);
             _repository.NewsDetails.Add(entity);
             await _repository.SaveChangesAsync();
 

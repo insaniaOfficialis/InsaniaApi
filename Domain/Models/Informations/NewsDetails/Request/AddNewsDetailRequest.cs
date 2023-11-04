@@ -6,6 +6,19 @@
 public class AddNewsDetailRequest
 {
     /// <summary>
+    /// Конструктор модели добавления детальной части новости
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="newsId"></param>
+    /// <param name="ordinalNumber"></param>
+    public AddNewsDetailRequest(string? text, long? newsId, long? ordinalNumber)
+    {
+        Text = text;
+        NewsId = newsId;
+        OrdinalNumber = ordinalNumber;
+    }
+
+    /// <summary>
     /// Тест
     /// </summary>
     public string? Text { get; set; }
@@ -16,13 +29,7 @@ public class AddNewsDetailRequest
     public long? NewsId { get; set; }
 
     /// <summary>
-    /// Конструктор модели добавления детальной части новости
+    /// Порядковый номер
     /// </summary>
-    /// <param name="text"></param>
-    /// <param name="newsId"></param>
-    public AddNewsDetailRequest(string? text, long? newsId)
-    {
-        Text = text;
-        NewsId = newsId;
-    }
+    public long? OrdinalNumber { get; set; }
 }

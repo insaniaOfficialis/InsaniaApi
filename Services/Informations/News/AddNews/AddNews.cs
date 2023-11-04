@@ -123,9 +123,16 @@ public class AddNews : IAddNews
         //Сохраняем данные в базу
         try
         {
-            //Формируем экземпляр сущности и сохраняем в базу
+            //Получаем максимальный порядковый номер имеющихся записей
+            long ordinalNumber = 0;
+            if (request?.OrdinalNumber == null)
+                ordinalNumber = (await _repository.News.MaxAsync(x => (long?)x.OrdinalNumber) ?? 0) + 1;
+
+            //Получаем связи с другими сущностями
             NewsType newsType = await _repository.NewsTypes.FirstAsync(x => x.Id == request!.TypeId);
-            NewsEntity news = new(user!, false, request!.Title!, request!.Introduction!, newsType);
+
+            //Формируем экземпляр сущности и сохраняем в базу
+            NewsEntity news = new(user!, false, request!.Title!, request!.Introduction!, newsType, request?.OrdinalNumber ?? ordinalNumber);
             _repository.News.Add(news);
             await _repository.SaveChangesAsync();
 

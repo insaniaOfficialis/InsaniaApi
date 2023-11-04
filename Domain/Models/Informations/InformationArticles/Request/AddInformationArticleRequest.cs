@@ -9,13 +9,20 @@ public class AddInformationArticleRequest
     /// Конструктор модели запроса добавления статьи
     /// </summary>
     /// <param name="title"></param>
-    public AddInformationArticleRequest(string title)
+    /// <param name="ordinalNumber"></param>
+    public AddInformationArticleRequest(string title, long? ordinalNumber)
     {
         Title = title;
+        OrdinalNumber = ordinalNumber;
     }
 
     /// <summary>
     /// Заголовок
     /// </summary>
     public string? Title { get; set; }
+
+    /// <summary>
+    /// Порядковый номер
+    /// </summary>
+    public long? OrdinalNumber { get; set; }
 }

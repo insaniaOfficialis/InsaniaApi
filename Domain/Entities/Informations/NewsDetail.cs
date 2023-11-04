@@ -31,6 +31,13 @@ public class NewsDetail : Reestr
     public News News { get; private set; }
 
     /// <summary>
+    /// Порядковый номер
+    /// </summary>
+    [Column("ordinal_number")]
+    [Comment("Порядковый номер")]
+    public long OrdinalNumber { get; private set; }
+
+    /// <summary>
     /// Пустой конструктор детальной части новостей
     /// </summary>
     public NewsDetail() : base()
@@ -45,11 +52,13 @@ public class NewsDetail : Reestr
     /// <param name="isSystem"></param>
     /// <param name="text"></param>
     /// <param name="news"></param>
-    public NewsDetail(string? user, bool isSystem, string text, News news) : base(user, isSystem)
+    /// <param name="ordinalNumber"></param>
+    public NewsDetail(string? user, bool isSystem, string text, News news, long ordinalNumber) : base(user, isSystem)
     {
         Text = text;
         News = news;
         NewsId = news.Id;
+        OrdinalNumber = ordinalNumber;
     }
 
     /// <summary>
@@ -60,11 +69,13 @@ public class NewsDetail : Reestr
     /// <param name="isSystem"></param>
     /// <param name="text"></param>
     /// <param name="news"></param>
-    public NewsDetail(long id, string? user, bool isSystem, string text, News news) : base(id, user, isSystem)
+    /// <param name="ordinalNumber"></param>
+    public NewsDetail(long id, string? user, bool isSystem, string text, News news, long ordinalNumber) : base(id, user, isSystem)
     {
         Text = text;
         News = news;
         NewsId = news.Id;
+        OrdinalNumber = ordinalNumber;
     }
 
     /// <summary>
@@ -84,5 +95,14 @@ public class NewsDetail : Reestr
     {
         News = news;
         NewsId = news.Id;
+    }
+
+    /// <summary>
+    /// Метод записи порядкового номера
+    /// </summary>
+    /// <param name="ordinalNumber"></param>
+    public void SetOrdinalNumber(long ordinalNumber)
+    {
+        OrdinalNumber = ordinalNumber;
     }
 }

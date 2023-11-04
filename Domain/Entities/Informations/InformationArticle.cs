@@ -19,6 +19,13 @@ public class InformationArticle : Reestr
     public string Title { get; private set; }
 
     /// <summary>
+    /// Порядковый номер
+    /// </summary>
+    [Column("ordinal_number")]
+    [Comment("Порядковый номер")]
+    public long OrdinalNumber { get; private set; }
+
+    /// <summary>
     /// Пустой конструктор информационных статей
     /// </summary>
     public InformationArticle() : base()
@@ -32,9 +39,11 @@ public class InformationArticle : Reestr
     /// <param name="user"></param>
     /// <param name="isSystem"></param>
     /// <param name="title"></param>
-    public InformationArticle(string? user, bool isSystem, string title) : base(user, isSystem)
+    /// <param name="ordinalNumber"></param>
+    public InformationArticle(string? user, bool isSystem, string title, long ordinalNumber) : base(user, isSystem)
     {
         Title = title;
+        OrdinalNumber = ordinalNumber;
     }
 
     /// <summary>
@@ -44,9 +53,11 @@ public class InformationArticle : Reestr
     /// <param name="user"></param>
     /// <param name="isSystem"></param>
     /// <param name="title"></param>
-    public InformationArticle(long id, string? user, bool isSystem, string title) : base(id, user, isSystem)
+    /// <param name="ordinalNumber"></param>
+    public InformationArticle(long id, string? user, bool isSystem, string title, long ordinalNumber) : base(id, user, isSystem)
     {
         Title = title;
+        OrdinalNumber = ordinalNumber;
     }
 
     /// <summary>
@@ -56,5 +67,14 @@ public class InformationArticle : Reestr
     public void SetTitle(string title)
     {
         Title = title;
+    }
+
+    /// <summary>
+    /// Метод записи порядкового номера
+    /// </summary>
+    /// <param name="ordinalNumber"></param>
+    public void SetOrdinalNumber(long ordinalNumber)
+    {
+        OrdinalNumber = ordinalNumber;
     }
 }

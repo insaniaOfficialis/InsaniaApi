@@ -585,7 +585,7 @@ public class Initialization : IInitialization
                 if (type != null)
                 {
                     //Создаём новость "Запуск новостей"
-                    News news = new("system", true, "Запуск новостей", "В системе начали работать новости", type);
+                    News news = new("system", true, "Запуск новостей", "В системе начали работать новости", type, 1);
                     _repository.News.Add(news);
                     await _repository.SaveChangesAsync();
                 }

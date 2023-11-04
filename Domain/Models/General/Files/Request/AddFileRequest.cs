@@ -6,6 +6,23 @@
 public class AddFileRequest
 {
     /// <summary>
+    /// Конструктор модели запроса на добавление файла
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="name"></param>
+    /// <param name="type"></param>
+    /// <param name="stream"></param>
+    /// <param name="ordinalNumber"></param>
+    public AddFileRequest(long? id, string? name, string? type, Stream? stream, long? ordinalNumber)
+    {
+        Id = id;
+        Name = name;
+        Type = type;
+        Stream = stream;
+        OrdinalNumber = ordinalNumber;
+    }
+
+    /// <summary>
     /// Id сущности, на которую загружаются данные
     /// </summary>
     public long? Id { get; set; }
@@ -26,17 +43,7 @@ public class AddFileRequest
     public Stream? Stream { get; set; }
 
     /// <summary>
-    /// Конструктор модели запроса на добавление файла
+    /// Порядковый номер
     /// </summary>
-    /// <param name="id"></param>
-    /// <param name="name"></param>
-    /// <param name="type"></param>
-    /// <param name="stream"></param>
-    public AddFileRequest(long? id, string? name, string? type, Stream? stream)
-    {
-        Id = id;
-        Name = name;
-        Type = type;
-        Stream = stream;
-    }
+    public long? OrdinalNumber { get; set; }
 }

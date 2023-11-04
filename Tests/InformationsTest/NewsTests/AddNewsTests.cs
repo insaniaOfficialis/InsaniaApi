@@ -28,7 +28,7 @@ public class AddNewsTests : BaseTest
         long id = _repository.News.Max(x => x.Id) + 1;
 
         //Получаем результат
-        var result = await service.Handler("system", new(string.Format("Тест_{0}", id), "ААА", 1));
+        var result = await service.Handler("system", new(string.Format("Тест_{0}", id), "ААА", 1, 1));
 
         //Проверяем, что результат успешный
         Assert.True(result.Success);
@@ -47,7 +47,7 @@ public class AddNewsTests : BaseTest
         long id = _repository.News.Max(x => x.Id) + 1;
 
         //Получаем результат
-        var result = await service.Handler("system", new(string.Format("Тест_{0}", id), "ААА", 1));
+        var result = await service.Handler("system", new(string.Format("Тест_{0}", id), "ААА", 1, 1));
 
 
         //Проверяем, что совпадают id
@@ -67,7 +67,7 @@ public class AddNewsTests : BaseTest
         long id = _repository.News.Max(x => x.Id) + 1;
 
         //Получаем результат
-        var result = await service.Handler(null, new(string.Format("Тест_{0}", id), "ААА", 1));
+        var result = await service.Handler(null, new(string.Format("Тест_{0}", id), "ААА", 1, 1));
 
 
         //Проверяем, что результат возвращён с корректной ошибкой
@@ -100,7 +100,7 @@ public class AddNewsTests : BaseTest
         AddNews service = new(_repository);
 
         //Получаем результат
-        var result = await service.Handler("system", new("", "ААА", 1));
+        var result = await service.Handler("system", new("", "ААА", 1, 1));
 
         //Проверяем, что результат возвращён с корректной ошибкой
         Assert.Equal(Errors.EmptyTitle, result.Error?.Message);
@@ -116,7 +116,7 @@ public class AddNewsTests : BaseTest
         AddNews service = new(_repository);
 
         //Получаем результат
-        var result = await service.Handler("system", new("Запуск новостей", "ААА", 1));
+        var result = await service.Handler("system", new("Запуск новостей", "ААА", 1, 1));
 
         //Проверяем, что результат возвращён с корректной ошибкой
         Assert.Equal(Errors.ExistingNews, result.Error?.Message);
@@ -135,7 +135,7 @@ public class AddNewsTests : BaseTest
         long id = _repository.News.Max(x => x.Id) + 1;
 
         //Получаем результат
-        var result = await service.Handler("system", new(string.Format("Тест_{0}", id), "", 1));
+        var result = await service.Handler("system", new(string.Format("Тест_{0}", id), "", 1, 1));
 
         //Проверяем, что результат возвращён с корректной ошибкой
         Assert.Equal(Errors.EmptyIntroduction, result.Error?.Message);
@@ -154,7 +154,7 @@ public class AddNewsTests : BaseTest
         long id = _repository.News.Max(x => x.Id) + 1;
 
         //Получаем результат
-        var result = await service.Handler("system", new(string.Format("Тест_{0}", id), "ААА", 0));
+        var result = await service.Handler("system", new(string.Format("Тест_{0}", id), "ААА", 0, 1));
 
         //Проверяем, что результат возвращён с корректной ошибкой
         Assert.Equal(Errors.EmptyTypeNews, result.Error?.Message);
@@ -173,7 +173,7 @@ public class AddNewsTests : BaseTest
         long id = _repository.News.Max(x => x.Id) + 1;
 
         //Получаем результат
-        var result = await service.Handler("system", new(string.Format("Тест_{0}", id), "ААА", -1));
+        var result = await service.Handler("system", new(string.Format("Тест_{0}", id), "ААА", -1, 1));
 
         //Проверяем, что результат возвращён с корректной ошибкой
         Assert.Equal(Errors.NotExistsTypeNews, result.Error?.Message);

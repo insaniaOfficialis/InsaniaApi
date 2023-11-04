@@ -37,6 +37,13 @@ public class FileInformationArticleDetail : BaseEntity
     public InformationArticleDetail InformationArticleDetail { get; private set; }
 
     /// <summary>
+    /// Порядковый номер
+    /// </summary>
+    [Column("ordinal_number")]
+    [Comment("Порядковый номер")]
+    public long OrdinalNumber { get; private set; }
+
+    /// <summary>
     /// Пустой конструктор
     /// </summary>
     public FileInformationArticleDetail() : base()
@@ -50,14 +57,16 @@ public class FileInformationArticleDetail : BaseEntity
     /// <param name="user"></param>
     /// <param name="file"></param>
     /// <param name="informationArticleDetail"></param>
+    /// <param name="ordinalNumber"></param>
     public FileInformationArticleDetail(string? user, File file,
-        InformationArticleDetail informationArticleDetail)
+        InformationArticleDetail informationArticleDetail, long ordinalNumber)
         : base(user)
     {
         File = file;
         FileId = file.Id;
         InformationArticleDetail = informationArticleDetail;
         InformationArticleDetailId = informationArticleDetail.Id;
+        OrdinalNumber = ordinalNumber;
     }
 
     /// <summary>
@@ -67,13 +76,15 @@ public class FileInformationArticleDetail : BaseEntity
     /// <param name="user"></param>
     /// <param name="file"></param>
     /// <param name="informationArticleDetail"></param>
+    /// <param name="ordinalNumber"></param>
     public FileInformationArticleDetail(long id, string user, File file,
-        InformationArticleDetail informationArticleDetail) : base(id, user)
+        InformationArticleDetail informationArticleDetail, long ordinalNumber) : base(id, user)
     {
         File = file;
         FileId = file.Id;
         InformationArticleDetail = informationArticleDetail;
         InformationArticleDetailId = informationArticleDetail.Id;
+        OrdinalNumber = ordinalNumber;
     }
 
     /// <summary>
@@ -94,5 +105,14 @@ public class FileInformationArticleDetail : BaseEntity
     {
         InformationArticleDetail = informationArticleDetail;
         InformationArticleDetailId = informationArticleDetail.Id;
+    }
+
+    /// <summary>
+    /// Метод записи порядкового номера
+    /// </summary>
+    /// <param name="ordinalNumber"></param>
+    public void SetOrdinalNumber(long ordinalNumber)
+    {
+        OrdinalNumber = ordinalNumber;
     }
 }

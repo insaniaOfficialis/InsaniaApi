@@ -28,7 +28,7 @@ public class AddInformationArticleTests : BaseTest
         long id = _repository.InformationArticles.Max(x => x.Id) + 1;
 
         //Получаем результат
-        var result = await service.Handler("system", new(string.Format("Тест_{0}", id)));
+        var result = await service.Handler("system", new(string.Format("Тест_{0}", id), 1));
 
         //Проверяем, что результат успешный
         Assert.True(result.Success);
@@ -47,7 +47,7 @@ public class AddInformationArticleTests : BaseTest
         long id = _repository.InformationArticles.Max(x => x.Id) + 1;
 
         //Получаем результат
-        var result = await service.Handler("system", new(string.Format("Тест_{0}", id)));
+        var result = await service.Handler("system", new(string.Format("Тест_{0}", id), 1));
 
 
         //Проверяем, что совпадают id
@@ -67,7 +67,7 @@ public class AddInformationArticleTests : BaseTest
         long id = _repository.InformationArticles.Max(x => x.Id) + 1;
 
         //Получаем результат
-        var result = await service.Handler(null, new(string.Format("Тест_{0}", id)));
+        var result = await service.Handler(null, new(string.Format("Тест_{0}", id), 1));
 
 
         //Проверяем, что результат возвращён с корректной ошибкой
@@ -100,7 +100,7 @@ public class AddInformationArticleTests : BaseTest
         AddInformationArticle service = new(_repository);
 
         //Получаем результат
-        var result = await service.Handler("system", new(""));
+        var result = await service.Handler("system", new("", 1));
 
         //Проверяем, что результат возвращён с корректной ошибкой
         Assert.Equal(Errors.EmptyTitle, result.Error?.Message);
@@ -116,7 +116,7 @@ public class AddInformationArticleTests : BaseTest
         AddInformationArticle service = new(_repository);
 
         //Получаем результат
-        var result = await service.Handler("system", new("Тест_1"));
+        var result = await service.Handler("system", new("Тест_1", 1));
 
         //Проверяем, что результат возвращён с корректной ошибкой
         Assert.Equal(Errors.ExistingInformationArticle, result.Error?.Message);

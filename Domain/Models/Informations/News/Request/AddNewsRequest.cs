@@ -19,11 +19,13 @@ public class AddNewsRequest
     /// <param name="title"></param>
     /// <param name="introduction"></param>
     /// <param name="typeId"></param>
-    public AddNewsRequest(string title, string introduction, long typeId)
+    /// <param name="ordinalNumber"></param>
+    public AddNewsRequest(string title, string introduction, long typeId, long? ordinalNumber)
     {
         Title = title;
         Introduction = introduction;
         TypeId = typeId;
+        OrdinalNumber = ordinalNumber;
     }
 
     /// <summary>
@@ -40,4 +42,9 @@ public class AddNewsRequest
     /// Тип новости
     /// </summary>
     public long? TypeId { get; set; }
+
+    /// <summary>
+    /// Порядковый номер
+    /// </summary>
+    public long? OrdinalNumber { get; set; }
 }

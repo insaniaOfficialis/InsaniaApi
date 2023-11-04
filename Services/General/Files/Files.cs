@@ -1,6 +1,5 @@
 ﻿using Data;
 using Domain.Entities.General.File;
-using Domain.Entities.Informations;
 using Domain.Models.Base;
 using Domain.Models.Exclusion;
 using Domain.Models.General.Files.Request;
@@ -84,24 +83,42 @@ public class Files : IFiles
                         break;
                     case "Informatsionnaya_stat'ya":
                         {
+                            //Получаем максимальный порядковый номер имеющихся записей
+                            long ordinalNumber = 0;
+                            if ((request.OrdinalNumber ?? 0) <= 0)
+                                ordinalNumber = (await _repository.FilesInformationArticleDetails
+                                    .MaxAsync(x => (long?)x.OrdinalNumber) ?? 0) + 1;
+                            
+                            //Получаем связи с другими сущностями
                             var informationArticleDetail = await _repository
                                 .InformationArticlesDetails
                                 .Where(x => x.Id == request.Id)
                                 .FirstOrDefaultAsync()
                                 ?? throw new InnerException("Не найдена детальная часть информационной статьи");
-                            FileInformationArticleDetail fileInformationArticleDetail = new(null, file, informationArticleDetail);
-                            await _repository.InformationArticlesDetails.AddAsync(informationArticleDetail);
+
+                            //Формируем экземпляр сущности и сохраняем в базу
+                            FileInformationArticleDetail fileInformationArticleDetail = new(null, file, informationArticleDetail,
+                                request.OrdinalNumber ?? ordinalNumber);
+                            await _repository.FilesInformationArticleDetails.AddAsync(fileInformationArticleDetail);
                         }
                         break;
                     case "Novost'":
                         {
+                            //Получаем максимальный порядковый номер имеющихся записей
+                            long ordinalNumber = 0;
+                            if ((request.OrdinalNumber ?? 0) <= 0)
+                                ordinalNumber = (await _repository.FilesNewsDetails.MaxAsync(x => (long?)x.OrdinalNumber) ?? 0) + 1;
+
+                            //Получаем связи с другими сущностями
                             var newsDetail = await _repository
                                 .NewsDetails
                                 .Where(x => x.Id == request.Id)
                                 .FirstOrDefaultAsync()
                                 ?? throw new InnerException("Не найдена детальная часть новости");
-                            FileNewsDetail fileNewsDetail = new(null, file, newsDetail);
-                            await _repository.NewsDetails.AddAsync(newsDetail);
+
+                            //Формируем экземпляр сущности и сохраняем в базу
+                            FileNewsDetail fileNewsDetail = new(null, file, newsDetail, request.OrdinalNumber ?? ordinalNumber);
+                            await _repository.FilesNewsDetails.AddAsync(fileNewsDetail);
                         }
                         break;
                 }

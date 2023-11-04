@@ -120,10 +120,10 @@ public class AddInformationArticleDetail : IAddInformationArticleDetail
                 .FirstOrDefault(x => x.Id == request!.InformationArticleId);
 
             //Получаем максимальный порядковый номер имеющихся детальных частей
-            long ordinalNumber = await _repository
-                .InformationArticlesDetails
-                .Where(x => x.InformationArticleId == informationArticle!.Id)
-                .MaxAsync(x => x.OrdinalNumber) + 1;
+            long ordinalNumber = 0;
+            if (request?.OrdinalNumber == null)
+                ordinalNumber = (await _repository.InformationArticlesDetails.Where(x => x.InformationArticleId == informationArticle!.Id)
+                    .MaxAsync(x => (long?)x.OrdinalNumber) ?? 0) + 1;
 
             //Формируем экземпляр сущности и сохраняем в базу
             InformationArticleDetail entity = new(user, false, request!.Text!, informationArticle!, request.OrdinalNumber ?? ordinalNumber);

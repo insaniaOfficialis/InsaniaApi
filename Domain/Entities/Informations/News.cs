@@ -39,6 +39,13 @@ public class News : Reestr
     public NewsType Type { get; private set; }
 
     /// <summary>
+    /// Порядковый номер
+    /// </summary>
+    [Column("ordinal_number")]
+    [Comment("Порядковый номер")]
+    public long OrdinalNumber { get; private set; }
+
+    /// <summary>
     /// Пустой конструктор сущности новостей
     /// </summary>
     public News()
@@ -54,13 +61,15 @@ public class News : Reestr
     /// <param name="title"></param>
     /// <param name="introduction"></param>
     /// <param name="type"></param>
-    public News(string user, bool isSystem, string title, string introduction, NewsType type) :
+    /// <param name="ordinalNumber"></param>
+    public News(string user, bool isSystem, string title, string introduction, NewsType type, long ordinalNumber) :
         base(user, isSystem)
     {
         Title = title;
         Introduction = introduction;
         Type = type;
         TypeId = type.Id;
+        OrdinalNumber = ordinalNumber;
     }
 
     /// <summary>
@@ -72,13 +81,15 @@ public class News : Reestr
     /// <param name="title"></param>
     /// <param name="introduction"></param>
     /// <param name="type"></param>
-    public News(long id, string user, bool isSystem, string title, string introduction, NewsType type) : 
+    /// <param name="ordinalNumber"></param>
+    public News(long id, string user, bool isSystem, string title, string introduction, NewsType type, long ordinalNumber) : 
         base(id, user, isSystem)
     {
         Title = title;
         Introduction = introduction;
         Type = type;
         TypeId = type.Id;
+        OrdinalNumber = ordinalNumber;
     }
 
     /// <summary>
@@ -107,5 +118,14 @@ public class News : Reestr
     {
         Type = type;
         TypeId = type.Id;
+    }
+
+    /// <summary>
+    /// Метод записи порядкового номера
+    /// </summary>
+    /// <param name="ordinalNumber"></param>
+    public void SetOrdinalNumber(long ordinalNumber)
+    {
+        OrdinalNumber = ordinalNumber;
     }
 }

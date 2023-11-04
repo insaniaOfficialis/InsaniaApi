@@ -96,7 +96,8 @@ public class GetNewsDetails : IGetNewsDetails
         //Строим запрос
         IQueryable<NewsDetail> query = _repository
             .NewsDetails
-            .Where(x => x.DateDeleted == null && x.NewsId == newsId);
+            .Where(x => x.DateDeleted == null && x.NewsId == newsId)
+            .OrderBy(x => x.OrdinalNumber);
 
         //Получаем данные с базы
         var entities = await query.ToListAsync();

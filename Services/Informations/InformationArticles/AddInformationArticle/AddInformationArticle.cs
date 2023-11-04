@@ -3,6 +3,7 @@ using Domain.Entities.Informations;
 using Domain.Models.Base;
 using Domain.Models.Exclusion;
 using Domain.Models.Informations.InformationArticles.Request;
+using Microsoft.EntityFrameworkCore;
 
 namespace Services.Informations.InformationArticles.AddInformationArticle;
 
@@ -109,8 +110,13 @@ public class AddInformationArticle : IAddInformationArticle
         //Сохраняем данные в базу
         try
         {
+            //Получаем максимальный порядковый номер имеющихся записей
+            long ordinalNumber = 0;
+            if(request?.OrdinalNumber == null)
+                ordinalNumber = (await _repository.InformationArticles.MaxAsync(x => (long?)x.OrdinalNumber) ?? 0) + 1;
+
             //Формируем экземпляр сущности и сохраняем в базу
-            InformationArticle informationArticle = new(user, false, request?.Title!);
+            InformationArticle informationArticle = new(user, false, request?.Title!, request?.OrdinalNumber ?? ordinalNumber);
             _repository.InformationArticles.Add(informationArticle);
             await _repository.SaveChangesAsync();
 

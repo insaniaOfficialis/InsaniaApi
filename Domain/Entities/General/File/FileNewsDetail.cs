@@ -37,6 +37,13 @@ public class FileNewsDetail : BaseEntity
     public NewsDetail NewsDetail { get; private set; }
 
     /// <summary>
+    /// Порядковый номер
+    /// </summary>
+    [Column("ordinal_number")]
+    [Comment("Порядковый номер")]
+    public long OrdinalNumber { get; private set; }
+
+    /// <summary>
     /// Пустой конструктор
     /// </summary>
     public FileNewsDetail() : base()
@@ -50,13 +57,14 @@ public class FileNewsDetail : BaseEntity
     /// <param name="user"></param>
     /// <param name="file"></param>
     /// <param name="newsDetail"></param>
-    public FileNewsDetail(string? user, File file, NewsDetail newsDetail)
-        : base(user)
+    /// <param name="ordinalNumber"></param>
+    public FileNewsDetail(string? user, File file, NewsDetail newsDetail, long ordinalNumber) : base(user)
     {
         File = file;
         FileId = file.Id;
         NewsDetail = newsDetail;
         NewsDetailId = newsDetail.Id;
+        OrdinalNumber = ordinalNumber;
     }
 
     /// <summary>
@@ -66,12 +74,14 @@ public class FileNewsDetail : BaseEntity
     /// <param name="user"></param>
     /// <param name="file"></param>
     /// <param name="newsDetail"></param>
-    public FileNewsDetail(long id, string user, File file, NewsDetail newsDetail) : base(id, user)
+    /// <param name="ordinalNumber"></param>
+    public FileNewsDetail(long id, string user, File file, NewsDetail newsDetail, long ordinalNumber) : base(id, user)
     {
         File = file;
         FileId = file.Id;
         NewsDetail = newsDetail;
         NewsDetailId = newsDetail.Id;
+        OrdinalNumber = ordinalNumber;
     }
 
     /// <summary>
@@ -92,5 +102,14 @@ public class FileNewsDetail : BaseEntity
     {
         NewsDetail = newsDetail;
         NewsDetailId = newsDetail.Id;
+    }
+
+    /// <summary>
+    /// Метод записи порядкового номера
+    /// </summary>
+    /// <param name="ordinalNumber"></param>
+    public void SetOrdinalNumber(long ordinalNumber)
+    {
+        OrdinalNumber = ordinalNumber;
     }
 }

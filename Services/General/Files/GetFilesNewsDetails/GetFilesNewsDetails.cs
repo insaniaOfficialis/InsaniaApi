@@ -100,6 +100,7 @@ public class GetFilesNewsDetails : IGetFilesNewsDetails
             .FilesNewsDetails
             .Include(x => x.File)
             .Where(x => x.DateDeleted == null && x.NewsDetailId == newsDetailId)
+            .OrderBy(x => x.OrdinalNumber)
             .Select(x => x.File);
 
         //Получаем данные с базы

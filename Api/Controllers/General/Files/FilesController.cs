@@ -43,9 +43,26 @@ public class FilesController : BaseController
     public async Task<IActionResult> AddFile([FromRoute] string type, [FromRoute] long id,
         [FromForm] IFormFile file) => await GetAnswerAsync(async () =>
     {
-        AddFileRequest request = new(id, file.FileName, type, file.OpenReadStream());
+        AddFileRequest request = new(id, file.FileName, type, file.OpenReadStream(), 0);
         return await _files.AddFile(request);
     });
+
+    /// <summary>
+    /// Метод добавления файла с порядковым номером
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="id"></param>
+    /// <param name="file"></param>
+    /// <param name="ordinalNumber"></param>
+    /// <returns></returns>
+    [HttpPost]
+    [Route("add/{type}/{id}/{ordinalNumber}")]
+    public async Task<IActionResult> AddFile([FromRoute] string type, [FromRoute] long id,
+        [FromForm] IFormFile file, [FromRoute] long ordinalNumber) => await GetAnswerAsync(async () =>
+        {
+            AddFileRequest request = new(id, file.FileName, type, file.OpenReadStream(), ordinalNumber);
+            return await _files.AddFile(request);
+        });
 
     /// <summary>
     /// Метод получения файла
