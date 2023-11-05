@@ -50,7 +50,7 @@ public class LoggingMiddleware
         string response = string.Empty;
 
         //Если это не метод файлов
-        if (!method.ToString().Contains("files"))
+        if (!method.ToString().Contains("files") && !method.ToString().Contains("swagger"))
         {
             //Получаем оригинальный поток ответа
             var originalBodyStream = context.Response.Body;
@@ -87,8 +87,8 @@ public class LoggingMiddleware
     /// <returns></returns>
     private async Task<string> GetRequest(HttpRequest request)
     {
-        //Если это не метод файлов
-        if (!request.Path.ToString().Contains("files"))
+        //Если это не метод файлов или документации
+        if (!request.Path.ToString().Contains("files") && !request.Path.ToString().Contains("swagger"))
         {
             //Включаем возможност прочитать тело запроса несколько раз
             request.EnableBuffering();

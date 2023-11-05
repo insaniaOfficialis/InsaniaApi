@@ -1,0 +1,441 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Api</name>
+    </assembly>
+    <members>
+        <member name="T:Api.Controllers.Base.BaseController">
+            <summary>
+            Базовый контроллер
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.Base.BaseController.#ctor(Microsoft.Extensions.Logging.ILogger{Api.Controllers.Base.BaseController})">
+            <summary>
+            Конструктор базового контроллера
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Api.Controllers.Base.BaseController.GetAnswerAsync``1(System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+            Построение станадртного ответа
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Api.Controllers.General.CheckController">
+            <summary>
+            Контроллер проверки соединения
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.General.CheckController.#ctor(Microsoft.Extensions.Logging.ILogger{Api.Controllers.General.CheckController})">
+            <summary>
+            Конструктор контроллера проверки соединения
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Api.Controllers.General.CheckController.CheckAuthorize">
+            <summary>
+            Проверка соединения авторизованного пользователя
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.General.CheckController.CheckNotAuthorize">
+            <summary>
+            Проверка соединения неавторизованного пользователя
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Api.Controllers.General.Files.FilesController">
+            <summary>
+            Контроллер файлов
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.General.Files.FilesController.#ctor(Microsoft.Extensions.Logging.ILogger{Api.Controllers.General.Files.FilesController},Services.General.Files.IFiles,Services.General.Files.GetFile.IGetFile)">
+            <summary>
+            Конструктор контроллера файлов
+            </summary>
+            <param name="logger"></param>
+            <param name="files"></param>
+            <param name="getFile"></param>
+        </member>
+        <member name="M:Api.Controllers.General.Files.FilesController.AddFile(System.String,System.Int64,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Метод добавления файла
+            </summary>
+            <param name="type"></param>
+            <param name="id"></param>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.General.Files.FilesController.AddFile(System.String,System.Int64,Microsoft.AspNetCore.Http.IFormFile,System.Int64)">
+            <summary>
+            Метод добавления файла с порядковым номером
+            </summary>
+            <param name="type"></param>
+            <param name="id"></param>
+            <param name="file"></param>
+            <param name="ordinalNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.General.Files.FilesController.GetFile(System.Int64,System.Int64)">
+            <summary>
+            Метод получения файла
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Api.Controllers.General.Logs.LogsController">
+            <summary>
+            Контроллер логов
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.General.Logs.LogsController.#ctor(Microsoft.Extensions.Logging.ILogger{Api.Controllers.General.Logs.LogsController},Services.General.Logs.IGetLogs)">
+            <summary>
+            Конструктор контроллера логов
+            </summary>
+            <param name="logger"></param>
+            <param name="getLogs"></param>
+        </member>
+        <member name="M:Api.Controllers.General.Logs.LogsController.GetLogs(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Collections.Generic.List{Domain.Models.Base.BaseSortRequest},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.Boolean})">
+            <summary>
+            Метод получения списка логов
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Api.Controllers.Identification.Authorization.AuthorizationController">
+            <summary>
+            Контроллер авторизации
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.Identification.Authorization.AuthorizationController.#ctor(Microsoft.Extensions.Logging.ILogger{Api.Controllers.Identification.Authorization.AuthorizationController},Services.Identification.Authorization.IAuthorization)">
+            <summary>
+            Конструктор контроллера авторизации
+            </summary>
+            <param name="logger"></param>
+            <param name="authorization"></param>
+        </member>
+        <member name="M:Api.Controllers.Identification.Authorization.AuthorizationController.Login(System.String,System.String)">
+            <summary>
+            Метод входа
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.Identification.Authorization.AuthorizationController.GetUserInfo">
+            <summary>
+            Метод получения информации о пользователе
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Api.Controllers.Identification.Registration.RegistrationController">
+            <summary>
+            Контроллер регистрации
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.Identification.Registration.RegistrationController.#ctor(Microsoft.Extensions.Logging.ILogger{Api.Controllers.Identification.Registration.RegistrationController},Services.Identification.Registration.IRegistration)">
+            <summary>
+            Конструктор контроллера регистрации
+            </summary>
+            <param name="logger"></param>
+            <param name="registration"></param>
+        </member>
+        <member name="M:Api.Controllers.Identification.Registration.RegistrationController.AddUser(Domain.Models.Identification.Registration.Request.AddUserRequest)">
+            <summary>
+            Метод добавления пользователя
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Api.Controllers.Identification.Roles.RolesController">
+            <summary>
+            Контроллер ролей
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.Identification.Roles.RolesController.#ctor(Microsoft.Extensions.Logging.ILogger{Api.Controllers.Identification.Roles.RolesController},Services.Identification.Roles.IRoles)">
+            <summary>
+            Конструктор контроллера ролей
+            </summary>
+            <param name="logger"></param>
+            <param name="roles"></param>
+        </member>
+        <member name="M:Api.Controllers.Identification.Roles.RolesController.AddRole(Domain.Models.Identification.Roles.Request.AddRoleRequest)">
+            <summary>
+            Метод добавления роли
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.Identification.Roles.RolesController.GetRoles">
+            <summary>
+            Метод получения списка ролей
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Api.Controllers.Informations.InformationArticles.InformationArticlesController">
+            <summary>
+            Контроллер информационных статей
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.Informations.InformationArticles.InformationArticlesController.#ctor(Microsoft.Extensions.Logging.ILogger{Api.Controllers.Informations.InformationArticles.InformationArticlesController},Services.Informations.InformationArticles.AddInformationArticle.IAddInformationArticle,Services.Informations.InformationArticlesDetails.AddInformationArticleDetail.IAddInformationArticleDetail,Services.Informations.InformationArticles.GetInformationArticles.IGetListInformationArticles,Services.Informations.InformationArticlesDetails.GetInformationArticleDetails.IGetInformationArticleDetails)">
+            <summary>
+            Конструктор контроллера информационных статей
+            </summary>
+            <param name="logger"></param>
+            <param name="addInformationArticle"></param>
+            <param name="addInformationArticleDetail"></param>
+            <param name="getListInformationArticles"></param>
+            <param name="getInformationArticleDetails"></param>
+        </member>
+        <member name="M:Api.Controllers.Informations.InformationArticles.InformationArticlesController.AddInformationArticle(Domain.Models.Informations.InformationArticles.Request.AddInformationArticleRequest)">
+            <summary>
+            Метод добавления информационной статьи
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.Informations.InformationArticles.InformationArticlesController.AddInformationArticleDetail(Domain.Models.Informations.InformationArticlesDetails.Request.AddInformationArticleDetailRequest)">
+            <summary>
+            Метод добавления детальной части информационной статьи
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.Informations.InformationArticles.InformationArticlesController.GetListInformationArticles(System.String)">
+            <summary>
+            Метод получения списка информационных статей
+            </summary>
+            <param name="search"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.Informations.InformationArticles.InformationArticlesController.GetInformationArticleDetails(System.Nullable{System.Int64})">
+            <summary>
+            Метод получения детальных частей информационной статьи
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Api.Controllers.Informations.News.NewsController">
+            <summary>
+            Контроллер новостей
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.Informations.News.NewsController.#ctor(Microsoft.Extensions.Logging.ILogger{Api.Controllers.Informations.News.NewsController},Services.Informations.News.GetNewsList.IGetNewsList,Services.Informations.NewsDetails.GetNewsDetails.IGetNewsDetails,Services.Informations.News.AddNews.IAddNews,Services.Informations.NewsDetails.AddNewsDetail.IAddNewsDetail)">
+            <summary>
+            Конструктор контроллера новостей
+            </summary>
+            <param name="logger"></param>
+            <param name="getNews"></param>
+            <param name="getNewsDetails"></param>
+            <param name="addNews"></param>
+            <param name="addNewsDetail"></param>
+        </member>
+        <member name="M:Api.Controllers.Informations.News.NewsController.GetNewsList(System.String)">
+            <summary>
+            Метод получения списка новостей
+            </summary>
+            <param name="search"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.Informations.News.NewsController.GetNewsDetails(System.Nullable{System.Int64})">
+            <summary>
+            Метод получения детальных частей новости
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.Informations.News.NewsController.AddNews(Domain.Models.Informations.News.Request.AddNewsRequest)">
+            <summary>
+            Метод добавления новости
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.Informations.News.NewsController.AddNewsDetail(Domain.Models.Informations.NewsDetails.Request.AddNewsDetailRequest)">
+            <summary>
+            Метод добавления детальной части новости
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Api.Controllers.Politics.Countries.CountriesCountroller">
+            <summary>
+            Контроллер стран
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.Politics.Countries.CountriesCountroller.#ctor(Microsoft.Extensions.Logging.ILogger{Api.Controllers.Politics.Countries.CountriesCountroller},Services.Politics.Countries.ICountries)">
+            <summary>
+            Конструктор контроллера стран
+            </summary>
+            <param name="logger"></param>
+            <param name="countries"></param>
+        </member>
+        <member name="M:Api.Controllers.Politics.Countries.CountriesCountroller.GetCountries">
+            <summary>
+            Метод получения списка стран
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.Politics.Countries.CountriesCountroller.GetCountriesFullInformation(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Collections.Generic.List{Domain.Models.Base.BaseSortRequest},System.Boolean)">
+            <summary>
+            Метод получения списка стран с полной информацией
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.Politics.Countries.CountriesCountroller.AddCountry(Domain.Models.Politics.Countries.Request.AddCountryRequest)">
+            <summary>
+            Метод добавления страны
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.Politics.Countries.CountriesCountroller.UpdateCountry(Domain.Models.Politics.Countries.Request.AddCountryRequest,System.Int64)">
+            <summary>
+            Метод добавления страны
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.Politics.Countries.CountriesCountroller.DeleteCountry(System.Int64)">
+            <summary>
+            Метод удаления страны
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.Politics.Countries.CountriesCountroller.RestoreCountry(System.Int64)">
+            <summary>
+            Метод восстановления страны
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Api.Controllers.Sociology.Names.PersonalNamesController">
+            <summary>
+            Контроллер имён
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.Sociology.Names.PersonalNamesController.#ctor(Microsoft.Extensions.Logging.ILogger{Api.Controllers.Sociology.Names.PersonalNamesController},Services.Sociology.PersonalNames.IPersonalNames)">
+            <summary>
+            Конструктор контроллера имён
+            </summary>
+            <param name="logger"></param>
+            <param name="personalNames"></param>
+        </member>
+        <member name="M:Api.Controllers.Sociology.Names.PersonalNamesController.GetGeneratedName(System.Nullable{System.Int64},System.Nullable{System.Boolean},System.Boolean)">
+            <summary>
+            Метод получения сгенерированного имени
+            </summary>
+            <param name="nationId"></param>
+            <param name="gender"></param>
+            <param name="generateLastName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.Sociology.Names.PersonalNamesController.GetListBeginningsNames(System.Nullable{System.Int64},System.Nullable{System.Boolean})">
+            <summary>
+            Метод получения начал имён
+            </summary>
+            <param name="nationId"></param>
+            <param name="gender"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.Sociology.Names.PersonalNamesController.GetListEndingsNames(System.Nullable{System.Int64},System.Nullable{System.Boolean})">
+            <summary>
+            Метод получения окончаний имён
+            </summary>
+            <param name="nationId"></param>
+            <param name="gender"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.Sociology.Names.PersonalNamesController.GetGeneratingNewName(System.Nullable{System.Int64},System.Nullable{System.Boolean},System.String,System.String)">
+            <summary>
+            Метод генерации нового имени
+            </summary>
+            <param name="nationId"></param>
+            <param name="gender"></param>
+            <param name="firstSyllable"></param>
+            <param name="lastSyllable"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.Sociology.Names.PersonalNamesController.AddName(System.Nullable{System.Int64},System.Nullable{System.Boolean},System.String,System.Nullable{System.Double})">
+            <summary>
+            Метод добавления имени
+            </summary>
+            <param name="nationId"></param>
+            <param name="gender"></param>
+            <param name="name"></param>
+            <param name="probability"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Api.Controllers.Sociology.Nations.NationsController">
+            <summary>
+            Контроллер наций
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.Sociology.Nations.NationsController.#ctor(Microsoft.Extensions.Logging.ILogger{Api.Controllers.Sociology.Nations.NationsController},Services.Sociology.Nations.INations)">
+            <summary>
+            Конструктор контроллера наций
+            </summary>
+            <param name="logger"></param>
+            <param name="nations"></param>
+        </member>
+        <member name="M:Api.Controllers.Sociology.Nations.NationsController.GetNationsList(System.Nullable{System.Int64})">
+            <summary>
+            Метод получения списка наций
+            </summary>
+            <param name="raceId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Api.Controllers.Sociology.Races.RacesController">
+            <summary>
+            Контроллер рас
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.Sociology.Races.RacesController.#ctor(Microsoft.Extensions.Logging.ILogger{Api.Controllers.Sociology.Races.RacesController},Services.Sociology.Races.IRaces)">
+            <summary>
+            Конструктор контроллера рас
+            </summary>
+            <param name="logger"></param>
+            <param name="races"></param>
+        </member>
+        <member name="M:Api.Controllers.Sociology.Races.RacesController.GetRacesList">
+            <summary>
+            Метод получения списка рас
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Api.Middleware.LoggingMiddleware">
+            <summary>
+            Сервис логгирования middleware
+            </summary>
+        </member>
+        <member name="M:Api.Middleware.LoggingMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Logging.ILogger{Api.Middleware.LoggingMiddleware})">
+            <summary>
+            Конструктор сервиса логгирования middleware
+            </summary>
+            <param name="next"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Api.Middleware.LoggingMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext,Data.ApplicationContext)">
+            <summary>
+            Метод перехватывания запросов
+            </summary>
+            <param name="context"></param>
+            <param name="applicationContext"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Middleware.LoggingMiddleware.GetRequest(Microsoft.AspNetCore.Http.HttpRequest)">
+            <summary>
+            Метод получения запроса
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Middleware.LoggingMiddleware.GetResponse(Microsoft.AspNetCore.Http.HttpResponse)">
+            <summary>
+            Метод получения ответа
+            </summary>
+            <param name="response"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

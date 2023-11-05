@@ -1,26 +1,26 @@
 ﻿using AutoMapper;
 using Data;
-using Domain.Entities.Informations;
 using Domain.Models.Base;
 using Domain.Models.Exclusion;
 using Microsoft.EntityFrameworkCore;
+using NewsEntity = Domain.Entities.Informations.News;
 
-namespace Services.Informations.InformationArticles.GetInformationArticles;
+namespace Services.Informations.News.GetNewsFullList;
 
 /// <summary>
-/// Сервис получения списка информационных статей
+/// Сервис получения полного списка новостей
 /// </summary>
-public class GetListInformationArticles : IGetListInformationArticles
+public class GetNewsFullList : IGetNewsFullList
 {
     private readonly IMapper _mapper; //маппер моделей
     private readonly ApplicationContext _repository; //репозиторий сущности
 
     /// <summary>
-    /// Конструктор сервиса получения списка информационных статей
+    /// Конструктор сервиса получения полного списка новостей
     /// </summary>
     /// <param name="mapper"></param>
     /// <param name="repository"></param>
-    public GetListInformationArticles(IMapper mapper, ApplicationContext repository)
+    public GetNewsFullList(IMapper mapper, ApplicationContext repository)
     {
         _mapper = mapper;
         _repository = repository;
@@ -38,10 +38,10 @@ public class GetListInformationArticles : IGetListInformationArticles
             //Получаем результат запроса
             var response = await Query(search);
 
-            //Преобразовываем модели
+            //Формируем ответ
             var entities = response.Select(_mapper.Map<BaseResponseListItem>).ToList();
 
-            //Формируем ответ
+            //Возвращаем ответ
             return new BaseResponseList(true, null, entities!);
         }
         //Обрабатываем внутренние исключения
@@ -61,22 +61,17 @@ public class GetListInformationArticles : IGetListInformationArticles
     /// </summary>
     /// <param name="search"></param>
     /// <returns></returns>
-    public async Task<List<InformationArticle>> Query(string? search)
+    public async Task<List<NewsEntity>> Query(string? search)
     {
         //Строим запрос
-        IQueryable<InformationArticle> query = _repository
-            .InformationArticles
-            .Where(x => x.DateDeleted == null);
+        IQueryable<NewsEntity> query = _repository.News.Where(x => x.DateDeleted == null);
 
         //Если передали строку поиска
         if (!string.IsNullOrEmpty(search))
             query = query.Where(x => x.Title.ToLower().Contains(search.ToLower()));
 
-        //Сортируем список
-        query = query.OrderBy(x => x.OrdinalNumber);
-
         //Получаем данные с базы
-        var entities = await query.ToListAsync();
+        var entities = await query.OrderBy(x => x.OrdinalNumber).ToListAsync();
 
         //Формируем ответ
         return entities;

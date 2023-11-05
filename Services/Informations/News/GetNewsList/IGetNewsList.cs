@@ -1,5 +1,4 @@
-﻿using Domain.Models.Base;
-using Domain.Models.Informations.News.Response;
+﻿using Domain.Models.Informations.News.Response;
 using NewsEntity = Domain.Entities.Informations.News;
 
 namespace Services.Informations.News.GetNewsList;

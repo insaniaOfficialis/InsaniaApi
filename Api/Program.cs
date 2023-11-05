@@ -35,6 +35,8 @@ using Services.Informations.NewsDetails.GetNewsDetails;
 using Services.Informations.News.AddNews;
 using Services.Informations.NewsDetails.AddNewsDetail;
 using Services.General.Files.GetFilesUser;
+using Microsoft.OpenApi.Models;
+using Services.Informations.News.GetNewsFullList;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -121,6 +123,15 @@ Log.Logger = new LoggerConfiguration()
                .CreateLogger();
 services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog(Log.Logger, dispose: true));
 
+//Добавляем параметры документации
+services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Insania API", Version = "v1" });
+
+    var filePath = Path.Combine(AppContext.BaseDirectory, "Api.xml");
+    options.IncludeXmlComments(filePath);
+});
+
 //Внедряем зависимости для сервисов
 builder.Services.AddScoped<IInitialization, Initialization>();
 builder.Services.AddScoped<IRegistration, Registration>();
@@ -145,6 +156,7 @@ builder.Services.AddScoped<IGetNewsDetails, GetNewsDetails>();
 builder.Services.AddScoped<IAddNews, AddNews>();
 builder.Services.AddScoped<IAddNewsDetail, AddNewsDetail>();
 builder.Services.AddScoped<IGetFilesUser, GetFilesUser>();
+builder.Services.AddScoped<IGetNewsFullList, GetNewsFullList>();
 
 var app = builder.Build();
 
@@ -157,6 +169,11 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=RegistrationController}/{action=Check}");
+app.UseSwagger();
+app.UseSwaggerUI(options =>
+{
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Insania API V1");
+});
 
 app.MapGet("/", () => "Hello World!");
 

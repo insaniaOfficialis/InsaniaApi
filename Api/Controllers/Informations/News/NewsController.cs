@@ -4,6 +4,7 @@ using Domain.Models.Informations.NewsDetails.Request;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Informations.News.AddNews;
+using Services.Informations.News.GetNewsFullList;
 using Services.Informations.News.GetNewsList;
 using Services.Informations.NewsDetails.AddNewsDetail;
 using Services.Informations.NewsDetails.GetNewsDetails;
@@ -22,6 +23,7 @@ public class NewsController : BaseController
     private readonly IGetNewsDetails _getNewsDetails; //интерфейс получения детальных частей новости
     private readonly IAddNews _addNews; //интерфейс добавления новости
     private readonly IAddNewsDetail _addNewsDetail; //интерфейс добавления детальной части новости
+    private readonly IGetNewsFullList _getNewsFullList; //интерфейс получения полного списка новостей
 
     /// <summary>
     /// Конструктор контроллера новостей
@@ -31,14 +33,16 @@ public class NewsController : BaseController
     /// <param name="getNewsDetails"></param>
     /// <param name="addNews"></param>
     /// <param name="addNewsDetail"></param>
+    /// <param name="getNewsFullList"></param>
     public NewsController(ILogger<NewsController> logger, IGetNewsList getNews, IGetNewsDetails getNewsDetails, IAddNews addNews,
-        IAddNewsDetail addNewsDetail) : base(logger)
+        IAddNewsDetail addNewsDetail, IGetNewsFullList getNewsFullList) : base(logger)
     {
         _logger = logger;
         _getNews = getNews;
         _getNewsDetails = getNewsDetails;
         _addNews = addNews;
         _addNewsDetail = addNewsDetail;
+        _getNewsFullList = getNewsFullList;
     }
 
     /// <summary>
@@ -92,5 +96,18 @@ public class NewsController : BaseController
         {
             string? user = User?.Identity?.Name;
             return await _addNewsDetail.Handler(user, request);
+        });
+
+    /// <summary>
+    /// Метод получения полного списка новостей
+    /// </summary>
+    /// <param name="search"></param>
+    /// <returns></returns>
+    [HttpGet]
+    [Route("fullList")]
+    public async Task<IActionResult> GetNewsFullList([FromQuery] string? search)
+        => await GetAnswerAsync(async () =>
+        {
+            return await _getNewsFullList.Handler(search);
         });
 }
