@@ -126,7 +126,7 @@ public class GetNewsDetails : IGetNewsDetails
             if (filesItem != null && filesItem.Items != null && filesItem.Items.Any())
             {
                 //Формируем новый элемент
-                GetNewsDetailsResponseItem responseItem = new(item.Text, filesItem.Items.Select(x => x!.Id ?? 0).ToList());
+                GetNewsDetailsResponseItem responseItem = new(item.Id, item.Text, filesItem.Items.Select(x => x!.Id ?? 0).ToList());
 
                 //Добавляем в ответ новый элемент
                 response.Items!.Add(responseItem);
