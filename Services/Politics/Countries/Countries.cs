@@ -88,7 +88,7 @@ public class Countries: ICountries
                 countriesQuery = countriesQuery.Where(x => x.Name.ToLower().Contains(search.ToLower()));
 
             //Если передали признак удалённых записей
-            if (isDeleted)
+            if (isDeleted == true)
                 countriesQuery = countriesQuery.Where(x => x.DateDeleted != null);
             else
                 countriesQuery = countriesQuery.Where(x => x.DateDeleted == null);

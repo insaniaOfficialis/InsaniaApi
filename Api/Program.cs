@@ -37,6 +37,7 @@ using Services.Informations.NewsDetails.AddNewsDetail;
 using Services.General.Files.GetFilesUser;
 using Microsoft.OpenApi.Models;
 using Services.Informations.News.GetNewsFullList;
+using Services.Informations.News.GetNewsTable;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -59,7 +60,8 @@ services.AddDbContext<ApplicationContext>(options =>
 builder.Services.AddAutoMapper(typeof(AppMappingProfile));
 
 //Добавляем параметры идентификации
-builder.Services.AddIdentity<User, Role>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationContext>();
+builder.Services.AddIdentity<User, Role>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<ApplicationContext>();
 builder.Services.AddControllersWithViews();
 
 //Добавляем параметры авторизации
@@ -157,6 +159,7 @@ builder.Services.AddScoped<IAddNews, AddNews>();
 builder.Services.AddScoped<IAddNewsDetail, AddNewsDetail>();
 builder.Services.AddScoped<IGetFilesUser, GetFilesUser>();
 builder.Services.AddScoped<IGetNewsFullList, GetNewsFullList>();
+builder.Services.AddScoped<IGetNewsTable, GetNewsTable>();
 
 var app = builder.Build();
 
