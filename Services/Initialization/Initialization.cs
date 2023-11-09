@@ -404,6 +404,22 @@ public class Initialization : IInitialization
                     await _repository.SaveChangesAsync();
                 }
             }
+
+            //Проверяем наличие права доступа "Управление новостями"
+            if (!_repository.AccessRights.Any(x => x.Name == "Управление новостями"))
+            {
+                //Получаем родительский элемент
+                AccessRight parent = await _repository.AccessRights.FirstAsync(x => x.Name == "Страница администрирования");
+
+                //Если родительский элемент есть
+                if (parent != null)
+                {
+                    //Создаём право доступа "Управление новостями"
+                    AccessRight accessRight = new("system", "Управление новостями", parent);
+                    _repository.AccessRights.Add(accessRight);
+                    await _repository.SaveChangesAsync();
+                }
+            }
         }
         catch (Exception ex)
         {
@@ -527,6 +543,27 @@ public class Initialization : IInitialization
                             if (!_repository.RolesAcccessRights.Any(x => x.Role == role && x.AccessRight == accessRight))
                             {
                                 //Создаём связь роли "Админ" с правом доступа "Добавление имени"
+                                RoleAcccessRight roleAcccessRight = new("system", role, accessRight);
+                                _repository.RolesAcccessRights.Add(roleAcccessRight);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие права доступа "Управление новостями"
+                    if (_repository.AccessRights.Any(x => x.Name == "Управление новостями"))
+                    {
+                        //Получаем право доступа "Управление новостями"
+                        AccessRight? accessRight = await _repository.AccessRights
+                            .FirstAsync(x => x.Name == "Управление новостями");
+
+                        //Проверяем права доступа "Управление новостями"
+                        if (accessRight != null)
+                        {
+                            //Проверяем наличие связи роли "Админ" с правом доступа "Управление новостями"
+                            if (!_repository.RolesAcccessRights.Any(x => x.Role == role && x.AccessRight == accessRight))
+                            {
+                                //Создаём связь роли "Админ" с правом доступа "Управление новостями"
                                 RoleAcccessRight roleAcccessRight = new("system", role, accessRight);
                                 _repository.RolesAcccessRights.Add(roleAcccessRight);
                                 await _repository.SaveChangesAsync();
