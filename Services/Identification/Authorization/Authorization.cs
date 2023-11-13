@@ -115,7 +115,8 @@ public class Authorization: IAuthorization
             List<string> accessRights = await _repository
                 .RolesAcccessRights
                 .Include(x => x.Role)
-                .Where(x => roles.Contains(x.Role.Name!))
+                .Include(x => x.AccessRight)
+                .Where(x => roles.Contains(x.Role.Name!) && x.DateDeleted == null && x.AccessRight.DateDeleted == null)
                 .Select(x => x.AccessRight.Alias)
                 .Distinct()
                 .ToListAsync();
