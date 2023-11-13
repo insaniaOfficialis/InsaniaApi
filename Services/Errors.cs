@@ -10,6 +10,7 @@ public static class Errors
     public const string NotValidate = "Проверки не пройдены";
     public const string EmptyCurrentUser = "Не определён текущий пользователь";
     public const string ErrorConvertModel = "Ошибка преобразования модели запроса в модель ответа";
+    public const string EmptyId = "Пустая ссылка на запись";
 
     //ИНФОРМАЦИОННЫЕ СТАТЬИ
     public const string EmptyTitle = "Пустой заголовок";
