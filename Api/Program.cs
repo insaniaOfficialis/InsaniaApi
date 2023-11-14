@@ -38,6 +38,7 @@ using Services.General.Files.GetFilesUser;
 using Microsoft.OpenApi.Models;
 using Services.Informations.News.GetNewsFullList;
 using Services.Informations.News.GetNewsTable;
+using Services.Informations.News.EditNews;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -135,31 +136,32 @@ services.AddSwaggerGen(options =>
 });
 
 //Внедряем зависимости для сервисов
-builder.Services.AddScoped<IInitialization, Initialization>();
-builder.Services.AddScoped<IRegistration, Registration>();
-builder.Services.AddScoped<IRoles, Roles>();
-builder.Services.AddScoped<IAuthorization, Authorization>();
-builder.Services.AddScoped<IFiles, Files>();
-builder.Services.AddScoped<IToken, Token>();
-builder.Services.AddScoped<ICountries, Countries>();
-builder.Services.AddScoped<IRaces, Races>();
-builder.Services.AddScoped<INations, Nations>();
-builder.Services.AddScoped<IPersonalNames, PersonalNames>();
-builder.Services.AddScoped<IGetLogs, GetLogs>();
-builder.Services.AddScoped<IAddInformationArticle, AddInformationArticle>();
-builder.Services.AddScoped<IAddInformationArticleDetail, AddInformationArticleDetail>();
-builder.Services.AddScoped<IGetListInformationArticles, GetListInformationArticles>();
-builder.Services.AddScoped<IGetFile, GetFile>();
-builder.Services.AddScoped<IGetFilesInformationArticleDetails, GetFilesInformationArticleDetails>();
-builder.Services.AddScoped<IGetInformationArticleDetails, GetInformationArticleDetails>();
-builder.Services.AddScoped<IGetNewsList, GetNewsList>();
-builder.Services.AddScoped<IGetFilesNewsDetails, GetFilesNewsDetails>();
-builder.Services.AddScoped<IGetNewsDetails, GetNewsDetails>();
-builder.Services.AddScoped<IAddNews, AddNews>();
-builder.Services.AddScoped<IAddNewsDetail, AddNewsDetail>();
-builder.Services.AddScoped<IGetFilesUser, GetFilesUser>();
-builder.Services.AddScoped<IGetNewsFullList, GetNewsFullList>();
-builder.Services.AddScoped<IGetNewsTable, GetNewsTable>();
+builder.Services.AddScoped<IInitialization, Initialization>(); //инициализация
+builder.Services.AddScoped<IRegistration, Registration>(); //регистрация
+builder.Services.AddScoped<IRoles, Roles>(); //логика работы с ролями
+builder.Services.AddScoped<IAuthorization, Authorization>(); //авторизация
+builder.Services.AddScoped<IFiles, Files>(); //логика работы с файлами
+builder.Services.AddScoped<IToken, Token>(); //логика формирования токена
+builder.Services.AddScoped<ICountries, Countries>(); //логика работы со странами
+builder.Services.AddScoped<IRaces, Races>(); //логика работы с расами
+builder.Services.AddScoped<INations, Nations>(); //логика работы с нациями
+builder.Services.AddScoped<IPersonalNames, PersonalNames>(); //логика работы с персональными именами
+builder.Services.AddScoped<IGetLogs, GetLogs>(); //получение логов
+builder.Services.AddScoped<IAddInformationArticle, AddInformationArticle>(); //добавление информационной статьи
+builder.Services.AddScoped<IAddInformationArticleDetail, AddInformationArticleDetail>(); //добавление детальной части информационной статьи
+builder.Services.AddScoped<IGetListInformationArticles, GetListInformationArticles>(); //получения списка информационных статей
+builder.Services.AddScoped<IGetFile, GetFile>(); //получение файла
+builder.Services.AddScoped<IGetFilesInformationArticleDetails, GetFilesInformationArticleDetails>(); //получение файлов детальной части информационной статьи
+builder.Services.AddScoped<IGetInformationArticleDetails, GetInformationArticleDetails>(); //получение детальных частей информационной статьи
+builder.Services.AddScoped<IGetNewsList, GetNewsList>(); //получение списка новостей
+builder.Services.AddScoped<IGetFilesNewsDetails, GetFilesNewsDetails>(); //получение файлов детальной части новости
+builder.Services.AddScoped<IGetNewsDetails, GetNewsDetails>(); //получение детальных частей новости
+builder.Services.AddScoped<IAddNews, AddNews>(); //добавление новости
+builder.Services.AddScoped<IAddNewsDetail, AddNewsDetail>(); //добавление детальной части новости
+builder.Services.AddScoped<IGetFilesUser, GetFilesUser>(); //получение файлов пользователя
+builder.Services.AddScoped<IGetNewsFullList, GetNewsFullList>(); //получение полного списка новостей
+builder.Services.AddScoped<IGetNewsTable, GetNewsTable>(); //получение новостей для таблицы
+builder.Services.AddScoped<IEditNews, EditNews>(); //редактирование новостей
 
 var app = builder.Build();
 

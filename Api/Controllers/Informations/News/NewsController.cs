@@ -5,6 +5,7 @@ using Domain.Models.Informations.NewsDetails.Request;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Informations.News.AddNews;
+using Services.Informations.News.EditNews;
 using Services.Informations.News.GetNewsFullList;
 using Services.Informations.News.GetNewsList;
 using Services.Informations.News.GetNewsTable;
@@ -27,6 +28,7 @@ public class NewsController : BaseController
     private readonly IAddNewsDetail _addNewsDetail; //интерфейс добавления детальной части новости
     private readonly IGetNewsFullList _getNewsFullList; //интерфейс получения полного списка новостей
     private readonly IGetNewsTable _getNewsTable; //интерфейс получения списка новостей для таблицы
+    private readonly IEditNews _editNews; //интерфейс редактирования новости
 
     /// <summary>
     /// Конструктор контроллера новостей
@@ -38,8 +40,9 @@ public class NewsController : BaseController
     /// <param name="addNewsDetail"></param>
     /// <param name="getNewsFullList"></param>
     /// <param name="getNewsTable"></param>
+    /// <param name="editNews"></param>
     public NewsController(ILogger<NewsController> logger, IGetNewsList getNews, IGetNewsDetails getNewsDetails, IAddNews addNews,
-        IAddNewsDetail addNewsDetail, IGetNewsFullList getNewsFullList, IGetNewsTable getNewsTable) : base(logger)
+        IAddNewsDetail addNewsDetail, IGetNewsFullList getNewsFullList, IGetNewsTable getNewsTable, IEditNews editNews) : base(logger)
     {
         _logger = logger;
         _getNews = getNews;
@@ -48,6 +51,7 @@ public class NewsController : BaseController
         _addNewsDetail = addNewsDetail;
         _getNewsFullList = getNewsFullList;
         _getNewsTable = getNewsTable;
+        _editNews = editNews;
     }
 
     /// <summary>
@@ -132,5 +136,20 @@ public class NewsController : BaseController
         => await GetAnswerAsync(async () =>
         {
             return await _getNewsTable.Handler(search, skip, take, sort, isDeleted);
+        });
+
+    /// <summary>
+    /// Метод редактирования новости
+    /// </summary>
+    /// <param name="request"></param>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [HttpPut]
+    [Route("{id}")]
+    public async Task<IActionResult> EditNews([FromBody] AddNewsRequest? request, [FromRoute] long id)
+        => await GetAnswerAsync(async () =>
+        {
+            string? user = User?.Identity?.Name;
+            return await _editNews.Handler(user, request, id);
         });
 }
