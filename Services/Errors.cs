@@ -34,6 +34,7 @@ public static class Errors
 
     //ДЕТАЛЬНЫЕ ЧАТИ НОВОСТЕЙ
     public const string EmptyNewsId = "Пустая ссылка на новость";
+    public const string NotExistsNewsDetail = "Не существующая детальная часть новости";
 
     //ТИПЫ НОВСТЕЙ
     public const string EmptyTypeNews = "Пустой тип новсти";
