@@ -10,6 +10,7 @@ using Services.Informations.News.GetNewsFullList;
 using Services.Informations.News.GetNewsList;
 using Services.Informations.News.GetNewsTable;
 using Services.Informations.NewsDetails.AddNewsDetail;
+using Services.Informations.NewsDetails.EditNewsDetail;
 using Services.Informations.NewsDetails.GetNewsDetails;
 
 namespace Api.Controllers.Informations.News;
@@ -29,6 +30,7 @@ public class NewsController : BaseController
     private readonly IGetNewsFullList _getNewsFullList; //интерфейс получения полного списка новостей
     private readonly IGetNewsTable _getNewsTable; //интерфейс получения списка новостей для таблицы
     private readonly IEditNews _editNews; //интерфейс редактирования новости
+    private readonly IEditNewsDetail _editNewsDetail; //интерфейс редактирования детальной части новости
 
     /// <summary>
     /// Конструктор контроллера новостей
@@ -41,8 +43,10 @@ public class NewsController : BaseController
     /// <param name="getNewsFullList"></param>
     /// <param name="getNewsTable"></param>
     /// <param name="editNews"></param>
+    /// <param name="editNewsDetail"></param>
     public NewsController(ILogger<NewsController> logger, IGetNewsList getNews, IGetNewsDetails getNewsDetails, IAddNews addNews,
-        IAddNewsDetail addNewsDetail, IGetNewsFullList getNewsFullList, IGetNewsTable getNewsTable, IEditNews editNews) : base(logger)
+        IAddNewsDetail addNewsDetail, IGetNewsFullList getNewsFullList, IGetNewsTable getNewsTable, IEditNews editNews,
+        IEditNewsDetail editNewsDetail) : base(logger)
     {
         _logger = logger;
         _getNews = getNews;
@@ -52,6 +56,7 @@ public class NewsController : BaseController
         _getNewsFullList = getNewsFullList;
         _getNewsTable = getNewsTable;
         _editNews = editNews;
+        _editNewsDetail = editNewsDetail;
     }
 
     /// <summary>
@@ -151,5 +156,20 @@ public class NewsController : BaseController
         {
             string? user = User?.Identity?.Name;
             return await _editNews.Handler(user, request, id);
+        });
+
+    /// <summary>
+    /// Метод редактирования детальной части новости
+    /// </summary>
+    /// <param name="request"></param>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [HttpPut]
+    [Route("details/{id}")]
+    public async Task<IActionResult> EditNewsDetail([FromBody] AddNewsDetailRequest? request, [FromRoute] long id)
+        => await GetAnswerAsync(async () =>
+        {
+            string? user = User?.Identity?.Name;
+            return await _editNewsDetail.Handler(user, request, id);
         });
 }

@@ -39,6 +39,7 @@ using Microsoft.OpenApi.Models;
 using Services.Informations.News.GetNewsFullList;
 using Services.Informations.News.GetNewsTable;
 using Services.Informations.News.EditNews;
+using Services.Informations.NewsDetails.EditNewsDetail;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -162,6 +163,7 @@ builder.Services.AddScoped<IGetFilesUser, GetFilesUser>(); //получение 
 builder.Services.AddScoped<IGetNewsFullList, GetNewsFullList>(); //получение полного списка новостей
 builder.Services.AddScoped<IGetNewsTable, GetNewsTable>(); //получение новостей для таблицы
 builder.Services.AddScoped<IEditNews, EditNews>(); //редактирование новостей
+builder.Services.AddScoped<IEditNewsDetail, EditNewsDetail>(); //редактирование детальной части новости
 
 var app = builder.Build();
 
