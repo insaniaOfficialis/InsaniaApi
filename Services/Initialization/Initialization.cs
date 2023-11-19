@@ -942,10 +942,28 @@ public class Initialization : IInitialization
             if (!_repository.Terrains.Any(x => x.Name == "Равнинный"))
             {
                 //Создаём рельеф "Равнинный"
-                Terrain terrain = new("system", "Равнинный", "#424700");
+                Terrain terrain = new("system", "Равнинный", "#808900");
                 _repository.Terrains.Add(terrain);
                 await _repository.SaveChangesAsync();
-            }   
+            }
+
+            //Проверяем наличие рельефа "Пресная вода"
+            if (!_repository.Terrains.Any(x => x.Name == "Пресная вода"))
+            {
+                //Создаём рельеф "Пресная вода"
+                Terrain terrain = new("system", "Пресная вода", "#6693C4");
+                _repository.Terrains.Add(terrain);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие рельефа "Солёная вода"
+            if (!_repository.Terrains.Any(x => x.Name == "Солёная вода"))
+            {
+                //Создаём рельеф "Солёная вода"
+                Terrain terrain = new("system", "Солёная вода", "#328781");
+                _repository.Terrains.Add(terrain);
+                await _repository.SaveChangesAsync();
+            }
         }
         catch (Exception ex)
         {
