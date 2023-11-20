@@ -12,9 +12,8 @@ public interface IRemovalNews
     /// </summary>
     /// <param name="user"></param>
     /// <param name="id"></param>
-    /// <param name="isDeleted"></param>
     /// <returns></returns>
-    Task<bool> Validator(string? user, long? id, bool? isDeleted);
+    Task<bool> Validator(string? user, long? id);
 
     /// <summary>
     /// Метод обработки
