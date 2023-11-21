@@ -28,7 +28,7 @@ public class AddNewsTests : BaseTest
         long id = _repository.News.Max(x => x.Id) + 1;
 
         //Получаем результат
-        var result = await service.Handler("system", new(string.Format("Тест_{0}", id), "ААА", 1, 1));
+        var result = await service.Handler("system", new(string.Format("Тест_{0}", id), string.Format("Тест_{0}", id), 1, 1));
 
         //Проверяем, что результат успешный
         Assert.True(result.Success);
@@ -47,8 +47,7 @@ public class AddNewsTests : BaseTest
         long id = _repository.News.Max(x => x.Id) + 1;
 
         //Получаем результат
-        var result = await service.Handler("system", new(string.Format("Тест_{0}", id), "ААА", 1, 1));
-
+        var result = await service.Handler("system", new(string.Format("Тест_{0}", id), string.Format("Тест_{0}", id), 1, 1));
 
         //Проверяем, что совпадают id
         Assert.Equal(id, result.Id);

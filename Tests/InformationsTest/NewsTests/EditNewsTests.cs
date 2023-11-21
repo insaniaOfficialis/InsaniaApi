@@ -9,7 +9,7 @@ namespace Tests.InformationsTest.NewsTests;
 public class EditNewsTests : BaseTest
 {
     /// <summary>
-    /// Конструктор теста метода редактирования имени
+    /// Конструктор теста метода редактирования новости
     /// </summary>
     public EditNewsTests() : base()
     {
