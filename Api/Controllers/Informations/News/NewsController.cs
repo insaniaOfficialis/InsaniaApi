@@ -9,6 +9,7 @@ using Services.Informations.News.EditNews;
 using Services.Informations.News.GetNewsFullList;
 using Services.Informations.News.GetNewsList;
 using Services.Informations.News.GetNewsTable;
+using Services.Informations.News.RemovalNews;
 using Services.Informations.NewsDetails.AddNewsDetail;
 using Services.Informations.NewsDetails.EditNewsDetail;
 using Services.Informations.NewsDetails.GetNewsDetails;
@@ -31,6 +32,7 @@ public class NewsController : BaseController
     private readonly IGetNewsTable _getNewsTable; //интерфейс получения списка новостей для таблицы
     private readonly IEditNews _editNews; //интерфейс редактирования новости
     private readonly IEditNewsDetail _editNewsDetail; //интерфейс редактирования детальной части новости
+    private readonly IRemovalNews _removalNews; //интерфейс удаления/восстановления детальной части новости
 
     /// <summary>
     /// Конструктор контроллера новостей
@@ -44,9 +46,10 @@ public class NewsController : BaseController
     /// <param name="getNewsTable"></param>
     /// <param name="editNews"></param>
     /// <param name="editNewsDetail"></param>
+    /// <param name="removalNews"></param>
     public NewsController(ILogger<NewsController> logger, IGetNewsList getNews, IGetNewsDetails getNewsDetails, IAddNews addNews,
         IAddNewsDetail addNewsDetail, IGetNewsFullList getNewsFullList, IGetNewsTable getNewsTable, IEditNews editNews,
-        IEditNewsDetail editNewsDetail) : base(logger)
+        IEditNewsDetail editNewsDetail, IRemovalNews removalNews) : base(logger)
     {
         _logger = logger;
         _getNews = getNews;
@@ -57,6 +60,7 @@ public class NewsController : BaseController
         _getNewsTable = getNewsTable;
         _editNews = editNews;
         _editNewsDetail = editNewsDetail;
+        _removalNews = removalNews;
     }
 
     /// <summary>
@@ -171,5 +175,20 @@ public class NewsController : BaseController
         {
             string? user = User?.Identity?.Name;
             return await _editNewsDetail.Handler(user, request, id);
+        });
+
+    /// <summary>
+    /// Метод удаления/восстановления детальной части новости
+    /// </summary>
+    /// <param name="isDeleted"></param>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [HttpDelete]
+    [Route("{id}")]
+    public async Task<IActionResult> RemovalNews([FromQuery] bool? isDeleted, [FromRoute] long id)
+        => await GetAnswerAsync(async () =>
+        {
+            string? user = User?.Identity?.Name;
+            return await _removalNews.Handler(user, id, isDeleted);
         });
 }
