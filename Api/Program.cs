@@ -41,6 +41,7 @@ using Services.Informations.News.GetNewsTable;
 using Services.Informations.News.EditNews;
 using Services.Informations.NewsDetails.EditNewsDetail;
 using Services.Informations.News.RemovalNews;
+using Services.Informations.NewsDetails.RemovalNewsDetail;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -166,6 +167,7 @@ builder.Services.AddScoped<IGetNewsTable, GetNewsTable>(); //получение 
 builder.Services.AddScoped<IEditNews, EditNews>(); //редактирование новостей
 builder.Services.AddScoped<IEditNewsDetail, EditNewsDetail>(); //редактирование детальной части новости
 builder.Services.AddScoped<IRemovalNews, RemovalNews>(); //удаление/восстановление новости
+builder.Services.AddScoped<IRemovalNewsDetail, RemovalNewsDetail>(); //удаление/восстановление детальной части новости
 
 var app = builder.Build();
 
