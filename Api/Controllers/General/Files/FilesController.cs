@@ -3,7 +3,9 @@ using Domain.Models.General.Files.Request;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.General.Files;
+using Services.General.Files.EditOrdinalNumberFile;
 using Services.General.Files.GetFile;
+using Services.General.Files.ManagingFileDeletion;
 
 namespace Api.Controllers.General.Files;
 
@@ -17,6 +19,8 @@ public class FilesController : BaseController
     private readonly ILogger<FilesController> _logger; //логгер для записи логов
     private readonly IFiles _files; //сервис файлов
     private readonly IGetFile _getFile; //сервис получения файла
+    private readonly IManagingFileDeletion _managingFileDeletion; //управление удалением файла
+    private readonly IEditOrdinalNumberFile _editOrdinalNumberFile; //изменения порядкового номера файла
 
     /// <summary>
     /// Конструктор контроллера файлов
@@ -24,11 +28,17 @@ public class FilesController : BaseController
     /// <param name="logger"></param>
     /// <param name="files"></param>
     /// <param name="getFile"></param>
-    public FilesController(ILogger<FilesController> logger, IFiles files, IGetFile getFile) : base(logger)
+    /// <param name="managingFileDeletion"></param>
+    /// <param name="editOrdinalNumberFile"></param>
+    public FilesController(ILogger<FilesController> logger, IFiles files, IGetFile getFile, IManagingFileDeletion managingFileDeletion,
+        IEditOrdinalNumberFile editOrdinalNumberFile) 
+        : base(logger)
     {
         _logger = logger;
         _files = files;
         _getFile = getFile;
+        _managingFileDeletion = managingFileDeletion;
+        _editOrdinalNumberFile = editOrdinalNumberFile;
     }
 
     /// <summary>
@@ -67,6 +77,7 @@ public class FilesController : BaseController
     /// <summary>
     /// Метод получения файла
     /// </summary>
+    /// <param name="entityId"></param>
     /// <param name="id"></param>
     /// <returns></returns>
     [HttpGet]
@@ -114,4 +125,34 @@ public class FilesController : BaseController
             return null;
         }
     }
+
+    /// <summary>
+    /// Управление удалением файла
+    /// </summary>
+    /// <param name="isDeleted"></param>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [HttpDelete]
+    [Route("{id}")]
+    public async Task<IActionResult> ManagingFileDeletion([FromQuery] bool? isDeleted, [FromRoute] long id)
+        => await GetAnswerAsync(async () =>
+        {
+            string? user = User?.Identity?.Name;
+            return await _managingFileDeletion.Handler(user, id, isDeleted);
+        });
+
+    /// <summary>
+    /// Изменения порядкового номера файла
+    /// </summary>
+    /// <param name="ordinalNumber"></param>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [HttpPatch]
+    [Route("ordinalNumber/{id}")]
+    public async Task<IActionResult> EditOrdinalNumberFile([FromQuery] long? ordinalNumber, [FromRoute] long? id)
+        => await GetAnswerAsync(async () =>
+        {
+            string? user = User?.Identity?.Name;
+            return await _editOrdinalNumberFile.Handler(user, ordinalNumber, id);
+        });
 }

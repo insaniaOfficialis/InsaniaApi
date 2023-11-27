@@ -11,6 +11,8 @@ public static class Errors
     public const string EmptyCurrentUser = "Не определён текущий пользователь";
     public const string ErrorConvertModel = "Ошибка преобразования модели запроса в модель ответа";
     public const string EmptyId = "Пустая ссылка на запись";
+    public const string EmptyOrdinalNumber = "Пустой порядковый номер";
+    public const string IncorrectOrdinalNumber = "Некорректный порядковый номер";
 
     //ИНФОРМАЦИОННЫЕ СТАТЬИ
     public const string EmptyTitle = "Пустой заголовок";
@@ -26,6 +28,9 @@ public static class Errors
     public const string NotExistsFile = "Не существует файл";
     public const string EmptyEntityId = "Пустой идентификатор сущности файла";
     public const string NotExistsFilesUsers = "Не существует файлы пользователей";
+    public const string NotExistsFileInformationArticleDetail = "Не существует файл информационной статьи";
+    public const string NotExistsFileNewsDetail = "Не существует файл новости";
+    public const string NotExistsFileEntity = "Не существует файл сущности";
 
     //НОВОСТИ
     public const string NotExistsNews = "Не существующая новость";
