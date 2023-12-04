@@ -14,6 +14,7 @@ using Services.Informations.NewsDetails.AddNewsDetail;
 using Services.Informations.NewsDetails.EditNewsDetail;
 using Services.Informations.NewsDetails.GetNewsDetails;
 using Services.Informations.NewsDetails.RemovalNewsDetail;
+using Services.Informations.NewsTypes.GetNewsTypesList;
 
 namespace Api.Controllers.Informations.News;
 
@@ -35,6 +36,7 @@ public class NewsController : BaseController
     private readonly IEditNewsDetail _editNewsDetail; //интерфейс редактирования детальной части новости
     private readonly IRemovalNews _removalNews; //интерфейс удаления/восстановления новости
     private readonly IRemovalNewsDetail _removalNewsDetail; //интерфейс удаления/восстановления детальной части новости
+    private readonly IGetNewsTypesList _getNewsTypesList; //получение списка типов новостей
 
     /// <summary>
     /// Конструктор контроллера новостей
@@ -50,9 +52,11 @@ public class NewsController : BaseController
     /// <param name="editNewsDetail"></param>
     /// <param name="removalNews"></param>
     /// <param name="removalNewsDetail"></param>
+    /// <param name="getNewsTypesList"></param>
     public NewsController(ILogger<NewsController> logger, IGetNewsList getNews, IGetNewsDetails getNewsDetails, IAddNews addNews,
         IAddNewsDetail addNewsDetail, IGetNewsFullList getNewsFullList, IGetNewsTable getNewsTable, IEditNews editNews,
-        IEditNewsDetail editNewsDetail, IRemovalNews removalNews, IRemovalNewsDetail removalNewsDetail) : base(logger)
+        IEditNewsDetail editNewsDetail, IRemovalNews removalNews, IRemovalNewsDetail removalNewsDetail, IGetNewsTypesList getNewsTypesList) :
+        base(logger)
     {
         _logger = logger;
         _getNews = getNews;
@@ -65,6 +69,7 @@ public class NewsController : BaseController
         _editNewsDetail = editNewsDetail;
         _removalNews = removalNews;
         _removalNewsDetail = removalNewsDetail;
+        _getNewsTypesList = getNewsTypesList;
     }
 
     /// <summary>
@@ -209,5 +214,17 @@ public class NewsController : BaseController
         {
             string? user = User?.Identity?.Name;
             return await _removalNewsDetail.Handler(user, id, isDeleted);
+        });
+
+    /// <summary>
+    /// Метод получение списка типов новостей
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet]
+    [Route("types/list")]
+    public async Task<IActionResult> GetNewsTypesList()
+        => await GetAnswerAsync(async () =>
+        {
+            return await _getNewsTypesList.Handler();
         });
 }

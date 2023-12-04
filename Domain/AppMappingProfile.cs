@@ -32,5 +32,6 @@ public class AppMappingProfile: Profile
         CreateMap<InformationArticle, BaseResponseListItem>().ForMember("Name", x => x.MapFrom(y => y.Title));
         CreateMap<FileEntity, BaseResponseListItem>();
         CreateMap<NewsEntity, BaseResponseListItem>().ForMember("Name", x => x.MapFrom(y => y.Title));
+        CreateMap<NewsType, BaseResponseListItem>();
     }
 }
