@@ -43,6 +43,6 @@ public class GetNewsTypesListTests : BaseTest
         var result = await service.Handler();
 
         //Проверяем результат
-        Assert.True(result.Items?.Any());
+        Assert.Single(result.Items!);
     }
 }

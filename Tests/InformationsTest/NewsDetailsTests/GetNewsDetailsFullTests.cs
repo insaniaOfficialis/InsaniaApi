@@ -1,51 +1,51 @@
 ﻿using Services;
 using Services.General.Files.GetFilesNewsDetails;
-using Services.Informations.NewsDetails.GetNewsDetails;
+using Services.Informations.NewsDetails.GetNewsDetailsFull;
 
 namespace Tests.InformationsTest.NewsDetailsTests;
 
 /// <summary>
-/// Тесты получения детальных частей новости
+/// Тесты получения всех детальных частей новости
 /// </summary>
-public class GetNewsDetailsTests : BaseTest
+public class GetNewsDetailsFullTests : BaseTest
 {
     GetFilesNewsDetails _getFilesNewDetails; //сервис получения файлов детальной части новости
 
     /// <summary>
-    /// Тесты получения детальных частей новости
+    /// Тесты получения всех детальных частей новости
     /// </summary>
-    public GetNewsDetailsTests() : base()
+    public GetNewsDetailsFullTests() : base()
     {
         _getFilesNewDetails = new(_mapper, _repository);
     }
 
     /// <summary>
-    /// Тест на проверку успешности завершения
+    /// Тест на проверку успешности
     /// </summary>
     [Fact]
     public async void Success()
     {
         //Создаём новый экземпляр сервиса
-        GetNewsDetails getNewsDetails = new(_repository, _getFilesNewDetails);
+        GetNewsDetailsFull service = new(_repository, _getFilesNewDetails);
 
         //Получаем результат
-        var result = await getNewsDetails.Handler(1);
+        var result = await service.Handler(1);
 
         //Проверяем результат
         Assert.True(result.Success);
     }
 
     /// <summary>
-    /// Тест на проверку корректности завершения
+    /// Тест на проверку корректности
     /// </summary>
     [Fact]
     public async void CorrectResult()
     {
         //Создаём новый экземпляр сервиса
-        GetNewsDetails getNewsDetails = new(_repository, _getFilesNewDetails);
+        GetNewsDetailsFull service = new(_repository, _getFilesNewDetails);
 
         //Получаем результат
-        var result = await getNewsDetails.Handler(1);
+        var result = await service.Handler(1);
 
         //Проверяем результат
         Assert.Single(result.Items!);
@@ -58,10 +58,10 @@ public class GetNewsDetailsTests : BaseTest
     public async void EmptyId()
     {
         //Создаём новый экземпляр сервиса
-        GetNewsDetails getNewsDetails = new(_repository, _getFilesNewDetails);
+        GetNewsDetailsFull service = new(_repository, _getFilesNewDetails);
 
         //Получаем результат
-        var result = await getNewsDetails.Handler(null);
+        var result = await service.Handler(null);
 
         //Проверяем результат
         Assert.Equal(Errors.EmptyRequest, result.Error!.Message);
@@ -74,10 +74,10 @@ public class GetNewsDetailsTests : BaseTest
     public async void IncorrectId()
     {
         //Создаём новый экземпляр сервиса
-        GetNewsDetails getNewsDetails = new(_repository, _getFilesNewDetails);
+        GetNewsDetailsFull service = new(_repository, _getFilesNewDetails);
 
         //Получаем результат
-        var result = await getNewsDetails.Handler(0);
+        var result = await service.Handler(-1);
 
         //Проверяем результат
         Assert.Equal(Errors.NotExistsNews, result.Error!.Message);

@@ -484,6 +484,86 @@ public class Initialization : IInitialization
                     await _repository.SaveChangesAsync();
                 }
             }
+
+            //Проверяем наличие права доступа "Управление детальными частями новостей"
+            if (!_repository.AccessRights.Any(x => x.Name == "Управление детальными частями новостей"))
+            {
+                //Получаем родительский элемент
+                AccessRight parent = await _repository.AccessRights.FirstAsync(x => x.Name == "Управление новостями");
+
+                //Если родительский элемент есть
+                if (parent != null)
+                {
+                    //Создаём право доступа "Управление детальными частями новостей"
+                    AccessRight accessRight = new("system", "Управление детальными частями новостей", parent);
+                    _repository.AccessRights.Add(accessRight);
+                    await _repository.SaveChangesAsync();
+                }
+            }
+
+            //Проверяем наличие права доступа "Добавление детальной части новости"
+            if (!_repository.AccessRights.Any(x => x.Name == "Добавление детальной части новости"))
+            {
+                //Получаем родительский элемент
+                AccessRight parent = await _repository.AccessRights.FirstAsync(x => x.Name == "Управление детальными частями новостей");
+
+                //Если родительский элемент есть
+                if (parent != null)
+                {
+                    //Создаём право доступа "Добавление детальной части новости"
+                    AccessRight accessRight = new("system", "Добавление детальной части новости", parent);
+                    _repository.AccessRights.Add(accessRight);
+                    await _repository.SaveChangesAsync();
+                }
+            }
+
+            //Проверяем наличие права доступа "Редактирование детальной части новости"
+            if (!_repository.AccessRights.Any(x => x.Name == "Редактирование детальной части новости"))
+            {
+                //Получаем родительский элемент
+                AccessRight parent = await _repository.AccessRights.FirstAsync(x => x.Name == "Управление детальными частями новостей");
+
+                //Если родительский элемент есть
+                if (parent != null)
+                {
+                    //Создаём право доступа "Редактирование детальной части новости"
+                    AccessRight accessRight = new("system", "Редактирование детальной части новости", parent);
+                    _repository.AccessRights.Add(accessRight);
+                    await _repository.SaveChangesAsync();
+                }
+            }
+
+            //Проверяем наличие права доступа "Удаление детальной части новости"
+            if (!_repository.AccessRights.Any(x => x.Name == "Удаление детальной части новости"))
+            {
+                //Получаем родительский элемент
+                AccessRight parent = await _repository.AccessRights.FirstAsync(x => x.Name == "Управление детальными частями новостей");
+
+                //Если родительский элемент есть
+                if (parent != null)
+                {
+                    //Создаём право доступа "Удаление детальной части новости"
+                    AccessRight accessRight = new("system", "Удаление детальной части новости", parent);
+                    _repository.AccessRights.Add(accessRight);
+                    await _repository.SaveChangesAsync();
+                }
+            }
+
+            //Проверяем наличие права доступа "Восстановление детальной части новости"
+            if (!_repository.AccessRights.Any(x => x.Name == "Восстановление детальной части новости"))
+            {
+                //Получаем родительский элемент
+                AccessRight parent = await _repository.AccessRights.FirstAsync(x => x.Name == "Управление детальными частями новостей");
+
+                //Если родительский элемент есть
+                if (parent != null)
+                {
+                    //Создаём право доступа "Восстановление детальной части новости"
+                    AccessRight accessRight = new("system", "Восстановление детальной части новости", parent);
+                    _repository.AccessRights.Add(accessRight);
+                    await _repository.SaveChangesAsync();
+                }
+            }
         }
         catch (Exception ex)
         {
@@ -712,6 +792,111 @@ public class Initialization : IInitialization
                             if (!_repository.RolesAcccessRights.Any(x => x.Role == role && x.AccessRight == accessRight))
                             {
                                 //Создаём связь роли "Админ" с правом доступа "Восстановление новости"
+                                RoleAcccessRight roleAcccessRight = new("system", role, accessRight);
+                                _repository.RolesAcccessRights.Add(roleAcccessRight);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие права доступа "Управление детальными частями новостей"
+                    if (_repository.AccessRights.Any(x => x.Name == "Управление детальными частями новостей"))
+                    {
+                        //Получаем право доступа "Управление детальными частями новостей"
+                        AccessRight? accessRight = await _repository.AccessRights
+                            .FirstAsync(x => x.Name == "Управление детальными частями новостей");
+
+                        //Проверяем права доступа "Управление детальными частями новостей"
+                        if (accessRight != null)
+                        {
+                            //Проверяем наличие связи роли "Админ" с правом доступа "Управление детальными частями новостей"
+                            if (!_repository.RolesAcccessRights.Any(x => x.Role == role && x.AccessRight == accessRight))
+                            {
+                                //Создаём связь роли "Админ" с правом доступа "Управление детальными частями новостей"
+                                RoleAcccessRight roleAcccessRight = new("system", role, accessRight);
+                                _repository.RolesAcccessRights.Add(roleAcccessRight);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие права доступа "Добавление детальной части новости"
+                    if (_repository.AccessRights.Any(x => x.Name == "Добавление детальной части новости"))
+                    {
+                        //Получаем право доступа "Добавление детальной части новости"
+                        AccessRight? accessRight = await _repository.AccessRights
+                            .FirstAsync(x => x.Name == "Добавление детальной части новости");
+
+                        //Проверяем права доступа "Добавление детальной части новости"
+                        if (accessRight != null)
+                        {
+                            //Проверяем наличие связи роли "Админ" с правом доступа "Добавление детальной части новости"
+                            if (!_repository.RolesAcccessRights.Any(x => x.Role == role && x.AccessRight == accessRight))
+                            {
+                                //Создаём связь роли "Админ" с правом доступа "Добавление детальной части новости"
+                                RoleAcccessRight roleAcccessRight = new("system", role, accessRight);
+                                _repository.RolesAcccessRights.Add(roleAcccessRight);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие права доступа "Редактирование детальной части новости"
+                    if (_repository.AccessRights.Any(x => x.Name == "Редактирование детальной части новости"))
+                    {
+                        //Получаем право доступа "Редактирование детальной части новости"
+                        AccessRight? accessRight = await _repository.AccessRights
+                            .FirstAsync(x => x.Name == "Редактирование детальной части новости");
+
+                        //Проверяем права доступа "Редактирование детальной части новости"
+                        if (accessRight != null)
+                        {
+                            //Проверяем наличие связи роли "Админ" с правом доступа "Редактирование детальной части новости"
+                            if (!_repository.RolesAcccessRights.Any(x => x.Role == role && x.AccessRight == accessRight))
+                            {
+                                //Создаём связь роли "Админ" с правом доступа "Редактирование детальной части новости"
+                                RoleAcccessRight roleAcccessRight = new("system", role, accessRight);
+                                _repository.RolesAcccessRights.Add(roleAcccessRight);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие права доступа "Удаление детальной части новости"
+                    if (_repository.AccessRights.Any(x => x.Name == "Удаление детальной части новости"))
+                    {
+                        //Получаем право доступа "Удаление детальной части новости"
+                        AccessRight? accessRight = await _repository.AccessRights
+                            .FirstAsync(x => x.Name == "Удаление детальной части новости");
+
+                        //Проверяем права доступа "Удаление детальной части новости"
+                        if (accessRight != null)
+                        {
+                            //Проверяем наличие связи роли "Админ" с правом доступа "Удаление детальной части новости"
+                            if (!_repository.RolesAcccessRights.Any(x => x.Role == role && x.AccessRight == accessRight))
+                            {
+                                //Создаём связь роли "Админ" с правом доступа "Удаление детальной части новости"
+                                RoleAcccessRight roleAcccessRight = new("system", role, accessRight);
+                                _repository.RolesAcccessRights.Add(roleAcccessRight);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие права доступа "Восстановление детальной части новости"
+                    if (_repository.AccessRights.Any(x => x.Name == "Восстановление детальной части новости"))
+                    {
+                        //Получаем право доступа "Восстановление детальной части новости"
+                        AccessRight? accessRight = await _repository.AccessRights
+                            .FirstAsync(x => x.Name == "Восстановление детальной части новости");
+
+                        //Проверяем права доступа "Восстановление детальной части новости"
+                        if (accessRight != null)
+                        {
+                            //Проверяем наличие связи роли "Админ" с правом доступа "Восстановление детальной части новости"
+                            if (!_repository.RolesAcccessRights.Any(x => x.Role == role && x.AccessRight == accessRight))
+                            {
+                                //Создаём связь роли "Админ" с правом доступа "Восстановление детальной части новости"
                                 RoleAcccessRight roleAcccessRight = new("system", role, accessRight);
                                 _repository.RolesAcccessRights.Add(roleAcccessRight);
                                 await _repository.SaveChangesAsync();

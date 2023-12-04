@@ -13,6 +13,7 @@ using Services.Informations.News.RemovalNews;
 using Services.Informations.NewsDetails.AddNewsDetail;
 using Services.Informations.NewsDetails.EditNewsDetail;
 using Services.Informations.NewsDetails.GetNewsDetails;
+using Services.Informations.NewsDetails.GetNewsDetailsFull;
 using Services.Informations.NewsDetails.RemovalNewsDetail;
 using Services.Informations.NewsTypes.GetNewsTypesList;
 
@@ -37,6 +38,7 @@ public class NewsController : BaseController
     private readonly IRemovalNews _removalNews; //интерфейс удаления/восстановления новости
     private readonly IRemovalNewsDetail _removalNewsDetail; //интерфейс удаления/восстановления детальной части новости
     private readonly IGetNewsTypesList _getNewsTypesList; //получение списка типов новостей
+    private readonly IGetNewsDetailsFull _getNewsDetailsFull; //получение полного списка детальных частей новости
 
     /// <summary>
     /// Конструктор контроллера новостей
@@ -53,10 +55,11 @@ public class NewsController : BaseController
     /// <param name="removalNews"></param>
     /// <param name="removalNewsDetail"></param>
     /// <param name="getNewsTypesList"></param>
+    /// <param name="getNewsDetailsFull"></param>
     public NewsController(ILogger<NewsController> logger, IGetNewsList getNews, IGetNewsDetails getNewsDetails, IAddNews addNews,
         IAddNewsDetail addNewsDetail, IGetNewsFullList getNewsFullList, IGetNewsTable getNewsTable, IEditNews editNews,
-        IEditNewsDetail editNewsDetail, IRemovalNews removalNews, IRemovalNewsDetail removalNewsDetail, IGetNewsTypesList getNewsTypesList) :
-        base(logger)
+        IEditNewsDetail editNewsDetail, IRemovalNews removalNews, IRemovalNewsDetail removalNewsDetail,
+        IGetNewsTypesList getNewsTypesList, IGetNewsDetailsFull getNewsDetailsFull) : base(logger)
     {
         _logger = logger;
         _getNews = getNews;
@@ -70,6 +73,7 @@ public class NewsController : BaseController
         _removalNews = removalNews;
         _removalNewsDetail = removalNewsDetail;
         _getNewsTypesList = getNewsTypesList;
+        _getNewsDetailsFull = getNewsDetailsFull;
     }
 
     /// <summary>
@@ -226,5 +230,18 @@ public class NewsController : BaseController
         => await GetAnswerAsync(async () =>
         {
             return await _getNewsTypesList.Handler();
+        });
+
+    /// <summary>
+    /// Метод получения всех детальных частей новости
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [HttpGet]
+    [Route("details/full")]
+    public async Task<IActionResult> GetNewsDetailsFull([FromQuery] long? id)
+        => await GetAnswerAsync(async () =>
+        {
+            return await _getNewsDetailsFull.Handler(id);
         });
 }

@@ -45,6 +45,7 @@ using Services.Informations.NewsDetails.RemovalNewsDetail;
 using Services.General.Files.ManagingFileDeletion;
 using Services.General.Files.EditOrdinalNumberFile;
 using Services.Informations.NewsTypes.GetNewsTypesList;
+using Services.Informations.NewsDetails.GetNewsDetailsFull;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -174,6 +175,7 @@ builder.Services.AddScoped<IRemovalNewsDetail, RemovalNewsDetail>(); //удал�
 builder.Services.AddScoped<IManagingFileDeletion, ManagingFileDeletion>(); //управление удалением файла
 builder.Services.AddScoped<IEditOrdinalNumberFile, EditOrdinalNumberFile>(); //изменение порядкового номера файла
 builder.Services.AddScoped<IGetNewsTypesList, GetNewsTypesList>(); //получение списка типов новостей
+builder.Services.AddScoped<IGetNewsDetailsFull, GetNewsDetailsFull>(); //получение полного списка детальных частей новости
 
 var app = builder.Build();
 
