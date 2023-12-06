@@ -13,6 +13,7 @@ public static class Errors
     public const string EmptyId = "Пустая ссылка на запись";
     public const string EmptyOrdinalNumber = "Пустой порядковый номер";
     public const string IncorrectOrdinalNumber = "Некорректный порядковый номер";
+    public const string BusyColor = "Данный цвет уже занят";
 
     //ИНФОРМАЦИОННЫЕ СТАТЬИ
     public const string EmptyTitle = "Пустой заголовок";

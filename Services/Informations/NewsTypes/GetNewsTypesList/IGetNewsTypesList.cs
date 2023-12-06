@@ -11,7 +11,6 @@ public interface IGetNewsTypesList
     /// <summary>
     /// Метод обработки
     /// </summary>
-    /// <param name="search"></param>
     /// <returns></returns>
     Task<BaseResponseList> Handler();
 
