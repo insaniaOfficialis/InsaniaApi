@@ -47,6 +47,7 @@ using Services.General.Files.EditOrdinalNumberFile;
 using Services.Informations.NewsTypes.GetNewsTypesList;
 using Services.Informations.NewsDetails.GetNewsDetailsFull;
 using Services.Politics.Areas.CheckingAreasColors;
+using Services.Politics.Regions.CheckingRegionsColors;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -178,6 +179,7 @@ builder.Services.AddScoped<IEditOrdinalNumberFile, EditOrdinalNumberFile>(); //�
 builder.Services.AddScoped<IGetNewsTypesList, GetNewsTypesList>(); //получение списка типов новостей
 builder.Services.AddScoped<IGetNewsDetailsFull, GetNewsDetailsFull>(); //получение полного списка детальных частей новости
 builder.Services.AddScoped<ICheckingAreasColors, CheckingAreasColors>(); //проверка цвета области
+builder.Services.AddScoped<ICheckingRegionsColors, CheckingRegionsColors>(); //проверка цветов регионов
 
 var app = builder.Build();
 
