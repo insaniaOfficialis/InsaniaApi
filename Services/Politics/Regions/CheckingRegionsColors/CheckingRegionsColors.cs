@@ -84,9 +84,6 @@ public class CheckingRegionsColors : ICheckingRegionsColors
     /// <exception cref="InnerException"></exception>
     public async Task<bool> Query(string? value)
     {
-        //Открываем транзакцию
-        using var transaction = _repository.Database.BeginTransaction();
-
         //Получаем количество данных с базы
         var count = await _repository.Regions.Where(x => x.Color == value).CountAsync();
 

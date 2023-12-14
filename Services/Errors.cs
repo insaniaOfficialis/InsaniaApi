@@ -14,6 +14,7 @@ public static class Errors
     public const string EmptyOrdinalNumber = "Пустой порядковый номер";
     public const string IncorrectOrdinalNumber = "Некорректный порядковый номер";
     public const string BusyColor = "Данный цвет уже занят";
+    public const string TryAgain = "Попробуйте снова";
 
     //ИНФОРМАЦИОННЫЕ СТАТЬИ
     public const string EmptyTitle = "Пустой заголовок";
