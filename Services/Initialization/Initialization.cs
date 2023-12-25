@@ -6362,7 +6362,907 @@ public class Initialization : IInitialization
                 LastName lastName = new("system", "Миркраниис");
                 _repository.LastNames.Add(lastName);
                 await _repository.SaveChangesAsync();
-            }   
+            }
+
+            //Проверяем наличие фамилии "Дамхан"
+            if (!_repository.LastNames.Any(x => x.Name == "Дамхан"))
+            {
+                //Создаём фамилию "Дамхан"
+                LastName lastName = new("system", "Дамхан");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Фуил "
+            if (!_repository.LastNames.Any(x => x.Name == "Фуил "))
+            {
+                //Создаём фамилию "Фуил "
+                LastName lastName = new("system", "Фуил ");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Анлион"
+            if (!_repository.LastNames.Any(x => x.Name == "Анлион"))
+            {
+                //Создаём фамилию "Анлион"
+                LastName lastName = new("system", "Анлион");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Маиран"
+            if (!_repository.LastNames.Any(x => x.Name == "Маиран"))
+            {
+                //Создаём фамилию "Маиран"
+                LastName lastName = new("system", "Маиран");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Алаид"
+            if (!_repository.LastNames.Any(x => x.Name == "Алаид"))
+            {
+                //Создаём фамилию "Алаид"
+                LastName lastName = new("system", "Алаид");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Сеолт"
+            if (!_repository.LastNames.Any(x => x.Name == "Сеолт"))
+            {
+                //Создаём фамилию "Сеолт"
+                LastName lastName = new("system", "Сеолт");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Гхоул"
+            if (!_repository.LastNames.Any(x => x.Name == "Гхоул"))
+            {
+                //Создаём фамилию "Гхоул"
+                LastName lastName = new("system", "Гхоул");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Ятаг "
+            if (!_repository.LastNames.Any(x => x.Name == "Ятаг "))
+            {
+                //Создаём фамилию "Ятаг "
+                LastName lastName = new("system", "Ятаг ");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Сеар"
+            if (!_repository.LastNames.Any(x => x.Name == "Сеар"))
+            {
+                //Создаём фамилию "Сеар"
+                LastName lastName = new("system", "Сеар");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Реакдах"
+            if (!_repository.LastNames.Any(x => x.Name == "Реакдах"))
+            {
+                //Создаём фамилию "Реакдах"
+                LastName lastName = new("system", "Реакдах");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Мададх"
+            if (!_repository.LastNames.Any(x => x.Name == "Мададх"))
+            {
+                //Создаём фамилию "Мададх"
+                LastName lastName = new("system", "Мададх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Тортх"
+            if (!_repository.LastNames.Any(x => x.Name == "Тортх"))
+            {
+                //Создаём фамилию "Тортх"
+                LastName lastName = new("system", "Тортх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Бхеин"
+            if (!_repository.LastNames.Any(x => x.Name == "Бхеин"))
+            {
+                //Создаём фамилию "Бхеин"
+                LastName lastName = new("system", "Бхеин");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Мхор"
+            if (!_repository.LastNames.Any(x => x.Name == "Мхор"))
+            {
+                //Создаём фамилию "Мхор"
+                LastName lastName = new("system", "Мхор");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Гилакх"
+            if (!_repository.LastNames.Any(x => x.Name == "Гилакх"))
+            {
+                //Создаём фамилию "Гилакх"
+                LastName lastName = new("system", "Гилакх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Рионнаган"
+            if (!_repository.LastNames.Any(x => x.Name == "Рионнаган"))
+            {
+                //Создаём фамилию "Рионнаган"
+                LastName lastName = new("system", "Рионнаган");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Абхаин"
+            if (!_repository.LastNames.Any(x => x.Name == "Абхаин"))
+            {
+                //Создаём фамилию "Абхаин"
+                LastName lastName = new("system", "Абхаин");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Амхуир"
+            if (!_repository.LastNames.Any(x => x.Name == "Амхуир"))
+            {
+                //Создаём фамилию "Амхуир"
+                LastName lastName = new("system", "Амхуир");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Коил"
+            if (!_repository.LastNames.Any(x => x.Name == "Коил"))
+            {
+                //Создаём фамилию "Коил"
+                LastName lastName = new("system", "Коил");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Саланн"
+            if (!_repository.LastNames.Any(x => x.Name == "Саланн"))
+            {
+                //Создаём фамилию "Саланн"
+                LastName lastName = new("system", "Саланн");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Гаисгакх"
+            if (!_repository.LastNames.Any(x => x.Name == "Гаисгакх"))
+            {
+                //Создаём фамилию "Гаисгакх"
+                LastName lastName = new("system", "Гаисгакх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Схутер"
+            if (!_repository.LastNames.Any(x => x.Name == "Схутер"))
+            {
+                //Создаём фамилию "Схутер"
+                LastName lastName = new("system", "Схутер");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Акхбир"
+            if (!_repository.LastNames.Any(x => x.Name == "Акхбир"))
+            {
+                //Создаём фамилию "Акхбир"
+                LastName lastName = new("system", "Акхбир");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Клаидхим"
+            if (!_repository.LastNames.Any(x => x.Name == "Клаидхим"))
+            {
+                //Создаём фамилию "Клаидхим"
+                LastName lastName = new("system", "Клаидхим");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Армакх"
+            if (!_repository.LastNames.Any(x => x.Name == "Армакх"))
+            {
+                //Создаём фамилию "Армакх"
+                LastName lastName = new("system", "Армакх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Клогаид"
+            if (!_repository.LastNames.Any(x => x.Name == "Клогаид"))
+            {
+                //Создаём фамилию "Клогаид"
+                LastName lastName = new("system", "Клогаид");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Глов"
+            if (!_repository.LastNames.Any(x => x.Name == "Глов"))
+            {
+                //Создаём фамилию "Глов"
+                LastName lastName = new("system", "Глов");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Бхрог"
+            if (!_repository.LastNames.Any(x => x.Name == "Бхрог"))
+            {
+                //Создаём фамилию "Бхрог"
+                LastName lastName = new("system", "Бхрог");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Криос"
+            if (!_repository.LastNames.Any(x => x.Name == "Криос"))
+            {
+                //Создаём фамилию "Криос"
+                LastName lastName = new("system", "Криос");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Даигнекх"
+            if (!_repository.LastNames.Any(x => x.Name == "Даигнекх"))
+            {
+                //Создаём фамилию "Даигнекх"
+                LastName lastName = new("system", "Даигнекх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Баил"
+            if (!_repository.LastNames.Any(x => x.Name == "Баил"))
+            {
+                //Создаём фамилию "Баил"
+                LastName lastName = new("system", "Баил");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Ратхад"
+            if (!_repository.LastNames.Any(x => x.Name == "Ратхад"))
+            {
+                //Создаём фамилию "Ратхад"
+                LastName lastName = new("system", "Ратхад");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Сагар"
+            if (!_repository.LastNames.Any(x => x.Name == "Сагар"))
+            {
+                //Создаём фамилию "Сагар"
+                LastName lastName = new("system", "Сагар");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Драодх"
+            if (!_repository.LastNames.Any(x => x.Name == "Драодх"))
+            {
+                //Создаём фамилию "Драодх"
+                LastName lastName = new("system", "Драодх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Койнакх"
+            if (!_repository.LastNames.Any(x => x.Name == "Койнакх"))
+            {
+                //Создаём фамилию "Койнакх"
+                LastName lastName = new("system", "Койнакх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Хэйр"
+            if (!_repository.LastNames.Any(x => x.Name == "Хэйр"))
+            {
+                //Создаём фамилию "Хэйр"
+                LastName lastName = new("system", "Хэйр");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Мусикбрах"
+            if (!_repository.LastNames.Any(x => x.Name == "Мусикбрах"))
+            {
+                //Создаём фамилию "Мусикбрах"
+                LastName lastName = new("system", "Мусикбрах");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Феидх"
+            if (!_repository.LastNames.Any(x => x.Name == "Феидх"))
+            {
+                //Создаём фамилию "Феидх"
+                LastName lastName = new("system", "Феидх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Мос"
+            if (!_repository.LastNames.Any(x => x.Name == "Мос"))
+            {
+                //Создаём фамилию "Мос"
+                LastName lastName = new("system", "Мос");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Фалкон"
+            if (!_repository.LastNames.Any(x => x.Name == "Фалкон"))
+            {
+                //Создаём фамилию "Фалкон"
+                LastName lastName = new("system", "Фалкон");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Икх"
+            if (!_repository.LastNames.Any(x => x.Name == "Икх"))
+            {
+                //Создаём фамилию "Икх"
+                LastName lastName = new("system", "Икх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Яран"
+            if (!_repository.LastNames.Any(x => x.Name == "Яран"))
+            {
+                //Создаём фамилию "Яран"
+                LastName lastName = new("system", "Яран");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Рикдас"
+            if (!_repository.LastNames.Any(x => x.Name == "Рикдас"))
+            {
+                //Создаём фамилию "Рикдас"
+                LastName lastName = new("system", "Рикдас");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Слабраидх"
+            if (!_repository.LastNames.Any(x => x.Name == "Слабраидх"))
+            {
+                //Создаём фамилию "Слабраидх"
+                LastName lastName = new("system", "Слабраидх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Фремкх"
+            if (!_repository.LastNames.Any(x => x.Name == "Фремкх"))
+            {
+                //Создаём фамилию "Фремкх"
+                LastName lastName = new("system", "Фремкх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Тарраинг"
+            if (!_repository.LastNames.Any(x => x.Name == "Тарраинг"))
+            {
+                //Создаём фамилию "Тарраинг"
+                LastName lastName = new("system", "Тарраинг");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Адхарк"
+            if (!_repository.LastNames.Any(x => x.Name == "Адхарк"))
+            {
+                //Создаём фамилию "Адхарк"
+                LastName lastName = new("system", "Адхарк");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Кломх"
+            if (!_repository.LastNames.Any(x => x.Name == "Кломх"))
+            {
+                //Создаём фамилию "Кломх"
+                LastName lastName = new("system", "Кломх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Крубакх"
+            if (!_repository.LastNames.Any(x => x.Name == "Крубакх"))
+            {
+                //Создаём фамилию "Крубакх"
+                LastName lastName = new("system", "Крубакх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Меин"
+            if (!_repository.LastNames.Any(x => x.Name == "Меин"))
+            {
+                //Создаём фамилию "Меин"
+                LastName lastName = new("system", "Меин");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Канан"
+            if (!_repository.LastNames.Any(x => x.Name == "Канан"))
+            {
+                //Создаём фамилию "Канан"
+                LastName lastName = new("system", "Канан");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Билен"
+            if (!_repository.LastNames.Any(x => x.Name == "Билен"))
+            {
+                //Создаём фамилию "Билен"
+                LastName lastName = new("system", "Билен");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Кин"
+            if (!_repository.LastNames.Any(x => x.Name == "Кин"))
+            {
+                //Создаём фамилию "Кин"
+                LastName lastName = new("system", "Кин");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Фалт"
+            if (!_repository.LastNames.Any(x => x.Name == "Фалт"))
+            {
+                //Создаём фамилию "Фалт"
+                LastName lastName = new("system", "Фалт");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Антсин"
+            if (!_repository.LastNames.Any(x => x.Name == "Антсин"))
+            {
+                //Создаём фамилию "Антсин"
+                LastName lastName = new("system", "Антсин");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Сронкх"
+            if (!_repository.LastNames.Any(x => x.Name == "Сронкх"))
+            {
+                //Создаём фамилию "Сронкх"
+                LastName lastName = new("system", "Сронкх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Фейсаг"
+            if (!_repository.LastNames.Any(x => x.Name == "Фейсаг"))
+            {
+                //Создаём фамилию "Фейсаг"
+                LastName lastName = new("system", "Фейсаг");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Кас"
+            if (!_repository.LastNames.Any(x => x.Name == "Кас"))
+            {
+                //Создаём фамилию "Кас"
+                LastName lastName = new("system", "Кас");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Неил"
+            if (!_repository.LastNames.Any(x => x.Name == "Неил"))
+            {
+                //Создаём фамилию "Неил"
+                LastName lastName = new("system", "Неил");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Гарадх"
+            if (!_repository.LastNames.Any(x => x.Name == "Гарадх"))
+            {
+                //Создаём фамилию "Гарадх"
+                LastName lastName = new("system", "Гарадх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Лабаракх"
+            if (!_repository.LastNames.Any(x => x.Name == "Лабаракх"))
+            {
+                //Создаём фамилию "Лабаракх"
+                LastName lastName = new("system", "Лабаракх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Интин"
+            if (!_repository.LastNames.Any(x => x.Name == "Интин"))
+            {
+                //Создаём фамилию "Интин"
+                LastName lastName = new("system", "Интин");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Сманкх"
+            if (!_repository.LastNames.Any(x => x.Name == "Сманкх"))
+            {
+                //Создаём фамилию "Сманкх"
+                LastName lastName = new("system", "Сманкх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Глеин"
+            if (!_repository.LastNames.Any(x => x.Name == "Глеин"))
+            {
+                //Создаём фамилию "Глеин"
+                LastName lastName = new("system", "Глеин");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Гаинмекх"
+            if (!_repository.LastNames.Any(x => x.Name == "Гаинмекх"))
+            {
+                //Создаём фамилию "Гаинмекх"
+                LastName lastName = new("system", "Гаинмекх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Краобх"
+            if (!_repository.LastNames.Any(x => x.Name == "Краобх"))
+            {
+                //Создаём фамилию "Краобх"
+                LastName lastName = new("system", "Краобх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Фъёр"
+            if (!_repository.LastNames.Any(x => x.Name == "Фъёр"))
+            {
+                //Создаём фамилию "Фъёр"
+                LastName lastName = new("system", "Фъёр");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Грабх"
+            if (!_repository.LastNames.Any(x => x.Name == "Грабх"))
+            {
+                //Создаём фамилию "Грабх"
+                LastName lastName = new("system", "Грабх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Стутх"
+            if (!_repository.LastNames.Any(x => x.Name == "Стутх"))
+            {
+                //Создаём фамилию "Стутх"
+                LastName lastName = new("system", "Стутх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Клар"
+            if (!_repository.LastNames.Any(x => x.Name == "Клар"))
+            {
+                //Создаём фамилию "Клар"
+                LastName lastName = new("system", "Клар");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Стор"
+            if (!_repository.LastNames.Any(x => x.Name == "Стор"))
+            {
+                //Создаём фамилию "Стор"
+                LastName lastName = new("system", "Стор");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Такартх"
+            if (!_repository.LastNames.Any(x => x.Name == "Такартх"))
+            {
+                //Создаём фамилию "Такартх"
+                LastName lastName = new("system", "Такартх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Нигхин"
+            if (!_repository.LastNames.Any(x => x.Name == "Нигхин"))
+            {
+                //Создаём фамилию "Нигхин"
+                LastName lastName = new("system", "Нигхин");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Сусбант"
+            if (!_repository.LastNames.Any(x => x.Name == "Сусбант"))
+            {
+                //Создаём фамилию "Сусбант"
+                LastName lastName = new("system", "Сусбант");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Кедх"
+            if (!_repository.LastNames.Any(x => x.Name == "Кедх"))
+            {
+                //Создаём фамилию "Кедх"
+                LastName lastName = new("system", "Кедх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Иннтригх"
+            if (!_repository.LastNames.Any(x => x.Name == "Иннтригх"))
+            {
+                //Создаём фамилию "Иннтригх"
+                LastName lastName = new("system", "Иннтригх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Соирбекх"
+            if (!_repository.LastNames.Any(x => x.Name == "Соирбекх"))
+            {
+                //Создаём фамилию "Соирбекх"
+                LastName lastName = new("system", "Соирбекх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Адакх"
+            if (!_repository.LastNames.Any(x => x.Name == "Адакх"))
+            {
+                //Создаём фамилию "Адакх"
+                LastName lastName = new("system", "Адакх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Мулакх"
+            if (!_repository.LastNames.Any(x => x.Name == "Мулакх"))
+            {
+                //Создаём фамилию "Мулакх"
+                LastName lastName = new("system", "Мулакх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Ридхалт"
+            if (!_repository.LastNames.Any(x => x.Name == "Ридхалт"))
+            {
+                //Создаём фамилию "Ридхалт"
+                LastName lastName = new("system", "Ридхалт");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Катритх"
+            if (!_repository.LastNames.Any(x => x.Name == "Катритх"))
+            {
+                //Создаём фамилию "Катритх"
+                LastName lastName = new("system", "Катритх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Ардх"
+            if (!_repository.LastNames.Any(x => x.Name == "Ардх"))
+            {
+                //Создаём фамилию "Ардх"
+                LastName lastName = new("system", "Ардх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Фаид"
+            if (!_repository.LastNames.Any(x => x.Name == "Фаид"))
+            {
+                //Создаём фамилию "Фаид"
+                LastName lastName = new("system", "Фаид");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Пирсанатх"
+            if (!_repository.LastNames.Any(x => x.Name == "Пирсанатх"))
+            {
+                //Создаём фамилию "Пирсанатх"
+                LastName lastName = new("system", "Пирсанатх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Кхудим"
+            if (!_repository.LastNames.Any(x => x.Name == "Кхудим"))
+            {
+                //Создаём фамилию "Кхудим"
+                LastName lastName = new("system", "Кхудим");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Бунстидх"
+            if (!_repository.LastNames.Any(x => x.Name == "Бунстидх"))
+            {
+                //Создаём фамилию "Бунстидх"
+                LastName lastName = new("system", "Бунстидх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Сгор"
+            if (!_repository.LastNames.Any(x => x.Name == "Сгор"))
+            {
+                //Создаём фамилию "Сгор"
+                LastName lastName = new("system", "Сгор");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Падхидх"
+            if (!_repository.LastNames.Any(x => x.Name == "Падхидх"))
+            {
+                //Создаём фамилию "Падхидх"
+                LastName lastName = new("system", "Падхидх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Деигх"
+            if (!_repository.LastNames.Any(x => x.Name == "Деигх"))
+            {
+                //Создаём фамилию "Деигх"
+                LastName lastName = new("system", "Деигх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Усг"
+            if (!_repository.LastNames.Any(x => x.Name == "Усг"))
+            {
+                //Создаём фамилию "Усг"
+                LastName lastName = new("system", "Усг");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Теин"
+            if (!_repository.LastNames.Any(x => x.Name == "Теин"))
+            {
+                //Создаём фамилию "Теин"
+                LastName lastName = new("system", "Теин");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Феран"
+            if (!_repository.LastNames.Any(x => x.Name == "Феран"))
+            {
+                //Создаём фамилию "Феран"
+                LastName lastName = new("system", "Феран");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Диланакх"
+            if (!_repository.LastNames.Any(x => x.Name == "Диланакх"))
+            {
+                //Создаём фамилию "Диланакх"
+                LastName lastName = new("system", "Диланакх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Сасг"
+            if (!_repository.LastNames.Any(x => x.Name == "Сасг"))
+            {
+                //Создаём фамилию "Сасг"
+                LastName lastName = new("system", "Сасг");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Доркхадас"
+            if (!_repository.LastNames.Any(x => x.Name == "Доркхадас"))
+            {
+                //Создаём фамилию "Доркхадас"
+                LastName lastName = new("system", "Доркхадас");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Аотром"
+            if (!_repository.LastNames.Any(x => x.Name == "Аотром"))
+            {
+                //Создаём фамилию "Аотром"
+                LastName lastName = new("system", "Аотром");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Милх"
+            if (!_repository.LastNames.Any(x => x.Name == "Милх"))
+            {
+                //Создаём фамилию "Милх"
+                LastName lastName = new("system", "Милх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Атхаир"
+            if (!_repository.LastNames.Any(x => x.Name == "Атхаир"))
+            {
+                //Создаём фамилию "Атхаир"
+                LastName lastName = new("system", "Атхаир");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Теотакх"
+            if (!_repository.LastNames.Any(x => x.Name == "Теотакх"))
+            {
+                //Создаём фамилию "Теотакх"
+                LastName lastName = new("system", "Теотакх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
+
+            //Проверяем наличие фамилии "Стуридх"
+            if (!_repository.LastNames.Any(x => x.Name == "Стуридх"))
+            {
+                //Создаём фамилию "Стуридх"
+                LastName lastName = new("system", "Стуридх");
+                _repository.LastNames.Add(lastName);
+                await _repository.SaveChangesAsync();
+            }
         }
         catch (Exception ex)
         {
@@ -17440,7 +18340,2029 @@ public class Initialization : IInitialization
                         }
                     }
                 }
-            }   
+            }
+
+            //Проверяем наличие нации "Западный вампир"
+            if (_repository.Nations.Any(x => x.Name == "Западный вампир"))
+            {
+                //Получаем нацию "Западный вампир"
+                Nation? nation = _repository.Nations.FirstOrDefault(x => x.Name == "Западный вампир");
+
+                //Проверяем наличие нации "Западный вампир"
+                if (nation != null)
+                {
+                    //Проверяем наличие фамилии "Дамхан"
+                    if (_repository.LastNames.Any(x => x.Name == "Дамхан"))
+                    {
+                        //Получаем фамилию "Дамхан"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Дамхан");
+
+                        //Проверяем наличие фамилии "Дамхан"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Дамхан"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Дамхан"
+                                NationLastName nationLastName = new("system", 0.56, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Анлион"
+                    if (_repository.LastNames.Any(x => x.Name == "Анлион"))
+                    {
+                        //Получаем фамилию "Анлион"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Анлион");
+
+                        //Проверяем наличие фамилии "Анлион"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Анлион"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Анлион"
+                                NationLastName nationLastName = new("system", 0.84, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Маиран"
+                    if (_repository.LastNames.Any(x => x.Name == "Маиран"))
+                    {
+                        //Получаем фамилию "Маиран"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Маиран");
+
+                        //Проверяем наличие фамилии "Маиран"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Маиран"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Маиран"
+                                NationLastName nationLastName = new("system", 1.99, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Алаид"
+                    if (_repository.LastNames.Any(x => x.Name == "Алаид"))
+                    {
+                        //Получаем фамилию "Алаид"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Алаид");
+
+                        //Проверяем наличие фамилии "Алаид"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Алаид"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Алаид"
+                                NationLastName nationLastName = new("system", 1.92, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Сеолт"
+                    if (_repository.LastNames.Any(x => x.Name == "Сеолт"))
+                    {
+                        //Получаем фамилию "Сеолт"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Сеолт");
+
+                        //Проверяем наличие фамилии "Сеолт"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Сеолт"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Сеолт"
+                                NationLastName nationLastName = new("system", 0.67, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Реакдах"
+                    if (_repository.LastNames.Any(x => x.Name == "Реакдах"))
+                    {
+                        //Получаем фамилию "Реакдах"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Реакдах");
+
+                        //Проверяем наличие фамилии "Реакдах"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Реакдах"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Реакдах"
+                                NationLastName nationLastName = new("system", 1.24, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Мададх"
+                    if (_repository.LastNames.Any(x => x.Name == "Мададх"))
+                    {
+                        //Получаем фамилию "Мададх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Мададх");
+
+                        //Проверяем наличие фамилии "Мададх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Мададх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Мададх"
+                                NationLastName nationLastName = new("system", 1.13, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Тортх"
+                    if (_repository.LastNames.Any(x => x.Name == "Тортх"))
+                    {
+                        //Получаем фамилию "Тортх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Тортх");
+
+                        //Проверяем наличие фамилии "Тортх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Тортх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Тортх"
+                                NationLastName nationLastName = new("system", 0.81, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Бхеин"
+                    if (_repository.LastNames.Any(x => x.Name == "Бхеин"))
+                    {
+                        //Получаем фамилию "Бхеин"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Бхеин");
+
+                        //Проверяем наличие фамилии "Бхеин"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Бхеин"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Бхеин"
+                                NationLastName nationLastName = new("system", 0.74, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Мхор"
+                    if (_repository.LastNames.Any(x => x.Name == "Мхор"))
+                    {
+                        //Получаем фамилию "Мхор"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Мхор");
+
+                        //Проверяем наличие фамилии "Мхор"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Мхор"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Мхор"
+                                NationLastName nationLastName = new("system", 1.83, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Гилакх"
+                    if (_repository.LastNames.Any(x => x.Name == "Гилакх"))
+                    {
+                        //Получаем фамилию "Гилакх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Гилакх");
+
+                        //Проверяем наличие фамилии "Гилакх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Гилакх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Гилакх"
+                                NationLastName nationLastName = new("system", 1.16, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Абхаин"
+                    if (_repository.LastNames.Any(x => x.Name == "Абхаин"))
+                    {
+                        //Получаем фамилию "Абхаин"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Абхаин");
+
+                        //Проверяем наличие фамилии "Абхаин"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Абхаин"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Абхаин"
+                                NationLastName nationLastName = new("system", 0.77, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Амхуир"
+                    if (_repository.LastNames.Any(x => x.Name == "Амхуир"))
+                    {
+                        //Получаем фамилию "Амхуир"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Амхуир");
+
+                        //Проверяем наличие фамилии "Амхуир"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Амхуир"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Амхуир"
+                                NationLastName nationLastName = new("system", 0.1, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Гаисгакх"
+                    if (_repository.LastNames.Any(x => x.Name == "Гаисгакх"))
+                    {
+                        //Получаем фамилию "Гаисгакх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Гаисгакх");
+
+                        //Проверяем наличие фамилии "Гаисгакх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Гаисгакх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Гаисгакх"
+                                NationLastName nationLastName = new("system", 0.41, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Схутер"
+                    if (_repository.LastNames.Any(x => x.Name == "Схутер"))
+                    {
+                        //Получаем фамилию "Схутер"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Схутер");
+
+                        //Проверяем наличие фамилии "Схутер"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Схутер"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Схутер"
+                                NationLastName nationLastName = new("system", 1.35, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Акхбир"
+                    if (_repository.LastNames.Any(x => x.Name == "Акхбир"))
+                    {
+                        //Получаем фамилию "Акхбир"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Акхбир");
+
+                        //Проверяем наличие фамилии "Акхбир"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Акхбир"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Акхбир"
+                                NationLastName nationLastName = new("system", 1.94, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Клаидхим"
+                    if (_repository.LastNames.Any(x => x.Name == "Клаидхим"))
+                    {
+                        //Получаем фамилию "Клаидхим"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Клаидхим");
+
+                        //Проверяем наличие фамилии "Клаидхим"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Клаидхим"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Клаидхим"
+                                NationLastName nationLastName = new("system", 1.97, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Армакх"
+                    if (_repository.LastNames.Any(x => x.Name == "Армакх"))
+                    {
+                        //Получаем фамилию "Армакх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Армакх");
+
+                        //Проверяем наличие фамилии "Армакх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Армакх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Армакх"
+                                NationLastName nationLastName = new("system", 0.92, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Бхрог"
+                    if (_repository.LastNames.Any(x => x.Name == "Бхрог"))
+                    {
+                        //Получаем фамилию "Бхрог"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Бхрог");
+
+                        //Проверяем наличие фамилии "Бхрог"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Бхрог"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Бхрог"
+                                NationLastName nationLastName = new("system", 1.97, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Даигнекх"
+                    if (_repository.LastNames.Any(x => x.Name == "Даигнекх"))
+                    {
+                        //Получаем фамилию "Даигнекх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Даигнекх");
+
+                        //Проверяем наличие фамилии "Даигнекх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Даигнекх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Даигнекх"
+                                NationLastName nationLastName = new("system", 0.58, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Ратхад"
+                    if (_repository.LastNames.Any(x => x.Name == "Ратхад"))
+                    {
+                        //Получаем фамилию "Ратхад"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Ратхад");
+
+                        //Проверяем наличие фамилии "Ратхад"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Ратхад"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Ратхад"
+                                NationLastName nationLastName = new("system", 1.17, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Драодх"
+                    if (_repository.LastNames.Any(x => x.Name == "Драодх"))
+                    {
+                        //Получаем фамилию "Драодх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Драодх");
+
+                        //Проверяем наличие фамилии "Драодх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Драодх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Драодх"
+                                NationLastName nationLastName = new("system", 1.23, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Койнакх"
+                    if (_repository.LastNames.Any(x => x.Name == "Койнакх"))
+                    {
+                        //Получаем фамилию "Койнакх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Койнакх");
+
+                        //Проверяем наличие фамилии "Койнакх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Койнакх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Койнакх"
+                                NationLastName nationLastName = new("system", 0.55, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Мусикбрах"
+                    if (_repository.LastNames.Any(x => x.Name == "Мусикбрах"))
+                    {
+                        //Получаем фамилию "Мусикбрах"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Мусикбрах");
+
+                        //Проверяем наличие фамилии "Мусикбрах"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Мусикбрах"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Мусикбрах"
+                                NationLastName nationLastName = new("system", 1.43, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Феидх"
+                    if (_repository.LastNames.Any(x => x.Name == "Феидх"))
+                    {
+                        //Получаем фамилию "Феидх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Феидх");
+
+                        //Проверяем наличие фамилии "Феидх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Феидх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Феидх"
+                                NationLastName nationLastName = new("system", 1.27, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Икх"
+                    if (_repository.LastNames.Any(x => x.Name == "Икх"))
+                    {
+                        //Получаем фамилию "Икх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Икх");
+
+                        //Проверяем наличие фамилии "Икх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Икх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Икх"
+                                NationLastName nationLastName = new("system", 0.92, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Рикдас"
+                    if (_repository.LastNames.Any(x => x.Name == "Рикдас"))
+                    {
+                        //Получаем фамилию "Рикдас"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Рикдас");
+
+                        //Проверяем наличие фамилии "Рикдас"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Рикдас"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Рикдас"
+                                NationLastName nationLastName = new("system", 0.13, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Слабраидх"
+                    if (_repository.LastNames.Any(x => x.Name == "Слабраидх"))
+                    {
+                        //Получаем фамилию "Слабраидх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Слабраидх");
+
+                        //Проверяем наличие фамилии "Слабраидх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Слабраидх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Слабраидх"
+                                NationLastName nationLastName = new("system", 0.09, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Фремкх"
+                    if (_repository.LastNames.Any(x => x.Name == "Фремкх"))
+                    {
+                        //Получаем фамилию "Фремкх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Фремкх");
+
+                        //Проверяем наличие фамилии "Фремкх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Фремкх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Фремкх"
+                                NationLastName nationLastName = new("system", 1.53, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Тарраинг"
+                    if (_repository.LastNames.Any(x => x.Name == "Тарраинг"))
+                    {
+                        //Получаем фамилию "Тарраинг"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Тарраинг");
+
+                        //Проверяем наличие фамилии "Тарраинг"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Тарраинг"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Тарраинг"
+                                NationLastName nationLastName = new("system", 1.98, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Адхарк"
+                    if (_repository.LastNames.Any(x => x.Name == "Адхарк"))
+                    {
+                        //Получаем фамилию "Адхарк"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Адхарк");
+
+                        //Проверяем наличие фамилии "Адхарк"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Адхарк"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Адхарк"
+                                NationLastName nationLastName = new("system", 0.48, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Кломх"
+                    if (_repository.LastNames.Any(x => x.Name == "Кломх"))
+                    {
+                        //Получаем фамилию "Кломх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Кломх");
+
+                        //Проверяем наличие фамилии "Кломх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Кломх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Кломх"
+                                NationLastName nationLastName = new("system", 1.27, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Крубакх"
+                    if (_repository.LastNames.Any(x => x.Name == "Крубакх"))
+                    {
+                        //Получаем фамилию "Крубакх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Крубакх");
+
+                        //Проверяем наличие фамилии "Крубакх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Крубакх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Крубакх"
+                                NationLastName nationLastName = new("system", 1.49, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Сронкх"
+                    if (_repository.LastNames.Any(x => x.Name == "Сронкх"))
+                    {
+                        //Получаем фамилию "Сронкх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Сронкх");
+
+                        //Проверяем наличие фамилии "Сронкх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Сронкх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Сронкх"
+                                NationLastName nationLastName = new("system", 1.78, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Фейсаг"
+                    if (_repository.LastNames.Any(x => x.Name == "Фейсаг"))
+                    {
+                        //Получаем фамилию "Фейсаг"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Фейсаг");
+
+                        //Проверяем наличие фамилии "Фейсаг"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Фейсаг"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Фейсаг"
+                                NationLastName nationLastName = new("system", 0.69, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Гарадх"
+                    if (_repository.LastNames.Any(x => x.Name == "Гарадх"))
+                    {
+                        //Получаем фамилию "Гарадх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Гарадх");
+
+                        //Проверяем наличие фамилии "Гарадх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Гарадх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Гарадх"
+                                NationLastName nationLastName = new("system", 1.64, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Лабаракх"
+                    if (_repository.LastNames.Any(x => x.Name == "Лабаракх"))
+                    {
+                        //Получаем фамилию "Лабаракх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Лабаракх");
+
+                        //Проверяем наличие фамилии "Лабаракх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Лабаракх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Лабаракх"
+                                NationLastName nationLastName = new("system", 0.07, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Сманкх"
+                    if (_repository.LastNames.Any(x => x.Name == "Сманкх"))
+                    {
+                        //Получаем фамилию "Сманкх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Сманкх");
+
+                        //Проверяем наличие фамилии "Сманкх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Сманкх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Сманкх"
+                                NationLastName nationLastName = new("system", 1.16, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Гаинмекх"
+                    if (_repository.LastNames.Any(x => x.Name == "Гаинмекх"))
+                    {
+                        //Получаем фамилию "Гаинмекх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Гаинмекх");
+
+                        //Проверяем наличие фамилии "Гаинмекх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Гаинмекх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Гаинмекх"
+                                NationLastName nationLastName = new("system", 1.38, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Краобх"
+                    if (_repository.LastNames.Any(x => x.Name == "Краобх"))
+                    {
+                        //Получаем фамилию "Краобх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Краобх");
+
+                        //Проверяем наличие фамилии "Краобх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Краобх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Краобх"
+                                NationLastName nationLastName = new("system", 1.59, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Фъёр"
+                    if (_repository.LastNames.Any(x => x.Name == "Фъёр"))
+                    {
+                        //Получаем фамилию "Фъёр"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Фъёр");
+
+                        //Проверяем наличие фамилии "Фъёр"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Фъёр"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Фъёр"
+                                NationLastName nationLastName = new("system", 1.23, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Грабх"
+                    if (_repository.LastNames.Any(x => x.Name == "Грабх"))
+                    {
+                        //Получаем фамилию "Грабх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Грабх");
+
+                        //Проверяем наличие фамилии "Грабх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Грабх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Грабх"
+                                NationLastName nationLastName = new("system", 0.56, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Стутх"
+                    if (_repository.LastNames.Any(x => x.Name == "Стутх"))
+                    {
+                        //Получаем фамилию "Стутх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Стутх");
+
+                        //Проверяем наличие фамилии "Стутх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Стутх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Стутх"
+                                NationLastName nationLastName = new("system", 0.76, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Такартх"
+                    if (_repository.LastNames.Any(x => x.Name == "Такартх"))
+                    {
+                        //Получаем фамилию "Такартх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Такартх");
+
+                        //Проверяем наличие фамилии "Такартх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Такартх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Такартх"
+                                NationLastName nationLastName = new("system", 0.97, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Нигхин"
+                    if (_repository.LastNames.Any(x => x.Name == "Нигхин"))
+                    {
+                        //Получаем фамилию "Нигхин"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Нигхин");
+
+                        //Проверяем наличие фамилии "Нигхин"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Нигхин"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Нигхин"
+                                NationLastName nationLastName = new("system", 0.09, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Кедх"
+                    if (_repository.LastNames.Any(x => x.Name == "Кедх"))
+                    {
+                        //Получаем фамилию "Кедх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Кедх");
+
+                        //Проверяем наличие фамилии "Кедх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Кедх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Кедх"
+                                NationLastName nationLastName = new("system", 1.21, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Иннтригх"
+                    if (_repository.LastNames.Any(x => x.Name == "Иннтригх"))
+                    {
+                        //Получаем фамилию "Иннтригх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Иннтригх");
+
+                        //Проверяем наличие фамилии "Иннтригх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Иннтригх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Иннтригх"
+                                NationLastName nationLastName = new("system", 1.81, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Соирбекх"
+                    if (_repository.LastNames.Any(x => x.Name == "Соирбекх"))
+                    {
+                        //Получаем фамилию "Соирбекх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Соирбекх");
+
+                        //Проверяем наличие фамилии "Соирбекх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Соирбекх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Соирбекх"
+                                NationLastName nationLastName = new("system", 1.59, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Адакх"
+                    if (_repository.LastNames.Any(x => x.Name == "Адакх"))
+                    {
+                        //Получаем фамилию "Адакх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Адакх");
+
+                        //Проверяем наличие фамилии "Адакх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Адакх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Адакх"
+                                NationLastName nationLastName = new("system", 1.68, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Мулакх"
+                    if (_repository.LastNames.Any(x => x.Name == "Мулакх"))
+                    {
+                        //Получаем фамилию "Мулакх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Мулакх");
+
+                        //Проверяем наличие фамилии "Мулакх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Мулакх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Мулакх"
+                                NationLastName nationLastName = new("system", 0.34, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Ридхалт"
+                    if (_repository.LastNames.Any(x => x.Name == "Ридхалт"))
+                    {
+                        //Получаем фамилию "Ридхалт"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Ридхалт");
+
+                        //Проверяем наличие фамилии "Ридхалт"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Ридхалт"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Ридхалт"
+                                NationLastName nationLastName = new("system", 1.24, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Катритх"
+                    if (_repository.LastNames.Any(x => x.Name == "Катритх"))
+                    {
+                        //Получаем фамилию "Катритх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Катритх");
+
+                        //Проверяем наличие фамилии "Катритх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Катритх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Катритх"
+                                NationLastName nationLastName = new("system", 0.35, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Ардх"
+                    if (_repository.LastNames.Any(x => x.Name == "Ардх"))
+                    {
+                        //Получаем фамилию "Ардх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Ардх");
+
+                        //Проверяем наличие фамилии "Ардх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Ардх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Ардх"
+                                NationLastName nationLastName = new("system", 1.53, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Пирсанатх"
+                    if (_repository.LastNames.Any(x => x.Name == "Пирсанатх"))
+                    {
+                        //Получаем фамилию "Пирсанатх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Пирсанатх");
+
+                        //Проверяем наличие фамилии "Пирсанатх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Пирсанатх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Пирсанатх"
+                                NationLastName nationLastName = new("system", 1.64, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Кхудим"
+                    if (_repository.LastNames.Any(x => x.Name == "Кхудим"))
+                    {
+                        //Получаем фамилию "Кхудим"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Кхудим");
+
+                        //Проверяем наличие фамилии "Кхудим"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Кхудим"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Кхудим"
+                                NationLastName nationLastName = new("system", 0.82, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Бунстидх"
+                    if (_repository.LastNames.Any(x => x.Name == "Бунстидх"))
+                    {
+                        //Получаем фамилию "Бунстидх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Бунстидх");
+
+                        //Проверяем наличие фамилии "Бунстидх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Бунстидх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Бунстидх"
+                                NationLastName nationLastName = new("system", 0.41, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Падхидх"
+                    if (_repository.LastNames.Any(x => x.Name == "Падхидх"))
+                    {
+                        //Получаем фамилию "Падхидх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Падхидх");
+
+                        //Проверяем наличие фамилии "Падхидх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Падхидх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Падхидх"
+                                NationLastName nationLastName = new("system", 0.74, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Деигх"
+                    if (_repository.LastNames.Any(x => x.Name == "Деигх"))
+                    {
+                        //Получаем фамилию "Деигх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Деигх");
+
+                        //Проверяем наличие фамилии "Деигх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Деигх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Деигх"
+                                NationLastName nationLastName = new("system", 0.29, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Диланакх"
+                    if (_repository.LastNames.Any(x => x.Name == "Диланакх"))
+                    {
+                        //Получаем фамилию "Диланакх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Диланакх");
+
+                        //Проверяем наличие фамилии "Диланакх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Диланакх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Диланакх"
+                                NationLastName nationLastName = new("system", 0.25, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Доркхадас"
+                    if (_repository.LastNames.Any(x => x.Name == "Доркхадас"))
+                    {
+                        //Получаем фамилию "Доркхадас"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Доркхадас");
+
+                        //Проверяем наличие фамилии "Доркхадас"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Доркхадас"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Доркхадас"
+                                NationLastName nationLastName = new("system", 1.31, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Атхаир"
+                    if (_repository.LastNames.Any(x => x.Name == "Атхаир"))
+                    {
+                        //Получаем фамилию "Атхаир"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Атхаир");
+
+                        //Проверяем наличие фамилии "Атхаир"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Атхаир"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Атхаир"
+                                NationLastName nationLastName = new("system", 0.4, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Теотакх"
+                    if (_repository.LastNames.Any(x => x.Name == "Теотакх"))
+                    {
+                        //Получаем фамилию "Теотакх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Теотакх");
+
+                        //Проверяем наличие фамилии "Теотакх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Теотакх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Теотакх"
+                                NationLastName nationLastName = new("system", 0.21, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Стуридх"
+                    if (_repository.LastNames.Any(x => x.Name == "Стуридх"))
+                    {
+                        //Получаем фамилию "Стуридх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Стуридх");
+
+                        //Проверяем наличие фамилии "Стуридх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Стуридх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Стуридх"
+                                NationLastName nationLastName = new("system", 1.74, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+                }
+            }
+
+            //Проверяем наличие нации "Восточный вампир"
+            if (_repository.Nations.Any(x => x.Name == "Восточный вампир"))
+            {
+                //Получаем нацию "Восточный вампир"
+                Nation? nation = _repository.Nations.FirstOrDefault(x => x.Name == "Восточный вампир");
+
+                //Проверяем наличие нации "Восточный вампир"
+                if (nation != null)
+                {
+                    //Проверяем наличие фамилии "Фуил "
+                    if (_repository.LastNames.Any(x => x.Name == "Фуил "))
+                    {
+                        //Получаем фамилию "Фуил "
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Фуил ");
+
+                        //Проверяем наличие фамилии "Фуил "
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Фуил "
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Фуил "
+                                NationLastName nationLastName = new("system", 1.27, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Гхоул"
+                    if (_repository.LastNames.Any(x => x.Name == "Гхоул"))
+                    {
+                        //Получаем фамилию "Гхоул"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Гхоул");
+
+                        //Проверяем наличие фамилии "Гхоул"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Гхоул"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Гхоул"
+                                NationLastName nationLastName = new("system", 0.32, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Ятаг "
+                    if (_repository.LastNames.Any(x => x.Name == "Ятаг "))
+                    {
+                        //Получаем фамилию "Ятаг "
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Ятаг ");
+
+                        //Проверяем наличие фамилии "Ятаг "
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Ятаг "
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Ятаг "
+                                NationLastName nationLastName = new("system", 1.95, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Сеар"
+                    if (_repository.LastNames.Any(x => x.Name == "Сеар"))
+                    {
+                        //Получаем фамилию "Сеар"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Сеар");
+
+                        //Проверяем наличие фамилии "Сеар"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Сеар"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Сеар"
+                                NationLastName nationLastName = new("system", 0.22, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Рионнаган"
+                    if (_repository.LastNames.Any(x => x.Name == "Рионнаган"))
+                    {
+                        //Получаем фамилию "Рионнаган"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Рионнаган");
+
+                        //Проверяем наличие фамилии "Рионнаган"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Рионнаган"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Рионнаган"
+                                NationLastName nationLastName = new("system", 0.97, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Коил"
+                    if (_repository.LastNames.Any(x => x.Name == "Коил"))
+                    {
+                        //Получаем фамилию "Коил"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Коил");
+
+                        //Проверяем наличие фамилии "Коил"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Коил"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Коил"
+                                NationLastName nationLastName = new("system", 1.83, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Саланн"
+                    if (_repository.LastNames.Any(x => x.Name == "Саланн"))
+                    {
+                        //Получаем фамилию "Саланн"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Саланн");
+
+                        //Проверяем наличие фамилии "Саланн"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Саланн"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Саланн"
+                                NationLastName nationLastName = new("system", 1.52, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Клогаид"
+                    if (_repository.LastNames.Any(x => x.Name == "Клогаид"))
+                    {
+                        //Получаем фамилию "Клогаид"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Клогаид");
+
+                        //Проверяем наличие фамилии "Клогаид"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Клогаид"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Клогаид"
+                                NationLastName nationLastName = new("system", 0.25, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Гров"
+                    if (_repository.LastNames.Any(x => x.Name == "Гров"))
+                    {
+                        //Получаем фамилию "Гров"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Гров");
+
+                        //Проверяем наличие фамилии "Гров"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Гров"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Гров"
+                                NationLastName nationLastName = new("system", 1.76, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Криос"
+                    if (_repository.LastNames.Any(x => x.Name == "Криос"))
+                    {
+                        //Получаем фамилию "Криос"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Криос");
+
+                        //Проверяем наличие фамилии "Криос"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Криос"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Криос"
+                                NationLastName nationLastName = new("system", 0.05, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Баил"
+                    if (_repository.LastNames.Any(x => x.Name == "Баил"))
+                    {
+                        //Получаем фамилию "Баил"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Баил");
+
+                        //Проверяем наличие фамилии "Баил"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Баил"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Баил"
+                                NationLastName nationLastName = new("system", 1.31, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Сагар"
+                    if (_repository.LastNames.Any(x => x.Name == "Сагар"))
+                    {
+                        //Получаем фамилию "Сагар"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Сагар");
+
+                        //Проверяем наличие фамилии "Сагар"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Сагар"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Сагар"
+                                NationLastName nationLastName = new("system", 0.24, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Хэйр"
+                    if (_repository.LastNames.Any(x => x.Name == "Хэйр"))
+                    {
+                        //Получаем фамилию "Хэйр"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Хэйр");
+
+                        //Проверяем наличие фамилии "Хэйр"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Хэйр"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Хэйр"
+                                NationLastName nationLastName = new("system", 0.85, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Мос"
+                    if (_repository.LastNames.Any(x => x.Name == "Мос"))
+                    {
+                        //Получаем фамилию "Мос"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Мос");
+
+                        //Проверяем наличие фамилии "Мос"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Мос"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Мос"
+                                NationLastName nationLastName = new("system", 1.04, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Фалкон"
+                    if (_repository.LastNames.Any(x => x.Name == "Фалкон"))
+                    {
+                        //Получаем фамилию "Фалкон"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Фалкон");
+
+                        //Проверяем наличие фамилии "Фалкон"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Фалкон"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Фалкон"
+                                NationLastName nationLastName = new("system", 0.64, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Яран"
+                    if (_repository.LastNames.Any(x => x.Name == "Яран"))
+                    {
+                        //Получаем фамилию "Яран"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Яран");
+
+                        //Проверяем наличие фамилии "Яран"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Яран"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Яран"
+                                NationLastName nationLastName = new("system", 1.25, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Меин"
+                    if (_repository.LastNames.Any(x => x.Name == "Меин"))
+                    {
+                        //Получаем фамилию "Меин"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Меин");
+
+                        //Проверяем наличие фамилии "Меин"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Меин"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Меин"
+                                NationLastName nationLastName = new("system", 0.21, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Канан"
+                    if (_repository.LastNames.Any(x => x.Name == "Канан"))
+                    {
+                        //Получаем фамилию "Канан"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Канан");
+
+                        //Проверяем наличие фамилии "Канан"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Канан"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Канан"
+                                NationLastName nationLastName = new("system", 0.88, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Билен"
+                    if (_repository.LastNames.Any(x => x.Name == "Билен"))
+                    {
+                        //Получаем фамилию "Билен"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Билен");
+
+                        //Проверяем наличие фамилии "Билен"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Билен"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Билен"
+                                NationLastName nationLastName = new("system", 1.24, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Кин"
+                    if (_repository.LastNames.Any(x => x.Name == "Кин"))
+                    {
+                        //Получаем фамилию "Кин"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Кин");
+
+                        //Проверяем наличие фамилии "Кин"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Кин"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Кин"
+                                NationLastName nationLastName = new("system", 0.02, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Фалт"
+                    if (_repository.LastNames.Any(x => x.Name == "Фалт"))
+                    {
+                        //Получаем фамилию "Фалт"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Фалт");
+
+                        //Проверяем наличие фамилии "Фалт"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Фалт"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Фалт"
+                                NationLastName nationLastName = new("system", 1.03, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Антсин"
+                    if (_repository.LastNames.Any(x => x.Name == "Антсин"))
+                    {
+                        //Получаем фамилию "Антсин"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Антсин");
+
+                        //Проверяем наличие фамилии "Антсин"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Антсин"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Антсин"
+                                NationLastName nationLastName = new("system", 0.88, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Кас"
+                    if (_repository.LastNames.Any(x => x.Name == "Кас"))
+                    {
+                        //Получаем фамилию "Кас"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Кас");
+
+                        //Проверяем наличие фамилии "Кас"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Кас"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Кас"
+                                NationLastName nationLastName = new("system", 1.98, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Неил"
+                    if (_repository.LastNames.Any(x => x.Name == "Неил"))
+                    {
+                        //Получаем фамилию "Неил"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Неил");
+
+                        //Проверяем наличие фамилии "Неил"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Неил"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Неил"
+                                NationLastName nationLastName = new("system", 1.22, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Интин"
+                    if (_repository.LastNames.Any(x => x.Name == "Интин"))
+                    {
+                        //Получаем фамилию "Интин"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Интин");
+
+                        //Проверяем наличие фамилии "Интин"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Интин"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Интин"
+                                NationLastName nationLastName = new("system", 1.68, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Глеин"
+                    if (_repository.LastNames.Any(x => x.Name == "Глеин"))
+                    {
+                        //Получаем фамилию "Глеин"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Глеин");
+
+                        //Проверяем наличие фамилии "Глеин"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Глеин"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Глеин"
+                                NationLastName nationLastName = new("system", 1.7, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Клар"
+                    if (_repository.LastNames.Any(x => x.Name == "Клар"))
+                    {
+                        //Получаем фамилию "Клар"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Клар");
+
+                        //Проверяем наличие фамилии "Клар"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Клар"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Клар"
+                                NationLastName nationLastName = new("system", 0.21, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Стор"
+                    if (_repository.LastNames.Any(x => x.Name == "Стор"))
+                    {
+                        //Получаем фамилию "Стор"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Стор");
+
+                        //Проверяем наличие фамилии "Стор"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Стор"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Стор"
+                                NationLastName nationLastName = new("system", 1.78, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Сусбант"
+                    if (_repository.LastNames.Any(x => x.Name == "Сусбант"))
+                    {
+                        //Получаем фамилию "Сусбант"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Сусбант");
+
+                        //Проверяем наличие фамилии "Сусбант"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Сусбант"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Сусбант"
+                                NationLastName nationLastName = new("system", 1.47, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Фаид"
+                    if (_repository.LastNames.Any(x => x.Name == "Фаид"))
+                    {
+                        //Получаем фамилию "Фаид"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Фаид");
+
+                        //Проверяем наличие фамилии "Фаид"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Фаид"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Фаид"
+                                NationLastName nationLastName = new("system", 0.22, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Сгор"
+                    if (_repository.LastNames.Any(x => x.Name == "Сгор"))
+                    {
+                        //Получаем фамилию "Сгор"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Сгор");
+
+                        //Проверяем наличие фамилии "Сгор"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Сгор"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Сгор"
+                                NationLastName nationLastName = new("system", 1.35, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Усг"
+                    if (_repository.LastNames.Any(x => x.Name == "Усг"))
+                    {
+                        //Получаем фамилию "Усг"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Усг");
+
+                        //Проверяем наличие фамилии "Усг"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Усг"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Усг"
+                                NationLastName nationLastName = new("system", 1.52, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Теин"
+                    if (_repository.LastNames.Any(x => x.Name == "Теин"))
+                    {
+                        //Получаем фамилию "Теин"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Теин");
+
+                        //Проверяем наличие фамилии "Теин"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Теин"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Теин"
+                                NationLastName nationLastName = new("system", 0.49, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Феран"
+                    if (_repository.LastNames.Any(x => x.Name == "Феран"))
+                    {
+                        //Получаем фамилию "Феран"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Феран");
+
+                        //Проверяем наличие фамилии "Феран"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Феран"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Феран"
+                                NationLastName nationLastName = new("system", 0.68, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Сасг"
+                    if (_repository.LastNames.Any(x => x.Name == "Сасг"))
+                    {
+                        //Получаем фамилию "Сасг"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Сасг");
+
+                        //Проверяем наличие фамилии "Сасг"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Сасг"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Сасг"
+                                NationLastName nationLastName = new("system", 1.4, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Аотром"
+                    if (_repository.LastNames.Any(x => x.Name == "Аотром"))
+                    {
+                        //Получаем фамилию "Аотром"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Аотром");
+
+                        //Проверяем наличие фамилии "Аотром"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Аотром"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Аотром"
+                                NationLastName nationLastName = new("system", 0.21, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                    //Проверяем наличие фамилии "Милх"
+                    if (_repository.LastNames.Any(x => x.Name == "Милх"))
+                    {
+                        //Получаем фамилию "Милх"
+                        LastName? lastName = _repository.LastNames.FirstOrDefault(x => x.Name == "Милх");
+
+                        //Проверяем наличие фамилии "Милх"
+                        if (lastName != null)
+                        {
+                            //Проверяем наличие связи нации "Западный вампир" с фамилией "Милх"
+                            if (!_repository.NationsLastNames.Any(x => x.Nation == nation && x.LastName == lastName))
+                            {
+                                //Создаём связь нации "Западный вампир" с фамилией "Милх"
+                                NationLastName nationLastName = new("system", 1.01, nation, lastName);
+                                _repository.NationsLastNames.Add(nationLastName);
+                                await _repository.SaveChangesAsync();
+                            }
+                        }
+                    }
+                }
+            }
         }
         catch (Exception ex)
         {
